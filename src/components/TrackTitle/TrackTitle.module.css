@@ -1,0 +1,15 @@
+.Svg {
+    cursor: pointer;
+}
+
+.Base {
+    /*margin: 0.3rem 1rem 0.3rem 0;*/
+}
+
+.Title {
+    user-select: none;
+}
+
+.GainIndicator {
+    user-select: none;
+}

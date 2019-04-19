@@ -1,0 +1,38 @@
+@value grey_800Light: #6d6d6d;
+@value blueGrey_200: #b0bec5;
+@value blueGrey_600: #546e7a;
+
+.Base {
+    height: 4rem;
+    display: flex;
+    background: blueGrey_600;
+}
+
+.ItemFirst {
+    margin: auto 1rem auto 0;
+}
+
+.Item {
+    margin: auto 1rem;
+}
+
+.ItemLast {
+    margin : auto 0 auto auto;
+}
+
+.Transport {
+    margin-right: 1rem;
+}
+
+.MasterGain {
+    composes: Item;
+}
+
+.Tempo {
+    composes: Item;
+}
+
+.Mode {
+    composes: ItemLast;
+    margin-right: 1rem;
+}

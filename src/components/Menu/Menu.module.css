@@ -1,0 +1,33 @@
+@value deepOrange_A700: #dd2c00;
+@value blueGrey_900: #263238;
+@value blueGrey_300: #90a4ae;
+@value grey_800: #424242;
+@value grey_100: #f5f5f5;
+
+.Base {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    flex-flow: row nowrap;
+    /*justify-content: space-between;*/
+    align-items: center;
+    height: 3rem;
+    background: grey_800;
+    box-shadow: 0px 0px 16px 0px rgba(0,0,0,1);
+}
+
+.Brand {
+    padding: 1rem;
+    font-weight: 700;
+    user-select: none;
+}
+
+.Link {
+    text-decoration: none;
+    opacity: 0.8;
+    color: grey_100;
+}
+
+.Link:hover {
+    opacity: 1;
+}

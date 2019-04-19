@@ -1,0 +1,16 @@
+@value blueGrey_800: #37474f;
+@value blueGrey_800Dark: #102027;
+@value grey_900: #212121;
+
+.Base {
+
+    min-height: 100%;
+    color: white;
+}
+
+.Sequencer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

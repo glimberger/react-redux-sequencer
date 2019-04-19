@@ -1,0 +1,9 @@
+.Container {
+    border-radius: 3px;
+    padding: 0.5rem;
+    /*margin: 0 0.3rem 0.3rem;*/
+}
+
+.Row {
+    display: flex;
+}

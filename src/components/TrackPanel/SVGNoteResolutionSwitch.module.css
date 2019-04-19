@@ -1,0 +1,7 @@
+.Switch {
+    cursor: pointer;
+}
+
+.Text {
+    user-select: none;
+}

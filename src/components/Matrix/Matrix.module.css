@@ -1,0 +1,22 @@
+.CellColumn {
+    /*margin-top: 0.3rem;*/
+    /*margin-bottom: 0.3rem;*/
+}
+
+.Row {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.RowWrapper {
+    margin-top: 0.5rem;
+}
+
+.RowWrapperFirst {
+    composes: RowWrapper;
+    margin-top: 0;
+}
+
+.Track {
+    padding-right: 1rem;
+}
