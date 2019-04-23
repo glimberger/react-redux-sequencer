@@ -1,6 +1,6 @@
 {
-  "short_name": "JAMS",
-  "name": "Just Another Music Studio",
+  "short_name": "Sequencer",
+  "name": "React Redux audio sequencer",
   "icons": [
     {
       "src": "favicon.ico",
