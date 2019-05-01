@@ -12,14 +12,14 @@ export type AudioState = {|
   playing: boolean,
   mode: "EDIT" | "PLAY",
   currentBeat: number,
-  currentTrackPanel: string | null,
-  currentCellPanel: {| beat: number, trackID: string |} | null,
-  mutes: {
-    [trackID: string]: {| enabled: boolean |}
-  },
-  solos: {
-    [trackID: string]: {| enabled: boolean |}
-  },
+  // currentTrackPanel: string | null,
+  // currentCellPanel: {| beat: number, trackID: string |} | null,
+  // mutes: {
+  //   [trackID: string]: {| enabled: boolean |}
+  // },
+  // solos: {
+  //   [trackID: string]: {| enabled: boolean |}
+  // },
   events: Array<Event>
 |}
 

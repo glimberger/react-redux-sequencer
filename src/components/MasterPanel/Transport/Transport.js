@@ -3,10 +3,16 @@ import * as React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import styles from "./Transport.module.css"
-import type { AudioState } from "../../../redux/store/audio/types"
+import Color from "../../../utils/color/colorLibrary"
 
-type PropsType = {
-  mode: $PropertyType<AudioState, "mode">,
+import type { AudioState } from "../../../redux/store/audio/types"
+import type { MaterialColor } from "../../../utils/color/colorLibrary"
+
+type OwnProps = {
+  color: MaterialColor
+}
+
+type StateProps = {
   playing: $PropertyType<AudioState, "playing">
 }
 
@@ -14,7 +20,24 @@ type DispatchProps = {
   togglePlay: () => void
 }
 
-class Transport extends React.Component<PropsType & DispatchProps> {
+type Props = OwnProps & StateProps & DispatchProps
+
+type State = {
+  hover: boolean
+}
+
+class Transport extends React.Component<Props, State> {
+  state = {
+    hover: false
+  }
+
+  hoverOn() {
+    this.setState({ hover: true })
+  }
+  hoverOff() {
+    this.setState({ hover: false })
+  }
+
   playButtonRef: {
     current: HTMLButtonElement | null
   } = React.createRef<HTMLButtonElement>()
@@ -56,22 +79,37 @@ class Transport extends React.Component<PropsType & DispatchProps> {
   }
 
   render() {
+    const css = {
+      Base: {
+        backgroundColor: this.state.hover
+          ? Color.get700(this.props.color)
+          : Color.get800(this.props.color),
+        color: Color.get50(this.props.color)
+      }
+    }
     if (this.props.playing) {
       return (
         <button
+          style={css.Base}
           className={styles.Base}
-          onClick={this.handlePlayClick}
           ref={this.playButtonRef}
+          onClick={this.handlePlayClick}
+          onMouseEnter={() => this.hoverOn()}
+          onMouseLeave={() => this.hoverOff()}
         >
           <FontAwesomeIcon icon="pause" />
         </button>
       )
     }
+
     return (
       <button
+        style={css.Base}
         className={styles.Base}
-        onClick={this.handlePauseClick}
         ref={this.pauseButtonRef}
+        onClick={this.handlePauseClick}
+        onMouseEnter={() => this.hoverOn()}
+        onMouseLeave={() => this.hoverOff()}
       >
         <FontAwesomeIcon icon="play" />
       </button>

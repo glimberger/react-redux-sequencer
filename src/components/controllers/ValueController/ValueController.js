@@ -1,7 +1,7 @@
 // @flow strict
 import * as React from "react"
 
-import CellColor from "../../../utils/color/colorLibrary"
+import Color from "../../../utils/color/colorLibrary"
 import styles from "./ValueController.module.css"
 
 import type { MaterialColor } from "../../../utils/color/colorLibrary"
@@ -37,12 +37,7 @@ function ValueController({ value, onChange, amount, min, max }: PropsType) {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <rect
-          width="129"
-          height="40"
-          rx="3"
-          fill={CellColor.get700("blueGrey")}
-        />
+        <rect width="129" height="40" rx="3" fill={Color.get700("blueGrey")} />
         <text
           className={styles.Display}
           x={80}
@@ -57,13 +52,13 @@ function ValueController({ value, onChange, amount, min, max }: PropsType) {
         <path
           className={styles.Button}
           d="M108 6L120.124 16.5H95.8756L108 6Z"
-          fill={CellColor.get900("blueGrey")}
+          fill={Color.get900("blueGrey")}
           onClick={increment}
         />
         <path
           className={styles.Button}
           d="M108 34L95.8756 23.5L120.124 23.5L108 34Z"
-          fill={CellColor.get900("blueGrey")}
+          fill={Color.get900("blueGrey")}
           onClick={decrement}
         />
       </svg>

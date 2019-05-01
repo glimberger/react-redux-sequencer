@@ -29,6 +29,7 @@ import type {
 } from "../../redux/actions/session/types"
 import type { Session } from "../../redux/store/session/types"
 import type { Sample } from "../../redux/store/sample/types"
+import { getMutes, getSolos, isSoloActive } from "../../redux/reducers"
 
 type AudioEvent =
   | TogglePlayAction
@@ -38,13 +39,13 @@ type AudioEvent =
   | ScheduleTrackCellAction
   | ClearEventQueueAction
 
-type State = {
-  +timer: ?IntervalID,
-  +current16thNote: number,
-  +nextNoteTime: number
+type StateProps = {
+  ...AudioState,
+  ...Session,
+  solos: { [trackID: string]: boolean },
+  mutes: { [trackID: string]: boolean },
+  isSoloActive: boolean
 }
-
-type StateProps = AudioState & Session
 
 type DispatchProps = {
   announceBeat: (beatNumber: number) => void,
@@ -52,6 +53,12 @@ type DispatchProps = {
   resetTransport: () => void,
   togglePlay: () => void,
   setAudioEngineReady: () => void
+}
+
+type State = {
+  +timer: ?IntervalID,
+  +current16thNote: number,
+  +nextNoteTime: number
 }
 
 class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
@@ -297,7 +304,8 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
       matrix,
       announceBeat,
       mutes,
-      solos
+      solos,
+      isSoloActive
     } = this.props
 
     announceBeat(beatNumber)
@@ -315,10 +323,6 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
       return
     }
 
-    const isSoloActive: boolean = Object.keys(solos).reduce((acc, trackID) => {
-      return solos[trackID].enabled || acc
-    }, false)
-
     Object.keys(tracks).forEach(trackID => {
       const { instrumentID, noteResolution } = tracks[trackID]
 
@@ -326,15 +330,12 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
       if (beatNumber % noteResolution) return
 
       // solo
-      if (
-        isSoloActive &&
-        (!solos[trackID] || solos[trackID].enabled === false)
-      ) {
+      if (isSoloActive && !solos[trackID]) {
         return
       }
 
       // mute
-      if (mutes[trackID] && mutes[trackID].enabled === true) {
+      if (mutes[trackID]) {
         return
       }
 
@@ -403,7 +404,10 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
 
 const mapStateToProps = (state: { audio: AudioState, session: Session }) => ({
   ...state.session,
-  ...state.audio
+  ...state.audio,
+  mutes: getMutes(state),
+  solos: getSolos(state),
+  isSoloActive: isSoloActive(state)
 })
 
 const AudioEngineConnected = connect(

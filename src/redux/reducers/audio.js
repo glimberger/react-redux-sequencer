@@ -3,13 +3,7 @@ import {
   ANNOUNCE_BEAT,
   CLEAR_EVENT_QUEUE,
   RESET_TRANSPORT,
-  TOGGLE_PLAY,
-  TOGGLE_MUTE_TRACK,
-  TOGGLE_SOLO_TRACK,
-  TOGGLE_TRACK_PANEL,
-  SET_PLAY_MODE,
-  SET_EDIT_MODE,
-  TOGGLE_CELL_PANEL
+  TOGGLE_PLAY
 } from "../actions/audio/types"
 import initialState from "../store/audio/initialState"
 import {
@@ -50,32 +44,6 @@ const reducer = (
         events: [...state.events, action]
       }
 
-    case TOGGLE_MUTE_TRACK:
-      return {
-        ...state,
-        mutes: {
-          ...state.mutes,
-          [action.payload.trackID]: {
-            enabled: state.mutes[action.payload.trackID]
-              ? !state.mutes[action.payload.trackID].enabled
-              : true
-          }
-        }
-      }
-
-    case TOGGLE_SOLO_TRACK:
-      return {
-        ...state,
-        solos: {
-          ...state.solos,
-          [action.payload.trackID]: {
-            enabled: state.solos[action.payload.trackID]
-              ? !state.solos[action.payload.trackID].enabled
-              : true
-          }
-        }
-      }
-
     case ANNOUNCE_BEAT:
       return {
         ...state,
@@ -86,40 +54,6 @@ const reducer = (
       return {
         ...state,
         events: []
-      }
-
-    case TOGGLE_TRACK_PANEL:
-      return {
-        ...state,
-        currentTrackPanel:
-          state.currentTrackPanel === action.payload.trackID
-            ? null
-            : action.payload.trackID
-      }
-
-    case TOGGLE_CELL_PANEL:
-      return {
-        ...state,
-        currentCellPanel:
-          state.currentCellPanel &&
-          state.currentCellPanel.trackID === action.payload.trackID &&
-          state.currentCellPanel.beat === action.payload.beat
-            ? null
-            : action.payload
-      }
-
-    case SET_PLAY_MODE:
-      return {
-        ...state,
-        mode: "PLAY",
-        currentTrackPanel: null,
-        currentCellPanel: null
-      }
-
-    case SET_EDIT_MODE:
-      return {
-        ...state,
-        mode: "EDIT"
       }
 
     case CHANGE_MASTER_GAIN:

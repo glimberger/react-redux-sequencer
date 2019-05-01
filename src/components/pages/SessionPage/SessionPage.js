@@ -2,7 +2,7 @@
 import * as React from "react"
 
 import MasterPanel from "../../MasterPanel/MasterPanel"
-import MatrixConnected from "../../Matrix/MatrixConnected"
+import MatrixConnected from "../../Sequencer/MatrixConnected"
 import AudioEngineConnected from "../../AudioEngine/AudioEngineConnected"
 
 import pageStyles from "../Page.module.css"
