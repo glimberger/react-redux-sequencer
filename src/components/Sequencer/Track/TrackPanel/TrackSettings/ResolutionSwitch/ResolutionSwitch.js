@@ -2,6 +2,7 @@
 import * as React from "react"
 
 import Color from "../../../../../../utils/color/colorLibrary"
+import styles from "./ResolutionSwitch.module.css"
 
 import type {
   NoteResolution,
@@ -61,69 +62,59 @@ class ResolutionSwitch extends React.Component<Props, State> {
       : Color.get400(color)
   }
 
+  prefs = {
+    height: 36,
+    width: 130
+  }
+
   render() {
     if (!this.props.activeTrackID) return null
 
     const css = {
       NoteResolution: {
-        display: "flex",
-        alignItems: "stretch",
-        width: "100px",
-        height: "24px",
-        // padding: `${this.props.gutter}px`,
-        // backgroundColor: Color.get700(this.props.color),
-        fontSize: "14px",
-        fontWeight: "700",
-        borderRadius: "3px",
-        userSelect: "none",
-        zIndex: "999"
+        width: `${this.prefs.width}px`,
+        height: `${this.prefs.height}px`,
+        padding: `${this.props.gutter}px`,
+        backgroundColor: Color.get700(this.props.color)
       },
       ButtonResolution_1: {
-        flex: "1 1 auto",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
         backgroundColor: ResolutionSwitch.backGroundColor(
           this.props.color,
           this.props.noteResolution === 1,
           this.state.hoverButtonResolution_1
         ),
-        borderTopLeftRadius: "3px",
-        borderBottomLeftRadius: "3px",
         cursor: this.props.noteResolution === 1 ? "default" : "pointer"
       },
       ButtonResolution_2: {
-        flex: "1 1 auto",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
         backgroundColor: ResolutionSwitch.backGroundColor(
           this.props.color,
           this.props.noteResolution === 2,
           this.state.hoverButtonResolution_2
         ),
+        marginLeft: `${this.props.gutter}px`,
         cursor: this.props.noteResolution === 2 ? "default" : "pointer"
       },
       ButtonResolution_4: {
-        flex: "1 1 auto",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
         backgroundColor: ResolutionSwitch.backGroundColor(
           this.props.color,
           this.props.noteResolution === 4,
           this.state.hoverButtonResolution_4
         ),
-        borderTopRightRadius: "3px",
-        borderBottomRightRadius: "3px",
+        marginLeft: `${this.props.gutter}px`,
         cursor: this.props.noteResolution === 4 ? "default" : "pointer"
       }
     }
     return (
-      <div style={css.NoteResolution}>
-        <div
+      <div style={css.NoteResolution} className={styles.Main}>
+        <button
           style={css.ButtonResolution_1}
+          className={styles.Button}
           role="button"
+          title={
+            this.props.noteResolution === 1
+              ? "Sixteenth notes"
+              : "Switch to sixteenth notes"
+          }
           onClick={() => {
             if (this.props.activeTrackID && this.props.noteResolution !== 1) {
               this.props.changeNoteResolution(1, this.props.activeTrackID)
@@ -133,10 +124,16 @@ class ResolutionSwitch extends React.Component<Props, State> {
           onMouseLeave={() => this.hoverOff(1)}
         >
           &#x266C;
-        </div>
-        <div
+        </button>
+        <button
           style={css.ButtonResolution_2}
-          role="button"
+          className={styles.Button}
+          // role="button"
+          title={
+            this.props.noteResolution === 2
+              ? "Eighth notes"
+              : "Switch to eighth notes"
+          }
           onClick={() => {
             if (this.props.activeTrackID && this.props.noteResolution !== 2) {
               this.props.changeNoteResolution(2, this.props.activeTrackID)
@@ -146,10 +143,16 @@ class ResolutionSwitch extends React.Component<Props, State> {
           onMouseLeave={() => this.hoverOff(2)}
         >
           &#x266B;
-        </div>
-        <div
+        </button>
+        <button
           style={css.ButtonResolution_4}
-          role="button"
+          className={styles.Button}
+          // role="button"
+          title={
+            this.props.noteResolution === 4
+              ? "Quarter notes"
+              : "Switch to quarter notes"
+          }
           onClick={() => {
             if (this.props.activeTrackID && this.props.noteResolution !== 4) {
               this.props.changeNoteResolution(4, this.props.activeTrackID)
@@ -159,7 +162,7 @@ class ResolutionSwitch extends React.Component<Props, State> {
           onMouseLeave={() => this.hoverOff(4)}
         >
           &#x2669;
-        </div>
+        </button>
       </div>
     )
   }
