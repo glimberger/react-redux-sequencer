@@ -25,7 +25,7 @@ const prefs = {
   }
 }
 
-function Matrix({ orderedTracks }: Props) {
+function Sequencer({ orderedTracks }: Props) {
   const css = {
     Row: {
       marginTop: `${prefs.gutter}px`
@@ -64,4 +64,4 @@ function Matrix({ orderedTracks }: Props) {
   )
 }
 
-export default Matrix
+export default Sequencer

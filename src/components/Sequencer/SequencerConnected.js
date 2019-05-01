@@ -1,13 +1,13 @@
 // @flow strict
 import { connect } from "react-redux"
 
-import Matrix from "./Matrix"
+import Sequencer from "./Sequencer"
 import { getOrderedTracks } from "../../redux/reducers"
 
 const mapStateToProps = state => ({
   orderedTracks: getOrderedTracks(state)
 })
 
-const MatrixConnected = connect(mapStateToProps)(Matrix)
+const SequencerConnected = connect(mapStateToProps)(Sequencer)
 
-export default MatrixConnected
+export default SequencerConnected
