@@ -1,17 +1,91 @@
 //@flow strict
 import { combineReducers } from "redux"
 
-import audioReducer from "./audio"
-import sessionReducer from "./session"
+import audio from "./audio"
+import session, * as fromSession from "./session"
 
 import type { Action as AudioAction } from "../actions/audio/types"
 import type { Action as SessionAction } from "../actions/session/types"
+import type { AudioState } from "../store/audio/types"
+import type { Cell, Session, Track } from "../store/session/types"
 
-type Action = AudioAction | SessionAction
+type AnyAction = AudioAction | SessionAction
 
-const rootReducer = combineReducers<{}, Action>({
-  audio: audioReducer,
-  session: sessionReducer
+const rootReducer = combineReducers<{}, AnyAction>({
+  audio,
+  session
 })
 
 export default rootReducer
+
+export function getOrderedTracks(state: {
+  audio: AudioState,
+  session: Session
+}) {
+  console.debug("[reducers/index.js] getOrderedTracks(", state, ")")
+  return fromSession.getOrderedTracks(state.session)
+}
+
+export function getTrack(
+  state: { audio: AudioState, session: Session },
+  trackID: string
+): Track {
+  console.debug("[reducers/index.js] getTrack(", state, ",", trackID, ")")
+  return fromSession.getTrack(state.session, trackID)
+}
+
+export function getActiveTrack(state: {
+  audio: AudioState,
+  session: Session
+}): ?Track {
+  console.debug("[reducers/index.js] getTrack(", state, ")")
+  return fromSession.getActiveTrack(state.session)
+}
+
+export function getCellRow(
+  state: { audio: AudioState, session: Session },
+  trackID: string
+): Array<Cell> {
+  console.debug("[reducers/index.js] getCellRow(", state, ",", trackID, ")")
+  return fromSession.getCellRow(state.session, trackID)
+}
+
+export function getCell(
+  state: { audio: AudioState, session: Session },
+  trackID: string,
+  beat: number
+): Cell {
+  console.debug("[reducers/index.js] getCell(", state, ",", trackID, ")")
+  return fromSession.getCell(state.session, trackID, beat)
+}
+
+export function getActiveCell(state: {
+  audio: AudioState,
+  session: Session
+}): ?Cell {
+  console.debug("[reducers/index.js] getActiveCell(", state, ")")
+  return fromSession.getActiveCell(state.session)
+}
+
+export function getSolos(state: {
+  audio: AudioState,
+  session: Session
+}): { [trackID: string]: boolean } {
+  console.debug("[reducers/index.js] getSolos(", state, ")")
+  return fromSession.getSolos(state.session)
+}
+
+export function isSoloActive(state: {
+  audio: AudioState,
+  session: Session
+}): boolean {
+  return fromSession.isSoloActive(state.session)
+}
+
+export function getMutes(state: {
+  audio: AudioState,
+  session: Session
+}): { [trackID: string]: boolean } {
+  console.debug("[reducers/index.js] getMutes(", state, ")")
+  return fromSession.getMutes(state.session)
+}

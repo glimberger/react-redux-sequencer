@@ -1,0 +1,49 @@
+.Block {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    border-radius: 3px;
+}
+
+.Label {
+    flex: 1;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 16px;
+    line-height: 0;
+}
+
+.Controls {
+    display: flex;
+}
+
+.Button {
+    cursor: pointer;
+    user-select: none;
+    border-radius: 3px;
+    margin-left: 0.5rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 0;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+
+.GainIndicator {
+    user-select: none;
+    margin-left: 0.5rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 0;
+    font-size: 13px;
+}

@@ -10,16 +10,24 @@ storiesOf("MasterGainController", module)
       style={{
         width: "30%",
         height: "100%",
-        padding: "3rem"
-        // backgroundColor: "#1e1f26"
+        padding: "3rem",
+        backgroundColor: "#1e1f26"
       }}
     >
       {story()}
     </div>
   ))
   .add("gain 0dB", () => (
-    <MasterGainController gain={1} onGainChange={action("onGainChange")} />
+    <MasterGainController
+      color={"blueGrey"}
+      gain={1}
+      changeMasterGain={action("changeMasterGain")}
+    />
   ))
   .add("gain -6dB", () => (
-    <MasterGainController gain={0.5} onGainChange={action("onGainChange")} />
+    <MasterGainController
+      color={"blueGrey"}
+      gain={0.5}
+      changeMasterGain={action("changeMasterGain")}
+    />
   ))

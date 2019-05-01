@@ -1,7 +1,7 @@
 // @flow strict
 import * as React from "react"
 
-import CellColor from "../../../utils/color/colorLibrary"
+import Color from "../../../utils/color/colorLibrary"
 
 import type { MaterialColor } from "../../../utils/color/colorLibrary"
 
@@ -41,8 +41,8 @@ class ModeSwitch extends React.Component<PropsType> {
       height: "2.5rem",
       width: "6rem",
       display: "flex",
-      color: CellColor.get100(color),
-      border: `solid 3px ${CellColor.get100(color)}`,
+      color: Color.get100(color),
+      border: `solid 3px ${Color.get100(color)}`,
       borderRadius: "3px",
       cursor: "pointer"
     }

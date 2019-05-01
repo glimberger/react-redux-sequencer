@@ -3,7 +3,7 @@ import * as React from "react"
 
 import styles from "./Knob.module.css"
 import { coordinates } from "../../../utils/trigo/polar"
-import CellColor from "../../../utils/color/colorLibrary"
+import Color from "../../../utils/color/colorLibrary"
 
 import type { MaterialColor } from "../../../utils/color/colorLibrary"
 
@@ -34,7 +34,7 @@ function Knob({ value, min, max, step, prefs, onChange }: PropsType) {
       >
         <circle cx="35" cy="35" r="35" fill="#333842" />
         <path
-          fill={CellColor.getA100(prefs.color)}
+          fill={Color.getA100(prefs.color)}
           d={`M35 35L35 70A35 35 0 ${angle < 180 ? 0 : 1} 1 ${x} ${y}L35 35`}
         />
         <g
@@ -44,7 +44,7 @@ function Knob({ value, min, max, step, prefs, onChange }: PropsType) {
           }}
         >
           <circle cx="35" cy="35" r="29" fill="#21252B" />
-          <circle cx="35" cy="56" r="4" fill={CellColor.getA100(prefs.color)} />
+          <circle cx="35" cy="56" r="4" fill={Color.getA100(prefs.color)} />
         </g>
       </svg>
       <input

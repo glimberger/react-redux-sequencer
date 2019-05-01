@@ -1,16 +1,26 @@
 // @flow strict
-import React from "react"
+import * as React from "react"
 
 import styles from "./TempoController.module.css"
 import ValueController from "../../controllers/ValueController/ValueController"
 
-type PropsType = {
-  orientation: "vertical" | "horizontal",
-  tempo: number,
+import type { MaterialColor } from "../../../utils/color/colorLibrary"
+
+type OwnProps = {
+  color: MaterialColor
+}
+
+type StateProps = {
+  tempo: number
+}
+
+type DispatchProps = {
   onChange: (value: number) => void
 }
 
-function TempoController({ orientation, tempo, onChange }: PropsType) {
+type Props = OwnProps & StateProps & DispatchProps
+
+function TempoController({ color, tempo, onChange }: Props) {
   return (
     <div className={styles.Container}>
       <ValueController
@@ -19,9 +29,8 @@ function TempoController({ orientation, tempo, onChange }: PropsType) {
         amount={2}
         min={20}
         max={200}
-        prefs={{ color: "blueGrey" }}
+        prefs={{ color }}
       />
-      {/*<span className={styles.Indicator}>{tempo} BPM</span>*/}
     </div>
   )
 }

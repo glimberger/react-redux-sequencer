@@ -10,18 +10,16 @@ export type Session = {|
   // mater gain [0, 1]
   masterGain: number,
 
+  activeCellBeat: number | null,
+
   matrix: {
     // track ID (UUIDv4)
-    [trackID: string]: Array<{|
-      // note scheduled or not
-      scheduled: boolean,
-
-      // midi note
-      midi: number
-    |}>
+    [trackID: string]: Array<Cell>
   },
 
   trackOrder: Array<string>,
+
+  activeTrackID: string | null,
 
   tracks: {
     // track ID (UUIDv4)
@@ -35,6 +33,14 @@ export type Session = {|
   samples: {
     [sampleID: string]: Sample
   }
+|}
+
+export type Cell = {|
+  // note scheduled or not
+  scheduled: boolean,
+
+  // midi note
+  midi: number
 |}
 
 export type NoteResolution = 1 | 2 | 4
@@ -55,22 +61,36 @@ export type Track = {|
   color: MaterialColor,
 
   // track processing
-  processing: InstrumentProcessing
+  processing: InstrumentProcessing,
+
+  muted: boolean,
+
+  soloed: boolean
 |}
 
 export type InstrumentProcessing = {|
-  gain: {| gain: number |},
-  filter?: {|
-    enabled: boolean,
-    type: string,
-    frequency: number,
-    gain: number,
-    q?: number
-  |},
-  delay?: {| enabled: boolean, delayTime: number |},
-  distorsion?: {|
-    enabled: boolean,
-    curve: Float32Array,
-    oversample?: string
-  |}
+  gain: GainProcessing,
+  filter?: FilterProcessing,
+  delay?: DelayProcessing,
+  distorsion?: DistorsionProcessing
+|}
+
+export type GainProcessing = {|
+  gain: number
+|}
+
+export type FilterProcessing = {|
+  enabled: boolean,
+  type: string,
+  frequency: number,
+  gain: number,
+  q?: number
+|}
+
+export type DelayProcessing = {| enabled: boolean, delayTime: number |}
+
+export type DistorsionProcessing = {|
+  enabled: boolean,
+  curve: Float32Array,
+  oversample?: string
 |}

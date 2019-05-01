@@ -1,0 +1,9 @@
+.Container {
+    flex-shrink: 0;
+    border-radius: 3px;
+}
+
+.NoteSection {
+    display: flex;
+    align-items: center;
+}

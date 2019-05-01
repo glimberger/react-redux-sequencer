@@ -1,5 +1,3 @@
-@value grey_800Light: #6d6d6d;
-@value blueGrey_200: #b0bec5;
 @value blueGrey_600: #546e7a;
 
 .Base {
@@ -30,9 +28,4 @@
 
 .Tempo {
     composes: Item;
-}
-
-.Mode {
-    composes: ItemLast;
-    margin-right: 1rem;
 }

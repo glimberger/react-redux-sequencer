@@ -8,7 +8,7 @@ storiesOf("TempoController", module)
     <div
       style={{
         width: "100%",
-        height: "100vh  ",
+        height: "100%",
         padding: "3rem",
         backgroundColor: "#1e1f26"
       }}
@@ -18,7 +18,7 @@ storiesOf("TempoController", module)
   ))
   .add("horizontal tempo=120", () => (
     <TempoController
-      orientation="horizontal"
+      color={"blueGrey"}
       tempo={120}
       onChange={action("onChange")}
     />

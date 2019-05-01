@@ -136,5 +136,6 @@ export default class MidiConverter {
     return MidiConverter._mapping.get(midiNote)
   }
 
+  // TODO write toMidi converter
   static toMidi() {}
 }

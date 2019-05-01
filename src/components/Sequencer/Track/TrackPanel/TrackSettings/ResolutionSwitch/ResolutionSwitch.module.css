@@ -1,0 +1,17 @@
+.Main {
+    display: flex;
+    align-items: stretch;
+    border-radius: 3px;
+    user-select: none;
+    z-index: 999;
+}
+
+.Button {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    border: none;
+    font-size: 12px;
+}

@@ -663,6 +663,8 @@ const initialSate: Session = {
       { scheduled: false, midi: 69 }
     ]
   },
+  activeTrackID: null,
+  activeCellBeat: null,
   tracks: {
     "8ebdfbd8-4528-4e5e-932b-987c5405aec5": {
       id: "8ebdfbd8-4528-4e5e-932b-987c5405aec5",
@@ -672,7 +674,9 @@ const initialSate: Session = {
       color: "red",
       processing: {
         gain: { gain: 1 }
-      }
+      },
+      muted: false,
+      soloed: false
     },
     "14f2dd71-77ad-4cf6-88f3-64680bf8f007": {
       id: "14f2dd71-77ad-4cf6-88f3-64680bf8f007",
@@ -682,7 +686,9 @@ const initialSate: Session = {
       color: "pink",
       processing: {
         gain: { gain: 1 }
-      }
+      },
+      muted: false,
+      soloed: false
     },
     "3eef107a-73c2-47d0-8c89-7cfe606dfcbd": {
       id: "3eef107a-73c2-47d0-8c89-7cfe606dfcbd",
@@ -692,7 +698,9 @@ const initialSate: Session = {
       color: "purple",
       processing: {
         gain: { gain: 1 }
-      }
+      },
+      muted: false,
+      soloed: false
     },
     "7f6938d7-56e5-4d6c-90cd-431edad19a94": {
       id: "7f6938d7-56e5-4d6c-90cd-431edad19a94",
@@ -702,7 +710,9 @@ const initialSate: Session = {
       color: "deepPurple",
       processing: {
         gain: { gain: 1 }
-      }
+      },
+      muted: false,
+      soloed: false
     },
     "2786bd06-ba1b-49d2-822f-2cef416f2a2f": {
       id: "2786bd06-ba1b-49d2-822f-2cef416f2a2f",
@@ -712,7 +722,9 @@ const initialSate: Session = {
       color: "indigo",
       processing: {
         gain: { gain: 1 }
-      }
+      },
+      muted: false,
+      soloed: false
     }
   },
   instruments: {
