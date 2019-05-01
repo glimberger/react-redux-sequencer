@@ -5,4 +5,5 @@
 
 .NoteSection {
     display: flex;
+    align-items: center;
 }

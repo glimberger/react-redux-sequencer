@@ -30,11 +30,11 @@ function TrackSettings({ width, height, gutter, color, isTrackActive }: Props) {
     Main: {
       width: width,
       height: height,
-      backgroundColor: Color.get900(color)
+      backgroundColor: Color.get900Dark(color)
     },
     Volume: {
-      width: `${6 * gutter + 24}px`,
-      borderRight: `1px solid ${Color.get800(color)}`
+      width: `${6 * gutter + 24}px`
+      // borderRight: `1px solid ${Color.get800(color)}`
     },
     Volume_Inner: {
       padding: `${gutter}px ${gutter}px`
@@ -43,8 +43,8 @@ function TrackSettings({ width, height, gutter, color, isTrackActive }: Props) {
       width: `${width - (6 * gutter + 24)}px`
     },
     NoteResolution: {
-      padding: `${2 * gutter}px`,
-      borderBottom: `1px solid ${Color.get800(color)}`
+      padding: `${2 * gutter}px`
+      // borderBottom: `1px solid ${Color.get800(color)}`
     }
   }
 

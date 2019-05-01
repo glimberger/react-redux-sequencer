@@ -51,7 +51,7 @@ function CellSettings({
       width: `${cellSize * 32 + gutter * 31}px`,
       height: height,
       marginRight: `${gutter}px`,
-      backgroundColor: Color.get900(color),
+      backgroundColor: Color.get900Dark(color),
       color: Color.get100(color)
     },
     NoteSection: {
@@ -85,9 +85,9 @@ function CellSettings({
           noteResolution={noteResolution}
           onClick={() => scheduleTrackCell(activeCellBeat, activeTrackID)}
         />
-        <div>BEAT {activeCellBeat}</div>
+        <div style={{ marginLeft: `${gutter}px` }}>BEAT {activeCellBeat}</div>
       </div>
-      <div style={css.FilterSection}>FILTER SECTION</div>
+      <div style={css.FilterSection}>NOTE SELECTION</div>
     </div>
   )
 }
