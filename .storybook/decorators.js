@@ -677,7 +677,7 @@ export const reduxDecorator = (state = undefined) => {
         instrumentID: "a5caf57b-0771-4c56-a600-28a422f0c45d",
         color: "red",
         processing: {
-          gain: { gain: 1 }
+          gain: { gain: 0.089 }
         },
         muted: false,
         soloed: false

@@ -50,7 +50,6 @@ function GainController({
       padding: `${2 * gutter}px`
     },
     GainIndicator: {
-      padding: `0 ${gutter}px`,
       color: Color.get100(color),
       fontSize: "11px",
       userSelect: "none",
