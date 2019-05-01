@@ -8,4 +8,10 @@ To start the project:
 yarn start
 ```
 
+
+Run Storybook:
+```javascript
+yarn storybook
+```
+
 Tested with Chrome 63
