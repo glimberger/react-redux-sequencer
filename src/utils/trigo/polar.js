@@ -1,3 +1,5 @@
+// @flow strict
+
 export const coordinates = (
   centerX: number,
   centerY: number,
