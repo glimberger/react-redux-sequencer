@@ -4,6 +4,7 @@ import type { Action } from "../actions/session/types"
 import type { Session, Track, Cell } from "../store/session/types"
 
 import {
+  CHANGE_CELL_NOTE,
   CHANGE_MASTER_GAIN,
   CHANGE_NOTE_RESOLUTION,
   CHANGE_TEMPO,
@@ -15,8 +16,63 @@ import {
   TOGGLE_TRACK_SOLO
 } from "../actions/session/types"
 import initialSate from "../store/session/initialState"
+import type { Instrument } from "../store/instrument/types"
 
-const trackReducer = (state: Track, action) => {
+const cellReducer = (state: Cell, action: Action) => {
+  switch (action.type) {
+    case CHANGE_CELL_NOTE:
+      return {
+        ...state,
+        midi: action.payload.note
+      }
+
+    case SCHEDULE_TRACK_CELL:
+      return {
+        ...state,
+        scheduled: !state.scheduled
+      }
+
+    default:
+      return state
+  }
+}
+
+const cellRowReducer = (state: Array<Cell>, action: Action) => {
+  switch (action.type) {
+    case CHANGE_CELL_NOTE:
+    case SCHEDULE_TRACK_CELL:
+      return [
+        ...state.slice(0, action.payload.beat),
+        cellReducer(state[action.payload.beat], action),
+        ...state.slice(action.payload.beat + 1)
+      ]
+
+    default:
+      return state
+  }
+}
+
+const matrixReducer = (
+  state: { [trackID: string]: Array<Cell> },
+  action: Action
+) => {
+  switch (action.type) {
+    case CHANGE_CELL_NOTE:
+    case SCHEDULE_TRACK_CELL:
+      return {
+        ...state,
+        [action.payload.trackID]: cellRowReducer(
+          state[action.payload.trackID],
+          action
+        )
+      }
+
+    default:
+      return state
+  }
+}
+
+const trackReducer = (state: Track, action: Action) => {
   switch (action.type) {
     case CHANGE_TRACK_GAIN:
       return {
@@ -43,6 +99,13 @@ const trackReducer = (state: Track, action) => {
       return {
         ...state,
         muted: !state.muted
+      }
+
+    case SCHEDULE_TRACK_CELL:
+    case CHANGE_CELL_NOTE:
+      return {
+        ...state,
+        matrix: {}
       }
 
     default:
@@ -92,23 +155,11 @@ const sessionReducer = (state: Session = initialSate, action: Action) => {
         tracks: tracksReducer(state.tracks, action)
       }
 
+    case CHANGE_CELL_NOTE:
     case SCHEDULE_TRACK_CELL:
-      const row = [
-        ...state.matrix[action.payload.trackID].slice(0, action.payload.beat),
-        {
-          ...state.matrix[action.payload.trackID][action.payload.beat],
-          scheduled: !state.matrix[action.payload.trackID][action.payload.beat]
-            .scheduled
-        },
-        ...state.matrix[action.payload.trackID].slice(action.payload.beat + 1)
-      ]
-
       return {
         ...state,
-        matrix: {
-          ...state.matrix,
-          [action.payload.trackID]: row
-        }
+        matrix: matrixReducer(state.matrix, action)
       }
 
     case TOGGLE_ACTIVE_TRACK:
@@ -162,9 +213,24 @@ export function getCell(state: Session, trackID: string, beat: number): Cell {
 
 export function getActiveCell(state: Session): ?Cell {
   console.debug("[reducers/session.js] getActiveCell(", state, ")")
-  return state.activeTrackID && state.activeCellBeat
+  return state.activeTrackID !== null && state.activeCellBeat !== null
     ? getCellRow(state, state.activeTrackID)[state.activeCellBeat]
     : null
+}
+
+export function getInstrument(state: Session, trackID: string): Instrument {
+  console.debug("[reducers/session.js] getInstrument(", state, trackID, ")")
+  const instrumentID = getTrack(state, trackID).instrumentID
+
+  return state.instruments[instrumentID]
+}
+
+export function getSample(state: Session, trackID: string, note: number) {
+  console.debug("[reducers/session.js] getSample(", state, trackID, note, ")")
+  const instrument = getInstrument(state, trackID)
+  const sampleID = instrument.mapping[note].sampleID
+
+  return state.samples[sampleID]
 }
 
 export function getSolos(state: Session): { [trackID: string]: boolean } {

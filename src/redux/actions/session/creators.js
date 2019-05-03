@@ -9,7 +9,8 @@ import type {
   ToggleTrackMuteAction,
   ToggleTrackSoloAction,
   SetActiveCellAction,
-  ToggleActiveTrackAction
+  ToggleActiveTrackAction,
+  ChangeCellNoteAction
 } from "./types"
 import {
   CHANGE_TRACK_GAIN,
@@ -20,7 +21,8 @@ import {
   TOGGLE_TRACK_MUTE,
   TOGGLE_TRACK_SOLO,
   SET_ACTIVE_CELL,
-  TOGGLE_ACTIVE_TRACK
+  TOGGLE_ACTIVE_TRACK,
+  CHANGE_CELL_NOTE
 } from "./types"
 import type { NoteResolution } from "../../store/session/types"
 
@@ -93,5 +95,16 @@ export function setActiveCell(beat: number): SetActiveCellAction {
   return {
     type: SET_ACTIVE_CELL,
     payload: { beat }
+  }
+}
+
+export function changeCellNote(
+  note: number,
+  beat: number,
+  trackID: string
+): ChangeCellNoteAction {
+  return {
+    type: CHANGE_CELL_NOTE,
+    payload: { note, beat, trackID }
   }
 }

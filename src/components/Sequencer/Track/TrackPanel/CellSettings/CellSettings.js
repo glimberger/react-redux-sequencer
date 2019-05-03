@@ -4,12 +4,14 @@ import React from "react"
 import styles from "./CellSettings.module.css"
 import Color from "../../../../../utils/color/colorLibrary"
 import Cell from "../../CellRow/Cell/Cell"
+import NoteSelectorWithConnect from "./NoteSelector/NoteSelectorWithConnect"
 
 import type {
   Session,
   Track,
   Cell as CellType
 } from "../../../../../redux/store/session/types"
+import MidiConverter from "../../../../../utils/audio/MidiConverter"
 
 type OwnProps = {
   gutter: number,
@@ -23,7 +25,9 @@ type StateProps = {
   isActiveTrack: boolean,
   color: $PropertyType<Track, "color">,
   noteResolution: $PropertyType<Track, "noteResolution">,
-  scheduled: $PropertyType<CellType, "scheduled">
+  scheduled: $PropertyType<CellType, "scheduled">,
+  midiNote: $PropertyType<CellType, "midi">,
+  getMappingForNote: (note: number) => { sampleID: string, detune: number }
 }
 
 type DispatchProps = {
@@ -38,11 +42,13 @@ function CellSettings({
   gutter,
   color,
   scheduled,
+  midiNote,
   activeCellBeat,
   isActiveTrack,
   activeTrackID,
   noteResolution,
-  scheduleTrackCell
+  scheduleTrackCell,
+  getMappingForNote
 }: Props) {
   if (!isActiveTrack) return <div />
 
@@ -54,16 +60,15 @@ function CellSettings({
       backgroundColor: Color.get900Dark(color),
       color: Color.get100(color)
     },
+
     NoteSection: {
       padding: `${gutter * 2}px`,
-      borderBottom: `1px solid ${Color.get800(color)}`
-    },
-    FilterSection: {
-      padding: `${gutter * 2}px`
+      overflow: "auto"
+      // borderBottom: `2px solid ${Color.get800(color)}`
     }
   }
 
-  if (!activeTrackID) return <div />
+  if (activeTrackID === null) return <div />
 
   if (activeCellBeat === null)
     return (
@@ -72,22 +77,48 @@ function CellSettings({
       </div>
     )
 
+  const detune = getMappingForNote(midiNote).detune
+
   return (
     <div style={css.Container} className={styles.Container}>
       <div style={css.NoteSection} className={styles.NoteSection}>
-        <Cell
-          size={cellSize}
-          gutter={0}
-          color={color}
-          played={false}
-          edited={false}
-          scheduled={scheduled}
-          noteResolution={noteResolution}
-          onClick={() => scheduleTrackCell(activeCellBeat, activeTrackID)}
-        />
-        <div style={{ marginLeft: `${gutter}px` }}>BEAT {activeCellBeat}</div>
+        <div className={styles.CellInfo}>
+          <Cell
+            size={cellSize}
+            gutter={0}
+            color={color}
+            played={false}
+            edited={false}
+            scheduled={scheduled}
+            noteResolution={noteResolution}
+            onClick={() => scheduleTrackCell(activeCellBeat, activeTrackID)}
+          />
+          <div>
+            <div>
+              BEAT <span style={{ fontWeight: "bold" }}>{activeCellBeat}</span>
+            </div>
+            <div>
+              NOTE{" "}
+              <span style={{ fontWeight: "bold" }}>
+                {MidiConverter.toNote(midiNote)}
+              </span>{" "}
+              ({midiNote})
+            </div>
+            <div style={{ fontSize: "13px" }}>
+              <span style={{ fontWeight: "lighter" }}>detune</span> {detune}{" "}
+              cent
+            </div>
+          </div>
+        </div>
+        <div>
+          <NoteSelectorWithConnect
+            gutter={gutter}
+            cellSize={cellSize}
+            height={cellSize * 2}
+            keyWidth={16}
+          />
+        </div>
       </div>
-      <div style={css.FilterSection}>NOTE SELECTION</div>
     </div>
   )
 }

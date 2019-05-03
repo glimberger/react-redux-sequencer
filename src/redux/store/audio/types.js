@@ -1,7 +1,11 @@
 // @flow strict
 
-import type { TogglePlayAction } from "../../actions/audio/types"
 import type {
+  ListenCellNoteAction,
+  TogglePlayAction
+} from "../../actions/audio/types"
+import type {
+  ChangeCellNoteAction,
   ChangeMasterGainAction,
   ChangeTrackGainAction,
   ScheduleTrackCellAction
@@ -12,14 +16,6 @@ export type AudioState = {|
   playing: boolean,
   mode: "EDIT" | "PLAY",
   currentBeat: number,
-  // currentTrackPanel: string | null,
-  // currentCellPanel: {| beat: number, trackID: string |} | null,
-  // mutes: {
-  //   [trackID: string]: {| enabled: boolean |}
-  // },
-  // solos: {
-  //   [trackID: string]: {| enabled: boolean |}
-  // },
   events: Array<Event>
 |}
 
@@ -28,3 +24,5 @@ export type Event =
   | ChangeMasterGainAction
   | ChangeTrackGainAction
   | ScheduleTrackCellAction
+  | ListenCellNoteAction
+  | ChangeCellNoteAction

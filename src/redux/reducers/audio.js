@@ -2,19 +2,22 @@
 import {
   ANNOUNCE_BEAT,
   CLEAR_EVENT_QUEUE,
+  LISTEN_CELL_NOTE,
   RESET_TRANSPORT,
   TOGGLE_PLAY
 } from "../actions/audio/types"
 import initialState from "../store/audio/initialState"
 import {
+  CHANGE_CELL_NOTE,
   CHANGE_MASTER_GAIN,
   CHANGE_TRACK_GAIN,
   SCHEDULE_TRACK_CELL
 } from "../actions/session/types"
 
-import type { Action } from "../actions/audio/types"
+import type { Action, ListenCellNoteAction } from "../actions/audio/types"
 import type { AudioState } from "../store/audio/types"
 import type {
+  ChangeCellNoteAction,
   ChangeMasterGainAction,
   ChangeTrackGainAction,
   ScheduleTrackCellAction
@@ -25,6 +28,8 @@ type ReducerAction =
   | ChangeMasterGainAction
   | ChangeTrackGainAction
   | ScheduleTrackCellAction
+  | ListenCellNoteAction
+  | ChangeCellNoteAction
 
 const reducer = (
   state: AudioState = initialState,
@@ -57,18 +62,10 @@ const reducer = (
       }
 
     case CHANGE_MASTER_GAIN:
-      return {
-        ...state,
-        events: [...state.events, action]
-      }
-
     case CHANGE_TRACK_GAIN:
-      return {
-        ...state,
-        events: [...state.events, action]
-      }
-
     case SCHEDULE_TRACK_CELL:
+    case CHANGE_CELL_NOTE:
+    case LISTEN_CELL_NOTE:
       return {
         ...state,
         events: [...state.events, action]

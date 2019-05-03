@@ -4,6 +4,7 @@ export const TOGGLE_PLAY = "TOGGLE_PLAY"
 export const ANNOUNCE_BEAT = "ANNOUNCE_BEAT"
 export const CLEAR_EVENT_QUEUE = "CLEAR_EVENT_QUEUE"
 export const SET_AUDIO_ENGINE_READY = "SET_AUDIO_ENGINE_READY"
+export const LISTEN_CELL_NOTE = "LISTEN_CELL_NOTE"
 
 export type AnnounceBeatAction = {
   type: "ANNOUNCE_BEAT",
@@ -22,9 +23,19 @@ export type SetAudioEngineReady = {|
   type: "SET_AUDIO_ENGINE_READY"
 |}
 
+export type ListenCellNoteAction = {|
+  type: "LISTEN_CELL_NOTE",
+  payload: {|
+    note: number,
+    beat: number,
+    trackID: string
+  |}
+|}
+
 export type Action =
   | AnnounceBeatAction
   | ClearEventQueueAction
   | ResetTransportAction
   | TogglePlayAction
   | SetAudioEngineReady
+  | ListenCellNoteAction
