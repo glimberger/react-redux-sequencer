@@ -1,6 +1,7 @@
 // @flow strict
 import * as React from "react"
 import { connect } from "react-redux"
+import debounce from "lodash/debounce"
 
 import {
   announceBeat,
@@ -13,6 +14,7 @@ import {
 import createContext from "../../audio/context/createContext"
 import type {
   ClearEventQueueAction,
+  ListenCellNoteAction,
   ResetTransportAction,
   TogglePlayAction
 } from "../../redux/actions/audio/types"
@@ -23,13 +25,15 @@ import {
   changeTrackGain
 } from "../../redux/actions/session/creators"
 import type {
+  ChangeCellNoteAction,
   ChangeMasterGainAction,
   ChangeTrackGainAction,
   ScheduleTrackCellAction
 } from "../../redux/actions/session/types"
-import type { Session } from "../../redux/store/session/types"
+import type { Cell, Session, Track } from "../../redux/store/session/types"
 import type { Sample } from "../../redux/store/sample/types"
 import { getMutes, getSolos, isSoloActive } from "../../redux/reducers"
+import type { Instrument } from "../../redux/store/instrument/types"
 
 type AudioEvent =
   | TogglePlayAction
@@ -38,6 +42,8 @@ type AudioEvent =
   | ChangeTrackGainAction
   | ScheduleTrackCellAction
   | ClearEventQueueAction
+  | ListenCellNoteAction
+  | ChangeCellNoteAction
 
 type StateProps = {
   ...AudioState,
@@ -207,6 +213,54 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
     })
   }
 
+  playSound(
+    _trackID: string,
+    _beat: number,
+    _note: number | null,
+    _tracks: { [p: string]: Track },
+    _instruments: { [p: string]: Instrument },
+    _matrix: { [p: string]: Array<Cell> },
+    _audioContext: AudioContext,
+    _audioBuffers: Map<string, AudioBuffer>
+  ) {
+    const _instrumentID = _tracks[_trackID].instrumentID
+    const _mapping = _instruments[_instrumentID].mapping
+    const _midi = _note === null ? _matrix[_trackID][_beat].midi : _note
+
+    const { sampleID: _sampleID, detune: _detune } = _mapping[_midi]
+
+    const source = _audioContext.createBufferSource()
+    const audioBuffer = _audioBuffers.get(_sampleID)
+
+    console.assert(
+      audioBuffer instanceof AudioBuffer,
+      "'audioBuffer' should an instance of AudioBuffer,",
+      audioBuffer,
+      "given."
+    )
+
+    if (audioBuffer instanceof AudioBuffer) {
+      source.buffer = audioBuffer
+      source.detune.value = _detune
+      source.connect(this.masterGainNode)
+      source.start(this.audioContext.currentTime)
+    }
+  }
+
+  debouncePlaySound(
+    _trackID: string,
+    _beat: number,
+    _note: number | null,
+    _tracks: { [p: string]: Track },
+    _instruments: { [p: string]: Instrument },
+    _matrix: { [p: string]: Array<Cell> },
+    _audioContext: AudioContext,
+    _audioBuffers: Map<string, AudioBuffer>,
+    delay: number = 500
+  ) {
+    debounce(this.playSound, delay)
+  }
+
   processEvent = (event: AudioEvent) => {
     const { tracks, instruments, matrix, playing } = this.props
 
@@ -258,28 +312,34 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
           break
         }
 
-        // play sound
-        const { instrumentID } = tracks[event.payload.trackID]
-        const { mapping } = instruments[instrumentID]
-        const { midi } = matrix[event.payload.trackID][event.payload.beat]
-        const { sampleID, detune } = mapping[midi]
-
-        const source = this.audioContext.createBufferSource()
-        const audioBuffer = this.audioBuffers.get(sampleID)
-
-        console.assert(
-          audioBuffer instanceof AudioBuffer,
-          "'audioBuffer' should an instance of AudioBuffer,",
-          audioBuffer,
-          "given."
+        this.playSound(
+          event.payload.trackID,
+          event.payload.beat,
+          null,
+          tracks,
+          instruments,
+          matrix,
+          this.audioContext,
+          this.audioBuffers
         )
+        break
 
-        if (audioBuffer instanceof AudioBuffer) {
-          source.buffer = audioBuffer
-          source.detune.value = detune
-          source.connect(this.masterGainNode)
-          source.start(this.audioContext.currentTime)
+      case "LISTEN_CELL_NOTE":
+      case "CHANGE_CELL_NOTE":
+        if (playing) {
+          break
         }
+
+        this.playSound(
+          event.payload.trackID,
+          event.payload.beat,
+          event.payload.note,
+          tracks,
+          instruments,
+          matrix,
+          this.audioContext,
+          this.audioBuffers
+        )
         break
 
       default:

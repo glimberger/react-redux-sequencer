@@ -2,7 +2,11 @@
 import { connect } from "react-redux"
 
 import CellSettings from "./CellSettings"
-import { getActiveCell, getActiveTrack } from "../../../../../redux/reducers"
+import {
+  getActiveCell,
+  getActiveTrack,
+  getInstrument
+} from "../../../../../redux/reducers"
 import { scheduleTrackCell } from "../../../../../redux/actions/session/creators"
 
 const mapStateToProps = state => {
@@ -16,7 +20,9 @@ const mapStateToProps = state => {
     midiNote: activeCell ? activeCell.midi : 0,
     isActiveTrack: !!activeTrack,
     activeCellBeat: state.session.activeCellBeat,
-    activeTrackID: state.session.activeTrackID
+    activeTrackID: state.session.activeTrackID,
+    getMappingForNote: (note: number) =>
+      getInstrument(state, state.session.activeTrackID).mapping[note]
   }
 }
 

@@ -11,6 +11,7 @@ export const TOGGLE_TRACK_MUTE = "TOGGLE_TRACK_MUTE"
 export const TOGGLE_TRACK_SOLO = "TOGGLE_TRACK_SOLO"
 export const TOGGLE_ACTIVE_TRACK = "TOGGLE_ACTIVE_TRACK"
 export const SET_ACTIVE_CELL = "SET_ACTIVE_CELL"
+export const CHANGE_CELL_NOTE = "CHANGE_CELL_NOTE"
 
 export type ChangeMasterGainAction = {|
   type: "CHANGE_MASTER_GAIN",
@@ -62,6 +63,11 @@ export type SetActiveCellAction = {|
   payload: {| beat: number |}
 |}
 
+export type ChangeCellNoteAction = {|
+  type: "CHANGE_CELL_NOTE",
+  payload: {| note: number, beat: number, trackID: string |}
+|}
+
 export type Action =
   | ChangeMasterGainAction
   | ChangeTrackGainAction
@@ -73,3 +79,4 @@ export type Action =
   | ToggleTrackSoloAction
   | ToggleActiveTrackAction
   | SetActiveCellAction
+  | ChangeCellNoteAction

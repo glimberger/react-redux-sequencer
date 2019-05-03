@@ -8,6 +8,7 @@ import type { Action as AudioAction } from "../actions/audio/types"
 import type { Action as SessionAction } from "../actions/session/types"
 import type { AudioState } from "../store/audio/types"
 import type { Cell, Session, Track } from "../store/session/types"
+import type { Instrument } from "../store/instrument/types"
 
 type AnyAction = AudioAction | SessionAction
 
@@ -65,6 +66,32 @@ export function getActiveCell(state: {
 }): ?Cell {
   console.debug("[reducers/index.js] getActiveCell(", state, ")")
   return fromSession.getActiveCell(state.session)
+}
+
+export function getInstrument(
+  state: {
+    audio: AudioState,
+    session: Session
+  },
+  trackID: string
+): Instrument {
+  console.debug("[reducers/index.js] getInstrument(", state, ",", trackID, ")")
+  return fromSession.getInstrument(state.session, trackID)
+}
+
+export function getSample(
+  state: { audio: AudioState, session: Session },
+  trackID: string,
+  note: number
+) {
+  console.debug(
+    "[reducers/index.js] getSample(",
+    state.session,
+    trackID,
+    note,
+    ")"
+  )
+  return fromSession.getSample(state.session, trackID, note)
 }
 
 export function getSolos(state: {

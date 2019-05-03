@@ -2,7 +2,7 @@
 import * as React from "react"
 
 import AddTrack from "./AddTrack/AddTrack"
-import styles from "./Matrix.module.css"
+import styles from "./Sequencer.module.css"
 import TrackWithConnect from "./Track/TrackWithConnect"
 
 import type { Track as TrackType } from "../../redux/store/session/types"

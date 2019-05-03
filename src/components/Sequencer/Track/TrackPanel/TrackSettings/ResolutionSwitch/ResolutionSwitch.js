@@ -109,7 +109,6 @@ class ResolutionSwitch extends React.Component<Props, State> {
         <button
           style={css.ButtonResolution_1}
           className={styles.Button}
-          role="button"
           title={
             this.props.noteResolution === 1
               ? "Sixteenth notes"
@@ -128,7 +127,6 @@ class ResolutionSwitch extends React.Component<Props, State> {
         <button
           style={css.ButtonResolution_2}
           className={styles.Button}
-          // role="button"
           title={
             this.props.noteResolution === 2
               ? "Eighth notes"
@@ -147,7 +145,6 @@ class ResolutionSwitch extends React.Component<Props, State> {
         <button
           style={css.ButtonResolution_4}
           className={styles.Button}
-          // role="button"
           title={
             this.props.noteResolution === 4
               ? "Quarter notes"

@@ -132,7 +132,9 @@ export default class MidiConverter {
     [0, "M0"]
   ])
 
-  static toNote(midiNote: number): ?string {
+  static toNote(midiNote: number | null): ?string {
+    if (midiNote === null) return ""
+
     return MidiConverter._mapping.get(midiNote)
   }
 

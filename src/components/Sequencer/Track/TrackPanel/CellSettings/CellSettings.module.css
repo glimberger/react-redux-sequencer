@@ -3,7 +3,14 @@
     border-radius: 3px;
 }
 
-.NoteSection {
+.CellInfo {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 14px;
+}
+
+.NoteSection{
+    display: flex;
+    justify-content: space-between;
 }
