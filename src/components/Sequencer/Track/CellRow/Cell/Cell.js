@@ -86,11 +86,11 @@ class Cell extends React.Component<Props, State> {
     hover: boolean
   ): string {
     if (edited) {
-      return hover ? Color.get100(color) : Color.get200(color)
+      return hover ? Color.get50(color) : Color.get100(color)
     }
 
     if (played) {
-      return hover ? Color.get100(color) : Color.getA200(color)
+      return hover ? Color.get100(color) : Color.getA100(color)
     }
 
     return hover ? Color.getA100(color) : Color.getA700(color)
