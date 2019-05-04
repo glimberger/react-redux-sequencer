@@ -72,7 +72,10 @@ class SoloButton extends React.Component<Props, State> {
         soloed={this.props.soloed}
         hover={this.state.hover}
         ref={this.buttonRef}
-        onClick={() => this.handleClick()}
+        onClick={event => {
+          event.stopPropagation()
+          this.handleClick()
+        }}
         onMouseEnter={() => this.hoverOn()}
         onMouseLeave={() => this.hoverOff()}
       >

@@ -73,7 +73,10 @@ class MuteButton extends React.Component<Props, State> {
         muted={this.props.muted}
         hover={this.state.hover}
         ref={this.buttonRef}
-        onClick={() => this.handleClick()}
+        onClick={event => {
+          event.stopPropagation()
+          this.handleClick()
+        }}
         onMouseEnter={() => this.hoverOn()}
         onMouseLeave={() => this.hoverOff()}
       >
