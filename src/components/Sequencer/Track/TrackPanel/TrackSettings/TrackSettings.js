@@ -1,7 +1,8 @@
 // @flow strict
 import * as React from "react"
+// $FlowFixMe
+import styled from "styled-components/macro"
 
-import styles from "./TrackSettings.module.css"
 import Color from "../../../../../utils/color/colorLibrary"
 import GainControllerWithConnect from "./GainController/GainControllerWithConnect"
 
@@ -19,54 +20,62 @@ type StateProps = {
   isTrackActive: boolean
 }
 
-type DispatchProps = {}
+type Props = OwnProps & StateProps
 
-type Props = OwnProps & StateProps & DispatchProps
+const StyledSettings = styled.div`
+  border-radius: 3px;
+  width: ${({ width }) => width}px;
+  height: ${({ height }) => height}px;
+  background-color: ${({ color }) => Color.get900Dark(color)};
+`
+
+const InnerWrapper = styled.div`
+  display: flex;
+  height: 100%;
+`
+
+const AsideSection = styled.section`
+  position: relative;
+  height: 100%;
+  width: ${({ gutter }) => 6 * gutter + 24}px;
+`
+
+const GainControllerWrapper = styled.div`
+  padding: ${({ gutter }) => `${gutter}px ${gutter}px`};
+`
+
+const MainSection = styled.section`
+  width: ${({ width, gutter }) => width - (6 * gutter + 24)}px;
+`
+
+const ResolutionSwitchWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: ${({ gutter }) => 2 * gutter}px;
+`
 
 function TrackSettings({ width, height, gutter, color, isTrackActive }: Props) {
   if (!isTrackActive) return <div />
 
-  const css = {
-    Main: {
-      width: width,
-      height: height,
-      backgroundColor: Color.get900Dark(color)
-    },
-    Volume: {
-      width: `${6 * gutter + 24}px`
-      // borderRight: `1px solid ${Color.get800(color)}`
-    },
-    Volume_Inner: {
-      padding: `${gutter}px ${gutter}px`
-    },
-    VolumeAside: {
-      width: `${width - (6 * gutter + 24)}px`
-    },
-    NoteResolution: {
-      padding: `${2 * gutter}px`
-      // borderBottom: `1px solid ${Color.get800(color)}`
-    }
-  }
-
   return (
-    <div style={css.Main} className={styles.Main}>
-      <div className={styles.TrackSettings}>
-        <div className={styles.Volume} style={css.Volume}>
-          <div style={css.Volume_Inner}>
+    <StyledSettings width={width} height={height} color={color}>
+      <InnerWrapper>
+        <AsideSection gutter={gutter}>
+          <GainControllerWrapper gutter={gutter}>
             <GainControllerWithConnect
               size={height - gutter * 5}
               gutter={gutter}
             />
-          </div>
-        </div>
-        <div className={styles.AllButVolume} style={css.VolumeAside}>
-          <div style={css.NoteResolution} className={styles.noteResolution}>
+          </GainControllerWrapper>
+        </AsideSection>
+        <MainSection width={width} gutter={gutter}>
+          <ResolutionSwitchWrapper gutter={gutter}>
             <ResolutionSwitchWithConnect gutter={gutter} />
-          </div>
+          </ResolutionSwitchWrapper>
           <div />
-        </div>
-      </div>
-    </div>
+        </MainSection>
+      </InnerWrapper>
+    </StyledSettings>
   )
 }
 
