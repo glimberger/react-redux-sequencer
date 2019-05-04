@@ -52,6 +52,8 @@ class Cell extends React.Component<Props, State> {
     hover: false
   }
 
+  buttonRef = React.createRef<HTMLButtonElement>()
+
   hoverOn() {
     this.setState({ hover: true })
   }
@@ -94,6 +96,11 @@ class Cell extends React.Component<Props, State> {
     return hover ? Color.getA100(color) : Color.getA700(color)
   }
 
+  handleClick() {
+    this.props.onClick()
+    this.buttonRef.current && this.buttonRef.current.blur()
+  }
+
   render() {
     return (
       <StyledCell
@@ -105,7 +112,8 @@ class Cell extends React.Component<Props, State> {
         scheduled={this.props.scheduled}
         edited={this.props.edited}
         hover={this.state.hover}
-        onClick={() => this.props.onClick()}
+        ref={this.buttonRef}
+        onClick={() => this.handleClick()}
         onMouseEnter={() => this.hoverOn()}
         onMouseLeave={() => this.hoverOff()}
       >
