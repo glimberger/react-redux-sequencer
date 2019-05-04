@@ -32,7 +32,11 @@ function TrackPanel({ headerWidth, height, gutter, cellSize }: Props) {
         gutter={gutter}
       />
       <Gutter gutter={gutter}> </Gutter>
-      <CellSettingsWithConnect cellSize={cellSize} gutter={gutter} />
+      <CellSettingsWithConnect
+        cellSize={cellSize}
+        gutter={gutter}
+        height={height}
+      />
     </StyledTrackPanel>
   )
 }

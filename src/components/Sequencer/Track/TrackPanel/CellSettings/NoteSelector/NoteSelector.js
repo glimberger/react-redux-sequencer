@@ -110,7 +110,9 @@ class NoteSelector extends React.Component<Props, State> {
           </Info>
         ) : (
           <Info keyWidth={this.props.keyWidth} style={{ opacity: 0 }}>
-            🎹
+            <span role="img" aria-label="keyboard">
+              🎹
+            </span>
           </Info>
         )}
 
