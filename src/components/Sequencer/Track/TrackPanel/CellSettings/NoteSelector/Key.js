@@ -38,19 +38,6 @@ const KeyStyled = styled.button`
 `
 
 class Key extends React.Component<Props, State> {
-  state = {
-    hover: false
-  }
-
-  hoverOn() {
-    this.setState({ hover: true })
-    this.props.onHoverStart()
-  }
-  hoverOff() {
-    this.setState({ hover: false })
-    this.props.onHoverStop()
-  }
-
   static backgroundColor(
     color: MaterialColor,
     black: boolean,
@@ -70,6 +57,26 @@ class Key extends React.Component<Props, State> {
     }
   }
 
+  state = {
+    hover: false
+  }
+
+  buttonRef = React.createRef<HTMLButtonElement>()
+
+  hoverOn() {
+    this.setState({ hover: true })
+    this.props.onHoverStart()
+  }
+  hoverOff() {
+    this.setState({ hover: false })
+    this.props.onHoverStop()
+  }
+
+  handleClick() {
+    this.props.onClick()
+    this.buttonRef.current && this.buttonRef.current.blur()
+  }
+
   render() {
     return (
       <KeyStyled
@@ -78,7 +85,9 @@ class Key extends React.Component<Props, State> {
         black={this.props.black}
         midinote={this.props.midiNote}
         active={this.props.active}
-        onClick={this.props.onClick}
+        hover={this.state.hover}
+        ref={this.buttonRef}
+        onClick={() => this.handleClick()}
         onMouseEnter={() => {
           this.hoverOn()
         }}
