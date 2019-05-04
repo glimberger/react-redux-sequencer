@@ -78,13 +78,13 @@ class TrackHeader extends React.Component<Props, State> {
           </div>
           <SoloButton
             color={this.props.color}
-            width={`calc(${this.props.height}px - 1rem)`}
+            width={this.props.height - 2 * this.props.gutter}
             soloed={this.props.soloed}
             onClick={() => this.props.onSoloClick()}
           />
           <MuteButton
             color={this.props.color}
-            width={`calc(${this.props.height}px - 1rem)`}
+            width={this.props.height - 2 * this.props.gutter}
             muted={this.props.muted}
             onClick={() => this.props.onMuteClick()}
           />
