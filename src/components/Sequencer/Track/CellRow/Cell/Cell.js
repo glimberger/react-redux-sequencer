@@ -67,7 +67,7 @@ class Cell extends React.Component<Props, State> {
     }
 
     if (played) {
-      return hover ? Color.get100(color) : Color.getA100(color)
+      return hover ? Color.get100(color) : Color.getA200(color)
     }
 
     return hover ? Color.getA100(color) : Color.getA700(color)
