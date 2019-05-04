@@ -1,5 +1,7 @@
 // @flow strict
 import * as React from "react"
+// $FlowFixMe
+import styled from "styled-components/macro"
 
 import Color from "../../../../../utils/color/colorLibrary"
 
@@ -20,6 +22,25 @@ type Props = {
 type State = {
   hover: boolean
 }
+
+const StyledCell = styled.button`
+  cursor: pointer;
+  height: ${({ size }) => size}px;
+  width: ${({ noteResolution, size, gutter }) =>
+    Cell.cellWidth(noteResolution, size, gutter)}px;
+  margin-right: ${({ gutter }) => gutter}px;
+  padding: 0;
+  border: 3px solid
+    ${({ color, edited, played, hover }) =>
+      Cell.borderColor(color, edited, played, hover)};
+  border-radius: 3px;
+  background-color: ${({ scheduled, hover, color }) =>
+    scheduled
+      ? hover
+        ? Color.getA400(color)
+        : Color.getA700(color)
+      : "transparent"};
+`
 
 class Cell extends React.Component<Props, State> {
   static defaultProps = {
@@ -74,38 +95,22 @@ class Cell extends React.Component<Props, State> {
   }
 
   render() {
-    const css = {
-      height: `${this.props.size}px`,
-      width: `${Cell.cellWidth(
-        this.props.noteResolution,
-        this.props.size,
-        this.props.gutter
-      )}px`,
-      backgroundColor: this.props.scheduled
-        ? this.state.hover
-          ? Color.getA400(this.props.color)
-          : Color.getA700(this.props.color)
-        : "transparent",
-      border: `solid 3px ${Cell.borderColor(
-        this.props.color,
-        this.props.edited,
-        this.props.played,
-        this.state.hover
-      )}`,
-      borderRadius: "3px",
-      cursor: "pointer",
-      marginRight: `${this.props.gutter}px`
-    }
-
     return (
-      <div
-        style={css}
-        onClick={this.props.onClick}
+      <StyledCell
+        color={this.props.color}
+        size={this.props.size}
+        gutter={this.props.gutter}
+        noteResolution={this.props.noteResolution}
+        played={this.props.played}
+        scheduled={this.props.scheduled}
+        edited={this.props.edited}
+        hover={this.state.hover}
+        onClick={() => this.props.onClick()}
         onMouseEnter={() => this.hoverOn()}
         onMouseLeave={() => this.hoverOff()}
       >
         {" "}
-      </div>
+      </StyledCell>
     )
   }
 }
