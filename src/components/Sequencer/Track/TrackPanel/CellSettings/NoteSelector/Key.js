@@ -25,9 +25,9 @@ type State = {
 const KeyStyled = styled.button`
   display: inline-block;
   height: 100%;
-  width: ${props => props.width}px;
-  background-color: ${props =>
-    Key.backgroundColor(props.color, props.black, props.active, props.hover)};
+  width: ${({ width }) => width}px;
+  background-color: ${({ color, black, active, hover }) =>
+    Key.backgroundColor(color, black, active, hover)};
   padding: 0;
   border: 1px solid
     ${props =>
@@ -44,9 +44,11 @@ class Key extends React.Component<Props, State> {
 
   hoverOn() {
     this.setState({ hover: true })
+    this.props.onHoverStart()
   }
   hoverOff() {
     this.setState({ hover: false })
+    this.props.onHoverStop()
   }
 
   static backgroundColor(
@@ -71,61 +73,23 @@ class Key extends React.Component<Props, State> {
   render() {
     return (
       <KeyStyled
-        {...this.props}
-        onClick={() => this.props.onClick()}
+        width={this.props.width}
+        color={this.props.color}
+        black={this.props.black}
+        midinote={this.props.midiNote}
+        active={this.props.active}
+        onClick={this.props.onClick}
         onMouseEnter={() => {
           this.hoverOn()
-          this.props.onHoverStart()
         }}
         onMouseLeave={() => {
           this.hoverOff()
-          this.props.onHoverStop()
         }}
       >
         {" "}
       </KeyStyled>
     )
   }
-
-  // render() {
-  //   const css = {
-  //     display: "inline-block",
-  //     height: "100%",
-  //     width: `${this.props.width}px`,
-  //     backgroundColor: Key.backgroundColor(
-  //       this.props.color,
-  //       this.props.black,
-  //       this.props.active,
-  //       this.state.hover
-  //     ),
-  //     padding: 0,
-  //     border: `1px solid ${
-  //       this.props.black
-  //         ? Color.get900(this.props.color)
-  //         : Color.get200(this.props.color)
-  //     }`,
-  //     borderBottomLeftRadius: "3px",
-  //     borderBottomRightRadius: "3px",
-  //     cursor: this.props.active ? "default" : "pointer"
-  //   }
-  //
-  //   return (
-  //     <button
-  //       style={css}
-  //       onClick={() => this.props.onClick()}
-  //       onMouseEnter={() => {
-  //         this.hoverOn()
-  //         this.props.onHoverStart()
-  //       }}
-  //       onMouseLeave={() => {
-  //         this.hoverOff()
-  //         this.props.onHoverStop()
-  //       }}
-  //     >
-  //       {" "}
-  //     </button>
-  //   )
-  // }
 }
 
 export default Key
