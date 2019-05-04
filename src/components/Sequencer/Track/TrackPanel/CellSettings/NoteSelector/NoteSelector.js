@@ -1,8 +1,9 @@
 // @flow strict
 import * as React from "react"
+// $FlowFixMe
+import styled from "styled-components/macro"
 
 import Key from "./Key"
-import styles from "./NoteSelector.module.css"
 import MidiConverter from "../../../../../../utils/audio/MidiConverter"
 
 import type {
@@ -37,6 +38,34 @@ type State = {
   +noteOnHover: number | null
 }
 
+const StyledSelector = styled.div`
+  font-size: 13px;
+`
+
+const Info = styled.div`
+  display: flex;
+  margin-bottom: ${({ keyWidth }) => keyWidth}px;
+`
+
+const InfoItem = styled.div`
+  width: ${({ itemWidth }) => itemWidth || "10%"};
+  margin-left: ${({ keyWidth }) => keyWidth || 0}px;
+`
+
+const Keys = styled.div`
+  display: flex;
+  height: ${({ height }) => height}px;
+`
+
+const KeyWrapper = styled.div`
+  margin-bottom: ${({ blackKey, height }) => (blackKey ? height * 0.4 : 0)}px;
+  margin-left: ${({ blackKey, keyWidth, widthRatio }) =>
+    blackKey ? -(keyWidth * widthRatio) / 2.0 : 0}px;
+  margin-right: ${({ blackKey, keyWidth, widthRatio }) =>
+    blackKey ? -(keyWidth * widthRatio) / 2.0 : 0}px;
+  z-index: ${({ blackKey }) => (blackKey ? 10 : 1)};
+`
+
 class NoteSelector extends React.Component<Props, State> {
   state = {
     noteOnHover: null
@@ -46,32 +75,8 @@ class NoteSelector extends React.Component<Props, State> {
   widthRatio = 0.75
 
   render() {
-    const {
-      height,
-      keyWidth,
-      color,
-      activeNote,
-      activeTrackID,
-      activeCellBeat,
-      changeCellNote
-    } = this.props
-
-    if (activeTrackID === null || activeCellBeat === null) return null
-
-    const css = {
-      Keys: {
-        height: `${height}px`
-      },
-      Info: {
-        marginBottom: `${keyWidth}px`
-      },
-      BlackKey: {
-        marginBottom: `${height * 0.4}px`,
-        marginLeft: `-${(keyWidth * this.widthRatio) / 2.0}px`,
-        marginRight: `-${(keyWidth * this.widthRatio) / 2.0}px`,
-        zIndex: 10
-      }
-    }
+    if (this.props.activeTrackID === null || this.props.activeCellBeat === null)
+      return null
 
     const note = MidiConverter.toNote(this.state.noteOnHover)
 
@@ -86,59 +91,79 @@ class NoteSelector extends React.Component<Props, State> {
         : ""
 
     return (
-      <div className={styles.Main}>
+      <StyledSelector>
         {this.state.noteOnHover !== null ? (
-          <div style={css.Info} className={styles.Info}>
-            <div style={{ width: "10%" }}>
+          <Info keyWidth={this.props.keyWidth}>
+            <InfoItem itemWidth={"10%"}>
               <div>
                 <span style={{ fontWeight: "lighter" }}>NOTE</span> {note} (
                 {this.state.noteOnHover})
               </div>
-            </div>
-            <div style={{ width: "10%", marginLeft: `${keyWidth}px` }}>
+            </InfoItem>
+            <InfoItem keyWidth={this.props.keyWidth} itemWidth={"10%"}>
               <span style={{ fontWeight: "lighter" }}>DETUNE</span> {detune}{" "}
               cent
-            </div>
-            <div style={{ width: "20%", marginLeft: `${keyWidth}px` }}>
+            </InfoItem>
+            <InfoItem keyWidth={this.props.keyWidth} itemWidth={"30%"}>
               <span style={{ fontWeight: "lighter" }}>SAMPLE</span> {filename}
-            </div>
-          </div>
+            </InfoItem>
+          </Info>
         ) : (
-          <div style={{ opacity: 0, marginBottom: `${keyWidth}px` }}>
-            NOTE SAMPLE
-          </div>
+          <Info keyWidth={this.props.keyWidth} style={{ opacity: 0 }}>
+            🎹
+          </Info>
         )}
 
-        <div style={css.Keys} className={styles.Keys}>
+        <Keys height={this.props.height}>
           {[...Array(128).keys()].map(midiNote => {
             const blackKey = [1, 3, 6, 8, 10].includes(midiNote % 12)
 
             return (
-              <div key={midiNote} style={blackKey ? css.BlackKey : {}}>
+              <KeyWrapper
+                key={midiNote}
+                blackKey={blackKey}
+                keyWidth={this.props.keyWidth}
+                height={this.props.height}
+                widthRatio={this.widthRatio}
+              >
                 <Key
-                  active={midiNote === activeNote}
+                  active={midiNote === this.props.activeNote}
                   midiNote={midiNote}
-                  width={blackKey ? keyWidth * this.widthRatio : keyWidth}
-                  color={color}
-                  black={blackKey}
-                  onClick={() =>
-                    changeCellNote(midiNote, activeCellBeat, activeTrackID)
+                  width={
+                    blackKey
+                      ? this.props.keyWidth * this.widthRatio
+                      : this.props.keyWidth
                   }
+                  color={this.props.color}
+                  black={blackKey}
+                  onClick={() => {
+                    if (!this.props.activeTrackID || !this.props.activeCellBeat)
+                      return
+
+                    this.props.changeCellNote(
+                      midiNote,
+                      this.props.activeCellBeat,
+                      this.props.activeTrackID
+                    )
+                  }}
                   onHoverStart={() => {
+                    if (!this.props.activeTrackID || !this.props.activeCellBeat)
+                      return
+
                     this.props.listenCellNote(
                       midiNote,
-                      activeCellBeat,
-                      activeTrackID
+                      this.props.activeCellBeat,
+                      this.props.activeTrackID
                     )
                     this.setState({ noteOnHover: midiNote })
                   }}
                   onHoverStop={() => this.setState({ noteOnHover: null })}
                 />
-              </div>
+              </KeyWrapper>
             )
           })}
-        </div>
-      </div>
+        </Keys>
+      </StyledSelector>
     )
   }
 }
