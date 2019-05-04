@@ -1,5 +1,7 @@
 // @flow strict
 import * as React from "react"
+// $FlowFixMe
+import styled from "styled-components/macro"
 
 import Cell from "./Cell/Cell"
 import { isCellPlayed } from "../../../../services/cell"
@@ -33,6 +35,10 @@ type OwnProps = {
 
 type Props = StateProps & DispatchProps & OwnProps
 
+const StyledCellRow = styled.div`
+  display: flex;
+`
+
 function CellRow({
   trackID,
   size,
@@ -47,8 +53,9 @@ function CellRow({
   setActiveCell
 }: Props) {
   return (
-    <div style={{ display: "flex" }}>
+    <StyledCellRow>
       {cells.map(({ scheduled, note }, beat) => {
+        // we must not see cells out of note resolution
         if (beat % noteResolution) return null
 
         return (
@@ -70,7 +77,7 @@ function CellRow({
           </div>
         )
       })}
-    </div>
+    </StyledCellRow>
   )
 }
 
