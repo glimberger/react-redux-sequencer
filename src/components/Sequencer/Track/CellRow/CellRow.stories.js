@@ -35,7 +35,7 @@ storiesOf("CellRow", module)
       noteResolution={1}
       trackID="3df04324-7628-479e-b513-618ba1ab6518"
       activeTrackID="3df04324-7628-479e-b513-618ba1ab6518"
-      activeCellBeat={8}
+      activeCellBeat={3}
       cells={getCells()}
       scheduleTrackCell={action("scheduleTrackCell")}
       setActiveCell={action("setActiveCell")}
@@ -50,7 +50,7 @@ storiesOf("CellRow", module)
       noteResolution={2}
       trackID="3df04324-7628-479e-b513-618ba1ab6518"
       activeTrackID="3df04324-7628-479e-b513-618ba1ab6518"
-      activeCellBeat={8}
+      activeCellBeat={3}
       cells={getCells()}
       scheduleTrackCell={action("scheduleTrackCell")}
       setActiveCell={action("setActiveCell")}
@@ -65,7 +65,7 @@ storiesOf("CellRow", module)
       noteResolution={4}
       trackID="3df04324-7628-479e-b513-618ba1ab6518"
       activeTrackID="3df04324-7628-479e-b513-618ba1ab6518"
-      activeCellBeat={8}
+      activeCellBeat={3}
       cells={getCells()}
       scheduleTrackCell={action("scheduleTrackCell")}
       setActiveCell={action("setActiveCell")}
@@ -80,7 +80,7 @@ storiesOf("CellRow", module)
       noteResolution={1}
       trackID="3df04324-7628-479e-b513-618ba1ab6518"
       activeTrackID={null}
-      activeCellBeat={8}
+      activeCellBeat={3}
       cells={getCells()}
       scheduleTrackCell={action("scheduleTrackCell")}
       setActiveCell={action("setActiveCell")}

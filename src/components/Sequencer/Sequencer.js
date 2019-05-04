@@ -1,8 +1,9 @@
 // @flow strict
 import * as React from "react"
+// $FlowFixMe
+import styled from "styled-components/macro"
 
 import AddTrack from "./AddTrack/AddTrack"
-import styles from "./Sequencer.module.css"
 import TrackWithConnect from "./Track/TrackWithConnect"
 
 import type { Track as TrackType } from "../../redux/store/session/types"
@@ -25,32 +26,31 @@ const prefs = {
   }
 }
 
-function Sequencer({ orderedTracks }: Props) {
-  const css = {
-    Row: {
-      marginTop: `${prefs.gutter}px`
-    }
-  }
+const Row = styled.div`
+  margin-top: ${({ first, gutter }) => (first ? 0 : gutter)}px;
+`
 
+const AddTrackWrapper = styled.div`
+  display: flex;
+  justify-content: flex-start;
+`
+
+function Sequencer({ orderedTracks }: Props) {
   return (
     <React.Fragment>
-      {orderedTracks.map((track, idx) => {
-        const trackCss = { marginTop: `${idx === 0 ? 0 : prefs.gutter}px` }
-
-        return (
-          <div key={track.id} style={trackCss}>
-            <TrackWithConnect
-              trackID={track.id}
-              panelWidth={prefs.panel.width}
-              panelHeight={prefs.panel.height}
-              gutter={prefs.gutter}
-              cellSize={prefs.cellSize}
-            />
-          </div>
-        )
-      })}
-      <div style={css.Row}>
-        <div className={styles.Row}>
+      {orderedTracks.map((track, idx) => (
+        <Row key={track.id} gutter={prefs.gutter} first={idx === 0}>
+          <TrackWithConnect
+            trackID={track.id}
+            panelWidth={prefs.panel.width}
+            panelHeight={prefs.panel.height}
+            gutter={prefs.gutter}
+            cellSize={prefs.cellSize}
+          />
+        </Row>
+      ))}
+      <Row gutter={prefs.gutter} first={false}>
+        <AddTrackWrapper>
           <AddTrack
             prefs={{
               color: "grey",
@@ -58,8 +58,8 @@ function Sequencer({ orderedTracks }: Props) {
               height: prefs.cellSize
             }}
           />
-        </div>
-      </div>
+        </AddTrackWrapper>
+      </Row>
     </React.Fragment>
   )
 }

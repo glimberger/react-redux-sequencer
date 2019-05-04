@@ -72,7 +72,7 @@ export default class Color {
       shade700: "#7b1fa2",
       shade800: "#6a1b9a",
       shade900: "#4a148c",
-      shade900Dark: "#12005e",
+      shade900Dark: "#38006b",
       shadeA100: "#ea80fc",
       shadeA200: "#e040fb",
       shadeA400: "#d500f9",

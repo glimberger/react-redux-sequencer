@@ -30,7 +30,7 @@ storiesOf("NoteSelector", module)
         filename: "filename",
         url: "",
         type: "",
-        label: "sampl label",
+        label: "sample label",
         group: "sample group"
       })}
       changeCellNote={action("changeCellNote")}
