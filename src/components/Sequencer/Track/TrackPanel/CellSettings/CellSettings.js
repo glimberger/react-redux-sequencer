@@ -1,7 +1,8 @@
 // @flow strict
 import React from "react"
+// $FlowFixMe
+import styled from "styled-components/macro"
 
-import styles from "./CellSettings.module.css"
 import Color from "../../../../../utils/color/colorLibrary"
 import Cell from "../../CellRow/Cell/Cell"
 import NoteSelectorWithConnect from "./NoteSelector/NoteSelectorWithConnect"
@@ -22,7 +23,6 @@ type OwnProps = {
 type StateProps = {
   activeTrackID: $PropertyType<Session, "activeTrackID">,
   activeCellBeat: $PropertyType<Session, "activeCellBeat">,
-  isActiveTrack: boolean,
   color: $PropertyType<Track, "color">,
   noteResolution: $PropertyType<Track, "noteResolution">,
   scheduled: $PropertyType<CellType, "scheduled">,
@@ -36,6 +36,30 @@ type DispatchProps = {
 
 type Props = OwnProps & StateProps & DispatchProps
 
+const StyledSettings = styled.div`
+  flex-shrink: 0;
+  border-radius: 3px;
+  width: ${({ cellSize, gutter }) => cellSize * 32 + gutter * 31}px;
+  height: ${({ height }) => height}px;
+  margin-right: ${({ gutter }) => gutter}px;
+  background-color: ${({ color }) => Color.get900Dark(color)};
+  color: ${({ color }) => Color.get100(color)};
+`
+
+const NoteSection = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: ${({ gutter }) => gutter * 2}px;
+  overflow: auto;
+`
+
+const CellInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 14px;
+`
+
 function CellSettings({
   cellSize,
   height,
@@ -44,45 +68,36 @@ function CellSettings({
   scheduled,
   midiNote,
   activeCellBeat,
-  isActiveTrack,
   activeTrackID,
   noteResolution,
   scheduleTrackCell,
   getMappingForNote
 }: Props) {
-  if (!isActiveTrack) return <div />
-
-  const css = {
-    Container: {
-      width: `${cellSize * 32 + gutter * 31}px`,
-      height: height,
-      marginRight: `${gutter}px`,
-      backgroundColor: Color.get900Dark(color),
-      color: Color.get100(color)
-    },
-
-    NoteSection: {
-      padding: `${gutter * 2}px`,
-      overflow: "auto"
-      // borderBottom: `2px solid ${Color.get800(color)}`
-    }
-  }
-
   if (activeTrackID === null) return <div />
 
   if (activeCellBeat === null)
     return (
-      <div style={css.Container} className={styles.Container}>
+      <StyledSettings
+        cellSize={cellSize}
+        height={height}
+        gutter={gutter}
+        color={color}
+      >
         {" "}
-      </div>
+      </StyledSettings>
     )
 
   const detune = getMappingForNote(midiNote).detune
 
   return (
-    <div style={css.Container} className={styles.Container}>
-      <div style={css.NoteSection} className={styles.NoteSection}>
-        <div className={styles.CellInfo}>
+    <StyledSettings
+      cellSize={cellSize}
+      height={height}
+      gutter={gutter}
+      color={color}
+    >
+      <NoteSection gutter={gutter}>
+        <CellInfo>
           <Cell
             size={cellSize}
             gutter={0}
@@ -109,7 +124,7 @@ function CellSettings({
               cent
             </div>
           </div>
-        </div>
+        </CellInfo>
         <div>
           <NoteSelectorWithConnect
             gutter={gutter}
@@ -118,8 +133,8 @@ function CellSettings({
             keyWidth={16}
           />
         </div>
-      </div>
-    </div>
+      </NoteSection>
+    </StyledSettings>
   )
 }
 

@@ -1,5 +1,7 @@
 // @flow strict
 import * as React from "react"
+// $FlowFixMe
+import styled from "styled-components/macro"
 
 import Controller from "../../../../../controllers/Fader/Fader"
 
@@ -28,6 +30,18 @@ type DispatchProps = {
 
 type Props = OwnProps & StateProps & DispatchProps
 
+const StyledGainController = styled.div`
+  height: ${({ size }) => size}px;
+  padding: ${({ gutter }) => gutter}px;
+`
+
+const GainIndicator = styled.div`
+  user-select: none;
+  text-align: center;
+  color: ${({ color }) => Color.get100(color)};
+  font-size: 11px;
+`
+
 function GainController({
   color,
   size,
@@ -44,22 +58,9 @@ function GainController({
     changeTrackGain(activeTrackID, parseFloat(value))
   }
 
-  const css = {
-    GainController: {
-      height: size,
-      padding: `${2 * gutter}px`
-    },
-    GainIndicator: {
-      color: Color.get100(color),
-      fontSize: "11px",
-      userSelect: "none",
-      textAlign: "center"
-    }
-  }
-
   return (
     <div>
-      <div style={css.GainController}>
+      <StyledGainController size={size} gutter={gutter}>
         <Controller
           orientation="vertical"
           color={color}
@@ -70,8 +71,8 @@ function GainController({
           min={0}
           step={0.001}
         />
-      </div>
-      <div style={css.GainIndicator}>{Volume.toDBString(gain)}</div>
+      </StyledGainController>
+      <GainIndicator color={color}>{Volume.toDBString(gain)}</GainIndicator>
     </div>
   )
 }

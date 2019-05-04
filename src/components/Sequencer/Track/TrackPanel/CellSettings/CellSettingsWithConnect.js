@@ -18,7 +18,6 @@ const mapStateToProps = state => {
     noteResolution: activeTrack ? activeTrack.noteResolution : 1,
     scheduled: activeCell ? activeCell.scheduled : false,
     midiNote: activeCell ? activeCell.midi : 0,
-    isActiveTrack: !!activeTrack,
     activeCellBeat: state.session.activeCellBeat,
     activeTrackID: state.session.activeTrackID,
     getMappingForNote: (note: number) =>

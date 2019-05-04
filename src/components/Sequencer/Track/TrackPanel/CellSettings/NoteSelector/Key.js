@@ -1,5 +1,7 @@
 // @flow strict
 import * as React from "react"
+// $FlowFixMe
+import styled from "styled-components/macro"
 
 import Color from "../../../../../../utils/color/colorLibrary"
 
@@ -20,6 +22,21 @@ type State = {
   hover: boolean
 }
 
+const KeyStyled = styled.button`
+  display: inline-block;
+  height: 100%;
+  width: ${({ width }) => width}px;
+  background-color: ${({ color, black, active, hover }) =>
+    Key.backgroundColor(color, black, active, hover)};
+  padding: 0;
+  border: 1px solid
+    ${props =>
+      props.black ? Color.get900(props.color) : Color.get200(props.color)};
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  cursor: ${props => (props.active ? "default" : "pointer")};
+`
+
 class Key extends React.Component<Props, State> {
   state = {
     hover: false
@@ -27,9 +44,11 @@ class Key extends React.Component<Props, State> {
 
   hoverOn() {
     this.setState({ hover: true })
+    this.props.onHoverStart()
   }
   hoverOff() {
     this.setState({ hover: false })
+    this.props.onHoverStop()
   }
 
   static backgroundColor(
@@ -52,42 +71,23 @@ class Key extends React.Component<Props, State> {
   }
 
   render() {
-    const css = {
-      display: "inline-block",
-      height: "100%",
-      width: `${this.props.width}px`,
-      backgroundColor: Key.backgroundColor(
-        this.props.color,
-        this.props.black,
-        this.props.active,
-        this.state.hover
-      ),
-      padding: 0,
-      border: `1px solid ${
-        this.props.black
-          ? Color.get900(this.props.color)
-          : Color.get200(this.props.color)
-      }`,
-      borderBottomLeftRadius: "3px",
-      borderBottomRightRadius: "3px",
-      cursor: this.props.active ? "default" : "pointer"
-    }
-
     return (
-      <button
-        style={css}
-        onClick={() => this.props.onClick()}
+      <KeyStyled
+        width={this.props.width}
+        color={this.props.color}
+        black={this.props.black}
+        midinote={this.props.midiNote}
+        active={this.props.active}
+        onClick={this.props.onClick}
         onMouseEnter={() => {
           this.hoverOn()
-          this.props.onHoverStart()
         }}
         onMouseLeave={() => {
           this.hoverOff()
-          this.props.onHoverStop()
         }}
       >
         {" "}
-      </button>
+      </KeyStyled>
     )
   }
 }

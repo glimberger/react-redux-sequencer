@@ -1,11 +1,12 @@
 // @flow strict
 import * as React from "react"
+// $FlowFixMe
+import styled from "styled-components/macro"
 
 import TrackHeaderWithConnect from "./TrackHeader/TrackHeaderWithConnect"
 import CellRowWithConnect from "./CellRow/CellRowWithConnect"
 import TrackPanel from "./TrackPanel/TrackPanel"
 
-import styles from "./Track.module.css"
 import type { Session } from "../../../redux/store/session/types"
 
 type StateProps = {
@@ -22,6 +23,18 @@ type OwnProps = {
 
 type Props = StateProps & OwnProps
 
+const HeaderContainer = styled.div`
+  display: flex;
+`
+
+const PanelContainer = styled.div`
+  margin-top: ${({ gutter }) => gutter}px;
+`
+
+const Gutter = styled.div`
+  margin-left: ${({ gutter }) => gutter}px;
+`
+
 function Track({
   activeTrackID,
   trackID,
@@ -30,37 +43,27 @@ function Track({
   gutter,
   cellSize
 }: Props) {
-  const css = {
-    Gutter: {
-      marginLeft: `${gutter}px`
-    },
-    TrackPanel: {
-      marginTop: `${gutter}px`
-    }
-  }
-  console.log("activeTrackID", activeTrackID)
-
   return (
-    <div id={`track${trackID}`} className={styles.Track}>
-      <div className={styles.Track_Inner}>
+    <div id={`track_${trackID}`}>
+      <HeaderContainer>
         <TrackHeaderWithConnect
           trackID={trackID}
           width={panelWidth}
           height={cellSize}
           gutter={gutter}
         />
-        <div style={css.Gutter}> </div>
+        <Gutter gutter={gutter}> </Gutter>
         <CellRowWithConnect trackID={trackID} size={cellSize} gutter={gutter} />
-      </div>
+      </HeaderContainer>
       {trackID === activeTrackID && (
-        <div style={css.TrackPanel}>
+        <PanelContainer gutter={gutter}>
           <TrackPanel
             headerWidth={panelWidth}
             height={panelHeight}
             gutter={gutter}
             cellSize={cellSize}
           />
-        </div>
+        </PanelContainer>
       )}
     </div>
   )

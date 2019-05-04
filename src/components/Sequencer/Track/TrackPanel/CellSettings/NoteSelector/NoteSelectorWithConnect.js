@@ -14,7 +14,6 @@ import { listenCellNote } from "../../../../../../redux/actions/audio/creators"
 const mapStateToProps = state => {
   const track = getActiveTrack(state)
   const cell = getActiveCell(state)
-  console.log("cell", cell)
 
   return {
     color: track ? track.color : "grey",
