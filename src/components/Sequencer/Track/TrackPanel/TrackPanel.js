@@ -1,7 +1,8 @@
 // @flow strict
 import React from "react"
+// $FlowFixMe
+import styled from "styled-components/macro"
 
-import styles from "./TrackPanel.module.css"
 import TrackSettingsWithConnect from "./TrackSettings/TrackSettingsWithConnect"
 
 import CellSettingsWithConnect from "./CellSettings/CellSettingsWithConnect"
@@ -13,26 +14,26 @@ type Props = {
   cellSize: number
 }
 
-function TrackPanel({ headerWidth, height, gutter, cellSize }: Props) {
-  const css = {
-    TrackPanel: {
-      marginBottom: `${gutter}px`
-    },
-    Gutter: {
-      marginLeft: `${gutter}px`
-    }
-  }
+const StyledTrackPanel = styled.div`
+  display: flex;
+  margin-bottom: ${({ gutter }) => gutter}px;
+`
 
+const Gutter = styled.div`
+  margin-left: ${({ gutter }) => gutter}px;
+`
+
+function TrackPanel({ headerWidth, height, gutter, cellSize }: Props) {
   return (
-    <div style={css.TrackPanel} className={styles.TrackPanel}>
+    <StyledTrackPanel gutter={gutter}>
       <TrackSettingsWithConnect
         width={headerWidth}
         height={height}
         gutter={gutter}
       />
-      <div style={css.Gutter}> </div>
+      <Gutter gutter={gutter}> </Gutter>
       <CellSettingsWithConnect cellSize={cellSize} gutter={gutter} />
-    </div>
+    </StyledTrackPanel>
   )
 }
 

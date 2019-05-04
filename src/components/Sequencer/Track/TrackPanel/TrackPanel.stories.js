@@ -12,7 +12,6 @@ storiesOf("TrackPanel", module)
       style={{
         width: "100%",
         height: "100%",
-        padding: "3rem",
         backgroundColor: "#1e1f26"
       }}
     >
