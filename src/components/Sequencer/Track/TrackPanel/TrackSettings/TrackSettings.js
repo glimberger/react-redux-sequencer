@@ -4,10 +4,10 @@ import * as React from "react"
 import styled from "styled-components/macro"
 
 import Color from "../../../../../utils/color/colorLibrary"
-import GainControllerWithConnect from "./GainController/GainControllerWithConnect"
+import ResolutionSwitchWithConnect from "./ResolutionSwitch/ResolutionSwitchWithConnect"
+import VerticalFaderWithConnect from "./FaderWithConnect"
 
 import type { Track } from "../../../../../redux/store/session/types"
-import ResolutionSwitchWithConnect from "./ResolutionSwitch/ResolutionSwitchWithConnect"
 
 type OwnProps = {
   width: number,
@@ -35,17 +35,11 @@ const InnerWrapper = styled.div`
 `
 
 const AsideSection = styled.section`
-  position: relative;
-  height: 100%;
-  width: ${({ gutter }) => 6 * gutter + 24}px;
-`
-
-const GainControllerWrapper = styled.div`
-  padding: ${({ gutter }) => `${gutter}px ${gutter}px`};
+  padding: ${({ gutter }) => 2 * gutter}px;
 `
 
 const MainSection = styled.section`
-  width: ${({ width, gutter }) => width - (6 * gutter + 24)}px;
+  width: 100%;
 `
 
 const ResolutionSwitchWrapper = styled.div`
@@ -61,12 +55,12 @@ function TrackSettings({ width, height, gutter, color, isTrackActive }: Props) {
     <StyledSettings width={width} height={height} color={color}>
       <InnerWrapper>
         <AsideSection gutter={gutter}>
-          <GainControllerWrapper gutter={gutter}>
-            <GainControllerWithConnect
-              size={height - gutter * 5}
-              gutter={gutter}
-            />
-          </GainControllerWrapper>
+          <VerticalFaderWithConnect
+            width={40}
+            height={height - 4 * gutter}
+            color={color}
+            fontSize={9}
+          />
         </AsideSection>
         <MainSection width={width} gutter={gutter}>
           <ResolutionSwitchWrapper gutter={gutter}>
