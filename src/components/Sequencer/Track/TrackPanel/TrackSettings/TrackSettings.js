@@ -26,7 +26,7 @@ const StyledSettings = styled.div`
   border-radius: 3px;
   width: ${({ width }) => width}px;
   height: ${({ height }) => height}px;
-  background-color: ${({ color }) => Color.get900Dark(color)};
+  background-color: ${({ color }) => Color.get800Dark(color)};
 `
 
 const InnerWrapper = styled.div`
