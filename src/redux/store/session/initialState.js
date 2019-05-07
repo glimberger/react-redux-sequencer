@@ -792,7 +792,7 @@ const initialSate: Session = {
       { scheduled: false, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 }
-      ]
+    ]
   },
   activeTrackID: null,
   activeCellBeat: null,
@@ -1755,6 +1755,6 @@ const initialSate: Session = {
       type: "audio/vnd.wave"
     }
   }
-};
+}
 
 export default initialSate
