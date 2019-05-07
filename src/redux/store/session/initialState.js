@@ -862,7 +862,7 @@ const initialSate: Session = {
       label: "Bass",
       noteResolution: 2,
       instrumentID: "a025e47b-3e71-4c03-b3b8-de203b3b6f12",
-      color: "purple",
+      color: "blue",
       processing: {
         gain: { gain: 1 }
       },
