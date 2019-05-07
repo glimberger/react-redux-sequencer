@@ -9,7 +9,8 @@ const initialSate: Session = {
     "14f2dd71-77ad-4cf6-88f3-64680bf8f007",
     "3eef107a-73c2-47d0-8c89-7cfe606dfcbd",
     "7f6938d7-56e5-4d6c-90cd-431edad19a94",
-    "2786bd06-ba1b-49d2-822f-2cef416f2a2f"
+    "2786bd06-ba1b-49d2-822f-2cef416f2a2f",
+    "d8d1a41f-171c-4694-9280-9d77b1b91ca2"
   ],
   matrix: {
     "8ebdfbd8-4528-4e5e-932b-987c5405aec5": [
@@ -661,7 +662,137 @@ const initialSate: Session = {
       { scheduled: false, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 }
-    ]
+    ],
+    "d8d1a41f-171c-4694-9280-9d77b1b91ca2": [
+      // beat 0
+      { scheduled: true, midi: 40 },
+      // beat 1
+      { scheduled: false, midi: 69 },
+      // beat 2
+      { scheduled: false, midi: 69 },
+      // beat 3
+      { scheduled: false, midi: 69 },
+      // beat 4
+      { scheduled: true, midi: 40 },
+      // beat 5
+      { scheduled: false, midi: 69 },
+      // beat 6
+      { scheduled: false, midi: 69 },
+      // beat 7
+      { scheduled: false, midi: 69 },
+      // beat 8
+      { scheduled: true, midi: 40 },
+      // beat 9
+      { scheduled: false, midi: 69 },
+      // beat 10
+      { scheduled: false, midi: 69 },
+      // beat 11
+      { scheduled: false, midi: 69 },
+      // beat 12
+      { scheduled: true, midi: 40 },
+      // beat 13
+      { scheduled: false, midi: 69 },
+      // beat 14
+      { scheduled: false, midi: 69 },
+      // beat 15
+      { scheduled: false, midi: 69 },
+      // beat 0
+      { scheduled: true, midi: 33 },
+      // beat 1
+      { scheduled: false, midi: 69 },
+      // beat 2
+      { scheduled: false, midi: 69 },
+      // beat 3
+      { scheduled: false, midi: 69 },
+      // beat 4
+      { scheduled: true, midi: 33 },
+      // beat 5
+      { scheduled: false, midi: 69 },
+      // beat 6
+      { scheduled: false, midi: 69 },
+      // beat 7
+      { scheduled: false, midi: 69 },
+      // beat 8
+      { scheduled: true, midi: 33 },
+      // beat 9
+      { scheduled: false, midi: 69 },
+      // beat 10
+      { scheduled: false, midi: 69 },
+      // beat 11
+      { scheduled: false, midi: 69 },
+      // beat 12
+      { scheduled: true, midi: 33 },
+      // beat 13
+      { scheduled: false, midi: 69 },
+      // beat 14
+      { scheduled: false, midi: 69 },
+      // beat 15
+      { scheduled: false, midi: 69 },
+      // beat 0
+      { scheduled: true, midi: 38 },
+      // beat 1
+      { scheduled: false, midi: 69 },
+      // beat 2
+      { scheduled: false, midi: 69 },
+      // beat 3
+      { scheduled: false, midi: 69 },
+      // beat 4
+      { scheduled: true, midi: 38 },
+      // beat 5
+      { scheduled: false, midi: 69 },
+      // beat 6
+      { scheduled: false, midi: 69 },
+      // beat 7
+      { scheduled: false, midi: 69 },
+      // beat 8
+      { scheduled: true, midi: 38 },
+      // beat 9
+      { scheduled: false, midi: 69 },
+      // beat 10
+      { scheduled: false, midi: 69 },
+      // beat 11
+      { scheduled: false, midi: 69 },
+      // beat 12
+      { scheduled: true, midi: 38 },
+      // beat 13
+      { scheduled: false, midi: 69 },
+      // beat 14
+      { scheduled: false, midi: 69 },
+      // beat 15
+      { scheduled: false, midi: 69 },
+      // beat 0
+      { scheduled: true, midi: 35 },
+      // beat 1
+      { scheduled: false, midi: 69 },
+      // beat 2
+      { scheduled: false, midi: 69 },
+      // beat 3
+      { scheduled: false, midi: 69 },
+      // beat 4
+      { scheduled: true, midi: 35 },
+      // beat 5
+      { scheduled: false, midi: 69 },
+      // beat 6
+      { scheduled: false, midi: 69 },
+      // beat 7
+      { scheduled: false, midi: 69 },
+      // beat 8
+      { scheduled: true, midi: 35 },
+      // beat 9
+      { scheduled: false, midi: 69 },
+      // beat 10
+      { scheduled: false, midi: 69 },
+      // beat 11
+      { scheduled: false, midi: 69 },
+      // beat 12
+      { scheduled: true, midi: 35 },
+      // beat 13
+      { scheduled: false, midi: 69 },
+      // beat 14
+      { scheduled: false, midi: 69 },
+      // beat 15
+      { scheduled: false, midi: 69 }
+      ]
   },
   activeTrackID: null,
   activeCellBeat: null,
@@ -720,6 +851,18 @@ const initialSate: Session = {
       noteResolution: 2,
       instrumentID: "77d2c144-2a6c-483a-b94c-8584dcdc2b7c",
       color: "indigo",
+      processing: {
+        gain: { gain: 1 }
+      },
+      muted: false,
+      soloed: false
+    },
+    "d8d1a41f-171c-4694-9280-9d77b1b91ca2": {
+      id: "d8d1a41f-171c-4694-9280-9d77b1b91ca2",
+      label: "Bass",
+      noteResolution: 2,
+      instrumentID: "a025e47b-3e71-4c03-b3b8-de203b3b6f12",
+      color: "purple",
       processing: {
         gain: { gain: 1 }
       },
@@ -1397,6 +1540,140 @@ const initialSate: Session = {
         { sampleID: "8cf86f2f-0b50-42bb-81d8-22731d462161", detune: 0 },
         { sampleID: "8cf86f2f-0b50-42bb-81d8-22731d462161", detune: 0 }
       ]
+    },
+    "a025e47b-3e71-4c03-b3b8-de203b3b6f12": {
+      id: "a025e47b-3e71-4c03-b3b8-de203b3b6f12",
+      label: "BASS-STACCATO",
+      mapping: [
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1100 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1000 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -900 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -800 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -700 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -600 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -500 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -400 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -300 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -100 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: 0 }, // E1
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: 100 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: 200 },
+        { sampleID: "1e95d1b8-440a-41f3-ab0a-3a48587bf6f7", detune: -200 },
+        { sampleID: "1e95d1b8-440a-41f3-ab0a-3a48587bf6f7", detune: -100 },
+        { sampleID: "1e95d1b8-440a-41f3-ab0a-3a48587bf6f7", detune: 0 }, // A1
+        { sampleID: "1e95d1b8-440a-41f3-ab0a-3a48587bf6f7", detune: 100 },
+        { sampleID: "1e95d1b8-440a-41f3-ab0a-3a48587bf6f7", detune: 200 },
+        { sampleID: "1e95d1b8-440a-41f3-ab0a-3a48587bf6f7", detune: 300 },
+        { sampleID: "901cfa41-c230-4c26-903b-22f99ee13deb", detune: -300 },
+        { sampleID: "901cfa41-c230-4c26-903b-22f99ee13deb", detune: -200 },
+        { sampleID: "901cfa41-c230-4c26-903b-22f99ee13deb", detune: -100 },
+        { sampleID: "901cfa41-c230-4c26-903b-22f99ee13deb", detune: 0 }, //E2
+        { sampleID: "901cfa41-c230-4c26-903b-22f99ee13deb", detune: 100 },
+        { sampleID: "901cfa41-c230-4c26-903b-22f99ee13deb", detune: 200 },
+        { sampleID: "6eeff2d5-6c90-43c2-91f6-3a68f0911483", detune: -200 },
+        { sampleID: "6eeff2d5-6c90-43c2-91f6-3a68f0911483", detune: -100 },
+        { sampleID: "6eeff2d5-6c90-43c2-91f6-3a68f0911483", detune: 0 }, //A2
+        { sampleID: "6eeff2d5-6c90-43c2-91f6-3a68f0911483", detune: 100 },
+        { sampleID: "6eeff2d5-6c90-43c2-91f6-3a68f0911483", detune: 200 },
+        { sampleID: "6eeff2d5-6c90-43c2-91f6-3a68f0911483", detune: 300 },
+        { sampleID: "53a20b19-712e-4a43-b718-98b7ff897880", detune: -300 },
+        { sampleID: "53a20b19-712e-4a43-b718-98b7ff897880", detune: -200 },
+        { sampleID: "53a20b19-712e-4a43-b718-98b7ff897880", detune: -100 },
+        { sampleID: "53a20b19-712e-4a43-b718-98b7ff897880", detune: 0 }, //E3
+        { sampleID: "53a20b19-712e-4a43-b718-98b7ff897880", detune: 100 },
+        { sampleID: "53a20b19-712e-4a43-b718-98b7ff897880", detune: 200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: -200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: -100 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 }, //A3
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 100 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 300 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 400 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 500 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 600 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 700 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 800 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 900 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1000 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1100 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 }
+      ]
     }
   },
   samples: {
@@ -1434,8 +1711,50 @@ const initialSate: Session = {
       url: "/sounds/8cf86f2f-0b50-42bb-81d8-22731d462161",
       label: "TR808 - CP",
       type: "audio/vnd.wave"
+    },
+    "acc4ea8c-cd40-44f2-b553-0642f411a144": {
+      id: "acc4ea8c-cd40-44f2-b553-0642f411a144",
+      filename: "BASS_STAC_E0.WAV",
+      url: "/sounds/acc4ea8c-cd40-44f2-b553-0642f411a144",
+      label: "BASS_STAC_E0",
+      type: "audio/vnd.wave"
+    },
+    "1e95d1b8-440a-41f3-ab0a-3a48587bf6f7": {
+      id: "1e95d1b8-440a-41f3-ab0a-3a48587bf6f7",
+      filename: "BASS_STAC_A0.WAV",
+      url: "/sounds/1e95d1b8-440a-41f3-ab0a-3a48587bf6f7",
+      label: "BASS_STAC_A0",
+      type: "audio/vnd.wave"
+    },
+    "901cfa41-c230-4c26-903b-22f99ee13deb": {
+      id: "901cfa41-c230-4c26-903b-22f99ee13deb",
+      filename: "BASS_STAC_E1.WAV",
+      url: "/sounds/901cfa41-c230-4c26-903b-22f99ee13deb",
+      label: "BASS_STAC_E1",
+      type: "audio/vnd.wave"
+    },
+    "6eeff2d5-6c90-43c2-91f6-3a68f0911483": {
+      id: "6eeff2d5-6c90-43c2-91f6-3a68f0911483",
+      filename: "BASS_STAC_A1.WAV",
+      url: "/sounds/6eeff2d5-6c90-43c2-91f6-3a68f0911483",
+      label: "BASS_STAC_A1",
+      type: "audio/vnd.wave"
+    },
+    "53a20b19-712e-4a43-b718-98b7ff897880": {
+      id: "53a20b19-712e-4a43-b718-98b7ff897880",
+      filename: "BASS_STAC_E2.WAV",
+      url: "/sounds/53a20b19-712e-4a43-b718-98b7ff897880",
+      label: "BASS_STAC_E2",
+      type: "audio/vnd.wave"
+    },
+    "fc897b72-744c-434b-9018-6e860da11edb": {
+      id: "fc897b72-744c-434b-9018-6e860da11edb",
+      filename: "BASS_STAC_A2.WAV",
+      url: "/sounds/fc897b72-744c-434b-9018-6e860da11edb",
+      label: "BASS_STAC_A2",
+      type: "audio/vnd.wave"
     }
   }
-}
+};
 
 export default initialSate
