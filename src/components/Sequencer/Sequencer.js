@@ -144,11 +144,10 @@ function Sequencer({ orderedTracks }: Props) {
       <Row gutter={prefs.gutter} first={false}>
         <AddTrackWrapper>
           <AddTrack
-            prefs={{
-              color: "grey",
-              width: prefs.panel.width,
-              height: prefs.cellSize
-            }}
+            color={"grey"}
+            width={prefs.panel.width}
+            height={prefs.cellSize}
+            gutter={prefs.gutter}
           />
         </AddTrackWrapper>
       </Row>

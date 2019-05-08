@@ -874,6 +874,7 @@ const initialSate: Session = {
     "a5caf57b-0771-4c56-a600-28a422f0c45d": {
       id: "a5caf57b-0771-4c56-a600-28a422f0c45d",
       label: "TR808-BD",
+      group: "TR808",
       mapping: [
         { sampleID: "7ff6ffa7-9768-4bfc-b6c8-b99a70be556b", detune: 0 },
         { sampleID: "7ff6ffa7-9768-4bfc-b6c8-b99a70be556b", detune: 0 },
@@ -1008,6 +1009,7 @@ const initialSate: Session = {
     "8ba96671-f8b4-45fc-8aa9-6f229154c5db": {
       id: "8ba96671-f8b4-45fc-8aa9-6f229154c5db",
       label: "TR808-SD",
+      group: "TR808",
       mapping: [
         { sampleID: "7f9a144d-64b5-43e0-a3ca-3878085ce582", detune: -100 },
         { sampleID: "7f9a144d-64b5-43e0-a3ca-3878085ce582", detune: -75 },
@@ -1142,6 +1144,7 @@ const initialSate: Session = {
     "eb8ee72b-726d-4238-944f-b220d989a903": {
       id: "eb8ee72b-726d-4238-944f-b220d989a903",
       label: "TR808-OH",
+      group: "TR808",
       mapping: [
         { sampleID: "9dce9279-194e-4d6f-9f07-d7968eb13f63", detune: 0 },
         { sampleID: "9dce9279-194e-4d6f-9f07-d7968eb13f63", detune: 0 },
@@ -1276,6 +1279,7 @@ const initialSate: Session = {
     "3e8329f8-945d-4dde-9307-f14d3542973a": {
       id: "3e8329f8-945d-4dde-9307-f14d3542973a",
       label: "TR808-MA",
+      group: "TR808",
       mapping: [
         { sampleID: "19b606f5-52b5-49f5-a3b6-566c245e0407", detune: 0 },
         { sampleID: "19b606f5-52b5-49f5-a3b6-566c245e0407", detune: 0 },
@@ -1410,6 +1414,7 @@ const initialSate: Session = {
     "77d2c144-2a6c-483a-b94c-8584dcdc2b7c": {
       id: "77d2c144-2a6c-483a-b94c-8584dcdc2b7c",
       label: "TR808-CP",
+      group: "TR808",
       mapping: [
         { sampleID: "8cf86f2f-0b50-42bb-81d8-22731d462161", detune: 0 },
         { sampleID: "8cf86f2f-0b50-42bb-81d8-22731d462161", detune: 0 },
@@ -1544,6 +1549,7 @@ const initialSate: Session = {
     "a025e47b-3e71-4c03-b3b8-de203b3b6f12": {
       id: "a025e47b-3e71-4c03-b3b8-de203b3b6f12",
       label: "BASS-STACCATO",
+      group: "BASS",
       mapping: [
         { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
         { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },

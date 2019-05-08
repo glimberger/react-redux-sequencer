@@ -5,6 +5,8 @@ export type Instrument = {|
 
   label: string,
 
+  group: string,
+
   mapping: [
     {|
       // sample ID (UUIDv4)
