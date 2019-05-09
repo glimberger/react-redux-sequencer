@@ -1,48 +1,98 @@
 // @flow strict
 import * as React from "react"
-// $FlowFixMe
-import styled from "styled-components/macro"
+import { connect } from "react-redux"
+import uuid from "uuid/v4"
 
-import Color from "../../../utils/color/colorLibrary"
+import AddTrackButton from "./AddTrackButton"
+import AddTrackModal from "./AddTrackModal"
+import {
+  getInstrumentListIndexedByGroup,
+  getSamplesByIDs
+} from "../../../redux/reducers"
+import { addTrack } from "../../../redux/actions/session/creators"
 
 import type { MaterialColor } from "../../../utils/color/colorLibrary"
+import type { Instrument } from "../../../redux/store/instrument/types"
+import type { Samples } from "../../../redux/store/sample/types"
 
 type Props = {
+  // ownProps
   color: MaterialColor,
   width: number,
   height: number,
-  gutter: number
+  gutter: number,
+  // stateProps
+  instrumentList: { [group: string]: { [instrumentID: string]: Instrument } },
+  getSamplesByIDs: (sampleIDs: Array<string>) => Samples,
+  // dispatchProps
+  addTrack: (trackID: string, instrument: Instrument, samples: Samples) => void
 }
 
-const Container = styled.div`
-  cursor: pointer;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: ${({ width }) => width}px;
-  height: ${({ height }) => height}px;
-  background: ${({ color }) => Color.get800(color)};
-  border-radius: 3px;
-  color: ${({ color }) => Color.get500(color)};
+type State = {
+  modalIsOpen: boolean,
+  loading: boolean
+}
 
-  &:hover {
-    background: ${({ color }) => Color.get700(color)};
-    color: ${({ color }) => Color.get100(color)};
+class AddTrack extends React.Component<Props, State> {
+  state = {
+    modalIsOpen: false,
+    loading: false
   }
-`
 
-const Plus = styled.div`
-  margin-left: ${({ gutter }) => gutter}px;
-  font-size: 22px;
-  font-weight: bold;
-`
+  openModal = () => {
+    this.setState({ modalIsOpen: true })
+  }
 
-function AddTrack(props: Props) {
-  return (
-    <Container {...props}>
-      <Plus {...props}>+</Plus>
-    </Container>
-  )
+  afterOpenModal = () => {
+    // references are now sync'd and can be accessed.
+  }
+
+  closeModal = () => {
+    this.setState({ modalIsOpen: false })
+  }
+
+  handleNewTrack = (instrument: Instrument) => {
+    this.closeModal()
+
+    const samples = this.props.getSamplesByIDs(instrument.sampleIDs)
+
+    this.props.addTrack(uuid(), instrument, samples)
+  }
+
+  render() {
+    return (
+      <div>
+        <AddTrackButton
+          color={this.props.color}
+          height={this.props.height}
+          width={this.props.width}
+          gutter={this.props.gutter}
+          onClick={this.openModal}
+        />
+
+        <AddTrackModal
+          color={this.props.color}
+          gutter={this.props.gutter}
+          isOpen={this.state.modalIsOpen}
+          onAfterOpen={this.afterOpenModal}
+          onClose={this.closeModal}
+          onInstrumentSelect={this.handleNewTrack}
+          instrumentList={this.props.instrumentList}
+        />
+      </div>
+    )
+  }
 }
 
-export default AddTrack
+const mapStateToProps = state => ({
+  instrumentList: getInstrumentListIndexedByGroup(state),
+  getSamplesByIDs: (sampleIDs: Array<string>) =>
+    getSamplesByIDs(state, sampleIDs)
+})
+
+const AddTrackConnected = connect(
+  mapStateToProps,
+  { addTrack }
+)(AddTrack)
+
+export default AddTrackConnected

@@ -5,6 +5,7 @@ import styled from "styled-components/macro"
 
 import AddTrack from "./AddTrack/AddTrack"
 import TrackWithConnect from "./Track/TrackWithConnect"
+import Color from "../../utils/color/colorLibrary"
 
 import type { Track as TrackType } from "../../redux/store/session/types"
 
@@ -144,7 +145,7 @@ function Sequencer({ orderedTracks }: Props) {
       <Row gutter={prefs.gutter} first={false}>
         <AddTrackWrapper>
           <AddTrack
-            color={"grey"}
+            color={Color.BLUE_GREY}
             width={prefs.panel.width}
             height={prefs.cellSize}
             gutter={prefs.gutter}
