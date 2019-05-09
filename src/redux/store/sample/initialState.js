@@ -37,6 +37,13 @@ export const samples: { [sampleID: string]: Sample } = {
     label: "TR808 - CP",
     type: "audio/vnd.wave"
   },
+  "f57d9727-d7f0-4027-b9cd-fb7b56a79df4": {
+    id: "f57d9727-d7f0-4027-b9cd-fb7b56a79df4",
+    filename: "RS.WAV",
+    url: "/sounds/f57d9727-d7f0-4027-b9cd-fb7b56a79df4",
+    label: "TR808 - RS",
+    type: "audio/vnd.wave"
+  },
   "acc4ea8c-cd40-44f2-b553-0642f411a144": {
     id: "acc4ea8c-cd40-44f2-b553-0642f411a144",
     filename: "BASS_STAC_E0.WAV",
