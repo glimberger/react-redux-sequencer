@@ -10,7 +10,8 @@ const initialSate: Session = {
     "3eef107a-73c2-47d0-8c89-7cfe606dfcbd",
     "7f6938d7-56e5-4d6c-90cd-431edad19a94",
     "2786bd06-ba1b-49d2-822f-2cef416f2a2f",
-    "d8d1a41f-171c-4694-9280-9d77b1b91ca2"
+    "d8d1a41f-171c-4694-9280-9d77b1b91ca2",
+    "5c5b2c9f-a7db-439e-bdeb-bf2989ac1cdf"
   ],
   matrix: {
     "8ebdfbd8-4528-4e5e-932b-987c5405aec5": [
@@ -19,7 +20,7 @@ const initialSate: Session = {
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
@@ -27,15 +28,15 @@ const initialSate: Session = {
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
       { scheduled: true, midi: 69 },
       // beat 9
-      { scheduled: true, midi: 69 },
-      // beat 10
       { scheduled: false, midi: 69 },
+      // beat 10
+      { scheduled: true, midi: 69 },
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
@@ -43,7 +44,7 @@ const initialSate: Session = {
       // beat 13
       { scheduled: false, midi: 69 },
       // beat 14
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 },
       // beat 0
@@ -51,7 +52,7 @@ const initialSate: Session = {
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
@@ -59,15 +60,15 @@ const initialSate: Session = {
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
       { scheduled: true, midi: 69 },
       // beat 9
-      { scheduled: true, midi: 69 },
-      // beat 10
       { scheduled: false, midi: 69 },
+      // beat 10
+      { scheduled: true, midi: 69 },
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
@@ -75,7 +76,7 @@ const initialSate: Session = {
       // beat 13
       { scheduled: false, midi: 69 },
       // beat 14
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 },
       // beat 0
@@ -83,7 +84,7 @@ const initialSate: Session = {
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
@@ -91,15 +92,15 @@ const initialSate: Session = {
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
       { scheduled: true, midi: 69 },
       // beat 9
-      { scheduled: true, midi: 69 },
-      // beat 10
       { scheduled: false, midi: 69 },
+      // beat 10
+      { scheduled: true, midi: 69 },
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
@@ -107,7 +108,7 @@ const initialSate: Session = {
       // beat 13
       { scheduled: false, midi: 69 },
       // beat 14
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 },
       // beat 0
@@ -115,7 +116,7 @@ const initialSate: Session = {
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
@@ -123,15 +124,15 @@ const initialSate: Session = {
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
       { scheduled: true, midi: 69 },
       // beat 9
-      { scheduled: true, midi: 69 },
-      // beat 10
       { scheduled: false, midi: 69 },
+      // beat 10
+      { scheduled: true, midi: 69 },
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
@@ -139,7 +140,7 @@ const initialSate: Session = {
       // beat 13
       { scheduled: false, midi: 69 },
       // beat 14
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 }
     ],
@@ -153,11 +154,11 @@ const initialSate: Session = {
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
@@ -169,11 +170,11 @@ const initialSate: Session = {
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 13
       { scheduled: false, midi: 69 },
       // beat 14
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 },
       // beat 0
@@ -185,11 +186,11 @@ const initialSate: Session = {
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
@@ -201,11 +202,11 @@ const initialSate: Session = {
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 13
       { scheduled: false, midi: 69 },
       // beat 14
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 },
       // beat 0
@@ -217,11 +218,11 @@ const initialSate: Session = {
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
@@ -233,11 +234,11 @@ const initialSate: Session = {
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 13
       { scheduled: false, midi: 69 },
       // beat 14
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 },
       // beat 0
@@ -249,11 +250,11 @@ const initialSate: Session = {
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
@@ -265,17 +266,17 @@ const initialSate: Session = {
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 13
       { scheduled: false, midi: 69 },
       // beat 14
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 }
     ],
     "3eef107a-73c2-47d0-8c89-7cfe606dfcbd": [
       // beat 0
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
@@ -283,31 +284,31 @@ const initialSate: Session = {
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 7
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 8
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 9
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 10
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 11
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 13
-      { scheduled: true, midi: 69 },
-      // beat 14
       { scheduled: false, midi: 69 },
-      // beat 15
+      // beat 14
       { scheduled: true, midi: 69 },
+      // beat 15
+      { scheduled: false, midi: 69 },
       // beat 0
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
@@ -315,31 +316,31 @@ const initialSate: Session = {
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 7
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 8
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 9
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 10
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 11
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 13
-      { scheduled: true, midi: 69 },
-      // beat 14
       { scheduled: false, midi: 69 },
-      // beat 15
+      // beat 14
       { scheduled: true, midi: 69 },
+      // beat 15
+      { scheduled: false, midi: 69 },
       // beat 0
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
@@ -347,31 +348,31 @@ const initialSate: Session = {
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 7
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 8
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 9
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 10
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 11
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 13
-      { scheduled: true, midi: 69 },
-      // beat 14
       { scheduled: false, midi: 69 },
-      // beat 15
+      // beat 14
       { scheduled: true, midi: 69 },
+      // beat 15
+      { scheduled: false, midi: 69 },
       // beat 0
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
@@ -379,157 +380,157 @@ const initialSate: Session = {
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 7
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 8
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 9
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 10
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 11
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: false, midi: 69 },
-      // beat 13
       { scheduled: true, midi: 69 },
-      // beat 14
+      // beat 13
       { scheduled: false, midi: 69 },
+      // beat 14
+      { scheduled: true, midi: 69 },
       // beat 15
-      { scheduled: true, midi: 69 }
+      { scheduled: false, midi: 69 }
     ],
     "7f6938d7-56e5-4d6c-90cd-431edad19a94": [
       // beat 0
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 9
       { scheduled: false, midi: 69 },
       // beat 10
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 13
       { scheduled: false, midi: 69 },
       // beat 14
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 },
       // beat 0
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 9
       { scheduled: false, midi: 69 },
       // beat 10
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 13
       { scheduled: false, midi: 69 },
       // beat 14
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 },
       // beat 0
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 9
       { scheduled: false, midi: 69 },
       // beat 10
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 13
       { scheduled: false, midi: 69 },
       // beat 14
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 },
       // beat 0
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 9
       { scheduled: false, midi: 69 },
       // beat 10
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 13
       { scheduled: false, midi: 69 },
       // beat 14
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 }
     ],
@@ -665,134 +666,264 @@ const initialSate: Session = {
     ],
     "d8d1a41f-171c-4694-9280-9d77b1b91ca2": [
       // beat 0
-      { scheduled: true, midi: 40 },
+      { scheduled: true, midi: 46 },
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 50 },
       // beat 3
-      { scheduled: false, midi: 69 },
+      { scheduled: false, midi: 50 },
       // beat 4
-      { scheduled: true, midi: 40 },
+      { scheduled: true, midi: 50 },
       // beat 5
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 50 },
       // beat 6
       { scheduled: false, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
-      { scheduled: true, midi: 40 },
+      { scheduled: true, midi: 46 },
       // beat 9
       { scheduled: false, midi: 69 },
       // beat 10
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 43 },
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: true, midi: 40 },
+      { scheduled: true, midi: 43 },
       // beat 13
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 43 },
       // beat 14
       { scheduled: false, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 },
       // beat 0
-      { scheduled: true, midi: 33 },
+      { scheduled: true, midi: 46 },
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 50 },
       // beat 3
-      { scheduled: false, midi: 69 },
+      { scheduled: false, midi: 50 },
       // beat 4
-      { scheduled: true, midi: 33 },
+      { scheduled: true, midi: 50 },
       // beat 5
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 50 },
       // beat 6
       { scheduled: false, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
-      { scheduled: true, midi: 33 },
+      { scheduled: true, midi: 46 },
       // beat 9
       { scheduled: false, midi: 69 },
       // beat 10
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 43 },
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: true, midi: 33 },
+      { scheduled: true, midi: 43 },
       // beat 13
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 43 },
       // beat 14
       { scheduled: false, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 },
       // beat 0
-      { scheduled: true, midi: 38 },
+      { scheduled: true, midi: 46 },
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 51 },
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: true, midi: 38 },
+      { scheduled: true, midi: 51 },
       // beat 5
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 51 },
       // beat 6
       { scheduled: false, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
-      { scheduled: true, midi: 38 },
+      { scheduled: true, midi: 46 },
       // beat 9
       { scheduled: false, midi: 69 },
       // beat 10
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 43 },
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: true, midi: 38 },
+      { scheduled: true, midi: 43 },
       // beat 13
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 43 },
       // beat 14
       { scheduled: false, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 },
       // beat 0
-      { scheduled: true, midi: 35 },
+      { scheduled: true, midi: 46 },
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 51 },
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: true, midi: 35 },
+      { scheduled: true, midi: 51 },
       // beat 5
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 51 },
       // beat 6
       { scheduled: false, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
-      { scheduled: true, midi: 35 },
+      { scheduled: true, midi: 46 },
       // beat 9
       { scheduled: false, midi: 69 },
       // beat 10
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 43 },
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: true, midi: 35 },
+      { scheduled: true, midi: 43 },
       // beat 13
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 43 },
       // beat 14
       { scheduled: false, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 }
-      ]
+      ],
+    "5c5b2c9f-a7db-439e-bdeb-bf2989ac1cdf": [
+      // beat 0
+      { scheduled: true, midi: 20 },
+      // beat 1
+      { scheduled: false, midi: 69 },
+      // beat 2
+      { scheduled: true, midi: 43 },
+      // beat 3
+      { scheduled: false, midi: 69 },
+      // beat 4
+      { scheduled: true, midi: 20 },
+      // beat 5
+      { scheduled: false, midi: 69 },
+      // beat 6
+      { scheduled: true, midi: 43 },
+      // beat 7
+      { scheduled: false, midi: 69 },
+      // beat 8
+      { scheduled: true, midi: 20 },
+      // beat 9
+      { scheduled: false, midi: 69 },
+      // beat 10
+      { scheduled: true, midi: 48 },
+      // beat 11
+      { scheduled: false, midi: 69 },
+      // beat 12
+      { scheduled: true, midi: 20 },
+      // beat 13
+      { scheduled: false, midi: 69 },
+      // beat 14
+      { scheduled: true, midi: 48 },
+      // beat 15
+      { scheduled: false, midi: 69 },
+      // beat 0
+      { scheduled: true, midi: 20 },
+      // beat 1
+      { scheduled: false, midi: 69 },
+      // beat 2
+      { scheduled: true, midi: 43 },
+      // beat 3
+      { scheduled: false, midi: 69 },
+      // beat 4
+      { scheduled: true, midi: 20 },
+      // beat 5
+      { scheduled: false, midi: 69 },
+      // beat 6
+      { scheduled: true, midi: 43 },
+      // beat 7
+      { scheduled: false, midi: 69 },
+      // beat 8
+      { scheduled: true, midi: 20 },
+      // beat 9
+      { scheduled: false, midi: 69 },
+      // beat 10
+      { scheduled: true, midi: 48 },
+      // beat 11
+      { scheduled: false, midi: 69 },
+      // beat 12
+      { scheduled: true, midi: 20 },
+      // beat 13
+      { scheduled: false, midi: 69 },
+      // beat 14
+      { scheduled: true, midi: 48 },
+      // beat 15
+      { scheduled: false, midi: 69 },
+      // beat 0
+      { scheduled: true, midi: 20 },
+      // beat 1
+      { scheduled: false, midi: 69 },
+      // beat 2
+      { scheduled: true, midi: 32 },
+      // beat 3
+      { scheduled: false, midi: 69 },
+      // beat 4
+      { scheduled: true, midi: 20 },
+      // beat 5
+      { scheduled: false, midi: 69 },
+      // beat 6
+      { scheduled: true, midi: 32 },
+      // beat 7
+      { scheduled: false, midi: 69 },
+      // beat 8
+      { scheduled: true, midi: 20 },
+      // beat 9
+      { scheduled: false, midi: 69 },
+      // beat 10
+      { scheduled: true, midi: 48 },
+      // beat 11
+      { scheduled: false, midi: 69 },
+      // beat 12
+      { scheduled: true, midi: 20 },
+      // beat 13
+      { scheduled: false, midi: 69 },
+      // beat 14
+      { scheduled: true, midi: 48 },
+      // beat 15
+      { scheduled: false, midi: 69 },
+      // beat 0
+      { scheduled: true, midi: 20 },
+      // beat 1
+      { scheduled: false, midi: 69 },
+      // beat 2
+      { scheduled: true, midi: 32 },
+      // beat 3
+      { scheduled: false, midi: 69 },
+      // beat 4
+      { scheduled: true, midi: 20 },
+      // beat 5
+      { scheduled: false, midi: 69 },
+      // beat 6
+      { scheduled: true, midi: 32 },
+      // beat 7
+      { scheduled: false, midi: 69 },
+      // beat 8
+      { scheduled: true, midi: 20 },
+      // beat 9
+      { scheduled: false, midi: 69 },
+      // beat 10
+      { scheduled: true, midi: 48 },
+      // beat 11
+      { scheduled: false, midi: 69 },
+      // beat 12
+      { scheduled: true, midi: 20 },
+      // beat 13
+      { scheduled: false, midi: 69 },
+      // beat 14
+      { scheduled: true, midi: 48 },
+      // beat 15
+      { scheduled: false, midi: 69 }
+    ]
   },
   activeTrackID: null,
   activeCellBeat: null,
@@ -863,6 +994,18 @@ const initialSate: Session = {
       noteResolution: 2,
       instrumentID: "a025e47b-3e71-4c03-b3b8-de203b3b6f12",
       color: "purple",
+      processing: {
+        gain: { gain: 1 }
+      },
+      muted: false,
+      soloed: false
+    },
+    "5c5b2c9f-a7db-439e-bdeb-bf2989ac1cdf": {
+      id: "5c5b2c9f-a7db-439e-bdeb-bf2989ac1cdf",
+      label: "GuitarChords",
+      noteResolution: 1,
+      instrumentID: "77ecfb13-dc45-4b49-b72b-2aa0695d36a5",
+      color: "indigo",
       processing: {
         gain: { gain: 1 }
       },
@@ -1545,134 +1688,268 @@ const initialSate: Session = {
       id: "a025e47b-3e71-4c03-b3b8-de203b3b6f12",
       label: "BASS-STACCATO",
       mapping: [
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -28 },
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -27 },
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -26 },
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -25 },
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -24 },
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -23 },
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -22 },
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -21 },
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -20 },
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -19 },
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -18 },
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -17 },
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -16 },
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -15 },
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -14 },
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -13 },
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -12 },
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -11 },
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -10 },
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -9 },
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -8 },
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -7 },
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -6 },
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -5 },
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -4 },
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -3 },
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -2 },
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1100 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1000 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -900 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -800 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -700 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -600 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -500 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -400 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -300 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -200 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -100 },
         { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: 0 }, // E1
-        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: 1 },
-        { sampleID: "1e95d1b8-440a-41f3-ab0a-3a48587bf6f7", detune: 2 },
-        { sampleID: "1e95d1b8-440a-41f3-ab0a-3a48587bf6f7", detune: -2 },
-        { sampleID: "1e95d1b8-440a-41f3-ab0a-3a48587bf6f7", detune: -1 }, // A1
-        { sampleID: "1e95d1b8-440a-41f3-ab0a-3a48587bf6f7", detune: 1 },
-        { sampleID: "1e95d1b8-440a-41f3-ab0a-3a48587bf6f7", detune: 2 },
-        { sampleID: "1e95d1b8-440a-41f3-ab0a-3a48587bf6f7", detune: 3 },
-        { sampleID: "901cfa41-c230-4c26-903b-22f99ee13deb", detune: -3 },
-        { sampleID: "901cfa41-c230-4c26-903b-22f99ee13deb", detune: -2 },
-        { sampleID: "901cfa41-c230-4c26-903b-22f99ee13deb", detune: -1 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: 100 },
+        { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: 200 },
+        { sampleID: "1e95d1b8-440a-41f3-ab0a-3a48587bf6f7", detune: -200 },
+        { sampleID: "1e95d1b8-440a-41f3-ab0a-3a48587bf6f7", detune: -100 },
+        { sampleID: "1e95d1b8-440a-41f3-ab0a-3a48587bf6f7", detune: 0 }, // A1
+        { sampleID: "1e95d1b8-440a-41f3-ab0a-3a48587bf6f7", detune: 100 },
+        { sampleID: "1e95d1b8-440a-41f3-ab0a-3a48587bf6f7", detune: 200 },
+        { sampleID: "1e95d1b8-440a-41f3-ab0a-3a48587bf6f7", detune: 300 },
+        { sampleID: "901cfa41-c230-4c26-903b-22f99ee13deb", detune: -300 },
+        { sampleID: "901cfa41-c230-4c26-903b-22f99ee13deb", detune: -200 },
+        { sampleID: "901cfa41-c230-4c26-903b-22f99ee13deb", detune: -100 },
         { sampleID: "901cfa41-c230-4c26-903b-22f99ee13deb", detune: 0 }, //E2
-        { sampleID: "901cfa41-c230-4c26-903b-22f99ee13deb", detune: 1 },
-        { sampleID: "901cfa41-c230-4c26-903b-22f99ee13deb", detune: 2 },
-        { sampleID: "6eeff2d5-6c90-43c2-91f6-3a68f0911483", detune: -2 },
-        { sampleID: "6eeff2d5-6c90-43c2-91f6-3a68f0911483", detune: -1 },
+        { sampleID: "901cfa41-c230-4c26-903b-22f99ee13deb", detune: 100 },
+        { sampleID: "901cfa41-c230-4c26-903b-22f99ee13deb", detune: 200 },
+        { sampleID: "6eeff2d5-6c90-43c2-91f6-3a68f0911483", detune: -200 },
+        { sampleID: "6eeff2d5-6c90-43c2-91f6-3a68f0911483", detune: -100 },
         { sampleID: "6eeff2d5-6c90-43c2-91f6-3a68f0911483", detune: 0 }, //A2
-        { sampleID: "6eeff2d5-6c90-43c2-91f6-3a68f0911483", detune: 1 },
-        { sampleID: "6eeff2d5-6c90-43c2-91f6-3a68f0911483", detune: 2 },
-        { sampleID: "6eeff2d5-6c90-43c2-91f6-3a68f0911483", detune: 3 },
-        { sampleID: "53a20b19-712e-4a43-b718-98b7ff897880", detune: -3 },
-        { sampleID: "53a20b19-712e-4a43-b718-98b7ff897880", detune: -2 },
-        { sampleID: "53a20b19-712e-4a43-b718-98b7ff897880", detune: -1 },
+        { sampleID: "6eeff2d5-6c90-43c2-91f6-3a68f0911483", detune: 100 },
+        { sampleID: "6eeff2d5-6c90-43c2-91f6-3a68f0911483", detune: 200 },
+        { sampleID: "6eeff2d5-6c90-43c2-91f6-3a68f0911483", detune: 300 },
+        { sampleID: "53a20b19-712e-4a43-b718-98b7ff897880", detune: -300 },
+        { sampleID: "53a20b19-712e-4a43-b718-98b7ff897880", detune: -200 },
+        { sampleID: "53a20b19-712e-4a43-b718-98b7ff897880", detune: -100 },
         { sampleID: "53a20b19-712e-4a43-b718-98b7ff897880", detune: 0 }, //E3
-        { sampleID: "53a20b19-712e-4a43-b718-98b7ff897880", detune: 1 },
-        { sampleID: "53a20b19-712e-4a43-b718-98b7ff897880", detune: 2 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: -2 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: -1 },
+        { sampleID: "53a20b19-712e-4a43-b718-98b7ff897880", detune: 100 },
+        { sampleID: "53a20b19-712e-4a43-b718-98b7ff897880", detune: 200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: -200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: -100 },
         { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 }, //A3
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 2 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 3 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 4 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 5 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 6 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 7 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
-        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 0 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 100 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 300 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 400 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 500 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 600 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 700 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 800 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 900 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1000 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1100 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
+        { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 }
+      ]
+    },
+    "77ecfb13-dc45-4b49-b72b-2aa0695d36a5": {
+      id: "77ecfb13-dc45-4b49-b72b-2aa0695d36a5",
+      label: "GuitarChords",
+      mapping: [
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -200 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -100 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: 0 }, //deadG
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: 100 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: 200 },
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: -200 },
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: -100 },
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 100 },
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 200 },
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 300 },
+        { sampleID: "bfac1667-5115-49cd-82dc-f294f54cb447", detune: -300 },
+        { sampleID: "bfac1667-5115-49cd-82dc-f294f54cb447", detune: -200 },
+        { sampleID: "bfac1667-5115-49cd-82dc-f294f54cb447", detune: -100 },
+        { sampleID: "bfac1667-5115-49cd-82dc-f294f54cb447", detune: 0 }, //G
+        { sampleID: "bfac1667-5115-49cd-82dc-f294f54cb447", detune: 100 },
+        { sampleID: "bfac1667-5115-49cd-82dc-f294f54cb447", detune: 200 },
+        { sampleID: "e3a06bcb-ff48-492b-b55c-b9a8a8479aac", detune: -200 },
+        { sampleID: "e3a06bcb-ff48-492b-b55c-b9a8a8479aac", detune: -100 },
+        { sampleID: "e3a06bcb-ff48-492b-b55c-b9a8a8479aac", detune: 0 }, //C
+        { sampleID: "e3a06bcb-ff48-492b-b55c-b9a8a8479aac", detune: 100 },
+        { sampleID: "e3a06bcb-ff48-492b-b55c-b9a8a8479aac", detune: 200 },
+        { sampleID: "e3a06bcb-ff48-492b-b55c-b9a8a8479aac", detune: 300 },
+        { sampleID: "5d394665-a0bb-4d49-8a61-5ffe9912df6c", detune: -300 },
+        { sampleID: "5d394665-a0bb-4d49-8a61-5ffe9912df6c", detune: -200 },
+        { sampleID: "5d394665-a0bb-4d49-8a61-5ffe9912df6c", detune: -100 },
+        { sampleID: "5d394665-a0bb-4d49-8a61-5ffe9912df6c", detune: 0 }, //Gm
+        { sampleID: "5d394665-a0bb-4d49-8a61-5ffe9912df6c", detune: 100 },
+        { sampleID: "5d394665-a0bb-4d49-8a61-5ffe9912df6c", detune: 200 },
+        { sampleID: "97eb4ae4-afe0-408f-88c6-736233409ec9", detune: -200 },
+        { sampleID: "97eb4ae4-afe0-408f-88c6-736233409ec9", detune: -100 },
+        { sampleID: "97eb4ae4-afe0-408f-88c6-736233409ec9", detune: 0 }, //Cm
+        { sampleID: "97eb4ae4-afe0-408f-88c6-736233409ec9", detune: 100 },
+        { sampleID: "97eb4ae4-afe0-408f-88c6-736233409ec9", detune: 200 },
+        { sampleID: "97eb4ae4-afe0-408f-88c6-736233409ec9", detune: 300 },
+        { sampleID: "74c74b98-7e16-4c81-aff8-b21efe16ddb1", detune: -300 },
+        { sampleID: "74c74b98-7e16-4c81-aff8-b21efe16ddb1", detune: -200 },
+        { sampleID: "74c74b98-7e16-4c81-aff8-b21efe16ddb1", detune: -100 },
+        { sampleID: "74c74b98-7e16-4c81-aff8-b21efe16ddb1", detune: 0 }, //G7
+        { sampleID: "74c74b98-7e16-4c81-aff8-b21efe16ddb1", detune: 100 },
+        { sampleID: "74c74b98-7e16-4c81-aff8-b21efe16ddb1", detune: 200 },
+        { sampleID: "3c911ed3-8862-473b-8b48-2aeb00eeecb5", detune: -200 },
+        { sampleID: "3c911ed3-8862-473b-8b48-2aeb00eeecb5", detune: -100 },
+        { sampleID: "3c911ed3-8862-473b-8b48-2aeb00eeecb5", detune: 0 }, //C7
+        { sampleID: "3c911ed3-8862-473b-8b48-2aeb00eeecb5", detune: 100 },
+        { sampleID: "3c911ed3-8862-473b-8b48-2aeb00eeecb5", detune: 200 },
+        { sampleID: "3c911ed3-8862-473b-8b48-2aeb00eeecb5", detune: 300 },
+        { sampleID: "39a5cf0d-8def-43fa-ab3d-1638b9213cb3", detune: -300 },
+        { sampleID: "39a5cf0d-8def-43fa-ab3d-1638b9213cb3", detune: -200 },
+        { sampleID: "39a5cf0d-8def-43fa-ab3d-1638b9213cb3", detune: -100 },
+        { sampleID: "39a5cf0d-8def-43fa-ab3d-1638b9213cb3", detune: 0 }, //Gm7
+        { sampleID: "39a5cf0d-8def-43fa-ab3d-1638b9213cb3", detune: 100 },
+        { sampleID: "39a5cf0d-8def-43fa-ab3d-1638b9213cb3", detune: 200 },
+        { sampleID: "eaacf8f7-0d57-4e8c-a872-bb51315659b3", detune: -200 },
+        { sampleID: "eaacf8f7-0d57-4e8c-a872-bb51315659b3", detune: -100 },
+        { sampleID: "eaacf8f7-0d57-4e8c-a872-bb51315659b3", detune: 0 }, //Cm7
+        { sampleID: "eaacf8f7-0d57-4e8c-a872-bb51315659b3", detune: 100 },
+        { sampleID: "eaacf8f7-0d57-4e8c-a872-bb51315659b3", detune: 200 },
+        { sampleID: "eaacf8f7-0d57-4e8c-a872-bb51315659b3", detune: 300 },
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 } //deadC
       ]
     }
   },
@@ -1747,11 +2024,74 @@ const initialSate: Session = {
       label: "BASS_STAC_E2",
       type: "audio/vnd.wave"
     },
-    "fc897b72-744c-434b-9018-6e860da11edb": {
-      id: "fc897b72-744c-434b-9018-6e860da11edb",
-      filename: "BASS_STAC_A2.WAV",
-      url: "/sounds/fc897b72-744c-434b-9018-6e860da11edb",
-      label: "BASS_STAC_A2",
+    "bfac1667-5115-49cd-82dc-f294f54cb447": {
+      id: "bfac1667-5115-49cd-82dc-f294f54cb447",
+      filename: "GuitarChordStac_G",
+      url: "/sounds/bfac1667-5115-49cd-82dc-f294f54cb447",
+      label: "GuitarChordStac_G",
+      type: "audio/vnd.wave"
+    },
+    "e3a06bcb-ff48-492b-b55c-b9a8a8479aac": {
+      id: "e3a06bcb-ff48-492b-b55c-b9a8a8479aac",
+      filename: "GuitarChordStac_C",
+      url: "/sounds/e3a06bcb-ff48-492b-b55c-b9a8a8479aac",
+      label: "GuitarChordStac_C",
+      type: "audio/vnd.wave"
+    },
+    "97eb4ae4-afe0-408f-88c6-736233409ec9": {
+      id: "97eb4ae4-afe0-408f-88c6-736233409ec9",
+      filename: "GuitarChordStac_Gm",
+      url: "/sounds/97eb4ae4-afe0-408f-88c6-736233409ec9",
+      label: "GuitarChordStac_Gm",
+      type: "audio/vnd.wave"
+    },
+    "5d394665-a0bb-4d49-8a61-5ffe9912df6c": {
+      id: "5d394665-a0bb-4d49-8a61-5ffe9912df6c",
+      filename: "GuitarChordStac_Cm",
+      url: "/sounds/5d394665-a0bb-4d49-8a61-5ffe9912df6c",
+      label: "GuitarChordStac_Cm",
+      type: "audio/vnd.wave"
+    },
+    "74c74b98-7e16-4c81-aff8-b21efe16ddb1": {
+      id: "74c74b98-7e16-4c81-aff8-b21efe16ddb1",
+      filename: "GuitarChordStac_G7",
+      url: "/sounds/74c74b98-7e16-4c81-aff8-b21efe16ddb1",
+      label: "GuitarChordStac_G7",
+      type: "audio/vnd.wave"
+    },
+    "3c911ed3-8862-473b-8b48-2aeb00eeecb5": {
+      id: "3c911ed3-8862-473b-8b48-2aeb00eeecb5",
+      filename: "GuitarChordStac_C7",
+      url: "/sounds/3c911ed3-8862-473b-8b48-2aeb00eeecb5",
+      label: "GuitarChordStac_C7",
+      type: "audio/vnd.wave"
+    },
+    "39a5cf0d-8def-43fa-ab3d-1638b9213cb3": {
+      id: "39a5cf0d-8def-43fa-ab3d-1638b9213cb3",
+      filename: "GuitarChordStac_Gm7",
+      url: "/sounds/39a5cf0d-8def-43fa-ab3d-1638b9213cb3",
+      label: "GuitarChordStac_Gm7",
+      type: "audio/vnd.wave"
+    },
+    "eaacf8f7-0d57-4e8c-a872-bb51315659b3": {
+      id: "eaacf8f7-0d57-4e8c-a872-bb51315659b3",
+      filename: "GuitarChordStac_Cm7",
+      url: "/sounds/eaacf8f7-0d57-4e8c-a872-bb51315659b3",
+      label: "GuitarChordStac_Cm7",
+      type: "audio/vnd.wave"
+    },
+    "899bc068-e687-4928-ba4c-9082c0163304": {
+      id: "899bc068-e687-4928-ba4c-9082c0163304",
+      filename: "GuitarChordDead_G",
+      url: "/sounds/899bc068-e687-4928-ba4c-9082c0163304",
+      label: "GuitarChordDead_G",
+      type: "audio/vnd.wave"
+    },
+    "241d3fec-5a90-4ec1-b57a-635009ffd167": {
+      id: "241d3fec-5a90-4ec1-b57a-635009ffd167",
+      filename: "GuitarChordDead_G",
+      url: "/sounds/241d3fec-5a90-4ec1-b57a-635009ffd167",
+      label: "GuitarChordDead_G",
       type: "audio/vnd.wave"
     }
   }
