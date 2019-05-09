@@ -163,9 +163,13 @@ class VerticalFader extends React.Component<Props> {
 
   render() {
     return (
-      <Wrapper {...this.props} gutter={this.gutter}>
-        <Range {...this.props} gutter={this.gutter}>
-          <InputWrapper {...this.props} gutter={this.gutter}>
+      <Wrapper
+        width={this.props.width}
+        height={this.props.height}
+        color={this.props.color}
+      >
+        <Range gutter={this.gutter}>
+          <InputWrapper>
             <Input
               className="range"
               width={this.props.width}
@@ -184,7 +188,11 @@ class VerticalFader extends React.Component<Props> {
             />
           </InputWrapper>
         </Range>
-        <GainIndicator {...this.props} gutter={this.gutter}>
+        <GainIndicator
+          color={this.props.color}
+          fontSize={this.props.fontSize}
+          gutter={this.gutter}
+        >
           {Volume.toDBString(this.props.value)}
         </GainIndicator>
       </Wrapper>
