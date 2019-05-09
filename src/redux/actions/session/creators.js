@@ -10,7 +10,9 @@ import type {
   ToggleTrackSoloAction,
   SetActiveCellAction,
   ToggleActiveTrackAction,
-  ChangeCellNoteAction
+  ChangeCellNoteAction,
+  AddTrackAction,
+  ChangeTrackLabelAction
 } from "./types"
 import {
   CHANGE_TRACK_GAIN,
@@ -22,9 +24,13 @@ import {
   TOGGLE_TRACK_SOLO,
   SET_ACTIVE_CELL,
   TOGGLE_ACTIVE_TRACK,
-  CHANGE_CELL_NOTE
+  CHANGE_CELL_NOTE,
+  ADD_TRACK,
+  CHANGE_TRACK_LABEL
 } from "./types"
 import type { NoteResolution } from "../../store/session/types"
+import type { Instrument } from "../../store/instrument/types"
+import type { Samples } from "../../store/sample/types"
 
 export function changeTempo(tempo: number): ChangeTempoAction {
   return {
@@ -106,5 +112,26 @@ export function changeCellNote(
   return {
     type: CHANGE_CELL_NOTE,
     payload: { note, beat, trackID }
+  }
+}
+
+export function addTrack(
+  trackID: string,
+  instrument: Instrument,
+  samples: Samples
+): AddTrackAction {
+  return {
+    type: ADD_TRACK,
+    payload: { trackID, instrument, samples }
+  }
+}
+
+export function changeTrackLabel(
+  label: string,
+  trackID: string
+): ChangeTrackLabelAction {
+  return {
+    type: CHANGE_TRACK_LABEL,
+    payload: { label, trackID }
   }
 }

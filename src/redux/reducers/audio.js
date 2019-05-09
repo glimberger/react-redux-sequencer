@@ -8,6 +8,7 @@ import {
 } from "../actions/audio/types"
 import initialState from "../store/audio/initialState"
 import {
+  ADD_TRACK,
   CHANGE_CELL_NOTE,
   CHANGE_MASTER_GAIN,
   CHANGE_TRACK_GAIN,
@@ -17,6 +18,7 @@ import {
 import type { Action, ListenCellNoteAction } from "../actions/audio/types"
 import type { AudioState } from "../store/audio/types"
 import type {
+  AddTrackAction,
   ChangeCellNoteAction,
   ChangeMasterGainAction,
   ChangeTrackGainAction,
@@ -30,6 +32,7 @@ type ReducerAction =
   | ScheduleTrackCellAction
   | ListenCellNoteAction
   | ChangeCellNoteAction
+  | AddTrackAction
 
 const reducer = (
   state: AudioState = initialState,
@@ -66,6 +69,7 @@ const reducer = (
     case SCHEDULE_TRACK_CELL:
     case CHANGE_CELL_NOTE:
     case LISTEN_CELL_NOTE:
+    case ADD_TRACK:
       return {
         ...state,
         events: [...state.events, action]
