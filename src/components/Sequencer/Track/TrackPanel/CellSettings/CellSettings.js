@@ -42,7 +42,7 @@ const StyledSettings = styled.div`
   width: ${({ cellSize, gutter }) => cellSize * 32 + gutter * 31}px;
   height: ${({ height }) => height}px;
   margin-right: ${({ gutter }) => gutter}px;
-  background-color: ${({ color }) => Color.get900Dark(color)};
+  background-color: ${({ color }) => Color.get800Dark(color)};
   color: ${({ color }) => Color.get100(color)};
 `
 
