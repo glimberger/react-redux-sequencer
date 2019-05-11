@@ -10,7 +10,8 @@ const initialSate: Session = {
     "3eef107a-73c2-47d0-8c89-7cfe606dfcbd",
     "7f6938d7-56e5-4d6c-90cd-431edad19a94",
     "2786bd06-ba1b-49d2-822f-2cef416f2a2f",
-    "d8d1a41f-171c-4694-9280-9d77b1b91ca2"
+    "d8d1a41f-171c-4694-9280-9d77b1b91ca2",
+    "5c5b2c9f-a7db-439e-bdeb-bf2989ac1cdf"
   ],
   matrix: {
     "8ebdfbd8-4528-4e5e-932b-987c5405aec5": [
@@ -19,7 +20,7 @@ const initialSate: Session = {
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
@@ -27,15 +28,15 @@ const initialSate: Session = {
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
       { scheduled: true, midi: 69 },
       // beat 9
-      { scheduled: true, midi: 69 },
-      // beat 10
       { scheduled: false, midi: 69 },
+      // beat 10
+      { scheduled: true, midi: 69 },
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
@@ -43,7 +44,7 @@ const initialSate: Session = {
       // beat 13
       { scheduled: false, midi: 69 },
       // beat 14
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 },
       // beat 0
@@ -51,7 +52,7 @@ const initialSate: Session = {
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
@@ -59,15 +60,15 @@ const initialSate: Session = {
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
       { scheduled: true, midi: 69 },
       // beat 9
-      { scheduled: true, midi: 69 },
-      // beat 10
       { scheduled: false, midi: 69 },
+      // beat 10
+      { scheduled: true, midi: 69 },
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
@@ -75,7 +76,7 @@ const initialSate: Session = {
       // beat 13
       { scheduled: false, midi: 69 },
       // beat 14
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 },
       // beat 0
@@ -83,7 +84,7 @@ const initialSate: Session = {
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
@@ -91,15 +92,15 @@ const initialSate: Session = {
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
       { scheduled: true, midi: 69 },
       // beat 9
-      { scheduled: true, midi: 69 },
-      // beat 10
       { scheduled: false, midi: 69 },
+      // beat 10
+      { scheduled: true, midi: 69 },
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
@@ -107,7 +108,7 @@ const initialSate: Session = {
       // beat 13
       { scheduled: false, midi: 69 },
       // beat 14
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 },
       // beat 0
@@ -115,7 +116,7 @@ const initialSate: Session = {
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
@@ -123,15 +124,15 @@ const initialSate: Session = {
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
       { scheduled: true, midi: 69 },
       // beat 9
-      { scheduled: true, midi: 69 },
-      // beat 10
       { scheduled: false, midi: 69 },
+      // beat 10
+      { scheduled: true, midi: 69 },
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
@@ -139,7 +140,7 @@ const initialSate: Session = {
       // beat 13
       { scheduled: false, midi: 69 },
       // beat 14
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 }
     ],
@@ -153,11 +154,11 @@ const initialSate: Session = {
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
@@ -169,11 +170,11 @@ const initialSate: Session = {
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 13
       { scheduled: false, midi: 69 },
       // beat 14
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 },
       // beat 0
@@ -185,11 +186,11 @@ const initialSate: Session = {
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
@@ -201,11 +202,11 @@ const initialSate: Session = {
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 13
       { scheduled: false, midi: 69 },
       // beat 14
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 },
       // beat 0
@@ -217,11 +218,11 @@ const initialSate: Session = {
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
@@ -233,11 +234,11 @@ const initialSate: Session = {
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 13
       { scheduled: false, midi: 69 },
       // beat 14
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 },
       // beat 0
@@ -249,11 +250,11 @@ const initialSate: Session = {
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
@@ -265,17 +266,17 @@ const initialSate: Session = {
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 13
       { scheduled: false, midi: 69 },
       // beat 14
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 }
     ],
     "3eef107a-73c2-47d0-8c89-7cfe606dfcbd": [
       // beat 0
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
@@ -283,31 +284,31 @@ const initialSate: Session = {
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 7
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 8
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 9
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 10
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 11
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 13
-      { scheduled: true, midi: 69 },
-      // beat 14
       { scheduled: false, midi: 69 },
-      // beat 15
+      // beat 14
       { scheduled: true, midi: 69 },
+      // beat 15
+      { scheduled: false, midi: 69 },
       // beat 0
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
@@ -315,31 +316,31 @@ const initialSate: Session = {
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 7
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 8
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 9
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 10
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 11
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 13
-      { scheduled: true, midi: 69 },
-      // beat 14
       { scheduled: false, midi: 69 },
-      // beat 15
+      // beat 14
       { scheduled: true, midi: 69 },
+      // beat 15
+      { scheduled: false, midi: 69 },
       // beat 0
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
@@ -347,31 +348,31 @@ const initialSate: Session = {
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 7
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 8
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 9
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 10
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 11
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 13
-      { scheduled: true, midi: 69 },
-      // beat 14
       { scheduled: false, midi: 69 },
-      // beat 15
+      // beat 14
       { scheduled: true, midi: 69 },
+      // beat 15
+      { scheduled: false, midi: 69 },
       // beat 0
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
@@ -379,157 +380,157 @@ const initialSate: Session = {
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 7
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 8
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 9
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 10
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 69 },
       // beat 11
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: false, midi: 69 },
-      // beat 13
       { scheduled: true, midi: 69 },
-      // beat 14
+      // beat 13
       { scheduled: false, midi: 69 },
+      // beat 14
+      { scheduled: true, midi: 69 },
       // beat 15
-      { scheduled: true, midi: 69 }
+      { scheduled: false, midi: 69 }
     ],
     "7f6938d7-56e5-4d6c-90cd-431edad19a94": [
       // beat 0
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 9
       { scheduled: false, midi: 69 },
       // beat 10
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 13
       { scheduled: false, midi: 69 },
       // beat 14
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 },
       // beat 0
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 9
       { scheduled: false, midi: 69 },
       // beat 10
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 13
       { scheduled: false, midi: 69 },
       // beat 14
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 },
       // beat 0
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 9
       { scheduled: false, midi: 69 },
       // beat 10
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 13
       { scheduled: false, midi: 69 },
       // beat 14
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 },
       // beat 0
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 5
       { scheduled: false, midi: 69 },
       // beat 6
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 9
       { scheduled: false, midi: 69 },
       // beat 10
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 13
       { scheduled: false, midi: 69 },
       // beat 14
-      { scheduled: true, midi: 69 },
+      { scheduled: false, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 }
     ],
@@ -665,131 +666,261 @@ const initialSate: Session = {
     ],
     "d8d1a41f-171c-4694-9280-9d77b1b91ca2": [
       // beat 0
-      { scheduled: true, midi: 40 },
+      { scheduled: true, midi: 46 },
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 50 },
       // beat 3
-      { scheduled: false, midi: 69 },
+      { scheduled: false, midi: 50 },
       // beat 4
-      { scheduled: true, midi: 40 },
+      { scheduled: true, midi: 50 },
       // beat 5
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 50 },
       // beat 6
       { scheduled: false, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
-      { scheduled: true, midi: 40 },
+      { scheduled: true, midi: 46 },
       // beat 9
       { scheduled: false, midi: 69 },
       // beat 10
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 43 },
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: true, midi: 40 },
+      { scheduled: true, midi: 43 },
       // beat 13
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 43 },
       // beat 14
       { scheduled: false, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 },
       // beat 0
-      { scheduled: true, midi: 33 },
+      { scheduled: true, midi: 46 },
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 50 },
       // beat 3
-      { scheduled: false, midi: 69 },
+      { scheduled: false, midi: 50 },
       // beat 4
-      { scheduled: true, midi: 33 },
+      { scheduled: true, midi: 50 },
       // beat 5
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 50 },
       // beat 6
       { scheduled: false, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
-      { scheduled: true, midi: 33 },
+      { scheduled: true, midi: 46 },
       // beat 9
       { scheduled: false, midi: 69 },
       // beat 10
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 43 },
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: true, midi: 33 },
+      { scheduled: true, midi: 43 },
       // beat 13
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 43 },
       // beat 14
       { scheduled: false, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 },
       // beat 0
-      { scheduled: true, midi: 38 },
+      { scheduled: true, midi: 46 },
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 51 },
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: true, midi: 38 },
+      { scheduled: true, midi: 51 },
       // beat 5
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 51 },
       // beat 6
       { scheduled: false, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
-      { scheduled: true, midi: 38 },
+      { scheduled: true, midi: 46 },
       // beat 9
       { scheduled: false, midi: 69 },
       // beat 10
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 43 },
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: true, midi: 38 },
+      { scheduled: true, midi: 43 },
       // beat 13
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 43 },
       // beat 14
       { scheduled: false, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 },
       // beat 0
-      { scheduled: true, midi: 35 },
+      { scheduled: true, midi: 46 },
       // beat 1
       { scheduled: false, midi: 69 },
       // beat 2
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 51 },
       // beat 3
       { scheduled: false, midi: 69 },
       // beat 4
-      { scheduled: true, midi: 35 },
+      { scheduled: true, midi: 51 },
       // beat 5
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 51 },
       // beat 6
       { scheduled: false, midi: 69 },
       // beat 7
       { scheduled: false, midi: 69 },
       // beat 8
-      { scheduled: true, midi: 35 },
+      { scheduled: true, midi: 46 },
       // beat 9
       { scheduled: false, midi: 69 },
       // beat 10
-      { scheduled: false, midi: 69 },
+      { scheduled: true, midi: 43 },
       // beat 11
       { scheduled: false, midi: 69 },
       // beat 12
-      { scheduled: true, midi: 35 },
+      { scheduled: true, midi: 43 },
+      // beat 13
+      { scheduled: true, midi: 43 },
+      // beat 14
+      { scheduled: false, midi: 69 },
+      // beat 15
+      { scheduled: false, midi: 69 }
+    ],
+    "5c5b2c9f-a7db-439e-bdeb-bf2989ac1cdf": [
+      // beat 0
+      { scheduled: true, midi: 20 },
+      // beat 1
+      { scheduled: false, midi: 69 },
+      // beat 2
+      { scheduled: true, midi: 43 },
+      // beat 3
+      { scheduled: false, midi: 69 },
+      // beat 4
+      { scheduled: true, midi: 20 },
+      // beat 5
+      { scheduled: false, midi: 69 },
+      // beat 6
+      { scheduled: true, midi: 43 },
+      // beat 7
+      { scheduled: false, midi: 69 },
+      // beat 8
+      { scheduled: true, midi: 20 },
+      // beat 9
+      { scheduled: false, midi: 69 },
+      // beat 10
+      { scheduled: true, midi: 48 },
+      // beat 11
+      { scheduled: false, midi: 69 },
+      // beat 12
+      { scheduled: true, midi: 20 },
       // beat 13
       { scheduled: false, midi: 69 },
       // beat 14
+      { scheduled: true, midi: 48 },
+      // beat 15
       { scheduled: false, midi: 69 },
+      // beat 0
+      { scheduled: true, midi: 20 },
+      // beat 1
+      { scheduled: false, midi: 69 },
+      // beat 2
+      { scheduled: true, midi: 43 },
+      // beat 3
+      { scheduled: false, midi: 69 },
+      // beat 4
+      { scheduled: true, midi: 20 },
+      // beat 5
+      { scheduled: false, midi: 69 },
+      // beat 6
+      { scheduled: true, midi: 43 },
+      // beat 7
+      { scheduled: false, midi: 69 },
+      // beat 8
+      { scheduled: true, midi: 20 },
+      // beat 9
+      { scheduled: false, midi: 69 },
+      // beat 10
+      { scheduled: true, midi: 48 },
+      // beat 11
+      { scheduled: false, midi: 69 },
+      // beat 12
+      { scheduled: true, midi: 20 },
+      // beat 13
+      { scheduled: false, midi: 69 },
+      // beat 14
+      { scheduled: true, midi: 48 },
+      // beat 15
+      { scheduled: false, midi: 69 },
+      // beat 0
+      { scheduled: true, midi: 20 },
+      // beat 1
+      { scheduled: false, midi: 69 },
+      // beat 2
+      { scheduled: true, midi: 32 },
+      // beat 3
+      { scheduled: false, midi: 69 },
+      // beat 4
+      { scheduled: true, midi: 20 },
+      // beat 5
+      { scheduled: false, midi: 69 },
+      // beat 6
+      { scheduled: true, midi: 32 },
+      // beat 7
+      { scheduled: false, midi: 69 },
+      // beat 8
+      { scheduled: true, midi: 20 },
+      // beat 9
+      { scheduled: false, midi: 69 },
+      // beat 10
+      { scheduled: true, midi: 48 },
+      // beat 11
+      { scheduled: false, midi: 69 },
+      // beat 12
+      { scheduled: true, midi: 20 },
+      // beat 13
+      { scheduled: false, midi: 69 },
+      // beat 14
+      { scheduled: true, midi: 48 },
+      // beat 15
+      { scheduled: false, midi: 69 },
+      // beat 0
+      { scheduled: true, midi: 20 },
+      // beat 1
+      { scheduled: false, midi: 69 },
+      // beat 2
+      { scheduled: true, midi: 32 },
+      // beat 3
+      { scheduled: false, midi: 69 },
+      // beat 4
+      { scheduled: true, midi: 20 },
+      // beat 5
+      { scheduled: false, midi: 69 },
+      // beat 6
+      { scheduled: true, midi: 32 },
+      // beat 7
+      { scheduled: false, midi: 69 },
+      // beat 8
+      { scheduled: true, midi: 20 },
+      // beat 9
+      { scheduled: false, midi: 69 },
+      // beat 10
+      { scheduled: true, midi: 48 },
+      // beat 11
+      { scheduled: false, midi: 69 },
+      // beat 12
+      { scheduled: true, midi: 20 },
+      // beat 13
+      { scheduled: false, midi: 69 },
+      // beat 14
+      { scheduled: true, midi: 48 },
       // beat 15
       { scheduled: false, midi: 69 }
     ]
@@ -863,6 +994,18 @@ const initialSate: Session = {
       noteResolution: 2,
       instrumentID: "a025e47b-3e71-4c03-b3b8-de203b3b6f12",
       color: "blue",
+      processing: {
+        gain: { gain: 1 }
+      },
+      muted: false,
+      soloed: false
+    },
+    "5c5b2c9f-a7db-439e-bdeb-bf2989ac1cdf": {
+      id: "5c5b2c9f-a7db-439e-bdeb-bf2989ac1cdf",
+      label: "GuitarChords",
+      noteResolution: 1,
+      instrumentID: "77ecfb13-dc45-4b49-b72b-2aa0695d36a5",
+      color: "lightBlue",
       processing: {
         gain: { gain: 1 }
       },
@@ -1693,6 +1836,152 @@ const initialSate: Session = {
         { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 },
         { sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 1200 }
       ]
+    },
+    "77ecfb13-dc45-4b49-b72b-2aa0695d36a5": {
+      id: "77ecfb13-dc45-4b49-b72b-2aa0695d36a5",
+      label: "GuitarChords",
+      group: "Cyrille's guitars",
+      sampleIDs: [
+        "e3a06bcb-ff48-492b-b55c-b9a8a8479aac",
+        "97eb4ae4-afe0-408f-88c6-736233409ec9",
+        "5d394665-a0bb-4d49-8a61-5ffe9912df6c",
+        "74c74b98-7e16-4c81-aff8-b21efe16ddb1",
+        "3c911ed3-8862-473b-8b48-2aeb00eeecb5",
+        "39a5cf0d-8def-43fa-ab3d-1638b9213cb3",
+        "eaacf8f7-0d57-4e8c-a872-bb51315659b3",
+        "899bc068-e687-4928-ba4c-9082c0163304",
+        "241d3fec-5a90-4ec1-b57a-635009ffd167"
+      ],
+      mapping: [
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -200 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -100 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: 0 }, //deadG
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: 100 },
+        { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: 200 },
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: -200 },
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: -100 },
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 100 },
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 200 },
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 300 },
+        { sampleID: "bfac1667-5115-49cd-82dc-f294f54cb447", detune: -300 },
+        { sampleID: "bfac1667-5115-49cd-82dc-f294f54cb447", detune: -200 },
+        { sampleID: "bfac1667-5115-49cd-82dc-f294f54cb447", detune: -100 },
+        { sampleID: "bfac1667-5115-49cd-82dc-f294f54cb447", detune: 0 }, //G
+        { sampleID: "bfac1667-5115-49cd-82dc-f294f54cb447", detune: 100 },
+        { sampleID: "bfac1667-5115-49cd-82dc-f294f54cb447", detune: 200 },
+        { sampleID: "e3a06bcb-ff48-492b-b55c-b9a8a8479aac", detune: -200 },
+        { sampleID: "e3a06bcb-ff48-492b-b55c-b9a8a8479aac", detune: -100 },
+        { sampleID: "e3a06bcb-ff48-492b-b55c-b9a8a8479aac", detune: 0 }, //C
+        { sampleID: "e3a06bcb-ff48-492b-b55c-b9a8a8479aac", detune: 100 },
+        { sampleID: "e3a06bcb-ff48-492b-b55c-b9a8a8479aac", detune: 200 },
+        { sampleID: "e3a06bcb-ff48-492b-b55c-b9a8a8479aac", detune: 300 },
+        { sampleID: "5d394665-a0bb-4d49-8a61-5ffe9912df6c", detune: -300 },
+        { sampleID: "5d394665-a0bb-4d49-8a61-5ffe9912df6c", detune: -200 },
+        { sampleID: "5d394665-a0bb-4d49-8a61-5ffe9912df6c", detune: -100 },
+        { sampleID: "5d394665-a0bb-4d49-8a61-5ffe9912df6c", detune: 0 }, //Gm
+        { sampleID: "5d394665-a0bb-4d49-8a61-5ffe9912df6c", detune: 100 },
+        { sampleID: "5d394665-a0bb-4d49-8a61-5ffe9912df6c", detune: 200 },
+        { sampleID: "97eb4ae4-afe0-408f-88c6-736233409ec9", detune: -200 },
+        { sampleID: "97eb4ae4-afe0-408f-88c6-736233409ec9", detune: -100 },
+        { sampleID: "97eb4ae4-afe0-408f-88c6-736233409ec9", detune: 0 }, //Cm
+        { sampleID: "97eb4ae4-afe0-408f-88c6-736233409ec9", detune: 100 },
+        { sampleID: "97eb4ae4-afe0-408f-88c6-736233409ec9", detune: 200 },
+        { sampleID: "97eb4ae4-afe0-408f-88c6-736233409ec9", detune: 300 },
+        { sampleID: "74c74b98-7e16-4c81-aff8-b21efe16ddb1", detune: -300 },
+        { sampleID: "74c74b98-7e16-4c81-aff8-b21efe16ddb1", detune: -200 },
+        { sampleID: "74c74b98-7e16-4c81-aff8-b21efe16ddb1", detune: -100 },
+        { sampleID: "74c74b98-7e16-4c81-aff8-b21efe16ddb1", detune: 0 }, //G7
+        { sampleID: "74c74b98-7e16-4c81-aff8-b21efe16ddb1", detune: 100 },
+        { sampleID: "74c74b98-7e16-4c81-aff8-b21efe16ddb1", detune: 200 },
+        { sampleID: "3c911ed3-8862-473b-8b48-2aeb00eeecb5", detune: -200 },
+        { sampleID: "3c911ed3-8862-473b-8b48-2aeb00eeecb5", detune: -100 },
+        { sampleID: "3c911ed3-8862-473b-8b48-2aeb00eeecb5", detune: 0 }, //C7
+        { sampleID: "3c911ed3-8862-473b-8b48-2aeb00eeecb5", detune: 100 },
+        { sampleID: "3c911ed3-8862-473b-8b48-2aeb00eeecb5", detune: 200 },
+        { sampleID: "3c911ed3-8862-473b-8b48-2aeb00eeecb5", detune: 300 },
+        { sampleID: "39a5cf0d-8def-43fa-ab3d-1638b9213cb3", detune: -300 },
+        { sampleID: "39a5cf0d-8def-43fa-ab3d-1638b9213cb3", detune: -200 },
+        { sampleID: "39a5cf0d-8def-43fa-ab3d-1638b9213cb3", detune: -100 },
+        { sampleID: "39a5cf0d-8def-43fa-ab3d-1638b9213cb3", detune: 0 }, //Gm7
+        { sampleID: "39a5cf0d-8def-43fa-ab3d-1638b9213cb3", detune: 100 },
+        { sampleID: "39a5cf0d-8def-43fa-ab3d-1638b9213cb3", detune: 200 },
+        { sampleID: "eaacf8f7-0d57-4e8c-a872-bb51315659b3", detune: -200 },
+        { sampleID: "eaacf8f7-0d57-4e8c-a872-bb51315659b3", detune: -100 },
+        { sampleID: "eaacf8f7-0d57-4e8c-a872-bb51315659b3", detune: 0 }, //Cm7
+        { sampleID: "eaacf8f7-0d57-4e8c-a872-bb51315659b3", detune: 100 },
+        { sampleID: "eaacf8f7-0d57-4e8c-a872-bb51315659b3", detune: 200 },
+        { sampleID: "eaacf8f7-0d57-4e8c-a872-bb51315659b3", detune: 300 },
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 }, //deadC
+        { sampleID: "241d3fec-5a90-4ec1-b57a-635009ffd167", detune: 0 } //deadC
+      ]
     }
   },
   samples: {
@@ -1771,6 +2060,69 @@ const initialSate: Session = {
       filename: "BASS_STAC_A2.WAV",
       url: "/sounds/fc897b72-744c-434b-9018-6e860da11edb.wav",
       label: "BASS_STAC_A2",
+      type: "audio/wave"
+    },
+    "e3a06bcb-ff48-492b-b55c-b9a8a8479aac": {
+      id: "e3a06bcb-ff48-492b-b55c-b9a8a8479aac",
+      filename: "GuitarChordStac_C",
+      url: "/sounds/e3a06bcb-ff48-492b-b55c-b9a8a8479aac.wav",
+      label: "GuitarChordStac_C",
+      type: "audio/wave"
+    },
+    "97eb4ae4-afe0-408f-88c6-736233409ec9": {
+      id: "97eb4ae4-afe0-408f-88c6-736233409ec9",
+      filename: "GuitarChordStac_Gm",
+      url: "/sounds/97eb4ae4-afe0-408f-88c6-736233409ec9.wav",
+      label: "GuitarChordStac_Gm",
+      type: "audio/wave"
+    },
+    "5d394665-a0bb-4d49-8a61-5ffe9912df6c": {
+      id: "5d394665-a0bb-4d49-8a61-5ffe9912df6c",
+      filename: "GuitarChordStac_Cm",
+      url: "/sounds/5d394665-a0bb-4d49-8a61-5ffe9912df6c.wav",
+      label: "GuitarChordStac_Cm",
+      type: "audio/wave"
+    },
+    "74c74b98-7e16-4c81-aff8-b21efe16ddb1": {
+      id: "74c74b98-7e16-4c81-aff8-b21efe16ddb1",
+      filename: "GuitarChordStac_G7",
+      url: "/sounds/74c74b98-7e16-4c81-aff8-b21efe16ddb1.wav",
+      label: "GuitarChordStac_G7",
+      type: "audio/wave"
+    },
+    "3c911ed3-8862-473b-8b48-2aeb00eeecb5": {
+      id: "3c911ed3-8862-473b-8b48-2aeb00eeecb5",
+      filename: "GuitarChordStac_C7",
+      url: "/sounds/3c911ed3-8862-473b-8b48-2aeb00eeecb5.wav",
+      label: "GuitarChordStac_C7",
+      type: "audio/wave"
+    },
+    "39a5cf0d-8def-43fa-ab3d-1638b9213cb3": {
+      id: "39a5cf0d-8def-43fa-ab3d-1638b9213cb3",
+      filename: "GuitarChordStac_Gm7",
+      url: "/sounds/39a5cf0d-8def-43fa-ab3d-1638b9213cb3.wav",
+      label: "GuitarChordStac_Gm7",
+      type: "audio/wave"
+    },
+    "eaacf8f7-0d57-4e8c-a872-bb51315659b3": {
+      id: "eaacf8f7-0d57-4e8c-a872-bb51315659b3",
+      filename: "GuitarChordStac_Cm7",
+      url: "/sounds/eaacf8f7-0d57-4e8c-a872-bb51315659b3.wav",
+      label: "GuitarChordStac_Cm7",
+      type: "audio/wave"
+    },
+    "899bc068-e687-4928-ba4c-9082c0163304": {
+      id: "899bc068-e687-4928-ba4c-9082c0163304",
+      filename: "GuitarChordDead_G",
+      url: "/sounds/899bc068-e687-4928-ba4c-9082c0163304.wav",
+      label: "GuitarChordDead_G",
+      type: "audio/wave"
+    },
+    "241d3fec-5a90-4ec1-b57a-635009ffd167": {
+      id: "241d3fec-5a90-4ec1-b57a-635009ffd167",
+      filename: "GuitarChordDead_G",
+      url: "/sounds/241d3fec-5a90-4ec1-b57a-635009ffd167.wav",
+      label: "GuitarChordDead_G",
       type: "audio/wave"
     }
   }
