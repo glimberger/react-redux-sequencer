@@ -1,4 +1,8 @@
 // @flow strict
+export type Samples = {
+  [sampleID: string]: Sample
+}
+
 export type Sample = {
   // primary key (UUIDv4)
   id: string,

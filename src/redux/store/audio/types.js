@@ -5,6 +5,7 @@ import type {
   TogglePlayAction
 } from "../../actions/audio/types"
 import type {
+  AddTrackAction,
   ChangeCellNoteAction,
   ChangeMasterGainAction,
   ChangeTrackGainAction,
@@ -26,3 +27,4 @@ export type Event =
   | ScheduleTrackCellAction
   | ListenCellNoteAction
   | ChangeCellNoteAction
+  | AddTrackAction
