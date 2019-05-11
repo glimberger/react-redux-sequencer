@@ -157,6 +157,13 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
     )
 
     audioBuffers.forEach((audioBuffer, idx) => {
+      IN_DEV &&
+        console.debug(
+          "audioBuffer for sample %s: %o",
+          sampleIDs[idx],
+          audioBuffer
+        )
+
       if (audioBuffer) {
         this.audioBuffers.set(sampleIDs[idx], audioBuffer)
       }
