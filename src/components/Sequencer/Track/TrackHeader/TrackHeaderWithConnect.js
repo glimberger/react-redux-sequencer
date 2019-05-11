@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import TrackHeader from "./TrackHeader"
 import { getTrack } from "../../../../redux/reducers"
 import {
+  changeTrackLabel,
   toggleActiveTrack,
   toggleMuteTrack,
   toggleSoloTrack
@@ -24,7 +25,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => ({
   onMuteClick: () => dispatch(toggleMuteTrack(ownProps.trackID)),
   onSoloClick: () => dispatch(toggleSoloTrack(ownProps.trackID)),
-  onTitleClick: () => dispatch(toggleActiveTrack(ownProps.trackID))
+  onTitleClick: () => dispatch(toggleActiveTrack(ownProps.trackID)),
+  changeTrackLabel: (label: string) =>
+    dispatch(changeTrackLabel(label, ownProps.trackID))
 })
 
 const TrackHeaderWithConnect = connect(

@@ -3,18 +3,30 @@ import { combineReducers } from "redux"
 
 import audio from "./audio"
 import session, * as fromSession from "./session"
+import instruments, * as fromInstruments from "./instruments"
+import samples, * as fromSamples from "./samples"
 
 import type { Action as AudioAction } from "../actions/audio/types"
 import type { Action as SessionAction } from "../actions/session/types"
 import type { AudioState } from "../store/audio/types"
 import type { Cell, Session, Track } from "../store/session/types"
-import type { Instrument } from "../store/instrument/types"
+import type { Instrument, Instruments } from "../store/instrument/types"
+import type { Samples } from "../store/sample/types"
+
+type AppState = {
+  audio: AudioState,
+  session: Session,
+  instruments: Instruments,
+  samples: Samples
+}
 
 type AnyAction = AudioAction | SessionAction
 
 const rootReducer = combineReducers<{}, AnyAction>({
   audio,
-  session
+  session,
+  instruments,
+  samples
 })
 
 export default rootReducer
@@ -115,4 +127,17 @@ export function getMutes(state: {
 }): { [trackID: string]: boolean } {
   console.debug("[reducers/index.js] getMutes(", state, ")")
   return fromSession.getMutes(state.session)
+}
+
+export function getInstrumentListIndexedByGroup(
+  state: AppState
+): { [group: string]: { [instrumentID: string]: Instrument } } {
+  return fromInstruments.getInstrumentListIndexedByGroup(state.instruments)
+}
+
+export function getSamplesByIDs(
+  state: AppState,
+  sampleIDs: Array<string>
+): Samples {
+  return fromSamples.getSamplesByIDs(state.samples, sampleIDs)
 }
