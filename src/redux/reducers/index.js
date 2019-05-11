@@ -20,7 +20,7 @@ type AppState = {
   samples: Samples
 }
 
-type AnyAction = AudioAction | SessionAction
+export type AnyAction = AudioAction | SessionAction
 
 const rootReducer = combineReducers<{}, AnyAction>({
   audio,

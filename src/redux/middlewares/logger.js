@@ -1,5 +1,12 @@
 // @flow strict
-const logger = store => next => action => {
+import type { Dispatch } from "redux"
+import type { AnyAction } from "../reducers"
+import type { Store } from "redux"
+import type { AppState } from "../store/configureStore"
+
+const logger = (store: Store<AppState, AnyAction>) => (
+  next: Dispatch<AnyAction>
+) => (action: AnyAction) => {
   if (!console.group) {
     next(action)
   }
