@@ -2,6 +2,7 @@
 import * as React from "react"
 import { connect } from "react-redux"
 
+import { IN_DEV } from "../../utils/env"
 import {
   announceBeat,
   clearEventQueue,
@@ -180,7 +181,7 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
   }
 
   componentDidMount(): void {
-    console.debug("[AudioEngine]", "componentDidMount")
+    IN_DEV && console.debug("[AudioEngine]", "componentDidMount")
     this.setUp(this.audioContext)
     this.props.setAudioEngineReady()
   }
@@ -197,7 +198,7 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
   }
 
   componentWillUnmount() {
-    console.debug("[AudioEngine]", "componentWillUnmount")
+    IN_DEV && console.debug("[AudioEngine]", "componentWillUnmount")
     this.audioContext.close()
     this.props.resetTransport()
     if (this.state.timer) {
@@ -210,7 +211,7 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
   }
 
   componentWillUpdate(props) {
-    console.debug("[AudioEngine]", "componentWillUpdate")
+    IN_DEV && console.debug("[AudioEngine]", "componentWillUpdate")
     props.events.forEach(this.processEvent)
     props.clearEventQueue()
   }

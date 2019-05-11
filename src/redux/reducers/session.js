@@ -406,48 +406,40 @@ const sessionReducer = (state: Session = initialSate, action: Action) => {
 export default sessionReducer
 
 export function getOrderedTracks(state: Session): Array<Track> {
-  console.debug("[reducers/session.js] getOrderedTracks(", state, ")")
   return state.trackOrder.map(trackID => {
     return state.tracks[trackID]
   })
 }
 
 export function getTrack(state: Session, trackID: string): Track {
-  console.debug("[reducers/session.js] getTrack(", state, ",", trackID, ")")
   return state.tracks[trackID]
 }
 
 export function getActiveTrack(state: Session): ?Track {
-  console.debug("[reducers/session.js] getActiveTrack(", state, ")")
   return state.activeTrackID ? state.tracks[state.activeTrackID] : null
 }
 
 export function getCellRow(state: Session, trackID: string): Array<Cell> {
-  console.debug("[reducers/session.js] getCellRow(", state, ",", trackID, ")")
   return state.matrix[trackID]
 }
 
 export function getCell(state: Session, trackID: string, beat: number): Cell {
-  console.debug("[reducers/session.js] getCell(", state, ",", trackID, ")")
   return getCellRow(state, trackID)[beat]
 }
 
 export function getActiveCell(state: Session): ?Cell {
-  console.debug("[reducers/session.js] getActiveCell(", state, ")")
   return state.activeTrackID !== null && state.activeCellBeat !== null
     ? getCellRow(state, state.activeTrackID)[state.activeCellBeat]
     : null
 }
 
 export function getInstrument(state: Session, trackID: string): Instrument {
-  console.debug("[reducers/session.js] getInstrument(", state, trackID, ")")
   const instrumentID = getTrack(state, trackID).instrumentID
 
   return state.instruments[instrumentID]
 }
 
 export function getSample(state: Session, trackID: string, note: number) {
-  console.debug("[reducers/session.js] getSample(", state, trackID, note, ")")
   const instrument = getInstrument(state, trackID)
   const sampleID = instrument.mapping[note].sampleID
 
@@ -455,7 +447,6 @@ export function getSample(state: Session, trackID: string, note: number) {
 }
 
 export function getSolos(state: Session): { [trackID: string]: boolean } {
-  console.debug("[reducers/session.js] getSolos(", state, ")")
   const solos = {}
   state.trackOrder.forEach(trackID => {
     solos[trackID] = state.tracks[trackID].soloed
@@ -473,7 +464,6 @@ export function isSoloActive(state: Session): boolean {
 }
 
 export function getMutes(state: Session): { [trackID: string]: boolean } {
-  console.debug("[reducers/session.js] getMutes(", state, ")")
   const mutes = {}
   state.trackOrder.forEach(trackID => {
     mutes[trackID] = state.tracks[trackID].muted

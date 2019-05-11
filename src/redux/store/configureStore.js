@@ -4,11 +4,12 @@ import { composeWithDevTools } from "redux-devtools-extension"
 
 import rootReducer from "../reducers"
 import loggerMiddleware from "../middlewares/logger"
+import { NOT_IN_PROD } from "../../utils/env"
 
 const configureStore = () => {
   const middlewares = []
 
-  if (process.env.NODE_ENV !== "production") {
+  if (NOT_IN_PROD) {
     middlewares.push(loggerMiddleware)
   }
 
@@ -17,7 +18,7 @@ const configureStore = () => {
   const enhancers = [middlewareEnhancer]
   const composedEnhancers = composeWithDevTools(...enhancers)
 
-  if (process.env.NODE_ENV !== "production" && module.hot) {
+  if (NOT_IN_PROD && module.hot) {
     module.hot.accept("../reducers", () => store.replaceReducer(rootReducer))
   }
 
