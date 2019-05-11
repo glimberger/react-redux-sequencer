@@ -1,8 +1,8 @@
 // @flow strict
 import * as React from "react"
 import { connect } from "react-redux"
-import debounce from "lodash/debounce"
 
+import { IN_DEV } from "../../utils/env"
 import {
   announceBeat,
   clearEventQueue,
@@ -10,6 +10,7 @@ import {
   setAudioEngineReady,
   resetTransport
 } from "../../redux/actions/audio/creators"
+import { getMutes, getSolos, isSoloActive } from "../../redux/reducers"
 
 import createContext from "../../audio/context/createContext"
 import type {
@@ -25,14 +26,19 @@ import {
   changeTrackGain
 } from "../../redux/actions/session/creators"
 import type {
+  AddTrackAction,
   ChangeCellNoteAction,
   ChangeMasterGainAction,
   ChangeTrackGainAction,
   ScheduleTrackCellAction
 } from "../../redux/actions/session/types"
-import type { Cell, Session, Track } from "../../redux/store/session/types"
-import type { Sample } from "../../redux/store/sample/types"
-import { getMutes, getSolos, isSoloActive } from "../../redux/reducers"
+import type {
+  Cell,
+  InstrumentProcessing,
+  Session,
+  Track
+} from "../../redux/store/session/types"
+import type { Samples } from "../../redux/store/sample/types"
 import type { Instrument } from "../../redux/store/instrument/types"
 
 type AudioEvent =
@@ -44,6 +50,7 @@ type AudioEvent =
   | ClearEventQueueAction
   | ListenCellNoteAction
   | ChangeCellNoteAction
+  | AddTrackAction
 
 type StateProps = {
   ...AudioState,
@@ -115,46 +122,32 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
   }
 
   setUp = (ctx: AudioContext) => {
-    const { tracks, samples, masterGain } = this.props
-
     // set master gain node and connect it to output
     this.masterGainNode.connect(ctx.destination)
-    this.masterGainNode.gain.setValueAtTime(masterGain, ctx.currentTime)
+    this.masterGainNode.gain.setValueAtTime(
+      this.props.masterGain,
+      ctx.currentTime
+    )
 
     this.audioBuffers = new Map<string, AudioBuffer>()
     this.audioNodes = new Map<string, { gain: AudioNode }>()
 
-    // load session samples
-    this.loadSamples(ctx, samples)
-    // Object.keys(samples).forEach(async sampleID => {
-    //   const { url } = samples[sampleID]
-    //   const audioBuffer = await this.loadSound(url, ctx)
-    //
-    //   if (audioBuffer) {
-    //     this.audioBuffers.set(sampleID, audioBuffer)
-    //   }
-    // })
+    this.loadSamples(ctx, this.props.samples).catch(error =>
+      console.error(error)
+    )
 
-    Object.keys(tracks).forEach(trackID => {
-      const { processing } = tracks[trackID]
-
-      // set the track gain node and connect it to the master gain node
-      const gainNode = this.audioContext.createGain()
-      gainNode.connect(this.masterGainNode)
-      gainNode.gain.setValueAtTime(processing.gain.gain, ctx.currentTime)
-
-      let nodes = this.audioNodes.get(trackID) || {}
-      nodes.gain = gainNode
-      this.audioNodes.set(trackID, nodes)
+    Object.keys(this.props.tracks).forEach(trackID => {
+      this.connectTrack(
+        this.audioContext,
+        trackID,
+        this.props.tracks[trackID].processing,
+        this.audioNodes,
+        this.masterGainNode
+      )
     })
   }
 
-  loadSamples = async (
-    ctx: AudioContext,
-    samples: {
-      [sampleID: string]: Sample
-    }
-  ) => {
+  loadSamples = async (ctx: AudioContext, samples: Samples) => {
     const sampleIDs = Object.keys(samples).map(sampleID => sampleID)
     const audioBuffers = await Promise.all(
       Object.keys(samples).map(sampleID => {
@@ -164,14 +157,38 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
     )
 
     audioBuffers.forEach((audioBuffer, idx) => {
+      IN_DEV &&
+        console.debug(
+          "audioBuffer for sample %s: %o",
+          sampleIDs[idx],
+          audioBuffer
+        )
+
       if (audioBuffer) {
         this.audioBuffers.set(sampleIDs[idx], audioBuffer)
       }
     })
   }
 
+  connectTrack = (
+    ctx: AudioContext,
+    trackID: string,
+    processing: InstrumentProcessing,
+    audioNodes: Map<string, { gain: AudioNode }>,
+    masterGainNode: AudioNode
+  ) => {
+    // set the track gain node and connect it to the master gain node
+    const gainNode = ctx.createGain()
+    gainNode.connect(masterGainNode)
+    gainNode.gain.setValueAtTime(processing.gain.gain, ctx.currentTime)
+
+    let nodes = audioNodes.get(trackID) || {}
+    nodes.gain = gainNode
+    audioNodes.set(trackID, nodes)
+  }
+
   componentDidMount(): void {
-    console.log("AudioEngine", "componentDidMount")
+    IN_DEV && console.debug("[AudioEngine]", "componentDidMount")
     this.setUp(this.audioContext)
     this.props.setAudioEngineReady()
   }
@@ -188,7 +205,7 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
   }
 
   componentWillUnmount() {
-    console.log("AudioEngine", "componentWillUnmount")
+    IN_DEV && console.debug("[AudioEngine]", "componentWillUnmount")
     this.audioContext.close()
     this.props.resetTransport()
     if (this.state.timer) {
@@ -201,7 +218,7 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
   }
 
   componentWillUpdate(props) {
-    console.log("AudioEngine", "componentWillUpdate")
+    IN_DEV && console.debug("[AudioEngine]", "componentWillUpdate")
     props.events.forEach(this.processEvent)
     props.clearEventQueue()
   }
@@ -245,20 +262,6 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
       source.connect(this.masterGainNode)
       source.start(this.audioContext.currentTime)
     }
-  }
-
-  debouncePlaySound(
-    _trackID: string,
-    _beat: number,
-    _note: number | null,
-    _tracks: { [p: string]: Track },
-    _instruments: { [p: string]: Instrument },
-    _matrix: { [p: string]: Array<Cell> },
-    _audioContext: AudioContext,
-    _audioBuffers: Map<string, AudioBuffer>,
-    delay: number = 500
-  ) {
-    debounce(this.playSound, delay)
   }
 
   processEvent = (event: AudioEvent) => {
@@ -342,6 +345,19 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
         )
         break
 
+      case "ADD_TRACK":
+        this.loadSamples(this.audioContext, event.payload.samples).catch(
+          error => console.log(error)
+        )
+        this.connectTrack(
+          this.audioContext,
+          event.payload.trackID,
+          { gain: { gain: 1 } },
+          this.audioNodes,
+          this.masterGainNode
+        )
+        break
+
       default:
         break
     }
@@ -421,11 +437,18 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
       }
 
       const audioNodes = this.audioNodes.get(trackID)
+
+      console.assert(
+        typeof audioNodes !== "undefined",
+        "'audioNodes' should contain audio nodes,",
+        audioNodes,
+        "given."
+      )
       if (!audioNodes) {
         return
       }
 
-      const source = this.audioContext.createBufferSource()
+      const source: AudioBufferSourceNode = this.audioContext.createBufferSource()
       source.detune.value = detune
 
       const gainNode = audioNodes.gain

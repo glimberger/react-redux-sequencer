@@ -1,5 +1,7 @@
 // @flow strict
 import type { NoteResolution } from "../../store/session/types"
+import type { Instrument } from "../../store/instrument/types"
+import type { Samples } from "../../store/sample/types"
 
 export const CHANGE_TEMPO = "CHANGE_TEMPO"
 export const CHANGE_MASTER_GAIN = "CHANGE_MASTER_GAIN"
@@ -12,6 +14,7 @@ export const TOGGLE_TRACK_SOLO = "TOGGLE_TRACK_SOLO"
 export const TOGGLE_ACTIVE_TRACK = "TOGGLE_ACTIVE_TRACK"
 export const SET_ACTIVE_CELL = "SET_ACTIVE_CELL"
 export const CHANGE_CELL_NOTE = "CHANGE_CELL_NOTE"
+export const CHANGE_TRACK_LABEL = "CHANGE_TRACK_LABEL"
 
 export type ChangeMasterGainAction = {|
   type: "CHANGE_MASTER_GAIN",
@@ -35,7 +38,7 @@ export type ScheduleTrackCellAction = {|
 
 export type AddTrackAction = {|
   type: "ADD_TRACK",
-  payload: {| instrumentID: string |}
+  payload: {| trackID: string, instrument: Instrument, samples: Samples |}
 |}
 
 export type ChangeNoteResolution = {|
@@ -68,6 +71,11 @@ export type ChangeCellNoteAction = {|
   payload: {| note: number, beat: number, trackID: string |}
 |}
 
+export type ChangeTrackLabelAction = {|
+  type: "CHANGE_TRACK_LABEL",
+  payload: {| label: string, trackID: string |}
+|}
+
 export type Action =
   | ChangeMasterGainAction
   | ChangeTrackGainAction
@@ -80,3 +88,4 @@ export type Action =
   | ToggleActiveTrackAction
   | SetActiveCellAction
   | ChangeCellNoteAction
+  | ChangeTrackLabelAction

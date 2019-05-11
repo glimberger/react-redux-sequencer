@@ -1,14 +1,17 @@
 // @flow strict
+import { trackColors } from "../../utils/color/colorLibrary"
 
 import type { Action } from "../actions/session/types"
 import type { Session, Track, Cell } from "../store/session/types"
 
 import {
+  ADD_TRACK,
   CHANGE_CELL_NOTE,
   CHANGE_MASTER_GAIN,
   CHANGE_NOTE_RESOLUTION,
   CHANGE_TEMPO,
   CHANGE_TRACK_GAIN,
+  CHANGE_TRACK_LABEL,
   SCHEDULE_TRACK_CELL,
   SET_ACTIVE_CELL,
   TOGGLE_ACTIVE_TRACK,
@@ -16,7 +19,36 @@ import {
   TOGGLE_TRACK_SOLO
 } from "../actions/session/types"
 import initialSate from "../store/session/initialState"
-import type { Instrument } from "../store/instrument/types"
+
+import type { Instrument, Instruments } from "../store/instrument/types"
+import type { Samples } from "../store/sample/types"
+import type { MaterialColor } from "../../utils/color/colorLibrary"
+
+const instrumentsReducer = (state: Instruments, action: Action) => {
+  switch (action.type) {
+    case ADD_TRACK:
+      return {
+        ...state,
+        [action.payload.instrument.id]: action.payload.instrument
+      }
+
+    default:
+      return state
+  }
+}
+
+const samplesReducer = (state: Samples, action: Action) => {
+  switch (action.type) {
+    case ADD_TRACK:
+      return {
+        ...state,
+        ...action.payload.samples
+      }
+
+    default:
+      return state
+  }
+}
 
 const cellReducer = (state: Cell, action: Action) => {
   switch (action.type) {
@@ -47,6 +79,138 @@ const cellRowReducer = (state: Array<Cell>, action: Action) => {
         ...state.slice(action.payload.beat + 1)
       ]
 
+    case ADD_TRACK:
+      return [
+        // beat 0
+        { scheduled: false, midi: 69 },
+        // beat 1
+        { scheduled: false, midi: 69 },
+        // beat 2
+        { scheduled: false, midi: 69 },
+        // beat 3
+        { scheduled: false, midi: 69 },
+        // beat 4
+        { scheduled: false, midi: 69 },
+        // beat 5
+        { scheduled: false, midi: 69 },
+        // beat 6
+        { scheduled: false, midi: 69 },
+        // beat 7
+        { scheduled: false, midi: 69 },
+        // beat 8
+        { scheduled: false, midi: 69 },
+        // beat 9
+        { scheduled: false, midi: 69 },
+        // beat 10
+        { scheduled: false, midi: 69 },
+        // beat 11
+        { scheduled: false, midi: 69 },
+        // beat 12
+        { scheduled: false, midi: 69 },
+        // beat 13
+        { scheduled: false, midi: 69 },
+        // beat 14
+        { scheduled: false, midi: 69 },
+        // beat 15
+        { scheduled: false, midi: 69 },
+        // beat 0
+        { scheduled: false, midi: 69 },
+        // beat 1
+        { scheduled: false, midi: 69 },
+        // beat 2
+        { scheduled: false, midi: 69 },
+        // beat 3
+        { scheduled: false, midi: 69 },
+        // beat 4
+        { scheduled: false, midi: 69 },
+        // beat 5
+        { scheduled: false, midi: 69 },
+        // beat 6
+        { scheduled: false, midi: 69 },
+        // beat 7
+        { scheduled: false, midi: 69 },
+        // beat 8
+        { scheduled: false, midi: 69 },
+        // beat 9
+        { scheduled: false, midi: 69 },
+        // beat 10
+        { scheduled: false, midi: 69 },
+        // beat 11
+        { scheduled: false, midi: 69 },
+        // beat 12
+        { scheduled: false, midi: 69 },
+        // beat 13
+        { scheduled: false, midi: 69 },
+        // beat 14
+        { scheduled: false, midi: 69 },
+        // beat 15
+        { scheduled: false, midi: 69 },
+        // beat 0
+        { scheduled: false, midi: 69 },
+        // beat 1
+        { scheduled: false, midi: 69 },
+        // beat 2
+        { scheduled: false, midi: 69 },
+        // beat 3
+        { scheduled: false, midi: 69 },
+        // beat 4
+        { scheduled: false, midi: 69 },
+        // beat 5
+        { scheduled: false, midi: 69 },
+        // beat 6
+        { scheduled: false, midi: 69 },
+        // beat 7
+        { scheduled: false, midi: 69 },
+        // beat 8
+        { scheduled: false, midi: 69 },
+        // beat 9
+        { scheduled: false, midi: 69 },
+        // beat 10
+        { scheduled: false, midi: 69 },
+        // beat 11
+        { scheduled: false, midi: 69 },
+        // beat 12
+        { scheduled: false, midi: 69 },
+        // beat 13
+        { scheduled: false, midi: 69 },
+        // beat 14
+        { scheduled: false, midi: 69 },
+        // beat 15
+        { scheduled: false, midi: 69 },
+        // beat 0
+        { scheduled: false, midi: 69 },
+        // beat 1
+        { scheduled: false, midi: 69 },
+        // beat 2
+        { scheduled: false, midi: 69 },
+        // beat 3
+        { scheduled: false, midi: 69 },
+        // beat 4
+        { scheduled: false, midi: 69 },
+        // beat 5
+        { scheduled: false, midi: 69 },
+        // beat 6
+        { scheduled: false, midi: 69 },
+        // beat 7
+        { scheduled: false, midi: 69 },
+        // beat 8
+        { scheduled: false, midi: 69 },
+        // beat 9
+        { scheduled: false, midi: 69 },
+        // beat 10
+        { scheduled: false, midi: 69 },
+        // beat 11
+        { scheduled: false, midi: 69 },
+        // beat 12
+        { scheduled: false, midi: 69 },
+        // beat 13
+        { scheduled: false, midi: 69 },
+        // beat 14
+        { scheduled: false, midi: 69 },
+        // beat 15
+        { scheduled: false, midi: 69 }
+      ]
+
     default:
       return state
   }
@@ -59,6 +223,7 @@ const matrixReducer = (
   switch (action.type) {
     case CHANGE_CELL_NOTE:
     case SCHEDULE_TRACK_CELL:
+    case ADD_TRACK:
       return {
         ...state,
         [action.payload.trackID]: cellRowReducer(
@@ -108,6 +273,12 @@ const trackReducer = (state: Track, action: Action) => {
         matrix: {}
       }
 
+    case CHANGE_TRACK_LABEL:
+      return {
+        ...state,
+        label: action.payload.label
+      }
+
     default:
       return state
   }
@@ -119,6 +290,7 @@ const tracksReducer = (state: { [trackID: string]: Track }, action: Action) => {
     case CHANGE_NOTE_RESOLUTION:
     case TOGGLE_TRACK_SOLO:
     case TOGGLE_TRACK_MUTE:
+    case CHANGE_TRACK_LABEL:
       return {
         ...state,
         [action.payload.trackID]: trackReducer(
@@ -127,9 +299,42 @@ const tracksReducer = (state: { [trackID: string]: Track }, action: Action) => {
         )
       }
 
+    case ADD_TRACK:
+      return {
+        ...state,
+        [action.payload.trackID]: {
+          id: action.payload.trackID,
+          label: `[${action.payload.instrument.label}]`,
+          noteResolution: 1,
+          instrumentID: action.payload.instrument.id,
+          color: getNextColor(state),
+          processing: {
+            gain: { gain: 1 }
+          },
+          muted: false,
+          soloed: false
+        }
+      }
+
     default:
       return state
   }
+}
+
+function getNextColor(state: { [trackID: string]: Track }): MaterialColor {
+  const colorsInUse = Object.keys(state).map(trackID => state[trackID].color)
+
+  const filterColorsNotInUse = color => !colorsInUse.includes(color)
+  const colorChoice = trackColors.filter(filterColorsNotInUse)
+
+  if (colorChoice.length !== 0) {
+    return colorChoice[0]
+  }
+
+  // pick a random color
+  const randomIndex = Math.floor(Math.random() * (trackColors.length - 1))
+
+  return trackColors[randomIndex]
 }
 
 const sessionReducer = (state: Session = initialSate, action: Action) => {
@@ -150,6 +355,7 @@ const sessionReducer = (state: Session = initialSate, action: Action) => {
     case CHANGE_NOTE_RESOLUTION:
     case TOGGLE_TRACK_SOLO:
     case TOGGLE_TRACK_MUTE:
+    case CHANGE_TRACK_LABEL:
       return {
         ...state,
         tracks: tracksReducer(state.tracks, action)
@@ -177,6 +383,21 @@ const sessionReducer = (state: Session = initialSate, action: Action) => {
         activeCellBeat: action.payload.beat
       }
 
+    case ADD_TRACK:
+      return {
+        ...state,
+        // update trackOrder
+        trackOrder: [...state.trackOrder, action.payload.trackID],
+        // new entry in matrix
+        matrix: matrixReducer(state.matrix, action),
+        // new entry in tracks
+        tracks: tracksReducer(state.tracks, action),
+        // new entry in instruments
+        instruments: instrumentsReducer(state.instruments, action),
+        // update samples list
+        samples: samplesReducer(state.samples, action)
+      }
+
     default:
       return state
   }
@@ -185,48 +406,40 @@ const sessionReducer = (state: Session = initialSate, action: Action) => {
 export default sessionReducer
 
 export function getOrderedTracks(state: Session): Array<Track> {
-  console.debug("[reducers/session.js] getOrderedTracks(", state, ")")
   return state.trackOrder.map(trackID => {
     return state.tracks[trackID]
   })
 }
 
 export function getTrack(state: Session, trackID: string): Track {
-  console.debug("[reducers/session.js] getTrack(", state, ",", trackID, ")")
   return state.tracks[trackID]
 }
 
 export function getActiveTrack(state: Session): ?Track {
-  console.debug("[reducers/session.js] getActiveTrack(", state, ")")
   return state.activeTrackID ? state.tracks[state.activeTrackID] : null
 }
 
 export function getCellRow(state: Session, trackID: string): Array<Cell> {
-  console.debug("[reducers/session.js] getCellRow(", state, ",", trackID, ")")
   return state.matrix[trackID]
 }
 
 export function getCell(state: Session, trackID: string, beat: number): Cell {
-  console.debug("[reducers/session.js] getCell(", state, ",", trackID, ")")
   return getCellRow(state, trackID)[beat]
 }
 
 export function getActiveCell(state: Session): ?Cell {
-  console.debug("[reducers/session.js] getActiveCell(", state, ")")
   return state.activeTrackID !== null && state.activeCellBeat !== null
     ? getCellRow(state, state.activeTrackID)[state.activeCellBeat]
     : null
 }
 
 export function getInstrument(state: Session, trackID: string): Instrument {
-  console.debug("[reducers/session.js] getInstrument(", state, trackID, ")")
   const instrumentID = getTrack(state, trackID).instrumentID
 
   return state.instruments[instrumentID]
 }
 
 export function getSample(state: Session, trackID: string, note: number) {
-  console.debug("[reducers/session.js] getSample(", state, trackID, note, ")")
   const instrument = getInstrument(state, trackID)
   const sampleID = instrument.mapping[note].sampleID
 
@@ -234,7 +447,6 @@ export function getSample(state: Session, trackID: string, note: number) {
 }
 
 export function getSolos(state: Session): { [trackID: string]: boolean } {
-  console.debug("[reducers/session.js] getSolos(", state, ")")
   const solos = {}
   state.trackOrder.forEach(trackID => {
     solos[trackID] = state.tracks[trackID].soloed
@@ -252,7 +464,6 @@ export function isSoloActive(state: Session): boolean {
 }
 
 export function getMutes(state: Session): { [trackID: string]: boolean } {
-  console.debug("[reducers/session.js] getMutes(", state, ")")
   const mutes = {}
   state.trackOrder.forEach(trackID => {
     mutes[trackID] = state.tracks[trackID].muted

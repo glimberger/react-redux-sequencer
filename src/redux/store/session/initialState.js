@@ -792,7 +792,7 @@ const initialSate: Session = {
       { scheduled: false, midi: 69 },
       // beat 15
       { scheduled: false, midi: 69 }
-      ]
+    ]
   },
   activeTrackID: null,
   activeCellBeat: null,
@@ -862,7 +862,7 @@ const initialSate: Session = {
       label: "Bass",
       noteResolution: 2,
       instrumentID: "a025e47b-3e71-4c03-b3b8-de203b3b6f12",
-      color: "purple",
+      color: "blue",
       processing: {
         gain: { gain: 1 }
       },
@@ -874,6 +874,8 @@ const initialSate: Session = {
     "a5caf57b-0771-4c56-a600-28a422f0c45d": {
       id: "a5caf57b-0771-4c56-a600-28a422f0c45d",
       label: "TR808-BD",
+      group: "TR808",
+      sampleIDs: ["7ff6ffa7-9768-4bfc-b6c8-b99a70be556b"],
       mapping: [
         { sampleID: "7ff6ffa7-9768-4bfc-b6c8-b99a70be556b", detune: 0 },
         { sampleID: "7ff6ffa7-9768-4bfc-b6c8-b99a70be556b", detune: 0 },
@@ -1008,6 +1010,8 @@ const initialSate: Session = {
     "8ba96671-f8b4-45fc-8aa9-6f229154c5db": {
       id: "8ba96671-f8b4-45fc-8aa9-6f229154c5db",
       label: "TR808-SD",
+      group: "TR808",
+      sampleIDs: ["7f9a144d-64b5-43e0-a3ca-3878085ce582"],
       mapping: [
         { sampleID: "7f9a144d-64b5-43e0-a3ca-3878085ce582", detune: -100 },
         { sampleID: "7f9a144d-64b5-43e0-a3ca-3878085ce582", detune: -75 },
@@ -1142,6 +1146,8 @@ const initialSate: Session = {
     "eb8ee72b-726d-4238-944f-b220d989a903": {
       id: "eb8ee72b-726d-4238-944f-b220d989a903",
       label: "TR808-OH",
+      group: "TR808",
+      sampleIDs: ["9dce9279-194e-4d6f-9f07-d7968eb13f63"],
       mapping: [
         { sampleID: "9dce9279-194e-4d6f-9f07-d7968eb13f63", detune: 0 },
         { sampleID: "9dce9279-194e-4d6f-9f07-d7968eb13f63", detune: 0 },
@@ -1276,6 +1282,8 @@ const initialSate: Session = {
     "3e8329f8-945d-4dde-9307-f14d3542973a": {
       id: "3e8329f8-945d-4dde-9307-f14d3542973a",
       label: "TR808-MA",
+      group: "TR808",
+      sampleIDs: ["19b606f5-52b5-49f5-a3b6-566c245e0407"],
       mapping: [
         { sampleID: "19b606f5-52b5-49f5-a3b6-566c245e0407", detune: 0 },
         { sampleID: "19b606f5-52b5-49f5-a3b6-566c245e0407", detune: 0 },
@@ -1410,6 +1418,8 @@ const initialSate: Session = {
     "77d2c144-2a6c-483a-b94c-8584dcdc2b7c": {
       id: "77d2c144-2a6c-483a-b94c-8584dcdc2b7c",
       label: "TR808-CP",
+      group: "TR808",
+      sampleIDs: ["8cf86f2f-0b50-42bb-81d8-22731d462161"],
       mapping: [
         { sampleID: "8cf86f2f-0b50-42bb-81d8-22731d462161", detune: 0 },
         { sampleID: "8cf86f2f-0b50-42bb-81d8-22731d462161", detune: 0 },
@@ -1544,6 +1554,15 @@ const initialSate: Session = {
     "a025e47b-3e71-4c03-b3b8-de203b3b6f12": {
       id: "a025e47b-3e71-4c03-b3b8-de203b3b6f12",
       label: "BASS-STACCATO",
+      group: "BASS",
+      sampleIDs: [
+        "acc4ea8c-cd40-44f2-b553-0642f411a144",
+        "1e95d1b8-440a-41f3-ab0a-3a48587bf6f7",
+        "901cfa41-c230-4c26-903b-22f99ee13deb",
+        "6eeff2d5-6c90-43c2-91f6-3a68f0911483",
+        "53a20b19-712e-4a43-b718-98b7ff897880",
+        "fc897b72-744c-434b-9018-6e860da11edb"
+      ],
       mapping: [
         { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
         { sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: -1200 },
@@ -1680,81 +1699,81 @@ const initialSate: Session = {
     "7ff6ffa7-9768-4bfc-b6c8-b99a70be556b": {
       id: "7ff6ffa7-9768-4bfc-b6c8-b99a70be556b",
       filename: "BD2525.WAV",
-      url: "/sounds/7ff6ffa7-9768-4bfc-b6c8-b99a70be556b",
+      url: "/sounds/7ff6ffa7-9768-4bfc-b6c8-b99a70be556b.wav",
       label: "TR808 - BD2525",
-      type: "audio/vnd.wave"
+      type: "audio/wave"
     },
     "7f9a144d-64b5-43e0-a3ca-3878085ce582": {
       id: "7f9a144d-64b5-43e0-a3ca-3878085ce582",
       filename: "SD0010.WAV",
-      url: "/sounds/7f9a144d-64b5-43e0-a3ca-3878085ce582",
+      url: "/sounds/7f9a144d-64b5-43e0-a3ca-3878085ce582.wav",
       label: "TR808 - SD0010",
-      type: "audio/vnd.wave"
+      type: "audio/wave"
     },
     "9dce9279-194e-4d6f-9f07-d7968eb13f63": {
       id: "9dce9279-194e-4d6f-9f07-d7968eb13f63",
       filename: "OH00.WAV",
-      url: "/sounds/9dce9279-194e-4d6f-9f07-d7968eb13f63",
+      url: "/sounds/9dce9279-194e-4d6f-9f07-d7968eb13f63.wav",
       label: "TR808 - OH00",
-      type: "audio/vnd.wave"
+      type: "audio/wave"
     },
     "19b606f5-52b5-49f5-a3b6-566c245e0407": {
       id: "19b606f5-52b5-49f5-a3b6-566c245e0407",
       filename: "MA.WAV",
-      url: "/sounds/19b606f5-52b5-49f5-a3b6-566c245e0407",
+      url: "/sounds/19b606f5-52b5-49f5-a3b6-566c245e0407.wav",
       label: "TR808 - MA",
-      type: "audio/vnd.wave"
+      type: "audio/wave"
     },
     "8cf86f2f-0b50-42bb-81d8-22731d462161": {
       id: "8cf86f2f-0b50-42bb-81d8-22731d462161",
       filename: "CP.WAV",
-      url: "/sounds/8cf86f2f-0b50-42bb-81d8-22731d462161",
+      url: "/sounds/8cf86f2f-0b50-42bb-81d8-22731d462161.wav",
       label: "TR808 - CP",
-      type: "audio/vnd.wave"
+      type: "audio/wave"
     },
     "acc4ea8c-cd40-44f2-b553-0642f411a144": {
       id: "acc4ea8c-cd40-44f2-b553-0642f411a144",
       filename: "BASS_STAC_E0.WAV",
-      url: "/sounds/acc4ea8c-cd40-44f2-b553-0642f411a144",
+      url: "/sounds/acc4ea8c-cd40-44f2-b553-0642f411a144.wav",
       label: "BASS_STAC_E0",
-      type: "audio/vnd.wave"
+      type: "audio/wave"
     },
     "1e95d1b8-440a-41f3-ab0a-3a48587bf6f7": {
       id: "1e95d1b8-440a-41f3-ab0a-3a48587bf6f7",
       filename: "BASS_STAC_A0.WAV",
-      url: "/sounds/1e95d1b8-440a-41f3-ab0a-3a48587bf6f7",
+      url: "/sounds/1e95d1b8-440a-41f3-ab0a-3a48587bf6f7.wav",
       label: "BASS_STAC_A0",
-      type: "audio/vnd.wave"
+      type: "audio/wave"
     },
     "901cfa41-c230-4c26-903b-22f99ee13deb": {
       id: "901cfa41-c230-4c26-903b-22f99ee13deb",
       filename: "BASS_STAC_E1.WAV",
-      url: "/sounds/901cfa41-c230-4c26-903b-22f99ee13deb",
+      url: "/sounds/901cfa41-c230-4c26-903b-22f99ee13deb.wav",
       label: "BASS_STAC_E1",
-      type: "audio/vnd.wave"
+      type: "audio/wave"
     },
     "6eeff2d5-6c90-43c2-91f6-3a68f0911483": {
       id: "6eeff2d5-6c90-43c2-91f6-3a68f0911483",
       filename: "BASS_STAC_A1.WAV",
-      url: "/sounds/6eeff2d5-6c90-43c2-91f6-3a68f0911483",
+      url: "/sounds/6eeff2d5-6c90-43c2-91f6-3a68f0911483.wav",
       label: "BASS_STAC_A1",
-      type: "audio/vnd.wave"
+      type: "audio/wave"
     },
     "53a20b19-712e-4a43-b718-98b7ff897880": {
       id: "53a20b19-712e-4a43-b718-98b7ff897880",
       filename: "BASS_STAC_E2.WAV",
-      url: "/sounds/53a20b19-712e-4a43-b718-98b7ff897880",
+      url: "/sounds/53a20b19-712e-4a43-b718-98b7ff897880.wav",
       label: "BASS_STAC_E2",
-      type: "audio/vnd.wave"
+      type: "audio/wave"
     },
     "fc897b72-744c-434b-9018-6e860da11edb": {
       id: "fc897b72-744c-434b-9018-6e860da11edb",
       filename: "BASS_STAC_A2.WAV",
-      url: "/sounds/fc897b72-744c-434b-9018-6e860da11edb",
+      url: "/sounds/fc897b72-744c-434b-9018-6e860da11edb.wav",
       label: "BASS_STAC_A2",
-      type: "audio/vnd.wave"
+      type: "audio/wave"
     }
   }
-};
+}
 
 export default initialSate

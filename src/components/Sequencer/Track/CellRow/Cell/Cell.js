@@ -31,8 +31,8 @@ const StyledCell = styled.button`
   margin-right: ${({ gutter }) => gutter}px;
   padding: 0;
   border: 3px solid
-    ${({ color, edited, played, hover }) =>
-      Cell.borderColor(color, edited, played, hover)};
+    ${({ color, edited, played, scheduled, hover }) =>
+      Cell.borderColor(color, edited, played, scheduled, hover)};
   border-radius: 3px;
   background-color: ${({ scheduled, hover, color }) =>
     scheduled
@@ -83,6 +83,7 @@ class Cell extends React.Component<Props, State> {
     color: MaterialColor,
     edited: boolean,
     played: boolean,
+    scheduled: boolean,
     hover: boolean
   ): string {
     if (edited) {
@@ -93,7 +94,11 @@ class Cell extends React.Component<Props, State> {
       return hover ? Color.get100(color) : Color.getA100(color)
     }
 
-    return hover ? Color.getA100(color) : Color.getA700(color)
+    if (scheduled) {
+      return hover ? Color.getA100(color) : Color.getA700(color)
+    }
+
+    return hover ? Color.getA100(color) : Color.get900(color)
   }
 
   handleClick() {

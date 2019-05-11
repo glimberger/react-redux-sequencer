@@ -1,9 +1,17 @@
 // @flow strict
+export type Instruments = {
+  [instrumentID: string]: Instrument
+}
+
 export type Instrument = {|
   // primary key (UUIDv4)
   id: string,
 
   label: string,
+
+  group: string,
+
+  sampleIDs: Array<string>,
 
   mapping: [
     {|
