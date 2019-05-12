@@ -1850,7 +1850,8 @@ const initialSate: Session = {
         "39a5cf0d-8def-43fa-ab3d-1638b9213cb3",
         "eaacf8f7-0d57-4e8c-a872-bb51315659b3",
         "899bc068-e687-4928-ba4c-9082c0163304",
-        "241d3fec-5a90-4ec1-b57a-635009ffd167"
+        "241d3fec-5a90-4ec1-b57a-635009ffd167",
+        "bfac1667-5115-49cd-82dc-f294f54cb447"
       ],
       mapping: [
         { sampleID: "899bc068-e687-4928-ba4c-9082c0163304", detune: -300 },
@@ -2060,6 +2061,13 @@ const initialSate: Session = {
       filename: "BASS_STAC_A2.WAV",
       url: "/sounds/fc897b72-744c-434b-9018-6e860da11edb.wav",
       label: "BASS_STAC_A2",
+      type: "audio/wave"
+    },
+    "bfac1667-5115-49cd-82dc-f294f54cb447": {
+      id: "bfac1667-5115-49cd-82dc-f294f54cb447",
+      filename: "GuitarChordStac_G",
+      url: "/sounds/bfac1667-5115-49cd-82dc-f294f54cb447.wav",
+      label: "GuitarChordStac_G",
       type: "audio/wave"
     },
     "e3a06bcb-ff48-492b-b55c-b9a8a8479aac": {
