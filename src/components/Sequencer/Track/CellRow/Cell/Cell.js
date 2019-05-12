@@ -3,16 +3,21 @@ import * as React from "react"
 // $FlowFixMe
 import styled from "styled-components/macro"
 
-import Color from "../../../../../utils/color/colorLibrary"
+import Color, { hexToRgb } from "../../../../../utils/color/colorLibrary"
 
-import type { NoteResolution } from "../../../../../redux/store/session/types"
+import type {
+  AudioProcessing,
+  NoteResolution
+} from "../../../../../redux/store/session/types"
 import type { MaterialColor } from "../../../../../utils/color/colorLibrary"
+import colorLuminance from "../../../../../utils/color/colorLuminance"
 
 type Props = {
   color: MaterialColor,
   size: number,
   gutter: number,
   noteResolution: NoteResolution,
+  processing: AudioProcessing,
   played: boolean,
   scheduled: boolean,
   edited: boolean,
@@ -34,12 +39,16 @@ const StyledCell = styled.button`
     ${({ color, edited, played, scheduled, hover }) =>
       Cell.borderColor(color, edited, played, scheduled, hover)};
   border-radius: 3px;
-  background-color: ${({ scheduled, hover, color }) =>
-    scheduled
+  background-color: ${({ scheduled, hover, color, gain }) => {
+    const rgb = hexToRgb(Color.getA700(color))
+    return scheduled
       ? hover
         ? Color.getA400(color)
-        : Color.getA700(color)
-      : "transparent"};
+        : `rgba(${rgb ? rgb.r : 255}, ${rgb ? rgb.g : 255}, ${
+            rgb ? rgb.b : 255
+          }, ${gain})`
+      : "transparent"
+  }};
 `
 
 class Cell extends React.Component<Props, State> {
@@ -98,7 +107,9 @@ class Cell extends React.Component<Props, State> {
       return hover ? Color.getA100(color) : Color.getA700(color)
     }
 
-    return hover ? Color.getA100(color) : Color.get900(color)
+    return hover
+      ? Color.getA100(color)
+      : colorLuminance(Color.getA700(color), -0.4)
   }
 
   handleClick() {
@@ -107,12 +118,17 @@ class Cell extends React.Component<Props, State> {
   }
 
   render() {
+    console.assert(
+      typeof this.props.processing.gain.gain === "number",
+      this.props.processing.gain.gain
+    )
     return (
       <StyledCell
         color={this.props.color}
         size={this.props.size}
         gutter={this.props.gutter}
         noteResolution={this.props.noteResolution}
+        gain={this.props.processing.gain.gain}
         played={this.props.played}
         scheduled={this.props.scheduled}
         edited={this.props.edited}
