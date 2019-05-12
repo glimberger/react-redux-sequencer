@@ -6,15 +6,16 @@ import type { Samples } from "../../store/sample/types"
 export const CHANGE_TEMPO = "CHANGE_TEMPO"
 export const CHANGE_MASTER_GAIN = "CHANGE_MASTER_GAIN"
 export const SCHEDULE_TRACK_CELL = "SCHEDULE_TRACK_CELL"
-export const CHANGE_TRACK_GAIN = "CHANGE_TRACK_GAIN"
 export const ADD_TRACK = "ADD_TRACK"
+export const CHANGE_TRACK_GAIN = "CHANGE_TRACK_GAIN"
 export const CHANGE_NOTE_RESOLUTION = "CHANGE_NOTE_RESOLUTION"
 export const TOGGLE_TRACK_MUTE = "TOGGLE_TRACK_MUTE"
 export const TOGGLE_TRACK_SOLO = "TOGGLE_TRACK_SOLO"
+export const CHANGE_TRACK_LABEL = "CHANGE_TRACK_LABEL"
 export const TOGGLE_ACTIVE_TRACK = "TOGGLE_ACTIVE_TRACK"
 export const SET_ACTIVE_CELL = "SET_ACTIVE_CELL"
 export const CHANGE_CELL_NOTE = "CHANGE_CELL_NOTE"
-export const CHANGE_TRACK_LABEL = "CHANGE_TRACK_LABEL"
+export const CHANGE_CELL_GAIN = "CHANGE_CELL_GAIN"
 
 export type ChangeMasterGainAction = {|
   type: "CHANGE_MASTER_GAIN",
@@ -76,6 +77,11 @@ export type ChangeTrackLabelAction = {|
   payload: {| label: string, trackID: string |}
 |}
 
+export type ChangeCellGainAction = {|
+  type: "CHANGE_CELL_GAIN",
+  payload: {| gain: number, beat: number, trackID: string |}
+|}
+
 export type Action =
   | ChangeMasterGainAction
   | ChangeTrackGainAction
@@ -89,3 +95,4 @@ export type Action =
   | SetActiveCellAction
   | ChangeCellNoteAction
   | ChangeTrackLabelAction
+  | ChangeCellGainAction
