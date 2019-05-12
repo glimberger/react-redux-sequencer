@@ -12,7 +12,8 @@ import type {
   ToggleActiveTrackAction,
   ChangeCellNoteAction,
   AddTrackAction,
-  ChangeTrackLabelAction
+  ChangeTrackLabelAction,
+  ChangeCellGainAction
 } from "./types"
 import {
   CHANGE_TRACK_GAIN,
@@ -26,7 +27,8 @@ import {
   TOGGLE_ACTIVE_TRACK,
   CHANGE_CELL_NOTE,
   ADD_TRACK,
-  CHANGE_TRACK_LABEL
+  CHANGE_TRACK_LABEL,
+  CHANGE_CELL_GAIN
 } from "./types"
 import type { NoteResolution } from "../../store/session/types"
 import type { Instrument } from "../../store/instrument/types"
@@ -133,5 +135,16 @@ export function changeTrackLabel(
   return {
     type: CHANGE_TRACK_LABEL,
     payload: { label, trackID }
+  }
+}
+
+export function changeCellGain(
+  gain: number,
+  beat: number,
+  trackID: string
+): ChangeCellGainAction {
+  return {
+    type: CHANGE_CELL_GAIN,
+    payload: { gain, beat, trackID }
   }
 }

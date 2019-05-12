@@ -40,7 +40,10 @@ export type Cell = {|
   scheduled: boolean,
 
   // midi note
-  midi: number
+  midi: number,
+
+  // cell processing
+  processing: AudioProcessing
 |}
 
 export type NoteResolution = 1 | 2 | 4
@@ -61,14 +64,14 @@ export type Track = {|
   color: MaterialColor,
 
   // track processing
-  processing: InstrumentProcessing,
+  processing: AudioProcessing,
 
   muted: boolean,
 
   soloed: boolean
 |}
 
-export type InstrumentProcessing = {|
+export type AudioProcessing = {|
   gain: GainProcessing,
   filter?: FilterProcessing,
   delay?: DelayProcessing,

@@ -34,7 +34,7 @@ import type {
 } from "../../redux/actions/session/types"
 import type {
   Cell,
-  InstrumentProcessing,
+  AudioProcessing,
   Session,
   Track
 } from "../../redux/store/session/types"
@@ -173,7 +173,7 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
   connectTrack = (
     ctx: AudioContext,
     trackID: string,
-    processing: InstrumentProcessing,
+    processing: AudioProcessing,
     audioNodes: Map<string, { gain: AudioNode }>,
     masterGainNode: AudioNode
   ) => {

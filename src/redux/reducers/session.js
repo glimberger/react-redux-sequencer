@@ -6,6 +6,7 @@ import type { Session, Track, Cell } from "../store/session/types"
 
 import {
   ADD_TRACK,
+  CHANGE_CELL_GAIN,
   CHANGE_CELL_NOTE,
   CHANGE_MASTER_GAIN,
   CHANGE_NOTE_RESOLUTION,
@@ -64,6 +65,15 @@ const cellReducer = (state: Cell, action: Action) => {
         scheduled: !state.scheduled
       }
 
+    case CHANGE_CELL_GAIN:
+      return {
+        ...state,
+        processing: {
+          ...state.processing,
+          gain: { gain: action.payload.gain }
+        }
+      }
+
     default:
       return state
   }
@@ -73,6 +83,7 @@ const cellRowReducer = (state: Array<Cell>, action: Action) => {
   switch (action.type) {
     case CHANGE_CELL_NOTE:
     case SCHEDULE_TRACK_CELL:
+    case CHANGE_CELL_GAIN:
       return [
         ...state.slice(0, action.payload.beat),
         cellReducer(state[action.payload.beat], action),
@@ -98,6 +109,7 @@ const matrixReducer = (
   switch (action.type) {
     case CHANGE_CELL_NOTE:
     case SCHEDULE_TRACK_CELL:
+    case CHANGE_CELL_GAIN:
     case ADD_TRACK:
       return {
         ...state,
@@ -238,6 +250,7 @@ const sessionReducer = (state: Session = initialSate, action: Action) => {
 
     case CHANGE_CELL_NOTE:
     case SCHEDULE_TRACK_CELL:
+    case CHANGE_CELL_GAIN:
       return {
         ...state,
         matrix: matrixReducer(state.matrix, action)
