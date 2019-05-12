@@ -25,8 +25,7 @@ type StateProps = {
   activeCellBeat: $PropertyType<Session, "activeCellBeat">,
   color: $PropertyType<Track, "color">,
   noteResolution: $PropertyType<Track, "noteResolution">,
-  scheduled: $PropertyType<CellType, "scheduled">,
-  midiNote: $PropertyType<CellType, "midi">,
+  cell: CellType | null,
   getMappingForNote: (note: number) => { sampleID: string, detune: number }
 }
 
@@ -65,17 +64,19 @@ function CellSettings({
   height,
   gutter,
   color,
-  scheduled,
-  midiNote,
+  // scheduled,
+  // processing,
+  // midiNote,
   activeCellBeat,
   activeTrackID,
+  cell,
   noteResolution,
   scheduleTrackCell,
   getMappingForNote
 }: Props) {
   if (activeTrackID === null) return <div />
 
-  if (activeCellBeat === null)
+  if (activeCellBeat === null || cell === null)
     return (
       <StyledSettings
         cellSize={cellSize}
@@ -87,7 +88,7 @@ function CellSettings({
       </StyledSettings>
     )
 
-  const detune = getMappingForNote(midiNote).detune
+  const detune = getMappingForNote(cell.midi).detune
 
   return (
     <StyledSettings
@@ -104,7 +105,8 @@ function CellSettings({
             color={color}
             played={false}
             edited={false}
-            scheduled={scheduled}
+            scheduled={cell.scheduled}
+            processing={cell.processing}
             noteResolution={noteResolution}
             onClick={() => scheduleTrackCell(activeCellBeat, activeTrackID)}
           />
@@ -115,9 +117,9 @@ function CellSettings({
             <div>
               NOTE{" "}
               <span style={{ fontWeight: "bold" }}>
-                {MidiConverter.toNote(midiNote)}
+                {MidiConverter.toNote(cell.midi)}
               </span>{" "}
-              ({midiNote})
+              ({cell.midi})
             </div>
             <div style={{ fontSize: "13px" }}>
               <span style={{ fontWeight: "lighter" }}>detune</span> {detune}{" "}

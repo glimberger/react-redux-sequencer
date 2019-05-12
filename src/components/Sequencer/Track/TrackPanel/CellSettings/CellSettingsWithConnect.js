@@ -16,8 +16,7 @@ const mapStateToProps = state => {
   return {
     color: activeTrack ? activeTrack.color : "grey",
     noteResolution: activeTrack ? activeTrack.noteResolution : 1,
-    scheduled: activeCell ? activeCell.scheduled : false,
-    midiNote: activeCell ? activeCell.midi : 0,
+    cell: activeCell,
     activeCellBeat: state.session.activeCellBeat,
     activeTrackID: state.session.activeTrackID,
     getMappingForNote: (note: number) =>

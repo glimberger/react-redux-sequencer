@@ -1,5 +1,11 @@
 // @flow strict
-// https://www.sitepoint.com/javascript-generate-lighter-darker-color/
+/**
+ * @see https://www.sitepoint.com/javascript-generate-lighter-darker-color/
+ *
+ * @param hex
+ * @param lum
+ * @return {string|string}
+ */
 function colorLuminance(hex: string, lum: number): string {
   // validate hex string
   let h = String(hex).replace(/[^0-9a-f]/gi, "")

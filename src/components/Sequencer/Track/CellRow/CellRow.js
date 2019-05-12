@@ -54,8 +54,8 @@ function CellRow({
 }: Props) {
   return (
     <StyledCellRow>
-      {cells.map(({ scheduled, note }, beat) => {
-        // we must not see cells out of note resolution
+      {cells.map(({ scheduled, note, processing }, beat) => {
+        // we don't want to keep cells out of note resolution
         if (beat % noteResolution) return null
 
         return (
@@ -68,6 +68,7 @@ function CellRow({
               scheduled={scheduled}
               edited={trackID === activeTrackID && beat === activeCellBeat}
               noteResolution={noteResolution}
+              processing={processing}
               onClick={() =>
                 trackID === activeTrackID
                   ? setActiveCell(beat)
