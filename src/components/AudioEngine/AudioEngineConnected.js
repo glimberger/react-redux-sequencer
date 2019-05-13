@@ -234,6 +234,7 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
     _trackID: string,
     _beat: number,
     _note: number | null,
+    _gain: number,
     _tracks: { [p: string]: Track },
     _instruments: { [p: string]: Instrument },
     _matrix: { [p: string]: Array<Cell> },
@@ -251,15 +252,18 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
 
     console.assert(
       audioBuffer instanceof AudioBuffer,
-      "'audioBuffer' should an instance of AudioBuffer,",
-      audioBuffer,
-      "given."
+      "'audioBuffer' should an instance of AudioBuffer, %o given.",
+      audioBuffer
     )
 
     if (audioBuffer instanceof AudioBuffer) {
+      const gainNode: GainNode = this.audioContext.createGain()
+      gainNode.gain.value = _gain
+
       source.buffer = audioBuffer
       source.detune.value = _detune
-      source.connect(this.masterGainNode)
+      source.connect(gainNode)
+      gainNode.connect(this.masterGainNode)
       source.start(this.audioContext.currentTime)
     }
   }
@@ -319,6 +323,8 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
           event.payload.trackID,
           event.payload.beat,
           null,
+          matrix[event.payload.trackID][event.payload.beat].processing.gain
+            .gain,
           tracks,
           instruments,
           matrix,
@@ -337,6 +343,8 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
           event.payload.trackID,
           event.payload.beat,
           event.payload.note,
+          matrix[event.payload.trackID][event.payload.beat].processing.gain
+            .gain,
           tracks,
           instruments,
           matrix,
@@ -416,7 +424,7 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
       }
 
       const { mapping } = instruments[instrumentID]
-      const { scheduled, midi } = matrix[trackID][beatNumber]
+      const { scheduled, midi, processing } = matrix[trackID][beatNumber]
 
       // scheduled ?
       if (scheduled === false) {
@@ -451,16 +459,23 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
       const source: AudioBufferSourceNode = this.audioContext.createBufferSource()
       source.detune.value = detune
 
-      const gainNode = audioNodes.gain
+      const trackGainNode = audioNodes.gain
       console.assert(
-        gainNode instanceof GainNode,
+        trackGainNode instanceof GainNode,
         "'gainNode' should be an instance of GainNode,",
-        gainNode,
+        trackGainNode,
         "given."
       )
-      if (audioBuffer instanceof AudioBuffer && gainNode instanceof GainNode) {
+      if (
+        audioBuffer instanceof AudioBuffer &&
+        trackGainNode instanceof GainNode
+      ) {
+        const cellGainNode: GainNode = this.audioContext.createGain()
+        cellGainNode.gain.value = processing.gain.gain
+
         source.buffer = audioBuffer
-        source.connect(gainNode)
+        source.connect(cellGainNode)
+        cellGainNode.connect(trackGainNode)
       }
 
       source.start(time)
