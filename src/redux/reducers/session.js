@@ -92,134 +92,70 @@ const cellRowReducer = (state: Array<Cell>, action: Action) => {
 
     case ADD_TRACK:
       return [
-        // beat 0
-        { scheduled: false, midi: 69 },
-        // beat 1
-        { scheduled: false, midi: 69 },
-        // beat 2
-        { scheduled: false, midi: 69 },
-        // beat 3
-        { scheduled: false, midi: 69 },
-        // beat 4
-        { scheduled: false, midi: 69 },
-        // beat 5
-        { scheduled: false, midi: 69 },
-        // beat 6
-        { scheduled: false, midi: 69 },
-        // beat 7
-        { scheduled: false, midi: 69 },
-        // beat 8
-        { scheduled: false, midi: 69 },
-        // beat 9
-        { scheduled: false, midi: 69 },
-        // beat 10
-        { scheduled: false, midi: 69 },
-        // beat 11
-        { scheduled: false, midi: 69 },
-        // beat 12
-        { scheduled: false, midi: 69 },
-        // beat 13
-        { scheduled: false, midi: 69 },
-        // beat 14
-        { scheduled: false, midi: 69 },
-        // beat 15
-        { scheduled: false, midi: 69 },
-        // beat 0
-        { scheduled: false, midi: 69 },
-        // beat 1
-        { scheduled: false, midi: 69 },
-        // beat 2
-        { scheduled: false, midi: 69 },
-        // beat 3
-        { scheduled: false, midi: 69 },
-        // beat 4
-        { scheduled: false, midi: 69 },
-        // beat 5
-        { scheduled: false, midi: 69 },
-        // beat 6
-        { scheduled: false, midi: 69 },
-        // beat 7
-        { scheduled: false, midi: 69 },
-        // beat 8
-        { scheduled: false, midi: 69 },
-        // beat 9
-        { scheduled: false, midi: 69 },
-        // beat 10
-        { scheduled: false, midi: 69 },
-        // beat 11
-        { scheduled: false, midi: 69 },
-        // beat 12
-        { scheduled: false, midi: 69 },
-        // beat 13
-        { scheduled: false, midi: 69 },
-        // beat 14
-        { scheduled: false, midi: 69 },
-        // beat 15
-        { scheduled: false, midi: 69 },
-        // beat 0
-        { scheduled: false, midi: 69 },
-        // beat 1
-        { scheduled: false, midi: 69 },
-        // beat 2
-        { scheduled: false, midi: 69 },
-        // beat 3
-        { scheduled: false, midi: 69 },
-        // beat 4
-        { scheduled: false, midi: 69 },
-        // beat 5
-        { scheduled: false, midi: 69 },
-        // beat 6
-        { scheduled: false, midi: 69 },
-        // beat 7
-        { scheduled: false, midi: 69 },
-        // beat 8
-        { scheduled: false, midi: 69 },
-        // beat 9
-        { scheduled: false, midi: 69 },
-        // beat 10
-        { scheduled: false, midi: 69 },
-        // beat 11
-        { scheduled: false, midi: 69 },
-        // beat 12
-        { scheduled: false, midi: 69 },
-        // beat 13
-        { scheduled: false, midi: 69 },
-        // beat 14
-        { scheduled: false, midi: 69 },
-        // beat 15
-        { scheduled: false, midi: 69 },
-        // beat 0
-        { scheduled: false, midi: 69 },
-        // beat 1
-        { scheduled: false, midi: 69 },
-        // beat 2
-        { scheduled: false, midi: 69 },
-        // beat 3
-        { scheduled: false, midi: 69 },
-        // beat 4
-        { scheduled: false, midi: 69 },
-        // beat 5
-        { scheduled: false, midi: 69 },
-        // beat 6
-        { scheduled: false, midi: 69 },
-        // beat 7
-        { scheduled: false, midi: 69 },
-        // beat 8
-        { scheduled: false, midi: 69 },
-        // beat 9
-        { scheduled: false, midi: 69 },
-        // beat 10
-        { scheduled: false, midi: 69 },
-        // beat 11
-        { scheduled: false, midi: 69 },
-        // beat 12
-        { scheduled: false, midi: 69 },
-        // beat 13
-        { scheduled: false, midi: 69 },
-        // beat 14
-        { scheduled: false, midi: 69 },
-        // beat 15
-        { scheduled: false, midi: 69 }
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } },
+        { scheduled: false, midi: 69, processing: { gain: { gain: 1 } } }
       ]
 
     default:
