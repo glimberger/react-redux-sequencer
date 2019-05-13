@@ -7,7 +7,10 @@ import {
   getActiveTrack,
   getInstrument
 } from "../../../../../redux/reducers"
-import { scheduleTrackCell } from "../../../../../redux/actions/session/creators"
+import {
+  changeCellGain,
+  scheduleTrackCell
+} from "../../../../../redux/actions/session/creators"
 
 const mapStateToProps = state => {
   const activeTrack = getActiveTrack(state)
@@ -26,7 +29,7 @@ const mapStateToProps = state => {
 
 const CellSettingsWithConnect = connect(
   mapStateToProps,
-  { scheduleTrackCell }
+  { scheduleTrackCell, changeCellGain }
 )(CellSettings)
 
 export default CellSettingsWithConnect

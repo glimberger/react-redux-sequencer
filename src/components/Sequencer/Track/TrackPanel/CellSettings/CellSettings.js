@@ -1,5 +1,5 @@
 // @flow strict
-import React from "react"
+import * as React from "react"
 // $FlowFixMe
 import styled from "styled-components/macro"
 
@@ -13,6 +13,7 @@ import type {
   Cell as CellType
 } from "../../../../../redux/store/session/types"
 import MidiConverter from "../../../../../utils/audio/MidiConverter"
+import GainKnob from "./GainKnob/GainKnob"
 
 type OwnProps = {
   gutter: number,
@@ -30,7 +31,8 @@ type StateProps = {
 }
 
 type DispatchProps = {
-  scheduleTrackCell: (beat: number, trackID: string) => void
+  scheduleTrackCell: (beat: number, trackID: string) => void,
+  changeCellGain: (gain: number, beat: number, trackID: string) => void
 }
 
 type Props = OwnProps & StateProps & DispatchProps
@@ -45,7 +47,7 @@ const StyledSettings = styled.div`
   color: ${({ color }) => Color.get100(color)};
 `
 
-const NoteSection = styled.div`
+const StyledNoteSection = styled.section`
   display: flex;
   justify-content: space-between;
   padding: ${({ gutter }) => gutter * 2}px;
@@ -59,19 +61,22 @@ const CellInfo = styled.div`
   font-size: 14px;
 `
 
+const StyledGainSection = styled.section`
+  display: flex;
+  justify-content: space-between;
+`
+
 function CellSettings({
   cellSize,
   height,
   gutter,
   color,
-  // scheduled,
-  // processing,
-  // midiNote,
   activeCellBeat,
   activeTrackID,
   cell,
   noteResolution,
   scheduleTrackCell,
+  changeCellGain,
   getMappingForNote
 }: Props) {
   if (activeTrackID === null) return <div />
@@ -97,7 +102,7 @@ function CellSettings({
       gutter={gutter}
       color={color}
     >
-      <NoteSection gutter={gutter}>
+      <StyledNoteSection gutter={gutter}>
         <CellInfo>
           <Cell
             size={cellSize}
@@ -135,7 +140,20 @@ function CellSettings({
             keyWidth={16}
           />
         </div>
-      </NoteSection>
+      </StyledNoteSection>
+      <section style={{ display: "flex", padding: `${gutter * 2}px` }}>
+        <StyledGainSection>
+          <GainKnob
+            color={color}
+            gutter={gutter}
+            size={36}
+            gain={cell.processing.gain.gain}
+            onChange={value =>
+              changeCellGain(value, activeCellBeat, activeTrackID)
+            }
+          />
+        </StyledGainSection>
+      </section>
     </StyledSettings>
   )
 }
