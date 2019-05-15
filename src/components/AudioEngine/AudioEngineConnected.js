@@ -450,9 +450,6 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
         return
       }
 
-      const source: AudioBufferSourceNode = this.audioContext.createBufferSource()
-      source.detune.value = detune
-
       const trackGainNode = audioNodes.gain
       console.assert(
         trackGainNode instanceof GainNode,
@@ -465,14 +462,31 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
         trackGainNode instanceof GainNode
       ) {
         const cellGainNode: GainNode = this.audioContext.createGain()
-        cellGainNode.gain.value = processing.gain.gain
+        cellGainNode.gain.setValueAtTime(processing.gain.gain, time)
 
+        // check for note off - fade
+        const secondsPerBeat = 60.0 / this.props.tempo
+        const nextCellAtResolution =
+          matrix[trackID][(beatNumber + noteResolution) % 64]
+        if (
+          nextCellAtResolution.scheduled &&
+          midi === nextCellAtResolution.midi
+        ) {
+          cellGainNode.gain.setTargetAtTime(
+            0,
+            time + 0.25 * secondsPerBeat * (noteResolution - 0.2),
+            0.05
+          )
+        }
+
+        const source: AudioBufferSourceNode = this.audioContext.createBufferSource()
+        source.detune.value = detune
         source.buffer = audioBuffer
         source.connect(cellGainNode)
         cellGainNode.connect(trackGainNode)
-      }
 
-      source.start(time)
+        source.start(time)
+      }
     })
   }
 
