@@ -75,7 +75,7 @@ type State = {
 }
 
 class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
-  audioBuffers: Map<string, AudioBuffer>
+  sampleBufferMap: Map<string, AudioBuffer>
   audioNodes: Map<string, { gain: AudioNode }>
   masterGainNode: GainNode
 
@@ -108,7 +108,7 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
     this.noteResolution = 0
     this.noteLength = 0.05
 
-    this.audioBuffers = new Map()
+    this.sampleBufferMap = new Map()
     this.audioNodes = new Map()
 
     this.audioContext = createContext()
@@ -129,7 +129,7 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
       ctx.currentTime
     )
 
-    this.audioBuffers = new Map<string, AudioBuffer>()
+    this.sampleBufferMap = new Map<string, AudioBuffer>()
     this.audioNodes = new Map<string, { gain: AudioNode }>()
 
     this.loadSamples(ctx, this.props.samples).catch(error =>
@@ -157,15 +157,12 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
     )
 
     audioBuffers.forEach((audioBuffer, idx) => {
+      const sampleID = sampleIDs[idx]
       IN_DEV &&
-        console.debug(
-          "audioBuffer for sample %s: %o",
-          sampleIDs[idx],
-          audioBuffer
-        )
+        console.debug("audioBuffer for sample %s: %o", sampleID, audioBuffer)
 
       if (audioBuffer) {
-        this.audioBuffers.set(sampleIDs[idx], audioBuffer)
+        this.sampleBufferMap.set(sampleID, audioBuffer)
       }
     })
   }
@@ -238,17 +235,17 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
     _tracks: { [p: string]: Track },
     _instruments: { [p: string]: Instrument },
     _matrix: { [p: string]: Array<Cell> },
-    _audioContext: AudioContext,
-    _audioBuffers: Map<string, AudioBuffer>
+    ctx: AudioContext,
+    sampleBufferMap: Map<string, AudioBuffer>
   ) {
-    const _instrumentID = _tracks[_trackID].instrumentID
-    const _mapping = _instruments[_instrumentID].mapping
-    const _midi = _note === null ? _matrix[_trackID][_beat].midi : _note
+    const instrumentID = _tracks[_trackID].instrumentID
+    const mapping = _instruments[instrumentID].mapping
+    const midi = _note === null ? _matrix[_trackID][_beat].midi : _note
 
-    const { sampleID: _sampleID, detune: _detune } = _mapping[_midi]
+    const { sampleID, detune } = mapping[midi]
 
-    const source = _audioContext.createBufferSource()
-    const audioBuffer = _audioBuffers.get(_sampleID)
+    const source = ctx.createBufferSource()
+    const audioBuffer = sampleBufferMap.get(sampleID)
 
     console.assert(
       audioBuffer instanceof AudioBuffer,
@@ -261,7 +258,7 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
       gainNode.gain.value = _gain
 
       source.buffer = audioBuffer
-      source.detune.value = _detune
+      source.detune.value = detune
       source.connect(gainNode)
       gainNode.connect(this.masterGainNode)
       source.start(this.audioContext.currentTime)
@@ -329,7 +326,7 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
           instruments,
           matrix,
           this.audioContext,
-          this.audioBuffers
+          this.sampleBufferMap
         )
         break
 
@@ -349,7 +346,7 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
           instruments,
           matrix,
           this.audioContext,
-          this.audioBuffers
+          this.sampleBufferMap
         )
         break
 
@@ -376,6 +373,7 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
       this.state.nextNoteTime <
       this.audioContext.currentTime + this.scheduleAheadTime
     ) {
+      this.props.announceBeat(this.state.current16thNote)
       this.scheduleNote(this.state.current16thNote, this.state.nextNoteTime)
       this.nextNote()
     }
@@ -386,13 +384,10 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
       tracks,
       instruments,
       matrix,
-      announceBeat,
       mutes,
       solos,
       isSoloActive
     } = this.props
-
-    announceBeat(beatNumber)
 
     if (this.noteResolution === 1 && beatNumber % 2) return // we're not playing non-8th 16th notes
     if (this.noteResolution === 2 && beatNumber % 4) return // we're not playing non-quarter 8th notes
@@ -409,30 +404,29 @@ class AudioEngine extends React.Component<StateProps & DispatchProps, State> {
 
     Object.keys(tracks).forEach(trackID => {
       const { instrumentID, noteResolution } = tracks[trackID]
+      const { mapping } = instruments[instrumentID]
+      const { scheduled, midi, processing } = matrix[trackID][beatNumber]
 
-      // note resolution
+      // check note resolution
       if (beatNumber % noteResolution) return
 
-      // solo
+      // check solo
       if (isSoloActive && !solos[trackID]) {
         return
       }
 
-      // mute
+      // check mute
       if (mutes[trackID]) {
         return
       }
 
-      const { mapping } = instruments[instrumentID]
-      const { scheduled, midi, processing } = matrix[trackID][beatNumber]
-
-      // scheduled ?
+      // check if scheduled
       if (scheduled === false) {
         return
       }
 
       const { detune, sampleID } = mapping[midi]
-      const audioBuffer = this.audioBuffers.get(sampleID)
+      const audioBuffer = this.sampleBufferMap.get(sampleID)
 
       console.assert(
         audioBuffer instanceof AudioBuffer,
