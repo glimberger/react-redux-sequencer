@@ -139,7 +139,10 @@ class NoteSelector extends React.Component<Props, State> {
                   color={this.props.color}
                   black={blackKey}
                   onClick={() => {
-                    if (!this.props.activeTrackID || !this.props.activeCellBeat)
+                    if (
+                      this.props.activeTrackID === null ||
+                      this.props.activeCellBeat === null
+                    )
                       return
 
                     this.props.changeCellNote(
@@ -149,7 +152,10 @@ class NoteSelector extends React.Component<Props, State> {
                     )
                   }}
                   onHoverStart={() => {
-                    if (!this.props.activeTrackID || !this.props.activeCellBeat)
+                    if (
+                      this.props.activeTrackID === null ||
+                      this.props.activeCellBeat === null
+                    )
                       return
 
                     this.props.listenCellNote(
