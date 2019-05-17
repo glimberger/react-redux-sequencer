@@ -125,4 +125,6 @@ function Cell(props: Props) {
   )
 }
 
-export default Cell
+const MemoizedCell = React.memo<Props>(Cell)
+
+export default MemoizedCell
