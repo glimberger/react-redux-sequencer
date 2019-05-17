@@ -35,10 +35,6 @@ type OwnProps = {
 
 type Props = OwnProps & StateProps & DispatchProps
 
-type State = {
-  labelEdited: boolean
-}
-
 const Container = styled.div`
   cursor: pointer;
 `
@@ -92,93 +88,86 @@ const StyledLabelForm = styled.form`
   }
 `
 
-class TrackHeader extends React.Component<Props, State> {
-  state = {
-    labelEdited: false
-  }
+// https://css-tricks.com/snippets/javascript/bind-different-events-to-click-and-double-click/
+let timer: TimeoutID
+let prevent: boolean = false
+const delay = 200
 
-  handleClick = () => {
-    this.timer = setTimeout(() => {
-      if (!this.prevent) {
-        if (!this.state.labelEdited) {
-          this.props.onTitleClick()
+const TrackHeader = React.memo<Props>(function TrackHeader(props: Props) {
+  const [labelEdited, setLabelEdited] = React.useState(false)
+
+  const handleClick = () => {
+    timer = setTimeout(() => {
+      if (!prevent) {
+        if (!labelEdited) {
+          props.onTitleClick()
         }
       }
-      this.prevent = false
-    }, this.delay)
+      prevent = false
+    }, delay)
   }
 
-  handleDoubleClick = () => {
-    clearTimeout(this.timer)
-    this.prevent = true
-    this.setState({ labelEdited: true })
+  const handleDoubleClick = () => {
+    clearTimeout(timer)
+    prevent = true
+    setLabelEdited(true)
   }
 
-  handleSubmit = (event: SyntheticInputEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: SyntheticInputEvent<HTMLFormElement>) => {
     event.preventDefault()
     const formData = new FormData(event.currentTarget)
 
     const submittedLabel = formData.get("label")
 
     if (typeof submittedLabel === "string") {
-      this.props.changeTrackLabel(submittedLabel)
-      this.setState({ labelEdited: false })
+      props.changeTrackLabel(submittedLabel)
+      setLabelEdited(false)
     }
   }
 
-  // https://css-tricks.com/snippets/javascript/bind-different-events-to-click-and-double-click/
-  timer: TimeoutID
-  delay = 200
-  prevent: boolean = false
-
-  render() {
-    return (
-      <Container
-        title="Open/close track panel"
-        onClick={this.handleClick}
-        onDoubleClick={this.handleDoubleClick}
+  return (
+    <Container
+      title="Open/close track panel"
+      onClick={handleClick}
+      onDoubleClick={handleDoubleClick}
+    >
+      <StyledTrackHeader
+        width={props.width}
+        height={props.height}
+        gutter={props.gutter}
+        color={props.color}
       >
-        <StyledTrackHeader
-          width={this.props.width}
-          height={this.props.height}
-          gutter={this.props.gutter}
-          color={this.props.color}
-        >
-          {this.state.labelEdited ? (
-            <StyledLabelForm
-              color={this.props.color}
-              gutter={this.props.gutter}
-              onSubmit={this.handleSubmit}
-              // onClick={() => this.setState({ labelEdited: false })}
-            >
-              <input type="text" name="label" defaultValue={this.props.label} />
-            </StyledLabelForm>
-          ) : (
-            <React.Fragment>
-              <TrackLabel label={this.props.label} color={this.props.color} />
-              <StyledControls>
-                <GainIndicator>
-                  {Volume.toDBString(this.props.gain)}
-                </GainIndicator>
-                <SoloButton
-                  color={this.props.color}
-                  width={this.props.height - 2 * this.props.gutter}
-                  soloed={this.props.soloed}
-                  onClick={() => this.props.onSoloClick()}
-                />
-                <MuteButton
-                  color={this.props.color}
-                  width={this.props.height - 2 * this.props.gutter}
-                  muted={this.props.muted}
-                  onClick={() => this.props.onMuteClick()}
-                />
-              </StyledControls>
-            </React.Fragment>
-          )}
-        </StyledTrackHeader>
-      </Container>
-    )
-  }
-}
+        {labelEdited ? (
+          <StyledLabelForm
+            color={props.color}
+            gutter={props.gutter}
+            onSubmit={handleSubmit}
+          >
+            <input type="text" name="label" defaultValue={props.label} />
+          </StyledLabelForm>
+        ) : (
+          <React.Fragment>
+            <TrackLabel label={props.label} color={props.color} />
+            <StyledControls>
+              <GainIndicator>{Volume.toDBString(props.gain)}</GainIndicator>
+              <SoloButton
+                color={props.color}
+                width={props.height - 2 * props.gutter}
+                soloed={props.soloed}
+                onClick={() => props.onSoloClick()}
+              />
+              <MuteButton
+                color={props.color}
+                width={props.height - 2 * props.gutter}
+                muted={props.muted}
+                onClick={() => props.onMuteClick()}
+              />
+            </StyledControls>
+          </React.Fragment>
+        )}
+      </StyledTrackHeader>
+    </Container>
+  )
+})
 
 export default TrackHeader
