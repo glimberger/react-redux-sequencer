@@ -150,54 +150,50 @@ const GainIndicator = styled.div`
   text-align: center;
 `
 
-class VerticalFader extends React.Component<Props> {
-  handleChange = (e: SyntheticInputEvent<HTMLInputElement>) => {
+const MemoizedVerticalFader = React.memo<Props>(function VerticalFader(
+  props: Props
+) {
+  const handleChange = (e: SyntheticInputEvent<HTMLInputElement>) => {
     const value = parseFloat(e.currentTarget.value)
 
-    this.props.onValueChange(value)
+    props.onValueChange(value)
   }
 
-  gutter = this.props.width * 0.2
-  thumbHeight = this.props.width * 0.5
-  trackWidth = this.props.width * 0.25
+  const gutter = props.width * 0.2
+  const thumbHeight = props.width * 0.5
+  const trackWidth = props.width * 0.25
 
-  render() {
-    return (
-      <Wrapper
-        width={this.props.width}
-        height={this.props.height}
-        color={this.props.color}
+  return (
+    <Wrapper width={props.width} height={props.height} color={props.color}>
+      <Range gutter={gutter}>
+        <InputWrapper>
+          <Input
+            className="range"
+            width={props.width}
+            height={props.height}
+            color={props.color}
+            fontSize={props.fontSize}
+            value={props.value}
+            gutter={gutter}
+            thumbHeight={thumbHeight}
+            trackWidth={trackWidth}
+            type="range"
+            min={0}
+            max={1}
+            step={0.01}
+            onChange={handleChange}
+          />
+        </InputWrapper>
+      </Range>
+      <GainIndicator
+        color={props.color}
+        fontSize={props.fontSize}
+        gutter={gutter}
       >
-        <Range gutter={this.gutter}>
-          <InputWrapper>
-            <Input
-              className="range"
-              width={this.props.width}
-              height={this.props.height}
-              color={this.props.color}
-              fontSize={this.props.fontSize}
-              value={this.props.value}
-              gutter={this.gutter}
-              thumbHeight={this.thumbHeight}
-              trackWidth={this.trackWidth}
-              type="range"
-              min={0}
-              max={1}
-              step={0.01}
-              onChange={this.handleChange}
-            />
-          </InputWrapper>
-        </Range>
-        <GainIndicator
-          color={this.props.color}
-          fontSize={this.props.fontSize}
-          gutter={this.gutter}
-        >
-          {Volume.toDBString(this.props.value)}
-        </GainIndicator>
-      </Wrapper>
-    )
-  }
-}
+        {Volume.toDBString(props.value)}
+      </GainIndicator>
+    </Wrapper>
+  )
+})
 
-export default VerticalFader
+export default MemoizedVerticalFader
