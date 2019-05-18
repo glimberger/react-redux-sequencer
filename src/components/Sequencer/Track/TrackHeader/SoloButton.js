@@ -44,9 +44,7 @@ const buttonRef = React.createRef<HTMLButtonElement>()
 const SoloButton = React.memo<Props>(function SoloButton(props: Props) {
   const handleClick = () => {
     props.onClick()
-    if (buttonRef.current) {
-      buttonRef.current.blur()
-    }
+    buttonRef.current && buttonRef.current.blur()
   }
 
   return (

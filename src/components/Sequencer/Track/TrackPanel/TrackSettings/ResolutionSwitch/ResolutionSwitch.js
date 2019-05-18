@@ -10,7 +10,6 @@ import type {
   Session,
   Track
 } from "../../../../../../redux/store/session/types"
-import type { MaterialColor } from "../../../../../../utils/color/colorLibrary"
 
 type OwnProps = {
   gutter: number
@@ -30,12 +29,6 @@ type DispatchProps = {
 }
 
 type Props = OwnProps & StateProps & DispatchProps
-
-type State = {
-  hoverButtonResolution_1: boolean,
-  hoverButtonResolution_2: boolean,
-  hoverButtonResolution_4: boolean
-}
 
 const StyledSwitch = styled.div`
   display: flex;
@@ -60,134 +53,100 @@ const ResolutionButton = styled.button`
   border-radius: 3px;
   border: none;
   font-size: 12px;
-  background-color: ${({ color, noteResolution, buttonResolution, hover }) =>
-    ResolutionSwitch.backGroundColor(
-      color,
-      noteResolution === buttonResolution,
-      hover
-    )};
+  background-color: ${({ color, noteResolution, buttonResolution }) =>
+    noteResolution === buttonResolution
+      ? Color.get50(color)
+      : Color.get400(color)};
+
+  &:hover {
+    background-color: ${({ color, noteResolution, buttonResolution }) =>
+      noteResolution === buttonResolution
+        ? Color.get50(color)
+        : Color.get200(color)};
+  }
 `
 
 const Gutter = styled.div`
   margin-left: ${({ gutter }) => gutter}px;
 `
 
-class ResolutionSwitch extends React.Component<Props, State> {
-  state = {
-    hoverButtonResolution_1: false,
-    hoverButtonResolution_2: false,
-    hoverButtonResolution_4: false
-  }
+const prefs = { height: 36, width: 130 }
 
-  prefs = {
-    height: 36,
-    width: 130
-  }
+const button1Ref = React.createRef<HTMLButtonElement>()
+const button2Ref = React.createRef<HTMLButtonElement>()
+const button4Ref = React.createRef<HTMLButtonElement>()
 
-  button1Ref = React.createRef<HTMLButtonElement>()
-  button2Ref = React.createRef<HTMLButtonElement>()
-  button4Ref = React.createRef<HTMLButtonElement>()
+const ResolutionSwitch = React.memo<Props>(function ResolutionSwitch(
+  props: Props
+) {
+  if (props.activeTrackID === null) return <div />
 
-  hoverOn(noteResolution: NoteResolution) {
-    this.setState({ [`hoverButtonResolution_${noteResolution}`]: true })
-  }
-  hoverOff(noteResolution: NoteResolution) {
-    this.setState({ [`hoverButtonResolution_${noteResolution}`]: false })
-  }
-
-  static backGroundColor(
-    color: MaterialColor,
-    active: boolean,
-    hover: boolean
-  ) {
-    return active
-      ? Color.get50(color)
-      : hover
-      ? Color.get200(color)
-      : Color.get400(color)
-  }
-
-  render() {
-    if (!this.props.activeTrackID) return null
-
-    return (
-      <StyledSwitch
-        width={this.prefs.width}
-        height={this.prefs.height}
-        gutter={this.props.gutter}
-        color={this.props.color}
+  return (
+    <StyledSwitch
+      width={prefs.width}
+      height={prefs.height}
+      gutter={props.gutter}
+      color={props.color}
+    >
+      <ResolutionButton
+        color={props.color}
+        noteResolution={props.noteResolution}
+        buttonResolution={1}
+        title={
+          props.noteResolution === 1
+            ? "Sixteenth notes"
+            : "Switch to sixteenth notes"
+        }
+        ref={button1Ref}
+        onClick={() => {
+          if (props.activeTrackID && props.noteResolution !== 1) {
+            props.changeNoteResolution(1, props.activeTrackID)
+            button1Ref.current && button1Ref.current.blur()
+          }
+        }}
       >
-        <ResolutionButton
-          color={this.props.color}
-          noteResolution={this.props.noteResolution}
-          buttonResolution={1}
-          hover={this.state.hoverButtonResolution_1}
-          title={
-            this.props.noteResolution === 1
-              ? "Sixteenth notes"
-              : "Switch to sixteenth notes"
+        &#x266C;
+      </ResolutionButton>
+      <Gutter gutter={props.gutter}> </Gutter>
+      <ResolutionButton
+        color={props.color}
+        noteResolution={props.noteResolution}
+        buttonResolution={2}
+        title={
+          props.noteResolution === 2 ? "Eighth notes" : "Switch to eighth notes"
+        }
+        ref={button2Ref}
+        onClick={() => {
+          if (props.activeTrackID && props.noteResolution !== 2) {
+            props.changeNoteResolution(2, props.activeTrackID)
+            button2Ref.current && button2Ref.current.blur()
           }
-          ref={this.button1Ref}
-          onClick={() => {
-            if (this.props.activeTrackID && this.props.noteResolution !== 1) {
-              this.props.changeNoteResolution(1, this.props.activeTrackID)
-              this.button1Ref.current && this.button1Ref.current.blur()
-            }
-          }}
-          onMouseEnter={() => this.hoverOn(1)}
-          onMouseLeave={() => this.hoverOff(1)}
-        >
-          &#x266C;
-        </ResolutionButton>
-        <Gutter gutter={this.props.gutter}> </Gutter>
-        <ResolutionButton
-          color={this.props.color}
-          noteResolution={this.props.noteResolution}
-          buttonResolution={2}
-          hover={this.state.hoverButtonResolution_2}
-          title={
-            this.props.noteResolution === 2
-              ? "Eighth notes"
-              : "Switch to eighth notes"
+        }}
+      >
+        &#x266B;
+      </ResolutionButton>
+      <Gutter gutter={props.gutter}> </Gutter>
+      <ResolutionButton
+        color={props.color}
+        noteResolution={props.noteResolution}
+        buttonResolution={4}
+        title={
+          props.noteResolution === 4
+            ? "Quarter notes"
+            : "Switch to quarter notes"
+        }
+        ref={button4Ref}
+        onClick={() => {
+          if (props.activeTrackID && props.noteResolution !== 4) {
+            props.changeNoteResolution(4, props.activeTrackID)
+            button4Ref.current && button4Ref.current.blur()
           }
-          ref={this.button2Ref}
-          onClick={() => {
-            if (this.props.activeTrackID && this.props.noteResolution !== 2) {
-              this.props.changeNoteResolution(2, this.props.activeTrackID)
-              this.button2Ref.current && this.button2Ref.current.blur()
-            }
-          }}
-          onMouseEnter={() => this.hoverOn(2)}
-          onMouseLeave={() => this.hoverOff(2)}
-        >
-          &#x266B;
-        </ResolutionButton>
-        <Gutter gutter={this.props.gutter}> </Gutter>
-        <ResolutionButton
-          color={this.props.color}
-          noteResolution={this.props.noteResolution}
-          buttonResolution={4}
-          hover={this.state.hoverButtonResolution_2}
-          title={
-            this.props.noteResolution === 4
-              ? "Quarter notes"
-              : "Switch to quarter notes"
-          }
-          ref={this.button4Ref}
-          onClick={() => {
-            if (this.props.activeTrackID && this.props.noteResolution !== 4) {
-              this.props.changeNoteResolution(4, this.props.activeTrackID)
-              this.button4Ref.current && this.button4Ref.current.blur()
-            }
-          }}
-          onMouseEnter={() => this.hoverOn(4)}
-          onMouseLeave={() => this.hoverOff(4)}
-        >
-          &#x2669;
-        </ResolutionButton>
-      </StyledSwitch>
-    )
-  }
-}
+        }}
+      >
+        &#x2669;
+      </ResolutionButton>
+    </StyledSwitch>
+  )
+})
 
 export default ResolutionSwitch

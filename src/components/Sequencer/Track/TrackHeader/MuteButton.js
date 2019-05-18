@@ -44,9 +44,7 @@ const buttonRef = React.createRef<HTMLButtonElement>()
 const MuteButton = React.memo<Props>(function MuteButton(props: Props) {
   const handleClick = () => {
     props.onClick()
-    if (buttonRef.current) {
-      buttonRef.current.blur()
-    }
+    buttonRef.current && buttonRef.current.blur()
   }
 
   return (
