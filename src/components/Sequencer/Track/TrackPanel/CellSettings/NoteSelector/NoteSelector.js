@@ -34,10 +34,6 @@ type DispatchProps = {
 
 type Props = OwnProps & StateProps & DispatchProps
 
-type State = {
-  +noteOnHover: number | null
-}
-
 const StyledSelector = styled.div`
   font-size: 13px;
 `
@@ -66,114 +62,99 @@ const KeyWrapper = styled.div`
   z-index: ${({ blackKey }) => (blackKey ? 10 : 1)};
 `
 
-class NoteSelector extends React.Component<Props, State> {
-  state = {
-    noteOnHover: null
-  }
+// used to compute the width of a black key
+const widthRatio = 0.75
 
-  // used to compute the width of a black key
-  widthRatio = 0.75
+const NoteSelector = React.memo<Props>(function NoteSelector(props: Props) {
+  const [noteOnHover, setNoteOnHover] = React.useState(null)
 
-  render() {
-    if (this.props.activeTrackID === null || this.props.activeCellBeat === null)
-      return null
+  if (props.activeTrackID === null || props.activeCellBeat === null)
+    return <div />
 
-    const note = MidiConverter.toNote(this.state.noteOnHover)
+  const filename =
+    noteOnHover !== null ? props.getSample(noteOnHover).label : ""
 
-    const filename =
-      this.state.noteOnHover !== null
-        ? this.props.getSample(this.state.noteOnHover).label
-        : ""
+  const detune =
+    noteOnHover !== null ? props.getMappingForNote(noteOnHover).detune : ""
 
-    const detune =
-      this.state.noteOnHover !== null
-        ? this.props.getMappingForNote(this.state.noteOnHover).detune
-        : ""
+  return (
+    <StyledSelector>
+      {noteOnHover !== null ? (
+        <Info keyWidth={props.keyWidth}>
+          <InfoItem itemWidth={"10%"}>
+            <div>
+              <span style={{ fontWeight: "lighter" }}>NOTE</span>{" "}
+              {MidiConverter.toNote(noteOnHover)} ({noteOnHover})
+            </div>
+          </InfoItem>
+          <InfoItem keyWidth={props.keyWidth} itemWidth={"10%"}>
+            <span style={{ fontWeight: "lighter" }}>DETUNE</span> {detune} cent
+          </InfoItem>
+          <InfoItem keyWidth={props.keyWidth} itemWidth={"30%"}>
+            <span style={{ fontWeight: "lighter" }}>SAMPLE</span> {filename}
+          </InfoItem>
+        </Info>
+      ) : (
+        <Info keyWidth={props.keyWidth} style={{ opacity: 0 }}>
+          <span role="img" aria-label="keyboard">
+            🎹
+          </span>
+        </Info>
+      )}
 
-    return (
-      <StyledSelector>
-        {this.state.noteOnHover !== null ? (
-          <Info keyWidth={this.props.keyWidth}>
-            <InfoItem itemWidth={"10%"}>
-              <div>
-                <span style={{ fontWeight: "lighter" }}>NOTE</span> {note} (
-                {this.state.noteOnHover})
-              </div>
-            </InfoItem>
-            <InfoItem keyWidth={this.props.keyWidth} itemWidth={"10%"}>
-              <span style={{ fontWeight: "lighter" }}>DETUNE</span> {detune}{" "}
-              cent
-            </InfoItem>
-            <InfoItem keyWidth={this.props.keyWidth} itemWidth={"30%"}>
-              <span style={{ fontWeight: "lighter" }}>SAMPLE</span> {filename}
-            </InfoItem>
-          </Info>
-        ) : (
-          <Info keyWidth={this.props.keyWidth} style={{ opacity: 0 }}>
-            <span role="img" aria-label="keyboard">
-              🎹
-            </span>
-          </Info>
-        )}
+      <Keys height={props.height}>
+        {[...Array(128).keys()].map(midiNote => {
+          const blackKey = [1, 3, 6, 8, 10].includes(midiNote % 12)
 
-        <Keys height={this.props.height}>
-          {[...Array(128).keys()].map(midiNote => {
-            const blackKey = [1, 3, 6, 8, 10].includes(midiNote % 12)
+          return (
+            <KeyWrapper
+              key={midiNote}
+              blackKey={blackKey}
+              keyWidth={props.keyWidth}
+              height={props.height}
+              widthRatio={widthRatio}
+            >
+              <Key
+                active={midiNote === props.activeNote}
+                midiNote={midiNote}
+                width={blackKey ? props.keyWidth * widthRatio : props.keyWidth}
+                color={props.color}
+                black={blackKey}
+                onClick={() => {
+                  if (
+                    props.activeTrackID === null ||
+                    props.activeCellBeat === null
+                  )
+                    return
 
-            return (
-              <KeyWrapper
-                key={midiNote}
-                blackKey={blackKey}
-                keyWidth={this.props.keyWidth}
-                height={this.props.height}
-                widthRatio={this.widthRatio}
-              >
-                <Key
-                  active={midiNote === this.props.activeNote}
-                  midiNote={midiNote}
-                  width={
-                    blackKey
-                      ? this.props.keyWidth * this.widthRatio
-                      : this.props.keyWidth
-                  }
-                  color={this.props.color}
-                  black={blackKey}
-                  onClick={() => {
-                    if (
-                      this.props.activeTrackID === null ||
-                      this.props.activeCellBeat === null
-                    )
-                      return
+                  props.changeCellNote(
+                    midiNote,
+                    props.activeCellBeat,
+                    props.activeTrackID
+                  )
+                }}
+                onHoverStart={() => {
+                  if (
+                    props.activeTrackID === null ||
+                    props.activeCellBeat === null
+                  )
+                    return
 
-                    this.props.changeCellNote(
-                      midiNote,
-                      this.props.activeCellBeat,
-                      this.props.activeTrackID
-                    )
-                  }}
-                  onHoverStart={() => {
-                    if (
-                      this.props.activeTrackID === null ||
-                      this.props.activeCellBeat === null
-                    )
-                      return
-
-                    this.props.listenCellNote(
-                      midiNote,
-                      this.props.activeCellBeat,
-                      this.props.activeTrackID
-                    )
-                    this.setState({ noteOnHover: midiNote })
-                  }}
-                  onHoverStop={() => this.setState({ noteOnHover: null })}
-                />
-              </KeyWrapper>
-            )
-          })}
-        </Keys>
-      </StyledSelector>
-    )
-  }
-}
+                  props.listenCellNote(
+                    midiNote,
+                    props.activeCellBeat,
+                    props.activeTrackID
+                  )
+                  setNoteOnHover(midiNote)
+                }}
+                onHoverStop={() => setNoteOnHover(null)}
+              />
+            </KeyWrapper>
+          )
+        })}
+      </Keys>
+    </StyledSelector>
+  )
+})
 
 export default NoteSelector
