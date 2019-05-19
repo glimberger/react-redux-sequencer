@@ -18,16 +18,29 @@ type Props = {
   onHoverStop: () => void
 }
 
-type State = {
+const backgroundColor = (
+  color: MaterialColor,
+  black: boolean,
+  active: boolean,
   hover: boolean
+) => {
+  if (active) {
+    return black ? Color.get800(color) : "white"
+  }
+
+  if (black) {
+    return hover ? Color.get800(color) : Color.get900Dark(color)
+  }
+
+  return hover ? "white" : Color.get100(color)
 }
 
 const KeyStyled = styled.button`
   display: inline-block;
   height: 100%;
   width: ${({ width }) => width}px;
-  background-color: ${({ color, black, active, hover }) =>
-    Key.backgroundColor(color, black, active, hover)};
+  background-color: ${({ color, black, active }) =>
+    backgroundColor(color, black, active, false)};
   padding: 0;
   border: 1px solid
     ${props =>
@@ -35,70 +48,36 @@ const KeyStyled = styled.button`
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
   cursor: ${props => (props.active ? "default" : "pointer")};
+
+  &:hover {
+    background-color: ${({ color, black, active }) =>
+      backgroundColor(color, black, active, true)};
+  }
 `
 
-class Key extends React.Component<Props, State> {
-  static backgroundColor(
-    color: MaterialColor,
-    black: boolean,
-    active: boolean,
-    hover: boolean
-  ) {
-    if (active) {
-      return black ? Color.get800(color) : "white"
-    }
+const Key = React.memo<Props>(function Key(props: Props) {
+  const buttonRef = React.createRef<HTMLButtonElement>()
 
-    if (black && !active) {
-      return hover ? Color.get800(color) : Color.get900Dark(color)
-    }
-
-    if (!black && !active) {
-      return hover ? "white" : Color.get100(color)
-    }
+  const handleClick = () => {
+    props.onClick()
+    buttonRef.current && buttonRef.current.blur()
   }
 
-  state = {
-    hover: false
-  }
-
-  buttonRef = React.createRef<HTMLButtonElement>()
-
-  hoverOn() {
-    this.setState({ hover: true })
-    this.props.onHoverStart()
-  }
-  hoverOff() {
-    this.setState({ hover: false })
-    this.props.onHoverStop()
-  }
-
-  handleClick() {
-    this.props.onClick()
-    this.buttonRef.current && this.buttonRef.current.blur()
-  }
-
-  render() {
-    return (
-      <KeyStyled
-        width={this.props.width}
-        color={this.props.color}
-        black={this.props.black}
-        midinote={this.props.midiNote}
-        active={this.props.active}
-        hover={this.state.hover}
-        ref={this.buttonRef}
-        onClick={() => this.handleClick()}
-        onMouseEnter={() => {
-          this.hoverOn()
-        }}
-        onMouseLeave={() => {
-          this.hoverOff()
-        }}
-      >
-        {" "}
-      </KeyStyled>
-    )
-  }
-}
+  return (
+    <KeyStyled
+      width={props.width}
+      color={props.color}
+      black={props.black}
+      midinote={props.midiNote}
+      active={props.active}
+      ref={buttonRef}
+      onClick={handleClick}
+      onMouseEnter={() => props.onHoverStart()}
+      onMouseLeave={() => props.onHoverStop()}
+    >
+      {" "}
+    </KeyStyled>
+  )
+})
 
 export default Key
