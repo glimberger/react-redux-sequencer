@@ -2454,6 +2454,6 @@ const initialSate: Session = {
       type: "audio/wave"
     }
   }
-};
+}
 
 export default initialSate
