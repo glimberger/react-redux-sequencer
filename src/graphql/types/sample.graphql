@@ -1,0 +1,18 @@
+type Sample {
+    "primary key (UUIDv4)"
+    id: ID!
+
+    "original filename"
+    filename: String!
+
+    url: String!
+
+    "Mime type"
+    type: String!
+
+    "Sample label"
+    label: String!
+
+    "Group to which the sample should belong"
+    group: String
+}

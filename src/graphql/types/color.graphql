@@ -1,0 +1,25 @@
+"""
+A set of named colors as described in Material Design
+https://material.io/tools/color
+"""
+enum MaterialColor {
+    red
+    pink
+    purple
+    deepPurple
+    indigo
+    blue
+    lightBlue
+    cyan
+    teal
+    green
+    lightGreen
+    lime
+    yellow
+    amber
+    orange
+    deepOrange
+    brown
+    grey
+    blueGrey
+}

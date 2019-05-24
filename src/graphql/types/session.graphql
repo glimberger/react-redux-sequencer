@@ -1,0 +1,37 @@
+type Session {
+    "Primary key (UUIDv4)"
+    id : ID!
+
+    "Username of the user who creates the session"
+    creator: String!
+
+    "Tempo in BPM [20, 200]"
+    tempo: Int!
+
+    "Master gain [0, 1]"
+    masterGain: Int!
+
+    "ID of the active track — its panel is visible"
+    activeTrackID: ID
+
+    "When a track is active, row index (beat) of the currently active cell in the panel"
+    activeCellBeat: Int
+
+    "Track IDs to determine the track order"
+    trackOrder: [ID]!
+
+    "Set of sequencer tracks"
+    tracks: [Track]!
+
+    "Instrument set used by in tracks"
+    instruments: [Instrument]!
+
+    "Sample set played in tracks"
+    samples: [Sample]!
+
+    "Creation date in ISO 8601 Extended Format"
+    createdAt: String!
+
+    "Update date in ISO 8601 Exteded Format"
+    updatedAt: String!
+}

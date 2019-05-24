@@ -1,0 +1,37 @@
+"""
+Instrument used to build a sequencer track
+"""
+type Instrument {
+    "primary key (UUIDv4)"
+    id: ID!
+
+    label: String!
+
+    group: String!
+
+    "IDs of the samples used in mappings"
+    sampleIDs: [ID!]
+
+    "MIDI mapping — set of maximum 128 entries"
+    mapping: [InstrumentMapping!]!
+
+    "Creation date in ISO 8601 Extended Format"
+    createdAt: String!
+
+    "Update date in ISO 8601 Exteded Format"
+    updatedAt: String!
+}
+
+"""
+Mapping entry for the instrument
+"""
+type InstrumentMapping {
+    "Corresponding MIDI note [0, 127]"
+    note: Int!
+
+    "The associated sample"
+    sampleID: Sample!
+
+    "Detuning of the pitch in cents"
+    detune: Int!
+}
