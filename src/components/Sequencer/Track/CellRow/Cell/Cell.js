@@ -12,17 +12,30 @@ import type {
 import type { MaterialColor } from "../../../../../utils/color/colorLibrary"
 import colorLuminance from "../../../../../utils/color/colorLuminance"
 
-type Props = {
-  color: MaterialColor,
+export type OwnProps = {
+  trackID: string,
+  beatNumber: number,
   size: number,
-  gutter: number,
+  gutter: number
+}
+
+type StateProps = {
+  activeTrackID: string,
+  color: MaterialColor,
   noteResolution: NoteResolution,
   processing: AudioProcessing,
   played: boolean,
   scheduled: boolean,
   edited: boolean,
-  onClick: () => void
+  rendered: boolean
 }
+
+type DispatchProps = {
+  scheduleTrackCell: () => void,
+  setActiveCell: () => void
+}
+
+type Props = OwnProps & StateProps & DispatchProps
 
 const cellWidth = (
   resolution: NoteResolution,
@@ -100,10 +113,15 @@ Cell.defaultProps = {
 }
 
 function Cell(props: Props) {
+  if (!props.rendered) return <div />
+
   const buttonRef = React.createRef<HTMLButtonElement>()
 
   const handleClick = () => {
-    props.onClick()
+    props.trackID === props.activeTrackID
+      ? props.setActiveCell()
+      : props.scheduleTrackCell()
+
     buttonRef.current && buttonRef.current.blur()
   }
 
@@ -118,7 +136,7 @@ function Cell(props: Props) {
       scheduled={props.scheduled}
       edited={props.edited}
       ref={buttonRef}
-      onClick={() => handleClick()}
+      onClick={handleClick}
     >
       {" "}
     </StyledCell>
