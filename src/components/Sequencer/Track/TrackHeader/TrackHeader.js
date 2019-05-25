@@ -13,10 +13,10 @@ import type { MaterialColor } from "../../../../utils/color/colorLibrary"
 
 type StateProps = {
   color: MaterialColor,
-  trackID: string,
   muted: boolean,
   soloed: boolean,
-  gain: number
+  gain: number,
+  label: string
 }
 
 type DispatchProps = {
@@ -26,11 +26,11 @@ type DispatchProps = {
   changeTrackLabel: (label: string) => void
 }
 
-type OwnProps = {
+export type OwnProps = {
   gutter: number,
   width: number,
   height: number,
-  label: string
+  trackID: string
 }
 
 type Props = OwnProps & StateProps & DispatchProps
