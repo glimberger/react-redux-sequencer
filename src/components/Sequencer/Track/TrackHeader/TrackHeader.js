@@ -88,29 +88,38 @@ const StyledLabelForm = styled.form`
   }
 `
 
-// https://css-tricks.com/snippets/javascript/bind-different-events-to-click-and-double-click/
+// https://css-tricks.com/snippets/javascript/bind-different-events-to-click-and-double-click/#comment-1671033
 let timer: TimeoutID
-let prevent: boolean = false
 const delay = 200
 
 const TrackHeader = React.memo<Props>(function TrackHeader(props: Props) {
   const [labelEdited, setLabelEdited] = React.useState(false)
+  const [clicked, setClicked] = React.useState<boolean>(false)
 
-  const handleClick = () => {
-    timer = setTimeout(() => {
-      if (!prevent) {
-        if (!labelEdited) {
-          props.onTitleClick()
-        }
-      }
-      prevent = false
-    }, delay)
+  const doubleClickAction = () => {
+    setLabelEdited(true)
   }
 
-  const handleDoubleClick = () => {
-    clearTimeout(timer)
-    prevent = true
-    setLabelEdited(true)
+  const singleClickAction = () => {
+    props.onTitleClick()
+  }
+
+  const handleClick = () => {
+    if (labelEdited) return
+
+    if (clicked) {
+      clearTimeout(timer)
+      doubleClickAction()
+      setClicked(false)
+    } else {
+      setClicked(true)
+
+      timer = setTimeout(() => {
+        setLabelEdited(false)
+        singleClickAction()
+        setClicked(false)
+      }, delay)
+    }
   }
 
   const handleSubmit = (event: SyntheticInputEvent<HTMLFormElement>) => {
@@ -126,11 +135,7 @@ const TrackHeader = React.memo<Props>(function TrackHeader(props: Props) {
   }
 
   return (
-    <Container
-      title="Open/close track panel"
-      onClick={handleClick}
-      onDoubleClick={handleDoubleClick}
-    >
+    <Container title="Open/close track panel" onClick={handleClick}>
       <StyledTrackHeader
         width={props.width}
         height={props.height}
