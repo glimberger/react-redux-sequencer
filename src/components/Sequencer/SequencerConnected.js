@@ -2,10 +2,9 @@
 import { connect } from "react-redux"
 
 import Sequencer from "./Sequencer"
-import { getOrderedTracks } from "../../redux/reducers"
 
 const mapStateToProps = state => ({
-  orderedTracks: getOrderedTracks(state)
+  trackOrder: state.session.trackOrder
 })
 
 const SequencerConnected = connect(mapStateToProps)(Sequencer)
