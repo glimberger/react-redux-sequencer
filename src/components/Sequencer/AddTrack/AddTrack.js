@@ -1,93 +1,83 @@
 // @flow strict
 import * as React from "react"
 import { connect } from "react-redux"
-import uuid from "uuid/v4"
 
+import uuid from "uuid/v4"
 import AddTrackButton from "./AddTrackButton"
 import AddTrackModal from "./AddTrackModal"
-import {
-  getInstrumentListIndexedByGroup,
-  getSamplesByIDs
-} from "../../../redux/reducers"
 import { addTrack } from "../../../redux/actions/session/creators"
+import { getInstrumentListIndexedByGroup } from "../../../redux/reducers/instruments"
 
 import type { MaterialColor } from "../../../utils/color/colorLibrary"
-import type { Instrument } from "../../../redux/store/instrument/types"
+import type {
+  Instrument,
+  Instruments
+} from "../../../redux/store/instrument/types"
 import type { Samples } from "../../../redux/store/sample/types"
+import type { AppState } from "../../../redux/store/configureStore"
 
-type Props = {
-  // ownProps
+type OwnProps = {
   color: MaterialColor,
   width: number,
   height: number,
-  gutter: number,
-  // stateProps
-  instrumentList: { [group: string]: { [instrumentID: string]: Instrument } },
-  getSamplesByIDs: (sampleIDs: Array<string>) => Samples,
-  // dispatchProps
+  gutter: number
+}
+
+type StateProps = {
+  instruments: Instruments,
+  samples: Samples
+}
+
+type DispatchProps = {
   addTrack: (trackID: string, instrument: Instrument, samples: Samples) => void
 }
 
-type State = {
-  modalIsOpen: boolean,
-  loading: boolean
-}
+type Props = OwnProps & StateProps & DispatchProps
 
-class AddTrack extends React.Component<Props, State> {
-  state = {
-    modalIsOpen: false,
-    loading: false
-  }
+function AddTrack(props: Props) {
+  const [modalOpen, setModalOpen] = React.useState<boolean>(false)
 
-  openModal = () => {
-    this.setState({ modalIsOpen: true })
-  }
-
-  afterOpenModal = () => {
+  const afterOpenModal = () => {
     // references are now sync'd and can be accessed.
   }
 
-  closeModal = () => {
-    this.setState({ modalIsOpen: false })
-  }
+  const handleNewTrack = (instrument: Instrument) => {
+    setModalOpen(false)
 
-  handleNewTrack = (instrument: Instrument) => {
-    this.closeModal()
-
-    const samples = this.props.getSamplesByIDs(instrument.sampleIDs)
-
-    this.props.addTrack(uuid(), instrument, samples)
-  }
-
-  render() {
-    return (
-      <div>
-        <AddTrackButton
-          color={this.props.color}
-          height={this.props.height}
-          width={this.props.width}
-          gutter={this.props.gutter}
-          onClick={this.openModal}
-        />
-
-        <AddTrackModal
-          color={this.props.color}
-          gutter={this.props.gutter}
-          isOpen={this.state.modalIsOpen}
-          onAfterOpen={this.afterOpenModal}
-          onClose={this.closeModal}
-          onInstrumentSelect={this.handleNewTrack}
-          instrumentList={this.props.instrumentList}
-        />
-      </div>
+    const instrumentSamples: Samples = {}
+    instrument.sampleIDs.forEach(
+      sampleID => (instrumentSamples[sampleID] = props.samples[sampleID])
     )
+
+    props.addTrack(uuid(), instrument, instrumentSamples)
   }
+
+  return (
+    <div>
+      <AddTrackButton
+        color={props.color}
+        height={props.height}
+        width={props.width}
+        gutter={props.gutter}
+        onClick={() => setModalOpen(true)}
+      />
+
+      <AddTrackModal
+        color={props.color}
+        gutter={props.gutter}
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        onAfterOpen={afterOpenModal}
+        onInstrumentSelect={handleNewTrack}
+        instrumentList={getInstrumentListIndexedByGroup(props.instruments)}
+      />
+    </div>
+  )
 }
 
-const mapStateToProps = state => ({
-  instrumentList: getInstrumentListIndexedByGroup(state),
-  getSamplesByIDs: (sampleIDs: Array<string>) =>
-    getSamplesByIDs(state, sampleIDs)
+const mapStateToProps = (state: AppState) => ({
+  instruments: state.instruments,
+  samples: state.samples
 })
 
 const AddTrackConnected = connect(
