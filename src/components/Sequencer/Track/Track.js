@@ -6,6 +6,7 @@ import styled from "styled-components/macro"
 import TrackHeaderWithConnect from "./TrackHeader/TrackHeaderWithConnect"
 import CellRow from "./CellRow/CellRow"
 import TrackPanel from "./TrackPanel/TrackPanel"
+import { PrefsContext } from "../Prefs/PrefsContext"
 
 import type { Session } from "../../../redux/store/session/types"
 
@@ -14,11 +15,7 @@ type StateProps = {
 }
 
 type OwnProps = {
-  trackID: string,
-  panelWidth: number,
-  panelHeight: number,
-  gutter: number,
-  cellSize: number
+  trackID: string
 }
 
 type Props = StateProps & OwnProps
@@ -37,32 +34,25 @@ const Gutter = styled.div`
 
 const Track = React.memo<Props>(function Track({
   activeTrackID,
-  trackID,
-  panelWidth,
-  panelHeight,
-  gutter,
-  cellSize
+  trackID
 }: Props) {
+  const prefs = React.useContext(PrefsContext)
+
   return (
     <div id={`track_${trackID}`}>
       <HeaderContainer>
-        <TrackHeaderWithConnect
-          trackID={trackID}
-          width={panelWidth}
-          height={cellSize}
-          gutter={gutter}
-        />
-        <Gutter gutter={gutter}> </Gutter>
-        <CellRow trackID={trackID} size={cellSize} gutter={gutter} />
+        <TrackHeaderWithConnect trackID={trackID} />
+        <Gutter gutter={prefs.gutter}> </Gutter>
+        <CellRow trackID={trackID} />
       </HeaderContainer>
 
       {trackID === activeTrackID && (
-        <PanelContainer gutter={gutter}>
+        <PanelContainer gutter={prefs.gutter}>
           <TrackPanel
-            headerWidth={panelWidth}
-            height={panelHeight}
-            gutter={gutter}
-            cellSize={cellSize}
+            headerWidth={prefs.panelWidth}
+            height={prefs.panelHeight}
+            gutter={prefs.gutter}
+            cellSize={prefs.cellSize}
           />
         </PanelContainer>
       )}

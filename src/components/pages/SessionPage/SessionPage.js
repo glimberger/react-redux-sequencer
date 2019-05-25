@@ -4,6 +4,7 @@ import * as React from "react"
 import MasterPanel from "../../MasterPanel/MasterPanel"
 import SequencerConnected from "../../Sequencer/SequencerConnected"
 import AudioEngineConnected from "../../AudioEngine/AudioEngineConnected"
+import { PrefsProvider } from "../../Sequencer/Prefs/PrefsContext"
 
 import pageStyles from "../Page.module.css"
 
@@ -12,8 +13,10 @@ function SessionPage() {
     <div className={pageStyles.Container}>
       <MasterPanel />
       <section style={{ margin: "1rem" }}>
-        <SequencerConnected />
-        <AudioEngineConnected />
+        <PrefsProvider>
+          <SequencerConnected />
+          <AudioEngineConnected />
+        </PrefsProvider>
       </section>
     </div>
   )

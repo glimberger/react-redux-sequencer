@@ -8,6 +8,7 @@ import Volume from "../../../../audio/utils/Volume/Volume"
 import MuteButton from "./MuteButton"
 import SoloButton from "./SoloButton"
 import TrackLabel from "./TrackLabel"
+import { PrefsContext } from '../../Prefs/PrefsContext'
 
 import type { MaterialColor } from "../../../../utils/color/colorLibrary"
 
@@ -27,9 +28,6 @@ type DispatchProps = {
 }
 
 export type OwnProps = {
-  gutter: number,
-  width: number,
-  height: number,
   trackID: string
 }
 
@@ -96,6 +94,8 @@ const TrackHeader = React.memo<Props>(function TrackHeader(props: Props) {
   const [labelEdited, setLabelEdited] = React.useState(false)
   const [clicked, setClicked] = React.useState<boolean>(false)
 
+  const prefs = React.useContext(PrefsContext)
+
   const doubleClickAction = () => {
     setLabelEdited(true)
   }
@@ -137,15 +137,15 @@ const TrackHeader = React.memo<Props>(function TrackHeader(props: Props) {
   return (
     <Container title="Open/close track panel" onClick={handleClick}>
       <StyledTrackHeader
-        width={props.width}
-        height={props.height}
-        gutter={props.gutter}
+        width={prefs.panelWidth}
+        height={prefs.cellSize}
+        gutter={prefs.gutter}
         color={props.color}
       >
         {labelEdited ? (
           <StyledLabelForm
             color={props.color}
-            gutter={props.gutter}
+            gutter={prefs.gutter}
             onSubmit={handleSubmit}
           >
             <input type="text" name="label" defaultValue={props.label} />
@@ -157,13 +157,13 @@ const TrackHeader = React.memo<Props>(function TrackHeader(props: Props) {
               <GainIndicator>{Volume.toDBString(props.gain)}</GainIndicator>
               <SoloButton
                 color={props.color}
-                width={props.height - 2 * props.gutter}
+                width={prefs.cellSize - 2 * prefs.gutter}
                 soloed={props.soloed}
                 onClick={() => props.onSoloClick()}
               />
               <MuteButton
                 color={props.color}
-                width={props.height - 2 * props.gutter}
+                width={prefs.cellSize - 2 * prefs.gutter}
                 muted={props.muted}
                 onClick={() => props.onMuteClick()}
               />

@@ -34,10 +34,12 @@ const mapStateToProps = (state: AppState, ownProps: OwnProps) => {
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  setActiveCell: () => dispatch(setActiveCell(ownProps.beatNumber)),
-  scheduleTrackCell: () =>
-    dispatch(scheduleTrackCell(ownProps.beatNumber, ownProps.trackID))
+const mapDispatchToProps = (dispatch, ownProps: OwnProps) => ({
+  onClick: (activeTrackID: string | null) => {
+    ownProps.trackID === activeTrackID
+      ? dispatch(setActiveCell(ownProps.beatNumber))
+      : dispatch(scheduleTrackCell(ownProps.beatNumber, ownProps.trackID))
+  }
 })
 
 const CellWithConnect = connect(

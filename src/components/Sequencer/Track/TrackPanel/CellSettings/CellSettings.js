@@ -4,22 +4,17 @@ import * as React from "react"
 import styled from "styled-components/macro"
 
 import Color from "../../../../../utils/color/colorLibrary"
-import Cell from "../../CellRow/Cell/Cell"
 import NoteSelectorWithConnect from "./NoteSelector/NoteSelectorWithConnect"
+import MidiConverter from "../../../../../utils/audio/MidiConverter"
+import GainKnob from "./GainKnob/GainKnob"
+import { PrefsContext } from "../../../Prefs/PrefsContext"
+import { Cell } from "../../CellRow/Cell/Cell"
 
 import type {
   Session,
   Track,
   Cell as CellType
 } from "../../../../../redux/store/session/types"
-import MidiConverter from "../../../../../utils/audio/MidiConverter"
-import GainKnob from "./GainKnob/GainKnob"
-
-type OwnProps = {
-  gutter: number,
-  height: number,
-  cellSize: number
-}
 
 type StateProps = {
   activeTrackID: $PropertyType<Session, "activeTrackID">,
@@ -35,7 +30,7 @@ type DispatchProps = {
   changeCellGain: (gain: number, beat: number, trackID: string) => void
 }
 
-type Props = OwnProps & StateProps & DispatchProps
+type Props = StateProps & DispatchProps
 
 const StyledSettings = styled.div`
   flex-shrink: 0;
@@ -67,26 +62,25 @@ const StyledGainSection = styled.section`
 `
 
 function CellSettings({
-  cellSize,
-  height,
-  gutter,
   color,
   activeCellBeat,
   activeTrackID,
   cell,
-  noteResolution,
-  scheduleTrackCell,
   changeCellGain,
-  getMappingForNote
+  getMappingForNote,
+  noteResolution,
+  scheduleTrackCell
 }: Props) {
   if (activeTrackID === null) return <div />
+
+  const prefs = React.useContext(PrefsContext)
 
   if (activeCellBeat === null || cell === null)
     return (
       <StyledSettings
-        cellSize={cellSize}
-        height={height}
-        gutter={gutter}
+        cellSize={prefs.cellSize}
+        height={prefs.panelHeight}
+        gutter={prefs.gutter}
         color={color}
       >
         {" "}
@@ -97,15 +91,15 @@ function CellSettings({
 
   return (
     <StyledSettings
-      cellSize={cellSize}
-      height={height}
-      gutter={gutter}
+      cellSize={prefs.cellSize}
+      height={prefs.panelHeight}
+      gutter={prefs.gutter}
       color={color}
     >
-      <StyledNoteSection gutter={gutter}>
+      <StyledNoteSection gutter={prefs.gutter}>
         <CellInfo>
           <Cell
-            size={cellSize}
+            size={prefs.cellSize}
             gutter={0}
             color={color}
             played={false}
@@ -113,6 +107,9 @@ function CellSettings({
             scheduled={cell.scheduled}
             processing={cell.processing}
             noteResolution={noteResolution}
+            activeTrackID={activeTrackID}
+            beatNumber={activeCellBeat}
+            trackID={activeTrackID}
             onClick={() => scheduleTrackCell(activeCellBeat, activeTrackID)}
           />
           <div>
@@ -134,18 +131,18 @@ function CellSettings({
         </CellInfo>
         <div>
           <NoteSelectorWithConnect
-            gutter={gutter}
-            cellSize={cellSize}
-            height={cellSize * 2}
+            gutter={prefs.gutter}
+            cellSize={prefs.cellSize}
+            height={prefs.cellSize * 2}
             keyWidth={16}
           />
         </div>
       </StyledNoteSection>
-      <section style={{ display: "flex", padding: `${gutter * 2}px` }}>
+      <section style={{ display: "flex", padding: `${prefs.gutter * 2}px` }}>
         <StyledGainSection>
           <GainKnob
             color={color}
-            gutter={gutter}
+            gutter={prefs.gutter}
             size={36}
             gain={cell.processing.gain.gain}
             onChange={value =>

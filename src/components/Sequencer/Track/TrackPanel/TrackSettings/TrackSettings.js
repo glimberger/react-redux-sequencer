@@ -8,19 +8,14 @@ import ResolutionSwitchWithConnect from "./ResolutionSwitch/ResolutionSwitchWith
 import VerticalFaderWithConnect from "./FaderWithConnect"
 
 import type { Track } from "../../../../../redux/store/session/types"
-
-type OwnProps = {
-  width: number,
-  height: number,
-  gutter: number
-}
+import { PrefsContext } from '../../../Prefs/PrefsContext'
 
 type StateProps = {
   color: $PropertyType<Track, "color">,
   isTrackActive: boolean
 }
 
-type Props = OwnProps & StateProps
+type Props = StateProps
 
 const StyledSettings = styled.div`
   border-radius: 3px;
@@ -48,23 +43,25 @@ const ResolutionSwitchWrapper = styled.div`
   padding: ${({ gutter }) => 2 * gutter}px;
 `
 
-function TrackSettings({ width, height, gutter, color, isTrackActive }: Props) {
+function TrackSettings({ color, isTrackActive }: Props) {
   if (!isTrackActive) return <div />
 
+  const prefs = React.useContext(PrefsContext)
+
   return (
-    <StyledSettings width={width} height={height} color={color}>
+    <StyledSettings width={prefs.panelWidth} height={prefs.panelHeight} color={color}>
       <InnerWrapper>
-        <AsideSection gutter={gutter}>
+        <AsideSection gutter={prefs.gutter}>
           <VerticalFaderWithConnect
             width={40}
-            height={height - 4 * gutter}
+            height={prefs.panelHeight - 4 * prefs.gutter}
             color={color}
             fontSize={9}
           />
         </AsideSection>
-        <MainSection width={width} gutter={gutter}>
-          <ResolutionSwitchWrapper gutter={gutter}>
-            <ResolutionSwitchWithConnect gutter={gutter} />
+        <MainSection width={prefs.panelWidth} gutter={prefs.gutter}>
+          <ResolutionSwitchWrapper gutter={prefs.gutter}>
+            <ResolutionSwitchWithConnect gutter={prefs.gutter} />
           </ResolutionSwitchWrapper>
           <div />
         </MainSection>

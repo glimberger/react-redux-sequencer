@@ -4,18 +4,18 @@ import * as React from "react"
 import styled from "styled-components/macro"
 
 import Color, { hexToRgb } from "../../../../../utils/color/colorLibrary"
+import colorLuminance from "../../../../../utils/color/colorLuminance"
+import { PrefsContext } from "../../../Prefs/PrefsContext"
 
 import type {
   AudioProcessing,
   NoteResolution
 } from "../../../../../redux/store/session/types"
 import type { MaterialColor } from "../../../../../utils/color/colorLibrary"
-import colorLuminance from "../../../../../utils/color/colorLuminance"
 
 export type OwnProps = {
   trackID: string,
   beatNumber: number,
-  size: number,
   gutter: number
 }
 
@@ -31,8 +31,7 @@ type StateProps = {
 }
 
 type DispatchProps = {
-  scheduleTrackCell: () => void,
-  setActiveCell: () => void
+  onClick: (activeTrackID: string | null) => void
 }
 
 type Props = OwnProps & StateProps & DispatchProps
@@ -108,27 +107,26 @@ const StyledCell = styled.button`
 `
 
 Cell.defaultProps = {
+  rendered: true,
   edited: false,
   gutter: 0
 }
 
-function Cell(props: Props) {
+export function Cell(props: Props) {
   if (!props.rendered) return <div />
 
+  const prefs = React.useContext(PrefsContext)
   const buttonRef = React.createRef<HTMLButtonElement>()
 
   const handleClick = () => {
-    props.trackID === props.activeTrackID
-      ? props.setActiveCell()
-      : props.scheduleTrackCell()
-
+    props.onClick(props.activeTrackID)
     buttonRef.current && buttonRef.current.blur()
   }
 
   return (
     <StyledCell
       color={props.color}
-      size={props.size}
+      size={prefs.cellSize}
       gutter={props.gutter}
       noteResolution={props.noteResolution}
       gain={props.processing.gain.gain}
