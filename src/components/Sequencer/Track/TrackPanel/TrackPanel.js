@@ -5,13 +5,7 @@ import styled from "styled-components/macro"
 
 import TrackSettingsWithConnect from "./TrackSettings/TrackSettingsWithConnect"
 import CellSettingsWithConnect from "./CellSettings/CellSettingsWithConnect"
-
-type Props = {
-  headerWidth: number,
-  height: number,
-  gutter: number,
-  cellSize: number
-}
+import { PrefsContext } from "../../Prefs/PrefsContext"
 
 const StyledTrackPanel = styled.div`
   display: flex;
@@ -22,20 +16,14 @@ const Gutter = styled.div`
   margin-left: ${({ gutter }) => gutter}px;
 `
 
-const TrackPanel = React.memo<Props>(function TrackPanel({ headerWidth, height, gutter, cellSize }: Props) {
+const TrackPanel = React.memo<{}>(function TrackPanel() {
+  const prefs = React.useContext(PrefsContext)
+
   return (
-    <StyledTrackPanel gutter={gutter}>
-      <TrackSettingsWithConnect
-        width={headerWidth}
-        height={height}
-        gutter={gutter}
-      />
-      <Gutter gutter={gutter}> </Gutter>
-      <CellSettingsWithConnect
-        cellSize={cellSize}
-        gutter={gutter}
-        height={height}
-      />
+    <StyledTrackPanel gutter={prefs.gutter}>
+      <TrackSettingsWithConnect />
+      <Gutter gutter={prefs.gutter}> </Gutter>
+      <CellSettingsWithConnect />
     </StyledTrackPanel>
   )
 })
