@@ -39,13 +39,8 @@ const StyledButton = styled.button`
   }
 `
 
-const buttonRef = React.createRef<HTMLButtonElement>()
-
-const MuteButton = React.memo<Props>(function MuteButton(props: Props) {
-  const handleClick = () => {
-    props.onClick()
-    buttonRef.current && buttonRef.current.blur()
-  }
+export const MuteButton = React.memo<Props>(function MuteButton(props: Props) {
+  const buttonRef = React.createRef<HTMLButtonElement>()
 
   return (
     <StyledButton
@@ -55,7 +50,8 @@ const MuteButton = React.memo<Props>(function MuteButton(props: Props) {
       ref={buttonRef}
       onClick={event => {
         event.stopPropagation()
-        handleClick()
+        props.onClick()
+        buttonRef.current && buttonRef.current.blur()
       }}
     >
       M
