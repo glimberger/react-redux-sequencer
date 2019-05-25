@@ -1,16 +1,16 @@
 // @flow strict
 
-type OptionsType = {
+export type AudioContextOptions = {
   latencyHint: "balanced" | "interactive" | "playback",
   sampleRate: number
 }
 
-const defaultOptions: OptionsType = {
+const defaultOptions: AudioContextOptions = {
   latencyHint: "playback",
   sampleRate: 44100
 }
 
-const createContext = (options: OptionsType = defaultOptions): AudioContext =>
+const createContext = (options: AudioContextOptions = defaultOptions): AudioContext =>
   new (window.AudioContext || window.webkitAudioContext)(options)
 
 export default createContext

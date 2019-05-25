@@ -48,6 +48,10 @@ export type Cell = {|
 
 export type NoteResolution = 1 | 2 | 4
 
+export type Tracks = {
+  [trackID: string]: Track
+}
+
 export type Track = {|
   // primary key (UUIDv4)
   id: string,
