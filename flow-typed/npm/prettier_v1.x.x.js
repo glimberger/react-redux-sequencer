@@ -2,9 +2,9 @@
 // flow-typed version: 9e32affdbd/prettier_v1.x.x/flow_>=v0.56.x
 
 declare module "prettier" {
-  declare export type AST = Object
-  declare export type Doc = Object
-  declare export type FastPath = Object
+  declare export type AST = Object;
+  declare export type Doc = Object;
+  declare export type FastPath = Object;
 
   declare export type PrettierParserName =
     | "babylon"
@@ -17,17 +17,17 @@ declare module "prettier" {
     | "json"
     | "graphql"
     | "markdown"
-    | "vue"
+    | "vue";
 
   declare export type PrettierParser = {
     [name: PrettierParserName]: (text: string, options?: Object) => AST
-  }
+  };
 
   declare export type CustomParser = (
     text: string,
     parsers: PrettierParser,
     options: Options
-  ) => AST
+  ) => AST;
 
   declare export type Options = {|
     printWidth?: number,
@@ -47,13 +47,13 @@ declare module "prettier" {
     insertPragma?: boolean,
     proseWrap?: "always" | "never" | "preserve",
     plugins?: Array<string | Plugin>
-  |}
+  |};
 
   declare export type Plugin = {
     languages: SupportLanguage,
     parsers: { [parserName: string]: Parser },
     printers: { [astFormat: string]: Printer }
-  }
+  };
 
   declare export type Parser = {
     parse: (
@@ -62,7 +62,7 @@ declare module "prettier" {
       options: Object
     ) => AST,
     astFormat: string
-  }
+  };
 
   declare export type Printer = {
     print: (
@@ -76,7 +76,7 @@ declare module "prettier" {
       textToDoc: (text: string, options: Object) => Doc,
       options: Object
     ) => ?Doc
-  }
+  };
 
   declare export type CursorOptions = {|
     cursorOffset: number,
@@ -95,18 +95,18 @@ declare module "prettier" {
     insertPragma?: $PropertyType<Options, "insertPragma">,
     proseWrap?: $PropertyType<Options, "proseWrap">,
     plugins?: $PropertyType<Options, "plugins">
-  |}
+  |};
 
   declare export type CursorResult = {|
     formatted: string,
     cursorOffset: number
-  |}
+  |};
 
   declare export type ResolveConfigOptions = {|
     useCache?: boolean,
     config?: string,
     editorconfig?: boolean
-  |}
+  |};
 
   declare export type SupportLanguage = {
     name: string,
@@ -122,7 +122,7 @@ declare module "prettier" {
     filenames?: Array<string>,
     linguistLanguageId: number,
     vscodeLanguageIds: Array<string>
-  }
+  };
 
   declare export type SupportOption = {|
     since: string,
@@ -134,18 +134,18 @@ declare module "prettier" {
     default: SupportOptionValue,
     range?: SupportOptionRange,
     choices?: SupportOptionChoice
-  |}
+  |};
 
   declare export type SupportOptionRedirect = {|
     options: string,
     value: SupportOptionValue
-  |}
+  |};
 
   declare export type SupportOptionRange = {|
     start: number,
     end: number,
     step: number
-  |}
+  |};
 
   declare export type SupportOptionChoice = {|
     value: boolean | string,
@@ -153,14 +153,14 @@ declare module "prettier" {
     since?: string,
     deprecated?: string,
     redirect?: SupportOptionValue
-  |}
+  |};
 
-  declare export type SupportOptionValue = number | boolean | string
+  declare export type SupportOptionValue = number | boolean | string;
 
   declare export type SupportInfo = {|
     languages: Array<SupportLanguage>,
     options: Array<SupportOption>
-  |}
+  |};
 
   declare export type Prettier = {|
     format: (source: string, options?: Options) => string,
@@ -172,7 +172,7 @@ declare module "prettier" {
     },
     clearConfigCache: () => void,
     getSupportInfo: (version?: string) => SupportInfo
-  |}
+  |};
 
-  declare export default Prettier
+  declare export default Prettier;
 }

@@ -6,18 +6,18 @@ type $npm$classnames$Classes =
   | { [className: string]: * }
   | false
   | void
-  | null
+  | null;
 
 declare module "classnames" {
   declare module.exports: (
     ...classes: Array<$npm$classnames$Classes | $npm$classnames$Classes[]>
-  ) => string
+  ) => string;
 }
 
 declare module "classnames/bind" {
-  declare module.exports: $Exports<"classnames">
+  declare module.exports: $Exports<"classnames">;
 }
 
 declare module "classnames/dedupe" {
-  declare module.exports: $Exports<"classnames">
+  declare module.exports: $Exports<"classnames">;
 }

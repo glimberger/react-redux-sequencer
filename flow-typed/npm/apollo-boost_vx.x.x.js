@@ -13,8 +13,8 @@
  * https://github.com/flowtype/flow-typed
  */
 
-declare module "apollo-boost" {
-  declare module.exports: any
+declare module 'apollo-boost' {
+  declare module.exports: any;
 }
 
 /**
@@ -22,46 +22,46 @@ declare module "apollo-boost" {
  * require those files directly. Feel free to delete any files that aren't
  * needed.
  */
-declare module "apollo-boost/jest.config" {
-  declare module.exports: any
+declare module 'apollo-boost/jest.config' {
+  declare module.exports: any;
 }
 
-declare module "apollo-boost/lib/bundle.cjs" {
-  declare module.exports: any
+declare module 'apollo-boost/lib/bundle.cjs' {
+  declare module.exports: any;
 }
 
-declare module "apollo-boost/lib/bundle.cjs.min" {
-  declare module.exports: any
+declare module 'apollo-boost/lib/bundle.cjs.min' {
+  declare module.exports: any;
 }
 
-declare module "apollo-boost/lib/bundle.esm" {
-  declare module.exports: any
+declare module 'apollo-boost/lib/bundle.esm' {
+  declare module.exports: any;
 }
 
-declare module "apollo-boost/lib/bundle.umd" {
-  declare module.exports: any
+declare module 'apollo-boost/lib/bundle.umd' {
+  declare module.exports: any;
 }
 
-declare module "apollo-boost/lib/index" {
-  declare module.exports: any
+declare module 'apollo-boost/lib/index' {
+  declare module.exports: any;
 }
 
 // Filename aliases
-declare module "apollo-boost/jest.config.js" {
-  declare module.exports: $Exports<"apollo-boost/jest.config">
+declare module 'apollo-boost/jest.config.js' {
+  declare module.exports: $Exports<'apollo-boost/jest.config'>;
 }
-declare module "apollo-boost/lib/bundle.cjs.js" {
-  declare module.exports: $Exports<"apollo-boost/lib/bundle.cjs">
+declare module 'apollo-boost/lib/bundle.cjs.js' {
+  declare module.exports: $Exports<'apollo-boost/lib/bundle.cjs'>;
 }
-declare module "apollo-boost/lib/bundle.cjs.min.js" {
-  declare module.exports: $Exports<"apollo-boost/lib/bundle.cjs.min">
+declare module 'apollo-boost/lib/bundle.cjs.min.js' {
+  declare module.exports: $Exports<'apollo-boost/lib/bundle.cjs.min'>;
 }
-declare module "apollo-boost/lib/bundle.esm.js" {
-  declare module.exports: $Exports<"apollo-boost/lib/bundle.esm">
+declare module 'apollo-boost/lib/bundle.esm.js' {
+  declare module.exports: $Exports<'apollo-boost/lib/bundle.esm'>;
 }
-declare module "apollo-boost/lib/bundle.umd.js" {
-  declare module.exports: $Exports<"apollo-boost/lib/bundle.umd">
+declare module 'apollo-boost/lib/bundle.umd.js' {
+  declare module.exports: $Exports<'apollo-boost/lib/bundle.umd'>;
 }
-declare module "apollo-boost/lib/index.js" {
-  declare module.exports: $Exports<"apollo-boost/lib/index">
+declare module 'apollo-boost/lib/index.js' {
+  declare module.exports: $Exports<'apollo-boost/lib/index'>;
 }

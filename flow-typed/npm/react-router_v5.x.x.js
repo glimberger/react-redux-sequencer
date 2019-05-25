@@ -11,16 +11,16 @@ declare module "react-router" {
     hash: string,
     state?: any,
     key?: string
-  }
+  };
 
   declare export type LocationShape = {
     pathname?: string,
     search?: string,
     hash?: string,
     state?: any
-  }
+  };
 
-  declare export type HistoryAction = "PUSH" | "REPLACE" | "POP"
+  declare export type HistoryAction = "PUSH" | "REPLACE" | "POP";
 
   declare export type RouterHistory = {
     length: number,
@@ -36,37 +36,35 @@ declare module "react-router" {
     goForward(): void,
     canGo?: (n: number) => boolean,
     block(
-      callback:
-        | string
-        | ((location: Location, action: HistoryAction) => ?string)
+      callback: string | (location: Location, action: HistoryAction) => ?string
     ): () => void,
     // createMemoryHistory
     index?: number,
     entries?: Array<Location>
-  }
+  };
 
   declare export type Match = {
     params: { [key: string]: ?string },
     isExact: boolean,
     path: string,
     url: string
-  }
+  };
 
   declare export type ContextRouter = {|
     history: RouterHistory,
     location: Location,
     match: Match,
     staticContext?: StaticRouterContext
-  |}
+  |};
 
   declare export type GetUserConfirmation = (
     message: string,
     callback: (confirmed: boolean) => void
-  ) => void
+  ) => void;
 
   declare type StaticRouterContext = {
     url?: string
-  }
+  };
 
   declare export class StaticRouter extends React$Component<{
     basename?: string,
@@ -101,6 +99,7 @@ declare module "react-router" {
     strict?: boolean
   |}> {}
 
+
   declare export class Route extends React$Component<{|
     component?: React$ComponentType<*>,
     render?: (router: ContextRouter) => React$Node,
@@ -119,17 +118,17 @@ declare module "react-router" {
 
   declare export function withRouter<P>(
     Component: React$ComponentType<{| ...ContextRouter, ...P |}>
-  ): React$ComponentType<P>
+  ): React$ComponentType<P>;
 
   declare type MatchPathOptions = {
     path?: string,
     exact?: boolean,
     strict?: boolean,
     sensitive?: boolean
-  }
+  };
 
   declare export function matchPath(
     pathname: string,
     options?: MatchPathOptions | string
-  ): null | Match
+  ): null | Match;
 }

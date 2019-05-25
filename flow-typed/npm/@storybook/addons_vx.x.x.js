@@ -13,8 +13,8 @@
  * https://github.com/flowtype/flow-typed
  */
 
-declare module "@storybook/addons" {
-  declare module.exports: any
+declare module '@storybook/addons' {
+  declare module.exports: any;
 }
 
 /**
@@ -22,41 +22,39 @@ declare module "@storybook/addons" {
  * require those files directly. Feel free to delete any files that aren't
  * needed.
  */
-declare module "@storybook/addons/dist/index" {
-  declare module.exports: any
+declare module '@storybook/addons/dist/index' {
+  declare module.exports: any;
 }
 
-declare module "@storybook/addons/dist/make-decorator" {
-  declare module.exports: any
+declare module '@storybook/addons/dist/make-decorator' {
+  declare module.exports: any;
 }
 
-declare module "@storybook/addons/dist/public_api" {
-  declare module.exports: any
+declare module '@storybook/addons/dist/public_api' {
+  declare module.exports: any;
 }
 
-declare module "@storybook/addons/dist/storybook-channel-mock" {
-  declare module.exports: any
+declare module '@storybook/addons/dist/storybook-channel-mock' {
+  declare module.exports: any;
 }
 
-declare module "@storybook/addons/dist/types" {
-  declare module.exports: any
+declare module '@storybook/addons/dist/types' {
+  declare module.exports: any;
 }
 
 // Filename aliases
-declare module "@storybook/addons/dist/index.js" {
-  declare module.exports: $Exports<"@storybook/addons/dist/index">
+declare module '@storybook/addons/dist/index.js' {
+  declare module.exports: $Exports<'@storybook/addons/dist/index'>;
 }
-declare module "@storybook/addons/dist/make-decorator.js" {
-  declare module.exports: $Exports<"@storybook/addons/dist/make-decorator">
+declare module '@storybook/addons/dist/make-decorator.js' {
+  declare module.exports: $Exports<'@storybook/addons/dist/make-decorator'>;
 }
-declare module "@storybook/addons/dist/public_api.js" {
-  declare module.exports: $Exports<"@storybook/addons/dist/public_api">
+declare module '@storybook/addons/dist/public_api.js' {
+  declare module.exports: $Exports<'@storybook/addons/dist/public_api'>;
 }
-declare module "@storybook/addons/dist/storybook-channel-mock.js" {
-  declare module.exports: $Exports<
-    "@storybook/addons/dist/storybook-channel-mock"
-  >
+declare module '@storybook/addons/dist/storybook-channel-mock.js' {
+  declare module.exports: $Exports<'@storybook/addons/dist/storybook-channel-mock'>;
 }
-declare module "@storybook/addons/dist/types.js" {
-  declare module.exports: $Exports<"@storybook/addons/dist/types">
+declare module '@storybook/addons/dist/types.js' {
+  declare module.exports: $Exports<'@storybook/addons/dist/types'>;
 }

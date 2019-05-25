@@ -44,16 +44,16 @@ declare module "react-router-dom" {
     hash: string,
     state?: any,
     key?: string
-  }
+  };
 
   declare export type LocationShape = {
     pathname?: string,
     search?: string,
     hash?: string,
     state?: any
-  }
+  };
 
-  declare export type HistoryAction = "PUSH" | "REPLACE" | "POP"
+  declare export type HistoryAction = "PUSH" | "REPLACE" | "POP";
 
   declare export type RouterHistory = {
     length: number,
@@ -69,44 +69,42 @@ declare module "react-router-dom" {
     goForward(): void,
     canGo?: (n: number) => boolean,
     block(
-      callback:
-        | string
-        | ((location: Location, action: HistoryAction) => ?string)
+      callback: string | (location: Location, action: HistoryAction) => ?string
     ): () => void,
     // createMemoryHistory
     index?: number,
     entries?: Array<Location>
-  }
+  };
 
   declare export type Match = {
     params: { [key: string]: ?string },
     isExact: boolean,
     path: string,
     url: string
-  }
+  };
 
   declare export type ContextRouter = {|
     history: RouterHistory,
     location: Location,
     match: Match,
     staticContext?: StaticRouterContext
-  |}
+  |};
 
   declare type ContextRouterVoid = {
     history: RouterHistory | void,
     location: Location | void,
     match: Match | void,
     staticContext?: StaticRouterContext | void
-  }
+  };
 
   declare export type GetUserConfirmation = (
     message: string,
     callback: (confirmed: boolean) => void
-  ) => void
+  ) => void;
 
   declare export type StaticRouterContext = {
     url?: string
-  }
+  };
 
   declare export var StaticRouter: React$ComponentType<{|
     basename?: string,
@@ -157,30 +155,20 @@ declare module "react-router-dom" {
     location?: Location
   |}>
 
-  declare export function withRouter<
-    Props: {},
-    Component: React$ComponentType<Props>
-  >(
-    WrappedComponent: Component
-  ): React$ComponentType<
-    $Diff<React$ElementConfig<$Supertype<Component>>, ContextRouterVoid>
-  >
+  declare export function withRouter<Props : {}, Component: React$ComponentType<Props>>(WrappedComponent: Component) : React$ComponentType<$Diff<React$ElementConfig<$Supertype<Component>>, ContextRouterVoid>>;
 
   declare type MatchPathOptions = {
     path?: string,
     exact?: boolean,
     sensitive?: boolean,
     strict?: boolean
-  }
+  };
 
   declare export function matchPath(
     pathname: string,
     options?: MatchPathOptions | string,
     parent?: Match
-  ): null | Match
+  ): null | Match;
 
-  declare export function generatePath(
-    pattern?: string,
-    params?: { +[string]: mixed }
-  ): string
+  declare export function generatePath(pattern?: string, params?: { +[string]: mixed }): string;
 }
