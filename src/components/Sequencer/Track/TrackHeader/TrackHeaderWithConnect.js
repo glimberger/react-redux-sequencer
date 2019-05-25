@@ -2,7 +2,6 @@
 import { connect } from "react-redux"
 
 import TrackHeader from "./TrackHeader"
-import { getTrack } from "../../../../redux/reducers"
 import {
   changeTrackLabel,
   toggleActiveTrack,
@@ -10,8 +9,11 @@ import {
   toggleSoloTrack
 } from "../../../../redux/actions/session/creators"
 
-const mapStateToProps = (state, ownProps) => {
-  const track = getTrack(state, ownProps.trackID)
+import type { AppState } from '../../../../redux/store/configureStore'
+import type { OwnProps } from './TrackHeader'
+
+const mapStateToProps = (state: AppState, ownProps: OwnProps) => {
+  const track = state.session.tracks[ownProps.trackID]
 
   return {
     label: track.label,

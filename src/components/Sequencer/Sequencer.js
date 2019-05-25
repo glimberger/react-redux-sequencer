@@ -7,15 +7,11 @@ import AddTrack from "./AddTrack/AddTrack"
 import TrackWithConnect from "./Track/TrackWithConnect"
 import Color from "../../utils/color/colorLibrary"
 
-import type { Track as TrackType } from "../../redux/store/session/types"
-
 type StateProps = {|
-  orderedTracks: Array<TrackType>
+  trackOrder: Array<string>
 |}
 
-type OwnProps = {}
-
-type Props = StateProps & OwnProps
+type Props = StateProps
 
 const prefs = {
   cellSize: 36,
@@ -126,14 +122,14 @@ const AddTrackWrapper = styled.div`
   justify-content: flex-start;
 `
 
-function Sequencer({ orderedTracks }: Props) {
+function Sequencer({ trackOrder }: Props) {
   return (
     <div>
       <StyledSequencer prefs={prefs}>
-        {orderedTracks.map((track, idx) => (
-          <Row key={track.id} gutter={prefs.gutter} first={idx === 0}>
+        {trackOrder.map((trackID, idx) => (
+          <Row key={trackID} gutter={prefs.gutter} first={idx === 0}>
             <TrackWithConnect
-              trackID={track.id}
+              trackID={trackID}
               panelWidth={prefs.panel.width}
               panelHeight={prefs.panel.height}
               gutter={prefs.gutter}

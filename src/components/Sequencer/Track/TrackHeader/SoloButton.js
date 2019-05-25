@@ -39,13 +39,8 @@ const StyledButton = styled.button`
   }
 `
 
-const buttonRef = React.createRef<HTMLButtonElement>()
-
-const SoloButton = React.memo<Props>(function SoloButton(props: Props) {
-  const handleClick = () => {
-    props.onClick()
-    buttonRef.current && buttonRef.current.blur()
-  }
+export const SoloButton = React.memo<Props>(function SoloButton(props: Props) {
+  const buttonRef = React.createRef<HTMLButtonElement>()
 
   return (
     <StyledButton
@@ -55,7 +50,8 @@ const SoloButton = React.memo<Props>(function SoloButton(props: Props) {
       ref={buttonRef}
       onClick={event => {
         event.stopPropagation()
-        handleClick()
+        props.onClick()
+        buttonRef.current && buttonRef.current.blur()
       }}
     >
       S

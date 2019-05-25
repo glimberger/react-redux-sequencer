@@ -4,7 +4,7 @@ import * as React from "react"
 import styled from "styled-components/macro"
 
 import TrackHeaderWithConnect from "./TrackHeader/TrackHeaderWithConnect"
-import CellRowWithConnect from "./CellRow/CellRowWithConnect"
+import CellRow from "./CellRow/CellRow"
 import TrackPanel from "./TrackPanel/TrackPanel"
 
 import type { Session } from "../../../redux/store/session/types"
@@ -35,7 +35,7 @@ const Gutter = styled.div`
   margin-left: ${({ gutter }) => gutter}px;
 `
 
-function Track({
+const Track = React.memo<Props>(function Track({
   activeTrackID,
   trackID,
   panelWidth,
@@ -53,8 +53,9 @@ function Track({
           gutter={gutter}
         />
         <Gutter gutter={gutter}> </Gutter>
-        <CellRowWithConnect trackID={trackID} size={cellSize} gutter={gutter} />
+        <CellRow trackID={trackID} size={cellSize} gutter={gutter} />
       </HeaderContainer>
+
       {trackID === activeTrackID && (
         <PanelContainer gutter={gutter}>
           <TrackPanel
@@ -67,6 +68,6 @@ function Track({
       )}
     </div>
   )
-}
+})
 
 export default Track
