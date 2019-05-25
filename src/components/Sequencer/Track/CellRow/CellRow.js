@@ -15,7 +15,11 @@ const StyledCellRow = styled.div`
   display: flex;
 `
 
-function CellRow({trackID, size, gutter}: Props) {
+const CellRow = React.memo<Props>(function CellRow({
+  trackID,
+  size,
+  gutter
+}: Props) {
   return (
     <StyledCellRow>
       {Array.from(Array(64).keys()).map(beat => {
@@ -31,6 +35,6 @@ function CellRow({trackID, size, gutter}: Props) {
       })}
     </StyledCellRow>
   )
-}
+})
 
 export default CellRow

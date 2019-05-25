@@ -35,7 +35,7 @@ const Gutter = styled.div`
   margin-left: ${({ gutter }) => gutter}px;
 `
 
-function Track({
+const Track = React.memo<Props>(function Track({
   activeTrackID,
   trackID,
   panelWidth,
@@ -68,6 +68,6 @@ function Track({
       )}
     </div>
   )
-}
+})
 
 export default Track
