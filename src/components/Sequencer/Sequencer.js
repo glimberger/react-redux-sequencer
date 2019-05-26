@@ -3,7 +3,7 @@ import * as React from "react"
 // $FlowFixMe
 import styled from "styled-components/macro"
 
-import { usePrefs } from "./Prefs/PrefsContext"
+import { usePrefs } from "../context/sequencer-prefs"
 import AddTrack from "./AddTrack/AddTrack"
 import TrackWithConnect from "./Track/TrackWithConnect"
 import Color from "../../utils/color/colorLibrary"

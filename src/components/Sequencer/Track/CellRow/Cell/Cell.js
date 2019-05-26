@@ -5,7 +5,7 @@ import styled from "styled-components/macro"
 
 import Color, { hexToRgb } from "../../../../../utils/color/colorLibrary"
 import colorLuminance from "../../../../../utils/color/colorLuminance"
-import { usePrefs } from "../../../Prefs/PrefsContext"
+import { usePrefs } from "../../../../context/sequencer-prefs"
 
 import type {
   AudioProcessing,

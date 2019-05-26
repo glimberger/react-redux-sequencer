@@ -8,7 +8,7 @@ import Volume from "../../../../audio/utils/Volume/Volume"
 import MuteButton from "./MuteButton"
 import SoloButton from "./SoloButton"
 import TrackLabel from "./TrackLabel"
-import { usePrefs } from "../../Prefs/PrefsContext"
+import { usePrefs } from "../../../context/sequencer-prefs"
 
 import type { MaterialColor } from "../../../../utils/color/colorLibrary"
 

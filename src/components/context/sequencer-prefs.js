@@ -13,8 +13,8 @@ type PrefsType = {
   transitionDuration: number
 }
 
-const PrefsContext = React.createContext<PrefsType>({})
-const { Provider } = PrefsContext
+const SequencerPrefs = React.createContext<PrefsType>({})
+const { Provider } = SequencerPrefs
 
 const prefs = {
   cellSize: 36,
@@ -29,7 +29,7 @@ function PrefsProvider({ children }: Props) {
 }
 
 function usePrefs(): PrefsType {
-  const prefs = React.useContext(PrefsContext)
+  const prefs = React.useContext(SequencerPrefs)
   if (!prefs) {
     throw new Error("usePrefs must be used within a PrefsProvider")
   }
@@ -37,4 +37,4 @@ function usePrefs(): PrefsType {
   return prefs
 }
 
-export { PrefsProvider, PrefsContext, usePrefs }
+export { PrefsProvider, SequencerPrefs, usePrefs }

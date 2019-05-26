@@ -5,7 +5,7 @@ import Modal from "react-modal"
 import styled from "styled-components/macro"
 
 import Color from "../../../utils/color/colorLibrary"
-import { usePrefs } from "../Prefs/PrefsContext"
+import { usePrefs } from "../../context/sequencer-prefs"
 
 import type { MaterialColor } from "../../../utils/color/colorLibrary"
 import type { Instrument } from "../../../redux/store/instrument/types"

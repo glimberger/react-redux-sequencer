@@ -8,7 +8,7 @@ import ResolutionSwitchWithConnect from "./ResolutionSwitch/ResolutionSwitchWith
 import VerticalFaderWithConnect from "./FaderWithConnect"
 
 import type { Track } from "../../../../../redux/store/session/types"
-import { usePrefs } from "../../../Prefs/PrefsContext"
+import { usePrefs } from "../../../../context/sequencer-prefs"
 
 type StateProps = {
   color: $PropertyType<Track, "color">,

@@ -7,7 +7,7 @@ import Color from "../../../../../utils/color/colorLibrary"
 import NoteSelectorWithConnect from "./NoteSelector/NoteSelectorWithConnect"
 import MidiConverter from "../../../../../utils/audio/MidiConverter"
 import GainKnob from "./GainKnob/GainKnob"
-import { usePrefs } from "../../../Prefs/PrefsContext"
+import { usePrefs } from "../../../../context/sequencer-prefs"
 import { Cell } from "../../CellRow/Cell/Cell"
 
 import type {

@@ -4,7 +4,7 @@ import * as React from "react"
 import styled from "styled-components/macro"
 
 import CellWithConnect from "./Cell/CellWithConnect"
-import { usePrefs } from "../../Prefs/PrefsContext"
+import { usePrefs } from "../../../context/sequencer-prefs"
 
 export type Props = {
   trackID: string

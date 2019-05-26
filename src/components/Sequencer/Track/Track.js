@@ -6,7 +6,7 @@ import styled from "styled-components/macro"
 import TrackHeaderWithConnect from "./TrackHeader/TrackHeaderWithConnect"
 import CellRow from "./CellRow/CellRow"
 import TrackPanel from "./TrackPanel/TrackPanel"
-import { usePrefs } from "../Prefs/PrefsContext"
+import { usePrefs } from "../../context/sequencer-prefs"
 
 import type { Session } from "../../../redux/store/session/types"
 

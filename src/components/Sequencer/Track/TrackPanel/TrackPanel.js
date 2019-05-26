@@ -5,7 +5,7 @@ import styled from "styled-components/macro"
 
 import TrackSettingsWithConnect from "./TrackSettings/TrackSettingsWithConnect"
 import CellSettingsWithConnect from "./CellSettings/CellSettingsWithConnect"
-import { usePrefs } from "../../Prefs/PrefsContext"
+import { usePrefs } from "../../../context/sequencer-prefs"
 
 const StyledTrackPanel = styled.div`
   display: flex;
