@@ -11,7 +11,7 @@ const logger = (store: Store<AppState, AnyAction>) => (
     next(action)
   }
 
-  console.group(action.type)
+  console.groupCollapsed(action.type)
   console.debug("%c prev state", "color: grey", store.getState())
   console.debug("%c action", "color: blue", action)
   let result = next(action)
