@@ -1148,11 +1148,11 @@ const initialSate: Session = {
       label: "SynthPad",
       noteResolution: 1,
       instrumentID: "905f9a08-5d3f-418d-8e88-5064148f26ec",
-      color: "deepPurple",
+      color: "cyan",
       processing: {
         gain: { gain: 1 }
       },
-      muted: false,
+      muted: true,
       soloed: false
     }
   },
