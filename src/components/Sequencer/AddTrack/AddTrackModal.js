@@ -5,13 +5,13 @@ import Modal from "react-modal"
 import styled from "styled-components/macro"
 
 import Color from "../../../utils/color/colorLibrary"
+import { usePrefs } from "../Prefs/PrefsContext"
 
 import type { MaterialColor } from "../../../utils/color/colorLibrary"
 import type { Instrument } from "../../../redux/store/instrument/types"
 
 type Props = {
   color: MaterialColor,
-  gutter: number,
   isOpen: boolean,
   onAfterOpen: () => void,
   onClose: () => void,
@@ -108,6 +108,8 @@ const modalStyles = {
 Modal.setAppElement("#root")
 
 function AddTrackModal(props: Props) {
+  const { gutter } = usePrefs()
+
   return (
     <Modal
       isOpen={props.isOpen}
@@ -134,7 +136,7 @@ function AddTrackModal(props: Props) {
                       <StyledListButtonItem
                         key={`instrument_${instrumentID}`}
                         color={props.color}
-                        gutter={props.gutter}
+                        gutter={gutter}
                         onClick={() =>
                           props.onInstrumentSelect(
                             props.instrumentList[group][instrumentID]

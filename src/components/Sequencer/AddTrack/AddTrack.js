@@ -1,8 +1,8 @@
 // @flow strict
 import * as React from "react"
 import { connect } from "react-redux"
-
 import uuid from "uuid/v4"
+
 import AddTrackButton from "./AddTrackButton"
 import AddTrackModal from "./AddTrackModal"
 import { addTrack } from "../../../redux/actions/session/creators"
@@ -17,10 +17,7 @@ import type { Samples } from "../../../redux/store/sample/types"
 import type { AppState } from "../../../redux/store/configureStore"
 
 type OwnProps = {
-  color: MaterialColor,
-  width: number,
-  height: number,
-  gutter: number
+  color: MaterialColor
 }
 
 type StateProps = {
@@ -54,17 +51,10 @@ function AddTrack(props: Props) {
 
   return (
     <div>
-      <AddTrackButton
-        color={props.color}
-        height={props.height}
-        width={props.width}
-        gutter={props.gutter}
-        onClick={() => setModalOpen(true)}
-      />
+      <AddTrackButton color={props.color} onClick={() => setModalOpen(true)} />
 
       <AddTrackModal
         color={props.color}
-        gutter={props.gutter}
         isOpen={modalOpen}
         onClose={() => setModalOpen(false)}
         onAfterOpen={afterOpenModal}

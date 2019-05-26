@@ -4,14 +4,12 @@ import * as React from "react"
 import styled from "styled-components/macro"
 
 import Color from "../../../utils/color/colorLibrary"
+import { usePrefs } from "../Prefs/PrefsContext"
 
 import type { MaterialColor } from "../../../utils/color/colorLibrary"
 
 type Props = {
   color: MaterialColor,
-  width: number,
-  height: number,
-  gutter: number,
   onClick: () => void
 }
 
@@ -37,9 +35,16 @@ const StyledButtonLabel = styled.div`
   font-size: 16px;
 `
 
-function AddTrackButton({ color, width, height, gutter, onClick }: Props) {
+function AddTrackButton({ color, onClick }: Props) {
+  const { panelWidth, cellSize, gutter } = usePrefs()
+
   return (
-    <StyledButton height={height} width={width} color={color} onClick={onClick}>
+    <StyledButton
+      height={cellSize}
+      width={panelWidth}
+      color={color}
+      onClick={onClick}
+    >
       <StyledButtonLabel gutter={gutter}>Add...</StyledButtonLabel>
     </StyledButton>
   )

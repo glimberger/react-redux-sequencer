@@ -4,7 +4,7 @@ import * as React from "react"
 import styled from "styled-components/macro"
 
 import CellWithConnect from "./Cell/CellWithConnect"
-import { PrefsContext } from "../../Prefs/PrefsContext"
+import { usePrefs } from "../../Prefs/PrefsContext"
 
 export type Props = {
   trackID: string
@@ -15,7 +15,7 @@ const StyledCellRow = styled.div`
 `
 
 const CellRow = React.memo<Props>(function CellRow({ trackID }: Props) {
-  const prefs = React.useContext(PrefsContext)
+  const { gutter } = usePrefs()
 
   return (
     <StyledCellRow>
@@ -25,7 +25,7 @@ const CellRow = React.memo<Props>(function CellRow({ trackID }: Props) {
             key={`beat_${beat}`}
             trackID={trackID}
             beatNumber={beat}
-            gutter={prefs.gutter}
+            gutter={gutter}
           />
         )
       })}

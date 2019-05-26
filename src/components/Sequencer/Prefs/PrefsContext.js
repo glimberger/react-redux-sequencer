@@ -5,14 +5,16 @@ type Props = {
   children: React.Node
 }
 
-const PrefsContext = React.createContext<{
+type PrefsType = {
   cellSize: number,
   gutter: number,
   panelWidth: number,
   panelHeight: number,
   transitionDuration: number
-}>({})
-const { Consumer, Provider } = PrefsContext
+}
+
+const PrefsContext = React.createContext<PrefsType>({})
+const { Provider } = PrefsContext
 
 const prefs = {
   cellSize: 36,
@@ -26,4 +28,13 @@ function PrefsProvider({ children }: Props) {
   return <Provider value={prefs}>{children}</Provider>
 }
 
-export { PrefsProvider, Consumer as PrefsConsumer, PrefsContext }
+function usePrefs(): PrefsType {
+  const prefs = React.useContext(PrefsContext)
+  if (!prefs) {
+    throw new Error("usePrefs must be used within a PrefsProvider")
+  }
+
+  return prefs
+}
+
+export { PrefsProvider, PrefsContext, usePrefs }

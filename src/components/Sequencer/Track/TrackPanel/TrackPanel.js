@@ -5,7 +5,7 @@ import styled from "styled-components/macro"
 
 import TrackSettingsWithConnect from "./TrackSettings/TrackSettingsWithConnect"
 import CellSettingsWithConnect from "./CellSettings/CellSettingsWithConnect"
-import { PrefsContext } from "../../Prefs/PrefsContext"
+import { usePrefs } from "../../Prefs/PrefsContext"
 
 const StyledTrackPanel = styled.div`
   display: flex;
@@ -17,12 +17,12 @@ const Gutter = styled.div`
 `
 
 const TrackPanel = React.memo<{}>(function TrackPanel() {
-  const prefs = React.useContext(PrefsContext)
+  const { gutter } = usePrefs()
 
   return (
-    <StyledTrackPanel gutter={prefs.gutter}>
+    <StyledTrackPanel gutter={gutter}>
       <TrackSettingsWithConnect />
-      <Gutter gutter={prefs.gutter}> </Gutter>
+      <Gutter gutter={gutter}> </Gutter>
       <CellSettingsWithConnect />
     </StyledTrackPanel>
   )

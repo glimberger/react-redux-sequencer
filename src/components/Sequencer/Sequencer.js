@@ -3,7 +3,7 @@ import * as React from "react"
 // $FlowFixMe
 import styled from "styled-components/macro"
 
-import { PrefsContext } from "./Prefs/PrefsContext"
+import { usePrefs } from "./Prefs/PrefsContext"
 import AddTrack from "./AddTrack/AddTrack"
 import TrackWithConnect from "./Track/TrackWithConnect"
 import Color from "../../utils/color/colorLibrary"
@@ -16,88 +16,85 @@ type Props = StateProps
 
 const StyledSequencer = styled.div`
   background-color: transparent;
-  background-image: ${({ prefs }) => `linear-gradient(
+  background-image: ${({ panelWidth, cellSize, gutter }) => `linear-gradient(
     90deg,
-    transparent ${prefs.panelWidth + prefs.gutter / 2.0 - 1}px,
-    rgba(255, 255, 255, 0.2) ${prefs.panelWidth + prefs.gutter / 2.0 - 1}px,
-    rgba(255, 255, 255, 0.2) ${prefs.panelWidth + prefs.gutter / 2.0 + 1}px,
-    transparent ${prefs.panelWidth + prefs.gutter / 2.0 + 1}px
+    transparent ${panelWidth + gutter / 2.0 - 1}px,
+    rgba(255, 255, 255, 0.2) ${panelWidth + gutter / 2.0 - 1}px,
+    rgba(255, 255, 255, 0.2) ${panelWidth + gutter / 2.0 + 1}px,
+    transparent ${panelWidth + gutter / 2.0 + 1}px
   ),
   linear-gradient(
     90deg,
-    transparent ${prefs.panelWidth +
-      prefs.gutter / 2.0 -
+    transparent ${panelWidth +
+      gutter / 2.0 -
       1 +
-      (8 * prefs.cellSize + 8 * prefs.gutter)}px,
-    rgba(255, 255, 255, 0.2) ${prefs.panelWidth +
-      prefs.gutter / 2.0 -
+      (8 * cellSize + 8 * gutter)}px,
+    rgba(255, 255, 255, 0.2) ${panelWidth +
+      gutter / 2.0 -
       1 +
-      (8 * prefs.cellSize + 8 * prefs.gutter)}px,
-    rgba(255, 255, 255, 0.2) ${prefs.panelWidth +
-      prefs.gutter / 2.0 +
+      (8 * cellSize + 8 * gutter)}px,
+    rgba(255, 255, 255, 0.2) ${panelWidth +
+      gutter / 2.0 +
       1 +
-      (8 * prefs.cellSize + 8 * prefs.gutter)}px,
-    transparent ${prefs.panelWidth +
-      prefs.gutter / 2.0 +
-      1 +
-      (8 * prefs.cellSize + 8 * prefs.gutter)}px
+      (8 * cellSize + 8 * gutter)}px,
+    transparent ${panelWidth + gutter / 2.0 + 1 + (8 * cellSize + 8 * gutter)}px
   ),
   linear-gradient(
     90deg,
-    transparent ${prefs.panelWidth +
-      prefs.gutter / 2.0 -
+    transparent ${panelWidth +
+      gutter / 2.0 -
       1 +
-      (8 * prefs.cellSize + 8 * prefs.gutter) * 2}px,
-    rgba(255, 255, 255, 0.2) ${prefs.panelWidth +
-      prefs.gutter / 2.0 -
+      (8 * cellSize + 8 * gutter) * 2}px,
+    rgba(255, 255, 255, 0.2) ${panelWidth +
+      gutter / 2.0 -
       1 +
-      (8 * prefs.cellSize + 8 * prefs.gutter) * 2}px,
-    rgba(255, 255, 255, 0.2) ${prefs.panelWidth +
-      prefs.gutter / 2.0 +
+      (8 * cellSize + 8 * gutter) * 2}px,
+    rgba(255, 255, 255, 0.2) ${panelWidth +
+      gutter / 2.0 +
       1 +
-      (8 * prefs.cellSize + 8 * prefs.gutter) * 2}px,
-    transparent ${prefs.panelWidth +
-      prefs.gutter / 2.0 +
+      (8 * cellSize + 8 * gutter) * 2}px,
+    transparent ${panelWidth +
+      gutter / 2.0 +
       1 +
-      (8 * prefs.cellSize + 8 * prefs.gutter) * 2}px
+      (8 * cellSize + 8 * gutter) * 2}px
   ),
   linear-gradient(
     90deg,
-    transparent ${prefs.panelWidth +
-      prefs.gutter / 2.0 -
+    transparent ${panelWidth +
+      gutter / 2.0 -
       1 +
-      (8 * prefs.cellSize + 8 * prefs.gutter) * 3}px,
-    rgba(255, 255, 255, 0.2) ${prefs.panelWidth +
-      prefs.gutter / 2.0 -
+      (8 * cellSize + 8 * gutter) * 3}px,
+    rgba(255, 255, 255, 0.2) ${panelWidth +
+      gutter / 2.0 -
       1 +
-      (8 * prefs.cellSize + 8 * prefs.gutter) * 3}px,
-    rgba(255, 255, 255, 0.2) ${prefs.panelWidth +
-      prefs.gutter / 2.0 +
+      (8 * cellSize + 8 * gutter) * 3}px,
+    rgba(255, 255, 255, 0.2) ${panelWidth +
+      gutter / 2.0 +
       1 +
-      (8 * prefs.cellSize + 8 * prefs.gutter) * 3}px,
-    transparent ${prefs.panelWidth +
-      prefs.gutter / 2.0 +
+      (8 * cellSize + 8 * gutter) * 3}px,
+    transparent ${panelWidth +
+      gutter / 2.0 +
       1 +
-      (8 * prefs.cellSize + 8 * prefs.gutter) * 3}px
+      (8 * cellSize + 8 * gutter) * 3}px
   ),
   linear-gradient(
     90deg,
-    transparent ${prefs.panelWidth +
-      prefs.gutter / 2.0 -
+    transparent ${panelWidth +
+      gutter / 2.0 -
       1 +
-      (8 * prefs.cellSize + 8 * prefs.gutter) * 4}px,
-    rgba(255, 255, 255, 0.2) ${prefs.panelWidth +
-      prefs.gutter / 2.0 -
+      (8 * cellSize + 8 * gutter) * 4}px,
+    rgba(255, 255, 255, 0.2) ${panelWidth +
+      gutter / 2.0 -
       1 +
-      (8 * prefs.cellSize + 8 * prefs.gutter) * 4}px,
-    rgba(255, 255, 255, 0.2) ${prefs.panelWidth +
-      prefs.gutter / 2.0 +
+      (8 * cellSize + 8 * gutter) * 4}px,
+    rgba(255, 255, 255, 0.2) ${panelWidth +
+      gutter / 2.0 +
       1 +
-      (8 * prefs.cellSize + 8 * prefs.gutter) * 4}px,
-    transparent ${prefs.panelWidth +
-      prefs.gutter / 2.0 +
+      (8 * cellSize + 8 * gutter) * 4}px,
+    transparent ${panelWidth +
+      gutter / 2.0 +
       1 +
-      (8 * prefs.cellSize + 8 * prefs.gutter) * 4}px
+      (8 * cellSize + 8 * gutter) * 4}px
   )
   `};
 
@@ -114,27 +111,24 @@ const AddTrackWrapper = styled.div`
 `
 
 function Sequencer({ trackOrder }: Props) {
-  const prefs = React.useContext(PrefsContext)
+  const { panelWidth, cellSize, gutter } = usePrefs()
 
   return (
     <div>
-      <StyledSequencer prefs={prefs}>
+      <StyledSequencer
+        panelWidth={panelWidth}
+        cellSize={cellSize}
+        gutter={gutter}
+      >
         {trackOrder.map((trackID, idx) => (
-          <Row key={trackID} gutter={prefs.gutter} first={idx === 0}>
-            <TrackWithConnect
-              trackID={trackID}
-            />
+          <Row key={trackID} gutter={gutter} first={idx === 0}>
+            <TrackWithConnect trackID={trackID} />
           </Row>
         ))}
       </StyledSequencer>
-      <Row gutter={prefs.gutter} first={false}>
+      <Row gutter={gutter} first={false}>
         <AddTrackWrapper>
-          <AddTrack
-            color={Color.BLUE_GREY}
-            width={prefs.panelWidth}
-            height={prefs.cellSize}
-            gutter={prefs.gutter}
-          />
+          <AddTrack color={Color.BLUE_GREY} />
         </AddTrackWrapper>
       </Row>
     </div>

@@ -7,7 +7,7 @@ import Color from "../../../../../utils/color/colorLibrary"
 import NoteSelectorWithConnect from "./NoteSelector/NoteSelectorWithConnect"
 import MidiConverter from "../../../../../utils/audio/MidiConverter"
 import GainKnob from "./GainKnob/GainKnob"
-import { PrefsContext } from "../../../Prefs/PrefsContext"
+import { usePrefs } from "../../../Prefs/PrefsContext"
 import { Cell } from "../../CellRow/Cell/Cell"
 
 import type {
@@ -73,14 +73,14 @@ function CellSettings({
 }: Props) {
   if (activeTrackID === null) return <div />
 
-  const prefs = React.useContext(PrefsContext)
+  const { panelHeight, cellSize, gutter } = usePrefs()
 
   if (activeCellBeat === null || cell === null)
     return (
       <StyledSettings
-        cellSize={prefs.cellSize}
-        height={prefs.panelHeight}
-        gutter={prefs.gutter}
+        cellSize={cellSize}
+        height={panelHeight}
+        gutter={gutter}
         color={color}
       >
         {" "}
@@ -91,15 +91,15 @@ function CellSettings({
 
   return (
     <StyledSettings
-      cellSize={prefs.cellSize}
-      height={prefs.panelHeight}
-      gutter={prefs.gutter}
+      cellSize={cellSize}
+      height={panelHeight}
+      gutter={gutter}
       color={color}
     >
-      <StyledNoteSection gutter={prefs.gutter}>
+      <StyledNoteSection gutter={gutter}>
         <CellInfo>
           <Cell
-            size={prefs.cellSize}
+            size={cellSize}
             gutter={0}
             color={color}
             played={false}
@@ -131,18 +131,18 @@ function CellSettings({
         </CellInfo>
         <div>
           <NoteSelectorWithConnect
-            gutter={prefs.gutter}
-            cellSize={prefs.cellSize}
-            height={prefs.cellSize * 2}
+            gutter={gutter}
+            cellSize={cellSize}
+            height={cellSize * 2}
             keyWidth={16}
           />
         </div>
       </StyledNoteSection>
-      <section style={{ display: "flex", padding: `${prefs.gutter * 2}px` }}>
+      <section style={{ display: "flex", padding: `${gutter * 2}px` }}>
         <StyledGainSection>
           <GainKnob
             color={color}
-            gutter={prefs.gutter}
+            gutter={gutter}
             size={36}
             gain={cell.processing.gain.gain}
             onChange={value =>

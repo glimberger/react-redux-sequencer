@@ -5,7 +5,7 @@ import styled from "styled-components/macro"
 
 import Color, { hexToRgb } from "../../../../../utils/color/colorLibrary"
 import colorLuminance from "../../../../../utils/color/colorLuminance"
-import { PrefsContext } from "../../../Prefs/PrefsContext"
+import { usePrefs } from "../../../Prefs/PrefsContext"
 
 import type {
   AudioProcessing,
@@ -115,7 +115,7 @@ Cell.defaultProps = {
 export function Cell(props: Props) {
   if (!props.rendered) return <div />
 
-  const prefs = React.useContext(PrefsContext)
+  const { cellSize } = usePrefs()
   const buttonRef = React.createRef<HTMLButtonElement>()
 
   const handleClick = () => {
@@ -126,7 +126,7 @@ export function Cell(props: Props) {
   return (
     <StyledCell
       color={props.color}
-      size={prefs.cellSize}
+      size={cellSize}
       gutter={props.gutter}
       noteResolution={props.noteResolution}
       gain={props.processing.gain.gain}
