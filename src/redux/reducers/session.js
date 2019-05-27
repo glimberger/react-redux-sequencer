@@ -56,7 +56,8 @@ const cellReducer = (state: Cell, action: Action) => {
     case CHANGE_CELL_NOTE:
       return {
         ...state,
-        midi: action.payload.note
+        midi: action.payload.note,
+        scheduled: true
       }
 
     case SCHEDULE_TRACK_CELL:
