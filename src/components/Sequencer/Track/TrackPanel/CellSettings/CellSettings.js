@@ -131,8 +131,6 @@ function CellSettings({
         </CellInfo>
         <div>
           <NoteSelectorWithConnect
-            gutter={gutter}
-            cellSize={cellSize}
             height={cellSize * 2}
             keyWidth={16}
           />

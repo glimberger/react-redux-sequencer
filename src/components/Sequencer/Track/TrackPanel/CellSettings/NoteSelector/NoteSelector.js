@@ -140,11 +140,11 @@ const NoteSelector = React.memo<Props>(function NoteSelector(props: Props) {
                   )
                     return
 
-                  props.listenCellNote(
-                    midiNote,
-                    props.activeCellBeat,
-                    props.activeTrackID
-                  )
+                  // props.listenCellNote(
+                  //   midiNote,
+                  //   props.activeCellBeat,
+                  //   props.activeTrackID
+                  // )
                   setNoteOnHover(midiNote)
                 }}
                 onHoverStop={() => setNoteOnHover(null)}
