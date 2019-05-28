@@ -1,90 +1,52 @@
 import React from "react"
 import { storiesOf } from "@storybook/react"
-import { action } from "@storybook/addon-actions"
 
 import CellRow from "./CellRow"
+import {
+  withContainer,
+  withPrefsProvider,
+  withReduxProvider
+} from "../../../../../.storybook/decorators"
+import { initialSate } from "../../../../redux/reducers"
+import colorLibrary from "../../../../utils/color/colorLibrary"
 
-const getCells = () => [
-  { scheduled: false, note: 69 },
-  { scheduled: true, note: 69 },
-  { scheduled: false, note: 69 },
-  { scheduled: false, note: 69 },
-  { scheduled: true, note: 69 },
-  { scheduled: false, note: 69 },
-  { scheduled: false, note: 69 },
-  { scheduled: false, note: 69 }
-]
+const matrix = Array.from(Array(64).keys()).map(beat => ({
+  scheduled: beat % 3 === 0,
+  midi: 69,
+  processing: { gain: { gain: 1 } }
+}))
+
+const state = {
+  ...initialSate,
+  audio: {
+    ...initialSate.audio,
+    currentBeat: 0
+  },
+  session: {
+    ...initialSate.session,
+    activeTrackID: "4",
+    activeCellBeat: 12,
+    trackOrder: ["1", "2", "3", "4"],
+    tracks: {
+      "1": { color: colorLibrary.RED, noteResolution: 1 },
+      "2": { color: colorLibrary.ORANGE, noteResolution: 2 },
+      "3": { color: colorLibrary.INDIGO, noteResolution: 4 },
+      "4": { color: colorLibrary.GREEN, noteResolution: 1 }
+    },
+    matrix: {
+      "1": matrix,
+      "2": matrix,
+      "3": matrix,
+      "4": matrix
+    }
+  }
+}
 
 storiesOf("CellRow", module)
-  .addDecorator(story => (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-        padding: "3rem",
-        backgroundColor: "#1e1f26"
-      }}
-    >
-      {story()}
-    </div>
-  ))
-  .add("sixteenth notes — active track", () => (
-    <CellRow
-      currentBeat={2}
-      color="pink"
-      noteResolution={1}
-      trackID="3df04324-7628-479e-b513-618ba1ab6518"
-      activeTrackID="3df04324-7628-479e-b513-618ba1ab6518"
-      activeCellBeat={3}
-      cells={getCells()}
-      scheduleTrackCell={action("scheduleTrackCell")}
-      setActiveCell={action("setActiveCell")}
-      size={40}
-      gutter={6}
-    />
-  ))
-  .add("eighth notes — active track", () => (
-    <CellRow
-      currentBeat={2}
-      color="pink"
-      noteResolution={2}
-      trackID="3df04324-7628-479e-b513-618ba1ab6518"
-      activeTrackID="3df04324-7628-479e-b513-618ba1ab6518"
-      activeCellBeat={3}
-      cells={getCells()}
-      scheduleTrackCell={action("scheduleTrackCell")}
-      setActiveCell={action("setActiveCell")}
-      size={40}
-      gutter={6}
-    />
-  ))
-  .add("quarter notes — active track", () => (
-    <CellRow
-      currentBeat={2}
-      color="pink"
-      noteResolution={4}
-      trackID="3df04324-7628-479e-b513-618ba1ab6518"
-      activeTrackID="3df04324-7628-479e-b513-618ba1ab6518"
-      activeCellBeat={3}
-      cells={getCells()}
-      scheduleTrackCell={action("scheduleTrackCell")}
-      setActiveCell={action("setActiveCell")}
-      size={40}
-      gutter={6}
-    />
-  ))
-  .add("sixteenth notes", () => (
-    <CellRow
-      currentBeat={2}
-      color="pink"
-      noteResolution={1}
-      trackID="3df04324-7628-479e-b513-618ba1ab6518"
-      activeTrackID={null}
-      activeCellBeat={3}
-      cells={getCells()}
-      scheduleTrackCell={action("scheduleTrackCell")}
-      setActiveCell={action("setActiveCell")}
-      size={40}
-      gutter={6}
-    />
-  ))
+  .addDecorator(story => withReduxProvider(state)(story))
+  .addDecorator(story => withPrefsProvider(story))
+  .addDecorator(story => withContainer(story))
+  .add("sixteenth notes", () => <CellRow trackID="1" />)
+  .add("eighth notes", () => <CellRow trackID="2" />)
+  .add("quarter notes", () => <CellRow trackID="3" />)
+  .add("sixteenth notes — active track", () => <CellRow trackID="4" />)
