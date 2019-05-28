@@ -22,6 +22,29 @@ type AppState = {
 
 export type AnyAction = AudioAction | SessionAction
 
+export const initialSate: AppState = {
+  audio: {
+    ready: false,
+    playing: false,
+    mode: "PLAY",
+    currentBeat: 0,
+    events: []
+  },
+  session: {
+    tempo: 120,
+    masterGain: 1,
+    activeTrackID: null,
+    activeCellBeat: null,
+    trackOrder: [],
+    matrix: {},
+    tracks: {},
+    instruments: {},
+    samples: {}
+  },
+  instruments: {},
+  samples: {}
+}
+
 const rootReducer = combineReducers<{}, AnyAction>({
   audio,
   session,
