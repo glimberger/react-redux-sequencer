@@ -16,6 +16,7 @@ import {
   SCHEDULE_TRACK_CELL,
   SET_ACTIVE_CELL,
   TOGGLE_ACTIVE_TRACK,
+  TOGGLE_TRACK_CELL,
   TOGGLE_TRACK_MUTE,
   TOGGLE_TRACK_SOLO
 } from "../actions/session/types"
@@ -61,6 +62,7 @@ const cellReducer = (state: Cell, action: Action) => {
       }
 
     case SCHEDULE_TRACK_CELL:
+    case TOGGLE_TRACK_CELL:
       return {
         ...state,
         scheduled: !state.scheduled
@@ -84,6 +86,7 @@ const cellRowReducer = (state: Array<Cell>, action: Action) => {
   switch (action.type) {
     case CHANGE_CELL_NOTE:
     case SCHEDULE_TRACK_CELL:
+    case TOGGLE_TRACK_CELL:
     case CHANGE_CELL_GAIN:
       return [
         ...state.slice(0, action.payload.beat),
@@ -110,6 +113,7 @@ const matrixReducer = (
   switch (action.type) {
     case CHANGE_CELL_NOTE:
     case SCHEDULE_TRACK_CELL:
+    case TOGGLE_TRACK_CELL:
     case CHANGE_CELL_GAIN:
     case ADD_TRACK:
       return {
@@ -155,6 +159,7 @@ const trackReducer = (state: Track, action: Action) => {
       }
 
     case SCHEDULE_TRACK_CELL:
+    case TOGGLE_TRACK_CELL:
     case CHANGE_CELL_NOTE:
       return {
         ...state,
@@ -252,6 +257,21 @@ const sessionReducer = (state: Session = initialSate, action: Action) => {
     case CHANGE_CELL_NOTE:
     case SCHEDULE_TRACK_CELL:
     case CHANGE_CELL_GAIN:
+      return {
+        ...state,
+        matrix: matrixReducer(state.matrix, action)
+      }
+
+    case TOGGLE_TRACK_CELL:
+      if (state.activeTrackID === action.payload.trackID) {
+        // same as SET_ACTIVE_CELL
+        return {
+          ...state,
+          activeCellBeat: action.payload.beat
+        }
+      }
+
+      // same as SCHEDULE_TRACK_CELL
       return {
         ...state,
         matrix: matrixReducer(state.matrix, action)

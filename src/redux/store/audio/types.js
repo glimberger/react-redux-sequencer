@@ -9,7 +9,7 @@ import type {
   ChangeCellNoteAction,
   ChangeMasterGainAction,
   ChangeTrackGainAction,
-  ScheduleTrackCellAction
+  ScheduleTrackCellAction, ToggleTrackCellAction
 } from "../../actions/session/types"
 
 export type AudioState = {|
@@ -25,6 +25,7 @@ export type Event =
   | ChangeMasterGainAction
   | ChangeTrackGainAction
   | ScheduleTrackCellAction
+  | ToggleTrackCellAction
   | ListenCellNoteAction
   | ChangeCellNoteAction
   | AddTrackAction

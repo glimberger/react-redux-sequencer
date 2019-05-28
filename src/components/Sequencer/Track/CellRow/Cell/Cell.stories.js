@@ -2,9 +2,11 @@ import React from "react"
 import { storiesOf } from "@storybook/react"
 import { action } from "@storybook/addon-actions"
 
-import Cell from "./Cell"
+import { Cell } from "./Cell"
+import { PrefsProvider } from "../../../../context/sequencer-prefs"
 
 storiesOf("Cell", module)
+  .addDecorator(story => <PrefsProvider>{story()}</PrefsProvider>)
   .addDecorator(story => (
     <div
       style={{
@@ -20,30 +22,43 @@ storiesOf("Cell", module)
   .add("played + scheduled", () => (
     <div style={{ display: "flex" }}>
       <Cell
+        trackID={"foo"}
+        beatNumber={0}
+        activeTrackID={"bar"}
         color={"deepPurple"}
         size={40}
         gutter={6}
+        rendered={true}
         played={true}
         scheduled={true}
         noteResolution={1}
+        gain={0.7}
         onClick={action("onClick")}
       />
       <Cell
+        trackID={"foo"}
+        beatNumber={0}
+        activeTrackID={"bar"}
         color={"deepPurple"}
         size={40}
         gutter={6}
         played={true}
         scheduled={true}
         noteResolution={2}
+        gain={0.7}
         onClick={action("onClick")}
       />
       <Cell
+        trackID={"foo"}
+        beatNumber={0}
+        activeTrackID={"bar"}
         color={"deepPurple"}
         size={40}
         gutter={6}
         played={true}
         scheduled={true}
         noteResolution={4}
+        gain={0.7}
         onClick={action("onClick")}
       />
     </div>
@@ -51,30 +66,42 @@ storiesOf("Cell", module)
   .add("played + not scheduled", () => (
     <div style={{ display: "flex" }}>
       <Cell
+        trackID={"foo"}
+        beatNumber={0}
+        activeTrackID={"bar"}
         color={"deepPurple"}
         size={40}
         gutter={6}
         played={true}
         scheduled={false}
         noteResolution={1}
+        gain={0.7}
         onClick={action("onClick")}
       />
       <Cell
+        trackID={"foo"}
+        beatNumber={0}
+        activeTrackID={"bar"}
         color={"deepPurple"}
         size={40}
         gutter={6}
         played={true}
         scheduled={false}
         noteResolution={2}
+        gain={0.7}
         onClick={action("onClick")}
       />
       <Cell
+        trackID={"foo"}
+        beatNumber={0}
+        activeTrackID={"bar"}
         color={"deepPurple"}
         size={40}
         gutter={6}
         played={true}
         scheduled={false}
         noteResolution={4}
+        gain={0.7}
         onClick={action("onClick")}
       />
     </div>
@@ -82,30 +109,42 @@ storiesOf("Cell", module)
   .add("not played + scheduled", () => (
     <div style={{ display: "flex" }}>
       <Cell
+        trackID={"foo"}
+        beatNumber={0}
+        activeTrackID={"bar"}
         color={"deepPurple"}
         size={40}
         gutter={6}
         played={false}
         scheduled={true}
         noteResolution={1}
+        gain={0.7}
         onClick={action("onClick")}
       />
       <Cell
+        trackID={"foo"}
+        beatNumber={0}
+        activeTrackID={"bar"}
         color={"deepPurple"}
         size={40}
         gutter={6}
         played={false}
         scheduled={true}
         noteResolution={2}
+        gain={0.7}
         onClick={action("onClick")}
       />
       <Cell
+        trackID={"foo"}
+        beatNumber={0}
+        activeTrackID={"bar"}
         color={"deepPurple"}
         size={40}
         gutter={6}
         played={false}
         scheduled={true}
         noteResolution={4}
+        gain={0.7}
         onClick={action("onClick")}
       />
     </div>
@@ -113,30 +152,42 @@ storiesOf("Cell", module)
   .add("not played + not scheduled", () => (
     <div style={{ display: "flex" }}>
       <Cell
+        trackID={"foo"}
+        beatNumber={0}
+        activeTrackID={"bar"}
         color={"deepPurple"}
         size={40}
         gutter={6}
         played={false}
         scheduled={false}
         noteResolution={1}
+        gain={0.7}
         onClick={action("onClick")}
       />
       <Cell
+        trackID={"foo"}
+        beatNumber={0}
+        activeTrackID={"bar"}
         color={"deepPurple"}
         size={40}
         gutter={6}
         played={false}
         scheduled={false}
         noteResolution={2}
+        gain={0.7}
         onClick={action("onClick")}
       />
       <Cell
+        trackID={"foo"}
+        beatNumber={0}
+        activeTrackID={"bar"}
         color={"deepPurple"}
         size={40}
         gutter={6}
         played={false}
         scheduled={false}
         noteResolution={4}
+        gain={0.7}
         onClick={action("onClick")}
       />
     </div>
@@ -144,6 +195,9 @@ storiesOf("Cell", module)
   .add("edited + scheduled", () => (
     <div style={{ display: "flex" }}>
       <Cell
+        trackID={"foo"}
+        beatNumber={0}
+        activeTrackID={"bar"}
         color={"deepPurple"}
         size={40}
         gutter={6}
@@ -151,9 +205,13 @@ storiesOf("Cell", module)
         scheduled={true}
         edited={true}
         noteResolution={1}
+        gain={0.7}
         onClick={action("onClick")}
       />
       <Cell
+        trackID={"foo"}
+        beatNumber={0}
+        activeTrackID={"bar"}
         color={"deepPurple"}
         size={40}
         gutter={6}
@@ -161,9 +219,13 @@ storiesOf("Cell", module)
         scheduled={true}
         edited={true}
         noteResolution={2}
+        gain={0.7}
         onClick={action("onClick")}
       />
       <Cell
+        trackID={"foo"}
+        beatNumber={0}
+        activeTrackID={"bar"}
         color={"deepPurple"}
         size={40}
         gutter={6}
@@ -171,6 +233,7 @@ storiesOf("Cell", module)
         scheduled={true}
         edited={true}
         noteResolution={4}
+        gain={0.7}
         onClick={action("onClick")}
       />
     </div>
@@ -178,6 +241,9 @@ storiesOf("Cell", module)
   .add("edited + not scheduled", () => (
     <div style={{ display: "flex" }}>
       <Cell
+        trackID={"foo"}
+        beatNumber={0}
+        activeTrackID={"bar"}
         color={"deepPurple"}
         size={40}
         gutter={6}
@@ -185,9 +251,13 @@ storiesOf("Cell", module)
         scheduled={false}
         edited={true}
         noteResolution={1}
+        gain={0.7}
         onClick={action("onClick")}
       />
       <Cell
+        trackID={"foo"}
+        beatNumber={0}
+        activeTrackID={"bar"}
         color={"deepPurple"}
         size={40}
         gutter={6}
@@ -195,9 +265,13 @@ storiesOf("Cell", module)
         scheduled={false}
         edited={true}
         noteResolution={2}
+        gain={0.7}
         onClick={action("onClick")}
       />
       <Cell
+        trackID={"foo"}
+        beatNumber={0}
+        activeTrackID={"bar"}
         color={"deepPurple"}
         size={40}
         gutter={6}
@@ -205,6 +279,7 @@ storiesOf("Cell", module)
         scheduled={false}
         edited={true}
         noteResolution={4}
+        gain={0.7}
         onClick={action("onClick")}
       />
     </div>

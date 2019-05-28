@@ -6,19 +6,15 @@ import ValueController from "../../controllers/ValueController/ValueController"
 
 import type { MaterialColor } from "../../../utils/color/colorLibrary"
 
-type OwnProps = {
+export type OwnProps = {|
   color: MaterialColor
-}
+|}
 
-type StateProps = {
-  tempo: number
-}
-
-type DispatchProps = {
+export type Props = {
+  ...OwnProps,
+  tempo: number,
   onChange: (value: number) => void
 }
-
-type Props = OwnProps & StateProps & DispatchProps
 
 function TempoController({ color, tempo, onChange }: Props) {
   return (

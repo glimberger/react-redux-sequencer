@@ -8,19 +8,15 @@ import styles from "./MasterGainController.module.css"
 import type { MaterialColor } from "../../../utils/color/colorLibrary"
 import Color from "../../../utils/color/colorLibrary"
 
-type OwnProps = {
+export type OwnProps = {|
   color: MaterialColor
-}
+|}
 
-type StateProps = {
-  gain: number
-}
-
-type DispatchProps = {
+export type Props = {
+  ...OwnProps,
+  gain: number,
   changeMasterGain: (gain: number) => void
 }
-
-type Props = OwnProps & StateProps & DispatchProps
 
 function MasterGainController({ changeMasterGain, gain, color }: Props) {
   const handleGainChange = (e: SyntheticInputEvent<HTMLInputElement>) => {

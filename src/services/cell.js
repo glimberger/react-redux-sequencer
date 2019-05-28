@@ -1,6 +1,14 @@
 // @flow strict
 import type { NoteResolution } from "../redux/store/session/types"
 
+/**
+ * Check if a cell is played regarding the current note resolution
+ *
+ * @param noteResolution
+ * @param cellBeat
+ * @param currentBeat
+ * @return {boolean}
+ */
 export const isCellPlayed = (
   noteResolution: NoteResolution,
   cellBeat: number,

@@ -16,7 +16,8 @@ import type {
   ChangeCellNoteAction,
   ChangeMasterGainAction,
   ChangeTrackGainAction,
-  ScheduleTrackCellAction
+  ScheduleTrackCellAction,
+  ToggleTrackCellAction
 } from "../../redux/actions/session/types"
 import type { Session } from "../../redux/store/session/types"
 
@@ -26,28 +27,27 @@ type AudioEvent =
   | ChangeMasterGainAction
   | ChangeTrackGainAction
   | ScheduleTrackCellAction
+  | ToggleTrackCellAction
   | ClearEventQueueAction
   | ListenCellNoteAction
   | ChangeCellNoteAction
   | AddTrackAction
 
-type StateProps = {
+export type OwnProps = {}
+
+export type Props = {
+  ...OwnProps,
   ...AudioState,
   ...Session,
   solos: { [trackID: string]: boolean },
   mutes: { [trackID: string]: boolean },
-  isSoloActive: boolean
-}
-
-type DispatchProps = {
+  isSoloActive: boolean,
   announceBeat: (beatNumber: number) => void,
   clearEventQueue: () => void,
   resetTransport: () => void,
   togglePlay: () => void,
   setAudioEngineReady: () => void
 }
-
-type Props = StateProps & DispatchProps
 
 type State = {
   +timer: ?IntervalID,
@@ -128,7 +128,7 @@ class AudioEngine extends React.Component<Props, State> {
     }
   }
 
-  shouldComponentUpdate(nextProps: StateProps & DispatchProps): boolean {
+  shouldComponentUpdate(nextProps: Props): boolean {
     return nextProps.events.length > 0
   }
 
@@ -139,7 +139,7 @@ class AudioEngine extends React.Component<Props, State> {
   }
 
   stopTimer = () => {
-    clearInterval(this.state.timer)
+    this.state.timer && clearInterval(this.state.timer)
     this.setState({
       timer: null
     })
@@ -179,10 +179,12 @@ class AudioEngine extends React.Component<Props, State> {
         break
 
       case "SCHEDULE_TRACK_CELL":
+      case 'TOGGLE_TRACK_CELL':
         if (playing) {
           break
         }
 
+        console.log('play')
         this.processor.playSample(
           event.payload.beat,
           matrix[event.payload.trackID][event.payload.beat].processing.gain

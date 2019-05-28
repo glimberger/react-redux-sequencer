@@ -12,7 +12,8 @@ import {
   CHANGE_CELL_NOTE,
   CHANGE_MASTER_GAIN,
   CHANGE_TRACK_GAIN,
-  SCHEDULE_TRACK_CELL
+  SCHEDULE_TRACK_CELL,
+  TOGGLE_TRACK_CELL
 } from "../actions/session/types"
 
 import type { Action, ListenCellNoteAction } from "../actions/audio/types"
@@ -22,7 +23,8 @@ import type {
   ChangeCellNoteAction,
   ChangeMasterGainAction,
   ChangeTrackGainAction,
-  ScheduleTrackCellAction
+  ScheduleTrackCellAction,
+  ToggleTrackCellAction
 } from "../actions/session/types"
 
 type ReducerAction =
@@ -30,6 +32,7 @@ type ReducerAction =
   | ChangeMasterGainAction
   | ChangeTrackGainAction
   | ScheduleTrackCellAction
+  | ToggleTrackCellAction
   | ListenCellNoteAction
   | ChangeCellNoteAction
   | AddTrackAction
@@ -67,6 +70,7 @@ const reducer = (
     case CHANGE_MASTER_GAIN:
     case CHANGE_TRACK_GAIN:
     case SCHEDULE_TRACK_CELL:
+    case TOGGLE_TRACK_CELL:
     case CHANGE_CELL_NOTE:
     case LISTEN_CELL_NOTE:
     case ADD_TRACK:

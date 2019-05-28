@@ -99,13 +99,12 @@ function CellSettings({
       <StyledNoteSection gutter={gutter}>
         <CellInfo>
           <Cell
-            size={cellSize}
             gutter={0}
             color={color}
             played={false}
             edited={false}
             scheduled={cell.scheduled}
-            processing={cell.processing}
+            gain={cell.processing.gain.gain}
             noteResolution={noteResolution}
             activeTrackID={activeTrackID}
             beatNumber={activeCellBeat}
@@ -130,10 +129,7 @@ function CellSettings({
           </div>
         </CellInfo>
         <div>
-          <NoteSelectorWithConnect
-            height={cellSize * 2}
-            keyWidth={16}
-          />
+          <NoteSelectorWithConnect height={cellSize * 2} keyWidth={16} />
         </div>
       </StyledNoteSection>
       <section style={{ display: "flex", padding: `${gutter * 2}px` }}>

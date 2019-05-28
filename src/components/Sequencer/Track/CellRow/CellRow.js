@@ -3,7 +3,7 @@ import * as React from "react"
 // $FlowFixMe
 import styled from "styled-components/macro"
 
-import CellWithConnect from "./Cell/CellWithConnect"
+import Cell from "./Cell/Cell"
 import { usePrefs } from "../../../context/sequencer-prefs"
 
 export type Props = {
@@ -21,7 +21,7 @@ const CellRow = React.memo<Props>(function CellRow({ trackID }: Props) {
     <StyledCellRow>
       {Array.from(Array(64).keys()).map(beat => {
         return (
-          <CellWithConnect
+          <Cell
             key={`beat_${beat}`}
             trackID={trackID}
             beatNumber={beat}

@@ -13,7 +13,8 @@ import type {
   ChangeCellNoteAction,
   AddTrackAction,
   ChangeTrackLabelAction,
-  ChangeCellGainAction
+  ChangeCellGainAction,
+  ToggleTrackCellAction
 } from "./types"
 import {
   CHANGE_TRACK_GAIN,
@@ -28,7 +29,8 @@ import {
   CHANGE_CELL_NOTE,
   ADD_TRACK,
   CHANGE_TRACK_LABEL,
-  CHANGE_CELL_GAIN
+  CHANGE_CELL_GAIN,
+  TOGGLE_TRACK_CELL
 } from "./types"
 import type { NoteResolution } from "../../store/session/types"
 import type { Instrument } from "../../store/instrument/types"
@@ -64,6 +66,16 @@ export function scheduleTrackCell(
 ): ScheduleTrackCellAction {
   return {
     type: SCHEDULE_TRACK_CELL,
+    payload: { beat, trackID }
+  }
+}
+
+export function toggleTrackCell(
+  beat: number,
+  trackID: string
+): ToggleTrackCellAction {
+  return {
+    type: TOGGLE_TRACK_CELL,
     payload: { beat, trackID }
   }
 }

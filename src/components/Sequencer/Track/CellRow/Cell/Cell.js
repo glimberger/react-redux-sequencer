@@ -2,39 +2,37 @@
 import * as React from "react"
 // $FlowFixMe
 import styled from "styled-components/macro"
+import { connect } from "react-redux"
 
 import Color, { hexToRgb } from "../../../../../utils/color/colorLibrary"
 import colorLuminance from "../../../../../utils/color/colorLuminance"
+import { getCell, getTrack } from "../../../../../redux/reducers"
+import { isCellPlayed } from "../../../../../services/cell"
+import { toggleTrackCell } from "../../../../../redux/actions/session/creators"
 import { usePrefs } from "../../../../context/sequencer-prefs"
 
-import type {
-  AudioProcessing,
-  NoteResolution
-} from "../../../../../redux/store/session/types"
+import type { NoteResolution } from "../../../../../redux/store/session/types"
 import type { MaterialColor } from "../../../../../utils/color/colorLibrary"
+import type { AppState } from "../../../../../redux/store/configureStore"
 
-export type OwnProps = {
+export type OwnProps = {|
   trackID: string,
   beatNumber: number,
   gutter: number
-}
+|}
 
-type StateProps = {
-  activeTrackID: string,
+type Props = {
+  ...OwnProps,
+  activeTrackID: string | null,
   color: MaterialColor,
   noteResolution: NoteResolution,
-  processing: AudioProcessing,
+  gain: number,
   played: boolean,
   scheduled: boolean,
   edited: boolean,
-  rendered: boolean
+  rendered: boolean,
+  onClick: (beat: number, trackID: string) => void
 }
-
-type DispatchProps = {
-  onClick: (activeTrackID: string | null) => void
-}
-
-type Props = OwnProps & StateProps & DispatchProps
 
 const cellWidth = (
   resolution: NoteResolution,
@@ -119,7 +117,7 @@ export function Cell(props: Props) {
   const buttonRef = React.createRef<HTMLButtonElement>()
 
   const handleClick = () => {
-    props.onClick(props.activeTrackID)
+    props.onClick(props.beatNumber, props.trackID)
     buttonRef.current && buttonRef.current.blur()
   }
 
@@ -129,7 +127,7 @@ export function Cell(props: Props) {
       size={cellSize}
       gutter={props.gutter}
       noteResolution={props.noteResolution}
-      gain={props.processing.gain.gain}
+      gain={props.gain}
       played={props.played}
       scheduled={props.scheduled}
       edited={props.edited}
@@ -143,4 +141,37 @@ export function Cell(props: Props) {
 
 const MemoizedCell = React.memo<Props>(Cell)
 
-export default MemoizedCell
+const mapStateToProps = (state: AppState, ownProps: OwnProps) => {
+  const track = getTrack(state, ownProps.trackID)
+  const cell = getCell(state, ownProps.trackID, ownProps.beatNumber)
+
+  return {
+    activeTrackID: state.session.activeTrackID,
+    color: track.color,
+    noteResolution: track.noteResolution,
+    gain: cell.processing.gain.gain,
+    played: isCellPlayed(
+      track.noteResolution,
+      ownProps.beatNumber,
+      state.audio.currentBeat
+    ),
+    scheduled: cell.scheduled,
+    edited:
+      ownProps.trackID === state.session.activeTrackID &&
+      ownProps.beatNumber === state.session.activeCellBeat,
+    // we don't want to keep cells out of note resolution
+    rendered: ownProps.beatNumber % track.noteResolution === 0
+  }
+}
+
+const mapDispatchToProps = (dispatch, ownProps: OwnProps) => ({
+  onClick: () =>
+    dispatch(toggleTrackCell(ownProps.beatNumber, ownProps.trackID))
+})
+
+const CellWithConnect = connect<Props, OwnProps, _, _, _,_>(
+  mapStateToProps,
+  mapDispatchToProps
+)(MemoizedCell)
+
+export default CellWithConnect

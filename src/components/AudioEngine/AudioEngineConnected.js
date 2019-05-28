@@ -12,6 +12,7 @@ import { getMutes, getSolos, isSoloActive } from '../../redux/reducers'
 import AudioEngine from './AudioEngine'
 
 import type { AppState } from '../../redux/store/configureStore'
+import type { OwnProps, Props } from "./AudioEngine"
 
 const mapStateToProps = (state: AppState) => ({
   ...state.session,
@@ -21,7 +22,7 @@ const mapStateToProps = (state: AppState) => ({
   isSoloActive: isSoloActive(state)
 })
 
-const AudioEngineConnected = connect(
+const AudioEngineConnected = connect<Props, OwnProps, _,_,_,_>(
   mapStateToProps,
   {
     announceBeat,
