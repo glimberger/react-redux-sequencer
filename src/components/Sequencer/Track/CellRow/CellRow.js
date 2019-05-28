@@ -6,9 +6,9 @@ import styled from "styled-components/macro"
 import Cell from "./Cell/Cell"
 import { usePrefs } from "../../../context/sequencer-prefs"
 
-export type Props = {
+export type Props = {|
   trackID: string
-}
+|}
 
 const StyledCellRow = styled.div`
   display: flex;
