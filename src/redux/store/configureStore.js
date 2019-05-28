@@ -17,7 +17,7 @@ export type AppState = {|
   samples: Samples
 |}
 
-const configureStore = () => {
+const configureStore = (preloadState: AppState) => {
   const middlewares = []
 
   if (NOT_IN_PROD) {
@@ -35,7 +35,7 @@ const configureStore = () => {
     module.hot.accept("../reducers", () => store.replaceReducer(rootReducer))
   }
 
-  const store = createStore(rootReducer, composedEnhancers)
+  const store = createStore(rootReducer, preloadState, composedEnhancers)
 
   return store
 }

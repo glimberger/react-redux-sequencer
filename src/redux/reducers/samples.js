@@ -1,8 +1,7 @@
 // @flow strict
 import type { Samples } from "../store/sample/types"
-import { samples as initialState } from "../store/sample/initialState"
 
-const SamplesReducer = (state: Samples = initialState, action: *) => {
+const SamplesReducer = (state: Samples = {}, action: *) => {
   switch (action.type) {
     default:
       return state

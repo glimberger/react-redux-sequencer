@@ -20,11 +20,22 @@ import {
   TOGGLE_TRACK_MUTE,
   TOGGLE_TRACK_SOLO
 } from "../actions/session/types"
-import initialSate from "../store/session/initialState"
 
 import type { Instrument, Instruments } from "../store/instrument/types"
 import type { Samples } from "../store/sample/types"
 import type { MaterialColor } from "../../utils/color/colorLibrary"
+
+const initialState: Session = {
+  tempo: 120,
+  masterGain: 1,
+  activeTrackID: null,
+  activeCellBeat: null,
+  trackOrder: [],
+  matrix: {},
+  tracks: {},
+  instruments: {},
+  samples: {}
+}
 
 const instrumentsReducer = (state: Instruments, action: Action) => {
   switch (action.type) {
@@ -230,7 +241,7 @@ function getNextColor(state: { [trackID: string]: Track }): MaterialColor {
   return trackColors[randomIndex]
 }
 
-const sessionReducer = (state: Session = initialSate, action: Action) => {
+const sessionReducer = (state: Session = initialState, action: Action) => {
   switch (action.type) {
     case CHANGE_TEMPO:
       return {

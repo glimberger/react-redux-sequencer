@@ -1,9 +1,7 @@
 // @flow strict
-import { instruments as initialState } from "../store/instrument/initialState"
-
 import type { Instrument, Instruments } from "../store/instrument/types"
 
-const instrumentsReducer = (state: Instruments = initialState, action: *) => {
+const instrumentsReducer = (state: Instruments = {}, action: *) => {
   switch (action.type) {
     default:
       return state

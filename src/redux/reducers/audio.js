@@ -6,7 +6,6 @@ import {
   RESET_TRANSPORT,
   TOGGLE_PLAY
 } from "../actions/audio/types"
-import initialState from "../store/audio/initialState"
 import {
   ADD_TRACK,
   CHANGE_CELL_NOTE,
@@ -36,6 +35,14 @@ type ReducerAction =
   | ListenCellNoteAction
   | ChangeCellNoteAction
   | AddTrackAction
+
+const initialState: AudioState = {
+  ready: false,
+  playing: false,
+  mode: "PLAY",
+  currentBeat: 0,
+  events: []
+}
 
 const reducer = (
   state: AudioState = initialState,
