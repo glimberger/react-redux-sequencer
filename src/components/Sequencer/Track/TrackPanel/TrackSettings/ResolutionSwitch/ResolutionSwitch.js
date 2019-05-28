@@ -5,30 +5,29 @@ import styled from "styled-components/macro"
 
 import Color from "../../../../../../utils/color/colorLibrary"
 
+import { getActiveTrack } from "../../../../../../redux/reducers"
+import { connect } from "react-redux"
+import { changeNoteResolution } from "../../../../../../redux/actions/session/creators"
+import { usePrefs } from "../../../../../context/sequencer-prefs"
+
 import type {
   NoteResolution,
   Session,
   Track
 } from "../../../../../../redux/store/session/types"
 
-type OwnProps = {
-  gutter: number
-}
+type OwnProps = {||}
 
-type StateProps = {
+type Props = {
+  ...OwnProps,
   color: $PropertyType<Track, "color">,
   noteResolution: $PropertyType<Track, "noteResolution">,
-  activeTrackID: $PropertyType<Session, "activeTrackID">
-}
-
-type DispatchProps = {
+  activeTrackID: $PropertyType<Session, "activeTrackID">,
   changeNoteResolution: (
     noteResolution: NoteResolution,
     trackID: string
   ) => void
 }
-
-type Props = OwnProps & StateProps & DispatchProps
 
 const StyledSwitch = styled.div`
   display: flex;
@@ -76,16 +75,16 @@ const button1Ref = React.createRef<HTMLButtonElement>()
 const button2Ref = React.createRef<HTMLButtonElement>()
 const button4Ref = React.createRef<HTMLButtonElement>()
 
-const ResolutionSwitch = React.memo<Props>(function ResolutionSwitch(
-  props: Props
-) {
+export function ResolutionSwitch(props: Props) {
   if (props.activeTrackID === null) return <div />
+
+  const { gutter } = usePrefs()
 
   return (
     <StyledSwitch
       width={prefs.width}
       height={prefs.height}
-      gutter={props.gutter}
+      gutter={gutter}
       color={props.color}
     >
       <ResolutionButton
@@ -107,7 +106,7 @@ const ResolutionSwitch = React.memo<Props>(function ResolutionSwitch(
       >
         &#x266C;
       </ResolutionButton>
-      <Gutter gutter={props.gutter}> </Gutter>
+      <Gutter gutter={gutter}> </Gutter>
       <ResolutionButton
         color={props.color}
         noteResolution={props.noteResolution}
@@ -125,7 +124,7 @@ const ResolutionSwitch = React.memo<Props>(function ResolutionSwitch(
       >
         &#x266B;
       </ResolutionButton>
-      <Gutter gutter={props.gutter}> </Gutter>
+      <Gutter gutter={gutter}> </Gutter>
       <ResolutionButton
         color={props.color}
         noteResolution={props.noteResolution}
@@ -147,6 +146,23 @@ const ResolutionSwitch = React.memo<Props>(function ResolutionSwitch(
       </ResolutionButton>
     </StyledSwitch>
   )
-})
+}
 
-export default ResolutionSwitch
+const ResolutionSwitchMemoized = React.memo<Props>(ResolutionSwitch)
+
+const mapStateToProps = state => {
+  const track = getActiveTrack(state)
+
+  return {
+    color: track ? track.color : "grey",
+    noteResolution: track ? track.noteResolution : 1,
+    activeTrackID: state.session.activeTrackID
+  }
+}
+
+const ResolutionSwitchWithConnect = connect<Props, OwnProps, _, _, _, _>(
+  mapStateToProps,
+  { changeNoteResolution }
+)(ResolutionSwitchMemoized)
+
+export default ResolutionSwitchWithConnect

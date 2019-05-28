@@ -4,11 +4,11 @@ import * as React from "react"
 import styled from "styled-components/macro"
 
 import Color from "../../../../../utils/color/colorLibrary"
-import ResolutionSwitchWithConnect from "./ResolutionSwitch/ResolutionSwitchWithConnect"
+import ResolutionSwitch from "./ResolutionSwitch/ResolutionSwitch"
 import VerticalFaderWithConnect from "./FaderWithConnect"
+import { usePrefs } from "../../../../context/sequencer-prefs"
 
 import type { Track } from "../../../../../redux/store/session/types"
-import { usePrefs } from "../../../../context/sequencer-prefs"
 
 type StateProps = {
   color: $PropertyType<Track, "color">,
@@ -61,7 +61,7 @@ function TrackSettings({ color, isTrackActive }: Props) {
         </AsideSection>
         <MainSection width={panelWidth} gutter={gutter}>
           <ResolutionSwitchWrapper gutter={gutter}>
-            <ResolutionSwitchWithConnect gutter={gutter} />
+            <ResolutionSwitch />
           </ResolutionSwitchWrapper>
           <div />
         </MainSection>
