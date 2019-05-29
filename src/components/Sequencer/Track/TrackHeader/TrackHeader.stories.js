@@ -2,21 +2,15 @@ import React from "react"
 import { storiesOf } from "@storybook/react"
 import { action } from "@storybook/addon-actions"
 
-import TrackHeader from "./TrackHeader"
+import { TrackHeader } from "./TrackHeader"
+import {
+  withContainer,
+  withPrefsProvider
+} from "../../../../../.storybook/decorators"
 
 storiesOf("TrackHeader", module)
-  .addDecorator(story => (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-        padding: "3rem",
-        backgroundColor: "#1e1f26"
-      }}
-    >
-      {story()}
-    </div>
-  ))
+  .addDecorator(story => withPrefsProvider(story))
+  .addDecorator(story => withContainer(story))
   .add("default", () => (
     <TrackHeader
       color={"red"}
@@ -31,6 +25,7 @@ storiesOf("TrackHeader", module)
       onMuteClick={action("onMuteClick")}
       onSoloClick={action("onSoloClick")}
       onTitleClick={action("onTitleClick")}
+      changeTrackLabel={action("changeTrackLabel")}
     />
   ))
   .add("muted", () => (
@@ -47,6 +42,7 @@ storiesOf("TrackHeader", module)
       onMuteClick={action("onMuteClick")}
       onSoloClick={action("onSoloClick")}
       onTitleClick={action("onTitleClick")}
+      changeTrackLabel={action("changeTrackLabel")}
     />
   ))
   .add("soloed", () => (
@@ -64,5 +60,6 @@ storiesOf("TrackHeader", module)
       onMuteClick={action("onMuteClick")}
       onSoloClick={action("onSoloClick")}
       onTitleClick={action("onTitleClick")}
+      changeTrackLabel={action("changeTrackLabel")}
     />
   ))

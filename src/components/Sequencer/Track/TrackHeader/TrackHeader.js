@@ -11,27 +11,31 @@ import TrackLabel from "./TrackLabel"
 import { usePrefs } from "../../../context/sequencer-prefs"
 
 import type { MaterialColor } from "../../../../utils/color/colorLibrary"
+import type { AppState } from "../../../../redux/store/configureStore"
+import {
+  changeTrackLabel,
+  toggleActiveTrack,
+  toggleMuteTrack,
+  toggleSoloTrack
+} from "../../../../redux/actions/session/creators"
+import { connect } from "react-redux"
 
-type StateProps = {
+export type OwnProps = {|
+  trackID: string
+|}
+
+type Props = {
+  ...OwnProps,
   color: MaterialColor,
   muted: boolean,
   soloed: boolean,
   gain: number,
-  label: string
-}
-
-type DispatchProps = {
+  label: string,
   onMuteClick: () => void,
   onSoloClick: () => void,
   onTitleClick: () => void,
   changeTrackLabel: (label: string) => void
 }
-
-export type OwnProps = {
-  trackID: string
-}
-
-type Props = OwnProps & StateProps & DispatchProps
 
 const Container = styled.div`
   cursor: pointer;
@@ -90,7 +94,7 @@ const StyledLabelForm = styled.form`
 let timer: TimeoutID
 const delay = 200
 
-const TrackHeader = React.memo<Props>(function TrackHeader(props: Props) {
+export function TrackHeader(props: Props) {
   const [labelEdited, setLabelEdited] = React.useState(false)
   const [clicked, setClicked] = React.useState<boolean>(false)
 
@@ -173,6 +177,33 @@ const TrackHeader = React.memo<Props>(function TrackHeader(props: Props) {
       </StyledTrackHeader>
     </Container>
   )
+}
+
+const mapStateToProps = (state: AppState, ownProps: OwnProps) => {
+  const track = state.session.tracks[ownProps.trackID]
+
+  return {
+    label: track.label,
+    color: track.color,
+    gain: track.processing.gain.gain,
+    muted: track.muted,
+    soloed: track.soloed
+  }
+}
+
+const TrackHeaderMemoized = React.memo<Props>(TrackHeader)
+
+const mapDispatchToProps = (dispatch, ownProps: OwnProps) => ({
+  onMuteClick: () => dispatch(toggleMuteTrack(ownProps.trackID)),
+  onSoloClick: () => dispatch(toggleSoloTrack(ownProps.trackID)),
+  onTitleClick: () => dispatch(toggleActiveTrack(ownProps.trackID)),
+  changeTrackLabel: (label: string) =>
+    dispatch(changeTrackLabel(label, ownProps.trackID))
 })
 
-export default TrackHeader
+const TrackHeaderWithConnect = connect<Props, OwnProps, _, _, _, _>(
+  mapStateToProps,
+  mapDispatchToProps
+)(TrackHeaderMemoized)
+
+export default TrackHeaderWithConnect
