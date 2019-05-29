@@ -93,7 +93,7 @@ export function getCell(
 export function getActiveCell(state: {
   audio: AudioState,
   session: Session
-}): ?Cell {
+}): Cell | null {
   return fromSession.getActiveCell(state.session)
 }
 

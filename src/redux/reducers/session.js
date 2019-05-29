@@ -347,7 +347,7 @@ export function getCell(state: Session, trackID: string, beat: number): Cell {
   return getCellRow(state, trackID)[beat]
 }
 
-export function getActiveCell(state: Session): ?Cell {
+export function getActiveCell(state: Session): Cell | null {
   return state.activeTrackID !== null && state.activeCellBeat !== null
     ? getCellRow(state, state.activeTrackID)[state.activeCellBeat]
     : null
