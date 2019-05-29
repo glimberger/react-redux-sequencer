@@ -1,24 +1,36 @@
 // @flow strict
 import * as React from "react"
+import { connect } from "react-redux"
+// $FlowFixMe
+import styled from "styled-components/macro"
 
-import styles from "./TempoController.module.css"
 import ValueController from "../../controllers/ValueController/ValueController"
+import { changeTempo } from "../../../redux/actions/session/creators"
 
 import type { MaterialColor } from "../../../utils/color/colorLibrary"
+import type { Dispatch } from "redux"
+import type { Action } from "../../../redux/actions/session/types"
 
-export type OwnProps = {|
+type OwnProps = {|
   color: MaterialColor
 |}
 
-export type Props = {
+type Props = {
   ...OwnProps,
   tempo: number,
   onChange: (value: number) => void
 }
 
-function TempoController({ color, tempo, onChange }: Props) {
+const StyledContainer = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+`
+
+export function TempoController({ color, tempo, onChange }: Props) {
   return (
-    <div className={styles.Container}>
+    <StyledContainer>
       <ValueController
         value={tempo}
         onChange={onChange}
@@ -27,8 +39,23 @@ function TempoController({ color, tempo, onChange }: Props) {
         max={200}
         prefs={{ color }}
       />
-    </div>
+    </StyledContainer>
   )
 }
 
-export default TempoController
+const mapStateToProps = state => ({ tempo: state.session.tempo })
+
+const mapDispatchToProps = (dispatch: Dispatch<Action>) => {
+  return {
+    onChange(value: number) {
+      dispatch(changeTempo(parseFloat(value)))
+    }
+  }
+}
+
+const TempoControllerConnected = connect<Props, OwnProps, _, _, _, _>(
+  mapStateToProps,
+  mapDispatchToProps
+)(TempoController)
+
+export default TempoControllerConnected
