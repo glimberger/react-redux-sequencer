@@ -2,27 +2,28 @@
 import * as React from "react"
 import { connect } from "react-redux"
 
-import { getActiveTrack } from "../../../../../redux/reducers"
-import { changeTrackGain } from "../../../../../redux/actions/session/creators"
-import VerticalFader from "../../../../controllers/VerticalFader/VerticalFader"
+import { getActiveTrack } from "../../../../../../redux/reducers"
+import { changeTrackGain } from "../../../../../../redux/actions/session/creators"
+import VerticalFader from "../../../../../controllers/VerticalFader/VerticalFader"
 
-import type { MaterialColor } from "../../../../../utils/color/colorLibrary"
-import type { Session } from "../../../../../redux/store/session/types"
+import type { MaterialColor } from "../../../../../../utils/color/colorLibrary"
+import type { Session } from "../../../../../../redux/store/session/types"
 
-type Props = {
-  // own props
+type OwnProps = {|
   height: number,
   width: number,
   color: MaterialColor,
-  fontSize: number,
-  // state props
+  fontSize: number
+|}
+
+type Props = {
+  ...OwnProps,
   value: number,
   activeTrackID: $PropertyType<Session, "activeTrackID">,
-  // dispatch props
   changeTrackGain: (trackId: string, gain: number) => void
 }
 
-function Fader({
+export function Fader({
   height,
   width,
   color,
@@ -56,7 +57,7 @@ const mapStateToProps = state => {
   }
 }
 
-const VerticalFaderWithConnect = connect(
+const VerticalFaderWithConnect = connect<Props, OwnProps, _, _, _, _>(
   mapStateToProps,
   { changeTrackGain }
 )(Fader)

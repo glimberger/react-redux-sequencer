@@ -2,20 +2,23 @@
 import * as React from "react"
 // $FlowFixMe
 import styled from "styled-components/macro"
+import { connect } from "react-redux"
 
 import Color from "../../../../../utils/color/colorLibrary"
 import ResolutionSwitch from "./ResolutionSwitch/ResolutionSwitch"
-import VerticalFaderWithConnect from "./FaderWithConnect"
+import VerticalFaderWithConnect from "./Fader/Fader"
 import { usePrefs } from "../../../../context/sequencer-prefs"
+import { getActiveTrack } from "../../../../../redux/reducers"
 
 import type { Track } from "../../../../../redux/store/session/types"
 
-type StateProps = {
+type OwnProps = {||}
+
+type Props = {
+  ...OwnProps,
   color: $PropertyType<Track, "color">,
   isTrackActive: boolean
 }
-
-type Props = StateProps
 
 const StyledSettings = styled.div`
   border-radius: 3px;
@@ -43,7 +46,7 @@ const ResolutionSwitchWrapper = styled.div`
   padding: ${({ gutter }) => 2 * gutter}px;
 `
 
-function TrackSettings({ color, isTrackActive }: Props) {
+export function TrackSettings({ color, isTrackActive }: Props) {
   if (!isTrackActive) return <div />
 
   const { panelWidth, panelHeight, gutter } = usePrefs()
@@ -70,4 +73,17 @@ function TrackSettings({ color, isTrackActive }: Props) {
   )
 }
 
-export default TrackSettings
+const mapStateToProps = state => {
+  const track = getActiveTrack(state)
+
+  return {
+    color: track ? track.color : "grey",
+    isTrackActive: !!track
+  }
+}
+
+const TrackSettingsWithConnect = connect<Props, OwnProps, _, _, _, _>(
+  mapStateToProps
+)(TrackSettings)
+
+export default TrackSettingsWithConnect
