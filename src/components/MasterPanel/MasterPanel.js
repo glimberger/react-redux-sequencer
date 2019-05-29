@@ -2,9 +2,10 @@
 import * as React from "react"
 
 import MasterGainControllerConnected from "./MasterGainController/MasterGainControllerConnected"
-import TempoControllerConnected from "./TempoController/TempoControllerConnected"
 import TransportConnected from "./Transport/TransportConnected"
 import styles from "./MasterPanel.module.css"
+import TempoController from "./TempoController/TempoController"
+import Color from "../../utils/color/colorLibrary"
 
 function MasterPanel() {
   return (
@@ -14,10 +15,10 @@ function MasterPanel() {
           <TransportConnected color={"blueGrey"} />
         </div>
         <div className={styles.MasterGain}>
-          <MasterGainControllerConnected color={"blueGrey"} />
+          <MasterGainControllerConnected color={Color.BLUE_GREY} />
         </div>
         <div className={styles.Tempo}>
-          <TempoControllerConnected />
+          <TempoController color={Color.BLUE_GREY} />
         </div>
       </div>
     </div>
