@@ -2,23 +2,24 @@
 import * as React from "react"
 // $FlowFixMe
 import styled from "styled-components/macro"
+import { connect } from "react-redux"
 
-import TrackHeaderWithConnect from "./TrackHeader/TrackHeaderWithConnect"
+import TrackHeader from "./TrackHeader/TrackHeader"
 import CellRow from "./CellRow/CellRow"
 import TrackPanel from "./TrackPanel/TrackPanel"
 import { usePrefs } from "../../context/sequencer-prefs"
 
 import type { Session } from "../../../redux/store/session/types"
+import type { AppState } from "../../../redux/store/configureStore"
 
-type StateProps = {
+type OwnProps = {|
+  trackID: string
+|}
+
+type Props = {
+  ...OwnProps,
   activeTrackID: $PropertyType<Session, "activeTrackID">
 }
-
-type OwnProps = {
-  trackID: string
-}
-
-type Props = StateProps & OwnProps
 
 const HeaderContainer = styled.div`
   display: flex;
@@ -32,21 +33,18 @@ const Gutter = styled.div`
   margin-left: ${({ gutter }) => gutter}px;
 `
 
-const Track = React.memo<Props>(function Track({
-  activeTrackID,
-  trackID
-}: Props) {
+export function Track(props: Props) {
   const { panelWidth, panelHeight, cellSize, gutter } = usePrefs()
 
   return (
-    <div id={`track_${trackID}`}>
+    <div id={`track_${props.trackID}`}>
       <HeaderContainer>
-        <TrackHeaderWithConnect trackID={trackID} />
+        <TrackHeader trackID={props.trackID} />
         <Gutter gutter={gutter}> </Gutter>
-        <CellRow trackID={trackID} />
+        <CellRow trackID={props.trackID} />
       </HeaderContainer>
 
-      {trackID === activeTrackID && (
+      {props.trackID === props.activeTrackID && (
         <PanelContainer gutter={gutter}>
           <TrackPanel
             headerWidth={panelWidth}
@@ -58,6 +56,18 @@ const Track = React.memo<Props>(function Track({
       )}
     </div>
   )
-})
+}
 
-export default Track
+const TrackMemoized = React.memo<Props>(Track)
+
+const mapStateToProps = (state: AppState) => {
+  return {
+    activeTrackID: state.session.activeTrackID
+  }
+}
+
+const TrackWithConnect = connect<Props, OwnProps, _, _, _, _>(mapStateToProps)(
+  TrackMemoized
+)
+
+export default TrackWithConnect
