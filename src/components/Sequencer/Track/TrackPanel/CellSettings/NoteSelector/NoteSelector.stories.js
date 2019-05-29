@@ -1,21 +1,12 @@
 import React from "react"
 import { storiesOf } from "@storybook/react"
 import { action } from "@storybook/addon-actions"
-import NoteSelector from "./NoteSelector"
+
+import { NoteSelector } from "./NoteSelector"
+import { withContainer } from "../../../../../../../.storybook/decorators"
 
 storiesOf("NoteSelector", module)
-  .addDecorator(story => (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-        padding: "1rem",
-        backgroundColor: "#1e1f26"
-      }}
-    >
-      {story()}
-    </div>
-  ))
+  .addDecorator(story => withContainer(story))
   .add("default", () => (
     <NoteSelector
       height={80}

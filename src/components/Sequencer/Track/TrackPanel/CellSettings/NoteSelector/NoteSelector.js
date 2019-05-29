@@ -5,6 +5,7 @@ import styled from "styled-components/macro"
 
 import Key from "./Key"
 import MidiConverter from "../../../../../../utils/audio/MidiConverter"
+import colorLibrary from "../../../../../../utils/color/colorLibrary"
 
 import type {
   Cell,
@@ -12,27 +13,32 @@ import type {
   Track
 } from "../../../../../../redux/store/session/types"
 import type { Sample } from "../../../../../../redux/store/sample/types"
+import {
+  getActiveCell,
+  getActiveTrack,
+  getInstrument,
+  getSample
+} from "../../../../../../redux/reducers"
+import { connect } from "react-redux"
+import { changeCellNote } from "../../../../../../redux/actions/session/creators"
+import { listenCellNote } from "../../../../../../redux/actions/audio/creators"
 
-type OwnProps = {
+type OwnProps = {|
   height: number,
   keyWidth: number
-}
+|}
 
-type StateProps = {
+type Props = {
+  ...OwnProps,
   color: $PropertyType<Track, "color">,
   activeNote: $PropertyType<Cell, "midi">,
   activeTrackID: $PropertyType<Session, "activeTrackID">,
   activeCellBeat: $PropertyType<Session, "activeCellBeat">,
   getMappingForNote: (note: number) => { sampleID: string, detune: number },
-  getSample: (note: number) => Sample
-}
-
-type DispatchProps = {
+  getSample: (note: number) => Sample,
   changeCellNote: (note: number, beat: number, TrackID: string) => void,
   listenCellNote: (note: number, beat: number, trackID: string) => void
 }
-
-type Props = OwnProps & StateProps & DispatchProps
 
 const StyledSelector = styled.div`
   font-size: 13px;
@@ -65,7 +71,7 @@ const KeyWrapper = styled.div`
 // used to compute the width of a black key
 const widthRatio = 0.75
 
-const NoteSelector = React.memo<Props>(function NoteSelector(props: Props) {
+export function NoteSelector(props: Props) {
   const [noteOnHover, setNoteOnHover] = React.useState(null)
 
   if (props.activeTrackID === null || props.activeCellBeat === null)
@@ -139,12 +145,6 @@ const NoteSelector = React.memo<Props>(function NoteSelector(props: Props) {
                     props.activeCellBeat === null
                   )
                     return
-
-                  // props.listenCellNote(
-                  //   midiNote,
-                  //   props.activeCellBeat,
-                  //   props.activeTrackID
-                  // )
                   setNoteOnHover(midiNote)
                 }}
                 onHoverStop={() => setNoteOnHover(null)}
@@ -155,6 +155,29 @@ const NoteSelector = React.memo<Props>(function NoteSelector(props: Props) {
       </Keys>
     </StyledSelector>
   )
-})
+}
 
-export default NoteSelector
+export const NoteSelectorMemoized = React.memo<Props>(NoteSelector)
+
+const mapStateToProps = state => {
+  const track = getActiveTrack(state)
+  const cell = getActiveCell(state)
+
+  return {
+    color: track ? track.color : colorLibrary.GREY,
+    activeNote: cell ? cell.midi : 0,
+    activeTrackID: state.session.activeTrackID,
+    activeCellBeat: state.session.activeCellBeat,
+    getMappingForNote: (note: number) =>
+      getInstrument(state, state.session.activeTrackID).mapping[note],
+    getSample: (note: number) =>
+      getSample(state, state.session.activeTrackID, note)
+  }
+}
+
+const NoteSelectorWithConnect = connect<Props, OwnProps, _, _, _, _>(
+  mapStateToProps,
+  { changeCellNote, listenCellNote }
+)(NoteSelectorMemoized)
+
+export default NoteSelectorWithConnect
