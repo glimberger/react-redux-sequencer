@@ -16,22 +16,18 @@ import type {
 import type { Samples } from "../../../redux/store/sample/types"
 import type { AppState } from "../../../redux/store/configureStore"
 
-type OwnProps = {
+type OwnProps = {|
   color: MaterialColor
-}
+|}
 
-type StateProps = {
+type Props = {
+  ...OwnProps,
   instruments: Instruments,
-  samples: Samples
-}
-
-type DispatchProps = {
+  samples: Samples,
   addTrack: (trackID: string, instrument: Instrument, samples: Samples) => void
 }
 
-type Props = OwnProps & StateProps & DispatchProps
-
-function AddTrack(props: Props) {
+export function AddTrack(props: Props) {
   const [modalOpen, setModalOpen] = React.useState<boolean>(false)
 
   const afterOpenModal = () => {
@@ -70,7 +66,7 @@ const mapStateToProps = (state: AppState) => ({
   samples: state.samples
 })
 
-const AddTrackConnected = connect(
+const AddTrackConnected = connect<Props, OwnProps, _, _, _, _>(
   mapStateToProps,
   { addTrack }
 )(AddTrack)
