@@ -3,7 +3,7 @@ import React from "react"
 // $FlowFixMe
 import styled from "styled-components/macro"
 
-import CellSettingsWithConnect from "./CellSettings/CellSettingsWithConnect"
+import CellSettings from "./CellSettings/CellSettings"
 import { usePrefs } from "../../../context/sequencer-prefs"
 import TrackSettings from "./TrackSettings/TrackSettings"
 
@@ -23,7 +23,7 @@ const TrackPanel = React.memo<{}>(function TrackPanel() {
     <StyledTrackPanel gutter={gutter}>
       <TrackSettings />
       <Gutter gutter={gutter}> </Gutter>
-      <CellSettingsWithConnect />
+      <CellSettings />
     </StyledTrackPanel>
   )
 })

@@ -2,35 +2,44 @@
 import * as React from "react"
 // $FlowFixMe
 import styled from "styled-components/macro"
+import { connect } from "react-redux"
 
-import Color from "../../../../../utils/color/colorLibrary"
 import MidiConverter from "../../../../../utils/audio/MidiConverter"
 import GainKnob from "./GainKnob/GainKnob"
 import { usePrefs } from "../../../../context/sequencer-prefs"
 import { Cell } from "../../CellRow/Cell/Cell"
 import NoteSelector from "./NoteSelector/NoteSelector"
+import {
+  getActiveCell,
+  getActiveTrack,
+  getInstrument
+} from "../../../../../redux/reducers"
+import {
+  changeCellGain,
+  scheduleTrackCell
+} from "../../../../../redux/actions/session/creators"
+import Color from "../../../../../utils/color/colorLibrary"
 
 import type {
   Session,
   Track,
   Cell as CellType
 } from "../../../../../redux/store/session/types"
+import type { AppState } from "../../../../../redux/store/configureStore"
 
-type StateProps = {
+type OwnProps = {||}
+
+type Props = {
+  ...OwnProps,
   activeTrackID: $PropertyType<Session, "activeTrackID">,
   activeCellBeat: $PropertyType<Session, "activeCellBeat">,
   color: $PropertyType<Track, "color">,
   noteResolution: $PropertyType<Track, "noteResolution">,
   cell: CellType | null,
-  getMappingForNote: (note: number) => { sampleID: string, detune: number }
-}
-
-type DispatchProps = {
+  getMappingForNote: (note: number) => { sampleID: string, detune: number },
   scheduleTrackCell: (beat: number, trackID: string) => void,
   changeCellGain: (gain: number, beat: number, trackID: string) => void
 }
-
-type Props = StateProps & DispatchProps
 
 const StyledSettings = styled.div`
   flex-shrink: 0;
@@ -61,14 +70,14 @@ const StyledGainSection = styled.section`
   justify-content: space-between;
 `
 
-function CellSettings({
+export function CellSettings({
   color,
   activeCellBeat,
   activeTrackID,
   cell,
-  changeCellGain,
   getMappingForNote,
   noteResolution,
+  changeCellGain,
   scheduleTrackCell
 }: Props) {
   if (activeTrackID === null) return <div />
@@ -149,4 +158,25 @@ function CellSettings({
   )
 }
 
-export default CellSettings
+const mapStateToProps = (state: AppState) => {
+  const activeTrack = getActiveTrack(state)
+  const activeCell = getActiveCell(state)
+
+  return {
+    color: activeTrack ? activeTrack.color : Color.GREY,
+    noteResolution: activeTrack ? activeTrack.noteResolution : 1,
+    cell: activeCell,
+    activeCellBeat: state.session.activeCellBeat,
+    activeTrackID: state.session.activeTrackID,
+    getMappingForNote: (note: number) =>
+      state.session.activeTrackID &&
+      getInstrument(state, state.session.activeTrackID).mapping[note]
+  }
+}
+
+const CellSettingsWithConnect = connect<Props, OwnProps, _, _, _, _>(
+  mapStateToProps,
+  { scheduleTrackCell, changeCellGain }
+)(CellSettings)
+
+export default CellSettingsWithConnect
