@@ -1,12 +1,15 @@
 // @flow strict
 import * as React from "react"
+// $FlowFixMe
+import styled from "styled-components/macro"
 
 import Controller from "../../controllers/Fader/Fader"
 import Volume from "../../../audio/utils/Volume/Volume"
-import styles from "./MasterGainController.module.css"
 
 import type { MaterialColor } from "../../../utils/color/colorLibrary"
 import Color from "../../../utils/color/colorLibrary"
+import { connect } from "react-redux"
+import { changeMasterGain } from "../../../redux/actions/session/creators"
 
 export type OwnProps = {|
   color: MaterialColor
@@ -18,21 +21,27 @@ export type Props = {
   changeMasterGain: (gain: number) => void
 }
 
-function MasterGainController({ changeMasterGain, gain, color }: Props) {
+const StyledContainer = styled.div`
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+`
+
+const StyledIndicator = styled.span`
+  margin-left: 0.5rem;
+  width: 4rem;
+  text-align: end;
+  user-select: none;
+  color: ${({ color }) => Color.get50(color)};
+`
+
+export function MasterGainController({ changeMasterGain, gain, color }: Props) {
   const handleGainChange = (e: SyntheticInputEvent<HTMLInputElement>) => {
-    const { value } = e.currentTarget
-
-    changeMasterGain(parseFloat(value))
-  }
-
-  const css = {
-    Indicator: {
-      color: Color.get50(color)
-    }
+    changeMasterGain(parseFloat(e.target.value))
   }
 
   return (
-    <div className={styles.Container}>
+    <StyledContainer>
       <Controller
         orientation="horizontal"
         color={color}
@@ -43,11 +52,16 @@ function MasterGainController({ changeMasterGain, gain, color }: Props) {
         min={0}
         step={0.001}
       />
-      <span style={css.Indicator} className={styles.Indicator}>
-        {Volume.toDBString(gain)}
-      </span>
-    </div>
+      <StyledIndicator color={color}>{Volume.toDBString(gain)}</StyledIndicator>
+    </StyledContainer>
   )
 }
 
-export default MasterGainController
+const mapStateToProps = state => ({ gain: state.session.masterGain })
+
+const MasterGainControllerConnected = connect<Props, OwnProps, _, _, _, _>(
+  mapStateToProps,
+  { changeMasterGain }
+)(MasterGainController)
+
+export default MasterGainControllerConnected
