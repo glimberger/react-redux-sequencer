@@ -1,26 +1,37 @@
 // @flow strict
 import * as React from "react"
+// $FlowFixMe
+import styled from "styled-components/macro"
 
-import MasterGainControllerConnected from "./MasterGainController/MasterGainControllerConnected"
-import styles from "./MasterPanel.module.css"
 import TempoController from "./TempoController/TempoController"
 import Color from "../../utils/color/colorLibrary"
 import Transport from "./Transport/Transport"
+import MasterGainController from "./MasterGainController/MasterGainController"
+
+const StyledContainer = styled.div`
+  height: 4rem;
+  display: flex;
+  background-color: ${({ color }) => Color.get600(color)};
+`
+
+const StyledItem = styled.div`
+  margin: auto 1rem;
+`
 
 function MasterPanel() {
   return (
     <div>
-      <div className={styles.Base}>
-        <div className={styles.Transport}>
-          <Transport color={"blueGrey"} />
+      <StyledContainer color={Color.BLUE_GREY}>
+        <div>
+          <Transport color={Color.BLUE_GREY} />
         </div>
-        <div className={styles.MasterGain}>
-          <MasterGainControllerConnected color={Color.BLUE_GREY} />
-        </div>
-        <div className={styles.Tempo}>
+        <StyledItem>
+          <MasterGainController color={Color.BLUE_GREY} />
+        </StyledItem>
+        <StyledItem>
           <TempoController color={Color.BLUE_GREY} />
-        </div>
-      </div>
+        </StyledItem>
+      </StyledContainer>
     </div>
   )
 }
