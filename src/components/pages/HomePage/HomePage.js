@@ -1,10 +1,14 @@
 // @flow strict
 import * as React from "react"
+// $FlowFixMe
+import styled from "styled-components/macro"
 
-import pageStyles from "../Page.module.css"
+const StyledContainer = styled.div`
+  padding-top: 3rem;
+`
 
 function HomePage() {
-  return <div className={pageStyles.Container}>HOME</div>
+  return <StyledContainer>HOME</StyledContainer>
 }
 
 export default HomePage
