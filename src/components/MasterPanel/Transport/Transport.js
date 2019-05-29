@@ -1,120 +1,96 @@
 // @flow strict
 import * as React from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+// $FlowFixMe
+import styled from "styled-components/macro"
 
-import styles from "./Transport.module.css"
 import Color from "../../../utils/color/colorLibrary"
+import { connect } from "react-redux"
+import { togglePlay } from "../../../redux/actions/audio/creators"
 
 import type { AudioState } from "../../../redux/store/audio/types"
 import type { MaterialColor } from "../../../utils/color/colorLibrary"
+import type { AppState } from "../../../redux/store/configureStore"
 
-type OwnProps = {
+type OwnProps = {|
   color: MaterialColor
-}
+|}
 
-type StateProps = {
-  playing: $PropertyType<AudioState, "playing">
-}
-
-type DispatchProps = {
+type Props = {
+  ...OwnProps,
+  playing: $PropertyType<AudioState, "playing">,
   togglePlay: () => void
 }
 
-type Props = OwnProps & StateProps & DispatchProps
+const StyledButton = styled.button`
+  height: 100%;
+  width: 4rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border: none;
+  color: ${({ color }) => Color.get50(color)};
+  background-color: ${({ color }) => Color.get800(color)};
 
-type State = {
-  hover: boolean
-}
+  &:hover {
+    background-color: ${({ color }) => Color.get700(color)};
+  }
+`
 
-class Transport extends React.Component<Props, State> {
-  state = {
-    hover: false
+export function Transport(props: Props) {
+  const playButtonRef = React.useRef<HTMLButtonElement | null>(null)
+  const pauseButtonRef = React.useRef<HTMLButtonElement | null>(null)
+
+  const handlePlayClick = () => {
+    playButtonRef.current && playButtonRef.current.blur()
+    props.togglePlay()
   }
 
-  hoverOn() {
-    this.setState({ hover: true })
-  }
-  hoverOff() {
-    this.setState({ hover: false })
+  const handlePauseClick = () => {
+    pauseButtonRef.current && pauseButtonRef.current.blur()
+    props.togglePlay()
   }
 
-  playButtonRef: {
-    current: HTMLButtonElement | null
-  } = React.createRef<HTMLButtonElement>()
-  pauseButtonRef: {
-    current: HTMLButtonElement | null
-  } = React.createRef<HTMLButtonElement>()
-
-  handlePlayClick = () => {
-    if (this.playButtonRef.current) {
-      this.playButtonRef.current.blur()
-    }
-
-    this.props.togglePlay()
-  }
-
-  handlePauseClick = () => {
-    if (this.pauseButtonRef.current) {
-      this.pauseButtonRef.current.blur()
-    }
-
-    this.props.togglePlay()
-  }
-
-  handleKeyUp = (e: SyntheticKeyboardEvent<EventTarget>) => {
+  const handleKeyUp = (e: SyntheticKeyboardEvent<EventTarget>) => {
     const code = e.which
 
     // place
     if (code === 32) {
-      this.props.togglePlay()
+      props.togglePlay()
     }
   }
 
-  componentDidMount(): void {
-    window.addEventListener("keyup", this.handleKeyUp)
-  }
+  React.useEffect(() => {
+    window.addEventListener("keyup", handleKeyUp)
 
-  componentWillUnmount(): void {
-    window.removeEventListener("keyup", this.handleKeyUp)
-  }
+    return () => window.removeEventListener("keyup", handleKeyUp)
+  }, [])
 
-  render() {
-    const css = {
-      Base: {
-        backgroundColor: this.state.hover
-          ? Color.get700(this.props.color)
-          : Color.get800(this.props.color),
-        color: Color.get50(this.props.color)
-      }
-    }
-    if (this.props.playing) {
-      return (
-        <button
-          style={css.Base}
-          className={styles.Base}
-          ref={this.playButtonRef}
-          onClick={this.handlePlayClick}
-          onMouseEnter={() => this.hoverOn()}
-          onMouseLeave={() => this.hoverOff()}
-        >
-          <FontAwesomeIcon icon="pause" />
-        </button>
-      )
-    }
-
-    return (
-      <button
-        style={css.Base}
-        className={styles.Base}
-        ref={this.pauseButtonRef}
-        onClick={this.handlePauseClick}
-        onMouseEnter={() => this.hoverOn()}
-        onMouseLeave={() => this.hoverOff()}
-      >
-        <FontAwesomeIcon icon="play" />
-      </button>
-    )
-  }
+  return props.playing ? (
+    <StyledButton
+      color={props.color}
+      ref={playButtonRef}
+      onClick={handlePlayClick}
+    >
+      <FontAwesomeIcon icon="pause" />
+    </StyledButton>
+  ) : (
+    <StyledButton
+      color={props.color}
+      ref={pauseButtonRef}
+      onClick={handlePauseClick}
+    >
+      <FontAwesomeIcon icon="play" />
+    </StyledButton>
+  )
 }
 
-export default Transport
+const mapStateToProps = (state: AppState) => ({
+  playing: state.audio.playing
+})
+
+const ConnectedTransport = connect<Props, OwnProps, _, _, _, _>(
+  mapStateToProps,
+  { togglePlay }
+)(Transport)
+
+export default ConnectedTransport
