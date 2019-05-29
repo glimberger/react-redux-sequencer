@@ -5,14 +5,17 @@ import styled from "styled-components/macro"
 
 import { usePrefs } from "../context/sequencer-prefs"
 import AddTrack from "./AddTrack/AddTrack"
-import TrackWithConnect from "./Track/TrackWithConnect"
+import Track from "./Track/Track"
 import Color from "../../utils/color/colorLibrary"
+import { connect } from "react-redux"
+import type { AppState } from "../../redux/store/configureStore"
 
-type StateProps = {|
+type OwnProps = {||}
+
+type Props = {
+  ...OwnProps,
   trackOrder: Array<string>
-|}
-
-type Props = StateProps
+}
 
 const StyledSequencer = styled.div`
   background-color: transparent;
@@ -110,7 +113,7 @@ const AddTrackWrapper = styled.div`
   justify-content: flex-start;
 `
 
-function Sequencer({ trackOrder }: Props) {
+export function Sequencer({ trackOrder }: Props) {
   const { panelWidth, cellSize, gutter } = usePrefs()
 
   return (
@@ -122,7 +125,7 @@ function Sequencer({ trackOrder }: Props) {
       >
         {trackOrder.map((trackID, idx) => (
           <Row key={trackID} gutter={gutter} first={idx === 0}>
-            <TrackWithConnect trackID={trackID} />
+            <Track trackID={trackID} />
           </Row>
         ))}
       </StyledSequencer>
@@ -135,4 +138,12 @@ function Sequencer({ trackOrder }: Props) {
   )
 }
 
-export default Sequencer
+const mapStateToProps = (state: AppState) => ({
+  trackOrder: state.session.trackOrder
+})
+
+const SequencerConnected = connect<Props, OwnProps, _, _, _, _>(
+  mapStateToProps
+)(Sequencer)
+
+export default SequencerConnected

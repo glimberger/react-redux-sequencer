@@ -2,7 +2,7 @@
 import * as React from "react"
 
 import MasterPanel from "../../MasterPanel/MasterPanel"
-import SequencerConnected from "../../Sequencer/SequencerConnected"
+import Sequencer from "../../Sequencer/Sequencer"
 import AudioEngineConnected from "../../AudioEngine/AudioEngineConnected"
 import { PrefsProvider } from "../../context/sequencer-prefs"
 
@@ -14,7 +14,7 @@ function SessionPage() {
       <MasterPanel />
       <section style={{ margin: "1rem" }}>
         <PrefsProvider>
-          <SequencerConnected />
+          <Sequencer />
           <AudioEngineConnected />
         </PrefsProvider>
       </section>
