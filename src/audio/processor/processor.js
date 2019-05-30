@@ -159,6 +159,11 @@ class AudioProcessor {
     const { instrumentID } = tracks[trackID]
     const { mapping } = instruments[instrumentID]
     const midi = note === null ? matrix[trackID][beat].midi : note
+
+    if (!mapping["M" + midi]) {
+      IN_DEV && console.debug("No mapping found for note %d - aborting", midi)
+      return
+    }
     const { sampleID, detune } = mapping["M" + midi]
 
     const audioBuffer = this.sampleAudioBufferMap.get(sampleID)
