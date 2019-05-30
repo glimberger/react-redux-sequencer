@@ -361,7 +361,7 @@ export function getInstrument(state: Session, trackID: string): Instrument {
 
 export function getSample(state: Session, trackID: string, note: number) {
   const instrument = getInstrument(state, trackID)
-  const sampleID = instrument.mapping[note].sampleID
+  const sampleID = instrument.mapping["M" + note].sampleID
 
   return state.samples[sampleID]
 }

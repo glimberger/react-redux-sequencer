@@ -169,7 +169,7 @@ const mapStateToProps = state => {
     activeTrackID: state.session.activeTrackID,
     activeCellBeat: state.session.activeCellBeat,
     getMappingForNote: (note: number) =>
-      getInstrument(state, state.session.activeTrackID).mapping[note],
+      getInstrument(state, state.session.activeTrackID).mapping["M" + note],
     getSample: (note: number) =>
       getSample(state, state.session.activeTrackID, note)
   }

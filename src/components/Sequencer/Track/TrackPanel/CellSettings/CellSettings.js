@@ -170,7 +170,7 @@ const mapStateToProps = (state: AppState) => {
     activeTrackID: state.session.activeTrackID,
     getMappingForNote: (note: number) =>
       state.session.activeTrackID &&
-      getInstrument(state, state.session.activeTrackID).mapping[note]
+      getInstrument(state, state.session.activeTrackID).mapping["M" + note]
   }
 }
 
