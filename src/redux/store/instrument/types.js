@@ -14,17 +14,19 @@ export type Instrument = {|
   sampleIDs: Array<string>,
 
   mapping: {
-    [midiNote: string]: {|
-      // midi note
-      midi: number,
-
-      // sample ID (UUIDv4)
-      sampleID: string,
-
-      // detune (cents)
-      detune: number
-    |}
+    [midiNote: string]: InstrumentMapping
   }
+|}
+
+export type InstrumentMapping = {|
+  // midi note
+  midi: number,
+
+  // sample ID (UUIDv4)
+  sampleID: string,
+
+  // detune (cents)
+  detune: number
 |}
 
 export type Note =
