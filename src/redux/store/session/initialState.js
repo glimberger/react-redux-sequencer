@@ -1219,6 +1219,10 @@ const initialSate: Session = {
         "fc897b72-744c-434b-9018-6e860da11edb"
       ],
       mapping: {
+        M24: { midi: 24, sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: 0 },
+        M25: { midi: 25, sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: 0 },
+        M26: { midi: 26, sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: 0 },
+        M27: { midi: 27, sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: 0 },
         M28: { midi: 28, sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: 0 }, // E1
         M29: { midi: 29, sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: 100 },
         M30: { midi: 30, sampleID: "acc4ea8c-cd40-44f2-b553-0642f411a144", detune: 200 },
@@ -1256,8 +1260,7 @@ const initialSate: Session = {
         M62: { midi: 62, sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 500 },
         M63: { midi: 63, sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 600 },
         M64: { midi: 64, sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 700 },
-        M65: { midi: 65, sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 800 },
-        M66: { midi: 66, sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 900 }
+        M65: { midi: 65, sampleID: "fc897b72-744c-434b-9018-6e860da11edb", detune: 800 }
       }
     },
     "77ecfb13-dc45-4b49-b72b-2aa0695d36a5": {
@@ -1367,6 +1370,7 @@ const initialSate: Session = {
         "7129a80a-5698-40ef-a5c1-2fb1d4b62c42"
       ],
       mapping: {
+        M20: { midi: 20, sampleID: "8710fea6-56d0-440e-920f-0da2576bf3d7", detune: -1200 },
         M21: { midi: 21, sampleID: "8710fea6-56d0-440e-920f-0da2576bf3d7", detune: -1200 },
         M22: { midi: 22, sampleID: "8710fea6-56d0-440e-920f-0da2576bf3d7", detune: -1100 },
         M23: { midi: 23, sampleID: "8710fea6-56d0-440e-920f-0da2576bf3d7", detune: -1000 },
