@@ -21,8 +21,12 @@ import {
   TOGGLE_TRACK_SOLO
 } from "../actions/session/types"
 
-import type { Instrument, Instruments } from "../store/instrument/types"
-import type { Samples } from "../store/sample/types"
+import type {
+  Instrument,
+  InstrumentMapping,
+  Instruments
+} from "../store/instrument/types"
+import type { Sample, Samples } from "../store/sample/types"
 import type { MaterialColor } from "../../utils/color/colorLibrary"
 
 const initialState: Session = {
@@ -359,11 +363,27 @@ export function getInstrument(state: Session, trackID: string): Instrument {
   return state.instruments[instrumentID]
 }
 
-export function getSample(state: Session, trackID: string, note: number) {
-  const instrument = getInstrument(state, trackID)
-  const sampleID = instrument.mapping["M" + note].sampleID
+export function getInstrumentMapping(
+  state: Session,
+  trackID: string | null,
+  note: number
+): InstrumentMapping | null {
+  if (trackID === null) return null
 
-  return state.samples[sampleID]
+  const instrument = getInstrument(state, trackID)
+  const mapping = instrument.mapping["M" + note]
+
+  return mapping ? mapping : null
+}
+
+export function getSample(
+  state: Session,
+  trackID: string | null,
+  note: number
+): Sample | null {
+  const mapping = getInstrumentMapping(state, trackID, note)
+
+  return mapping ? state.samples[mapping.sampleID] : null
 }
 
 export function getSolos(state: Session): { [trackID: string]: boolean } {

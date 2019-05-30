@@ -10,8 +10,12 @@ import type { Action as AudioAction } from "../actions/audio/types"
 import type { Action as SessionAction } from "../actions/session/types"
 import type { AudioState } from "../store/audio/types"
 import type { Cell, Session, Track } from "../store/session/types"
-import type { Instrument, Instruments } from "../store/instrument/types"
-import type { Samples } from "../store/sample/types"
+import type {
+  Instrument,
+  InstrumentMapping,
+  Instruments
+} from "../store/instrument/types"
+import type { Sample, Samples } from "../store/sample/types"
 
 type AppState = {
   audio: AudioState,
@@ -54,85 +58,59 @@ const rootReducer = combineReducers<{}, AnyAction>({
 
 export default rootReducer
 
-export function getOrderedTracks(state: {
-  audio: AudioState,
-  session: Session
-}) {
+export function getOrderedTracks(state: AppState) {
   return fromSession.getOrderedTracks(state.session)
 }
 
-export function getTrack(
-  state: { audio: AudioState, session: Session },
-  trackID: string
-): Track {
+export function getTrack(state: AppState, trackID: string): Track {
   return fromSession.getTrack(state.session, trackID)
 }
 
-export function getActiveTrack(state: {
-  audio: AudioState,
-  session: Session
-}): ?Track {
+export function getActiveTrack(state: AppState): ?Track {
   return fromSession.getActiveTrack(state.session)
 }
 
-export function getCellRow(
-  state: { audio: AudioState, session: Session },
-  trackID: string
-): Array<Cell> {
+export function getCellRow(state: AppState, trackID: string): Array<Cell> {
   return fromSession.getCellRow(state.session, trackID)
 }
 
-export function getCell(
-  state: { audio: AudioState, session: Session },
-  trackID: string,
-  beat: number
-): Cell {
+export function getCell(state: AppState, trackID: string, beat: number): Cell {
   return fromSession.getCell(state.session, trackID, beat)
 }
 
-export function getActiveCell(state: {
-  audio: AudioState,
-  session: Session
-}): Cell | null {
+export function getActiveCell(state: AppState): Cell | null {
   return fromSession.getActiveCell(state.session)
 }
 
-export function getInstrument(
-  state: {
-    audio: AudioState,
-    session: Session
-  },
-  trackID: string
-): Instrument {
+export function getInstrument(state: AppState, trackID: string): Instrument {
   return fromSession.getInstrument(state.session, trackID)
 }
 
-export function getSample(
-  state: { audio: AudioState, session: Session },
-  trackID: string,
+export function getInstrumentMapping(
+  state: AppState,
+  trackID: string | null,
   note: number
-) {
+): InstrumentMapping | null {
+  return fromSession.getInstrumentMapping(state.session, trackID, note)
+}
+
+export function getSample(
+  state: AppState,
+  trackID: string | null,
+  note: number
+): Sample | null {
   return fromSession.getSample(state.session, trackID, note)
 }
 
-export function getSolos(state: {
-  audio: AudioState,
-  session: Session
-}): { [trackID: string]: boolean } {
+export function getSolos(state: AppState): { [trackID: string]: boolean } {
   return fromSession.getSolos(state.session)
 }
 
-export function isSoloActive(state: {
-  audio: AudioState,
-  session: Session
-}): boolean {
+export function isSoloActive(state: AppState): boolean {
   return fromSession.isSoloActive(state.session)
 }
 
-export function getMutes(state: {
-  audio: AudioState,
-  session: Session
-}): { [trackID: string]: boolean } {
+export function getMutes(state: AppState): { [trackID: string]: boolean } {
   return fromSession.getMutes(state.session)
 }
 

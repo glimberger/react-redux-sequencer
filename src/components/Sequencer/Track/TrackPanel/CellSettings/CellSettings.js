@@ -12,7 +12,7 @@ import NoteSelector from "./NoteSelector/NoteSelector"
 import {
   getActiveCell,
   getActiveTrack,
-  getInstrument
+  getInstrumentMapping
 } from "../../../../../redux/reducers"
 import {
   changeCellGain,
@@ -26,6 +26,7 @@ import type {
   Cell as CellType
 } from "../../../../../redux/store/session/types"
 import type { AppState } from "../../../../../redux/store/configureStore"
+import type { InstrumentMapping } from "../../../../../redux/store/instrument/types"
 
 type OwnProps = {||}
 
@@ -36,7 +37,7 @@ type Props = {
   color: $PropertyType<Track, "color">,
   noteResolution: $PropertyType<Track, "noteResolution">,
   cell: CellType | null,
-  getMappingForNote: (note: number) => { sampleID: string, detune: number },
+  mapping: (note: number) => InstrumentMapping | null,
   scheduleTrackCell: (beat: number, trackID: string) => void,
   changeCellGain: (gain: number, beat: number, trackID: string) => void
 }
@@ -70,70 +71,75 @@ const StyledGainSection = styled.section`
   justify-content: space-between;
 `
 
-export function CellSettings({
-  color,
-  activeCellBeat,
-  activeTrackID,
-  cell,
-  getMappingForNote,
-  noteResolution,
-  changeCellGain,
-  scheduleTrackCell
-}: Props) {
-  if (activeTrackID === null) return <div />
+export function CellSettings(props: Props) {
+  if (props.activeTrackID === null) return <div />
 
   const { panelHeight, cellSize, gutter } = usePrefs()
 
-  if (activeCellBeat === null || cell === null)
+  if (props.activeCellBeat === null || props.cell === null)
     return (
       <StyledSettings
         cellSize={cellSize}
         height={panelHeight}
         gutter={gutter}
-        color={color}
+        color={props.color}
       >
         {" "}
       </StyledSettings>
     )
 
-  const detune = getMappingForNote(cell.midi).detune
+  const detune = (cell: CellType | null): string => {
+    if (cell == null) return ""
+
+    const mapping = props.mapping(cell.midi)
+
+    if (mapping === null) return "-"
+
+    return mapping.detune + ""
+  }
 
   return (
     <StyledSettings
       cellSize={cellSize}
       height={panelHeight}
       gutter={gutter}
-      color={color}
+      color={props.color}
     >
       <StyledNoteSection gutter={gutter}>
         <CellInfo>
           <Cell
             gutter={0}
-            color={color}
+            color={props.color}
             played={false}
             edited={false}
-            scheduled={cell.scheduled}
-            gain={cell.processing.gain.gain}
-            noteResolution={noteResolution}
-            activeTrackID={activeTrackID}
-            beatNumber={activeCellBeat}
-            trackID={activeTrackID}
-            onClick={() => scheduleTrackCell(activeCellBeat, activeTrackID)}
+            scheduled={props.cell.scheduled}
+            gain={props.cell.processing.gain.gain}
+            noteResolution={props.noteResolution}
+            activeTrackID={props.activeTrackID}
+            beatNumber={props.activeCellBeat}
+            trackID={props.activeTrackID || ""}
+            onClick={() => {
+              if (props.activeCellBeat === null || props.activeTrackID === null)
+                return
+
+              props.scheduleTrackCell(props.activeCellBeat, props.activeTrackID)
+            }}
           />
           <div>
             <div>
-              BEAT <span style={{ fontWeight: "bold" }}>{activeCellBeat}</span>
+              BEAT{" "}
+              <span style={{ fontWeight: "bold" }}>{props.activeCellBeat}</span>
             </div>
             <div>
               NOTE{" "}
               <span style={{ fontWeight: "bold" }}>
-                {MidiConverter.toNote(cell.midi)}
+                {MidiConverter.toNote(props.cell.midi)}
               </span>{" "}
-              ({cell.midi})
+              ({props.cell ? props.cell.midi : 0})
             </div>
             <div style={{ fontSize: "13px" }}>
-              <span style={{ fontWeight: "lighter" }}>detune</span> {detune}{" "}
-              cent
+              <span style={{ fontWeight: "lighter" }}>detune</span>{" "}
+              {detune(props.cell)} cent
             </div>
           </div>
         </CellInfo>
@@ -144,12 +150,16 @@ export function CellSettings({
       <section style={{ display: "flex", padding: `${gutter * 2}px` }}>
         <StyledGainSection>
           <GainKnob
-            color={color}
+            color={props.color}
             gutter={gutter}
             size={36}
-            gain={cell.processing.gain.gain}
+            gain={props.cell ? props.cell.processing.gain.gain : 0}
             onChange={value =>
-              changeCellGain(value, activeCellBeat, activeTrackID)
+              props.changeCellGain(
+                value,
+                props.activeCellBeat || 0,
+                props.activeTrackID || ""
+              )
             }
           />
         </StyledGainSection>
@@ -168,9 +178,8 @@ const mapStateToProps = (state: AppState) => {
     cell: activeCell,
     activeCellBeat: state.session.activeCellBeat,
     activeTrackID: state.session.activeTrackID,
-    getMappingForNote: (note: number) =>
-      state.session.activeTrackID &&
-      getInstrument(state, state.session.activeTrackID).mapping["M" + note]
+    mapping: (note: number) =>
+      getInstrumentMapping(state, state.session.activeTrackID, note)
   }
 }
 
