@@ -30,7 +30,7 @@ type InstrumentMapping {
     note: Int!
 
     "The associated sample"
-    sampleID: Sample!
+    sample: Sample!
 
     "Detuning of the pitch in cents"
     detune: Int!
