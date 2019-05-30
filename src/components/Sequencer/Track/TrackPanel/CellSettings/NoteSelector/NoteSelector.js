@@ -5,7 +5,16 @@ import styled from "styled-components/macro"
 
 import Key from "./Key"
 import MidiConverter from "../../../../../../utils/audio/MidiConverter"
-import colorLibrary from "../../../../../../utils/color/colorLibrary"
+import Color from "../../../../../../utils/color/colorLibrary"
+import {
+  getActiveCell,
+  getActiveTrack,
+  getInstrumentMapping,
+  getSample
+} from "../../../../../../redux/reducers"
+import { connect } from "react-redux"
+import { changeCellNote } from "../../../../../../redux/actions/session/creators"
+import { listenCellNote } from "../../../../../../redux/actions/audio/creators"
 
 import type {
   Cell,
@@ -13,15 +22,7 @@ import type {
   Track
 } from "../../../../../../redux/store/session/types"
 import type { Sample } from "../../../../../../redux/store/sample/types"
-import {
-  getActiveCell,
-  getActiveTrack,
-  getInstrument,
-  getSample
-} from "../../../../../../redux/reducers"
-import { connect } from "react-redux"
-import { changeCellNote } from "../../../../../../redux/actions/session/creators"
-import { listenCellNote } from "../../../../../../redux/actions/audio/creators"
+import type { InstrumentMapping } from "../../../../../../redux/store/instrument/types"
 
 type OwnProps = {|
   height: number,
@@ -34,13 +35,15 @@ type Props = {
   activeNote: $PropertyType<Cell, "midi">,
   activeTrackID: $PropertyType<Session, "activeTrackID">,
   activeCellBeat: $PropertyType<Session, "activeCellBeat">,
-  getMappingForNote: (note: number) => { sampleID: string, detune: number },
-  getSample: (note: number) => Sample,
+  mapping: (note: number) => InstrumentMapping | null,
+  sample: (note: number) => Sample | null,
   changeCellNote: (note: number, beat: number, TrackID: string) => void,
   listenCellNote: (note: number, beat: number, trackID: string) => void
 }
 
 const StyledSelector = styled.div`
+  background-color: ${({ color }) => Color.get800Dark(color)};
+  color: ${({ color }) => Color.get100(color)};
   font-size: 13px;
 `
 
@@ -77,14 +80,28 @@ export function NoteSelector(props: Props) {
   if (props.activeTrackID === null || props.activeCellBeat === null)
     return <div />
 
-  const filename =
-    noteOnHover !== null ? props.getSample(noteOnHover).label : ""
+  const fileName = (note: number | null): string => {
+    if (note == null) return ""
 
-  const detune =
-    noteOnHover !== null ? props.getMappingForNote(noteOnHover).detune : ""
+    const sample = props.sample(note)
+
+    if (sample === null) return "-"
+
+    return sample.label
+  }
+
+  const detune = (note: number | null): string => {
+    if (note == null) return ""
+
+    const mapping = props.mapping(note)
+
+    if (mapping === null) return "-"
+
+    return mapping.detune + " cent"
+  }
 
   return (
-    <StyledSelector>
+    <StyledSelector color={props.color}>
       {noteOnHover !== null ? (
         <Info keyWidth={props.keyWidth}>
           <InfoItem itemWidth={"10%"}>
@@ -94,10 +111,12 @@ export function NoteSelector(props: Props) {
             </div>
           </InfoItem>
           <InfoItem keyWidth={props.keyWidth} itemWidth={"10%"}>
-            <span style={{ fontWeight: "lighter" }}>DETUNE</span> {detune} cent
+            <span style={{ fontWeight: "lighter" }}>DETUNE</span>{" "}
+            {detune(noteOnHover)}
           </InfoItem>
           <InfoItem keyWidth={props.keyWidth} itemWidth={"30%"}>
-            <span style={{ fontWeight: "lighter" }}>SAMPLE</span> {filename}
+            <span style={{ fontWeight: "lighter" }}>SAMPLE</span>{" "}
+            {fileName(noteOnHover)}
           </InfoItem>
         </Info>
       ) : (
@@ -111,6 +130,7 @@ export function NoteSelector(props: Props) {
       <Keys height={props.height}>
         {[...Array(128).keys()].map(midiNote => {
           const blackKey = [1, 3, 6, 8, 10].includes(midiNote % 12)
+          const disabled = props.mapping(midiNote) === null
 
           return (
             <KeyWrapper
@@ -121,6 +141,7 @@ export function NoteSelector(props: Props) {
               widthRatio={widthRatio}
             >
               <Key
+                disabled={disabled}
                 active={midiNote === props.activeNote}
                 midiNote={midiNote}
                 width={blackKey ? props.keyWidth * widthRatio : props.keyWidth}
@@ -129,7 +150,8 @@ export function NoteSelector(props: Props) {
                 onClick={() => {
                   if (
                     props.activeTrackID === null ||
-                    props.activeCellBeat === null
+                    props.activeCellBeat === null ||
+                    disabled
                   )
                     return
 
@@ -164,13 +186,13 @@ const mapStateToProps = state => {
   const cell = getActiveCell(state)
 
   return {
-    color: track ? track.color : colorLibrary.GREY,
+    color: track ? track.color : Color.GREY,
     activeNote: cell ? cell.midi : 0,
     activeTrackID: state.session.activeTrackID,
     activeCellBeat: state.session.activeCellBeat,
-    getMappingForNote: (note: number) =>
-      getInstrument(state, state.session.activeTrackID).mapping[note],
-    getSample: (note: number) =>
+    mapping: (note: number) =>
+      getInstrumentMapping(state, state.session.activeTrackID, note),
+    sample: (note: number) =>
       getSample(state, state.session.activeTrackID, note)
   }
 }
