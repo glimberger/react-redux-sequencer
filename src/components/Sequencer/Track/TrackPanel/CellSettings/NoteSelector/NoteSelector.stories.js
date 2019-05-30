@@ -15,8 +15,11 @@ storiesOf("NoteSelector", module)
       color={"deepPurple"}
       activeCellBeat={6}
       activeTrackID={"8ebdfbd8-4528-4e5e-932b-987c5405aec5"}
-      getMappingForNote={() => ({ sampleID: "foo", detune: -200 })}
-      getSample={() => ({
+      mapping={note => {
+        if (note < 21 || note > 98) return null
+        return { midi: note, sampleID: "foo", detune: -200 }
+      }}
+      sample={() => ({
         id: "bar",
         filename: "filename",
         url: "",
