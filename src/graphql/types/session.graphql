@@ -1,9 +1,18 @@
+extend type Query {
+    session(id: ID!): Session
+}
+
+extend type Mutation {
+    createSession(input: SessionCreateInput): SessionMutationResponse!
+    updateSession(input: SessionUpdateInput): SessionMutationResponse!
+}
+
 type Session {
     "Primary key (UUIDv4)"
-    id : ID!
+    id: ID!
 
-    "Username of the user who creates the session"
-    creator: String!
+    "ID of the user who creates the session"
+    creatorID: ID!
 
     "Tempo in BPM [20, 200]"
     tempo: Int!
@@ -20,18 +29,38 @@ type Session {
     "Track IDs to determine the track order"
     trackOrder: [ID]!
 
-    "Set of sequencer tracks"
-    tracks: [Track]!
+    "Sequencer tracks"
+    tracks: [Track!]!
 
-    "Instrument set used by in tracks"
-    instruments: [Instrument]!
+    "Instruments used by in tracks"
+    instruments: [Instrument!]!
 
-    "Sample set played in tracks"
-    samples: [Sample]!
+    "Samples played in tracks"
+    samples: [Sample!]!
 
     "Creation date in ISO 8601 Extended Format"
-    createdAt: String!
+    createdAt: DateTime!
 
     "Update date in ISO 8601 Exteded Format"
-    updatedAt: String!
+    updatedAt: DateTime!
+}
+
+input SessionCreateInput {
+    creatorID: ID!
+}
+
+input SessionUpdateInput {
+    sessionID: ID!
+
+    # add track
+    instrumentID: ID
+}
+
+type SessionMutationResponse implements MutationResponse {
+    code: String!
+    success: Boolean!
+    messageTemplate: String!
+    message: String
+    session: Session
+    error: String
 }
