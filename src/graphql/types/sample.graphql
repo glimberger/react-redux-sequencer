@@ -1,18 +1,71 @@
+extend type Query {
+    sampleList: [Sample!]!
+}
+
+extend type Mutation {
+    createSample(input: SampleCreateInput!): SampleMutationResponse!
+}
+
+extend type Mutation {
+    updateSample(id: ID!, input: SampleUpdateInput!): SampleMutationResponse!
+}
+
+extend type Mutation {
+    deleteSample(id: ID!): SampleMutationResponse!
+}
+
 type Sample {
-    "primary key (UUIDv4)"
+    """
+    UUID
+    """
     id: ID!
 
-    "original filename"
+    """
+    Sample file name
+    """
     filename: String!
 
+    """
+    Sample url
+    """
     url: String!
 
-    "Mime type"
+    """
+    Mime type
+    """
     type: String!
 
-    "Sample label"
+    """
+    Sample label
+    """
     label: String!
 
-    "Group to which the sample should belong"
+    """
+    Name of the group which the sample belongs to
+    """
     group: String
+
+    createdAt: DateTime!
+
+    updatedAt: DateTime!
+}
+
+input SampleCreateInput {
+    file: Upload!
+    label: String
+    group: String
+}
+
+input SampleUpdateInput {
+    label: String
+    group: String
+}
+
+type SampleMutationResponse implements MutationResponse {
+    code: String!
+    success: Boolean!
+    messageTemplate: String!
+    message: String
+    sample: Sample
+    error: String
 }
