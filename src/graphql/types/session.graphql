@@ -52,7 +52,7 @@ input SessionCreateInput {
 input SessionUpdateInput {
     sessionID: ID!
 
-    # add track
+    # instrument for new track
     instrumentID: ID
 }
 

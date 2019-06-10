@@ -23,5 +23,5 @@ interface MutationResponse {
 
 scalar DateTime
 
-# in Apollo server Upload we need to comment out Upload as it's already declared
+# in Apollo server Upload we need to comment out Upload definition as it's already declared
 scalar Upload

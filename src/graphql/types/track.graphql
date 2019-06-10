@@ -27,7 +27,7 @@ type Track {
     cells: [Cell!]!
 
     "Audio processing settings"
-    processing: AudioProcessing
+    processing: AudioProcessing!
 }
 
 """
@@ -41,5 +41,5 @@ type Cell {
     midi: Int!
 
     "Audio processing settings"
-    processing: AudioProcessing
+    processing: AudioProcessing!
 }

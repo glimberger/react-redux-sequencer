@@ -18,7 +18,7 @@ type Instrument {
 
     group: String!
 
-    "Samples used in mappings"
+    "IDs of the samples used in mappings"
     samples: [Sample!]!
 
     "MIDI mapping — set of maximum 128 entries"
@@ -38,7 +38,7 @@ type InstrumentMapping {
     "Corresponding MIDI note [0, 127]"
     note: Int!
 
-    "Associated sample"
+    "The associated sample"
     sample: Sample!
 
     "Detuning of the pitch in cents"
