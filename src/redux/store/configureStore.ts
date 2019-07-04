@@ -10,33 +10,31 @@ import { IInstruments } from "./instrument/interfaces"
 import { ISamples } from "./sample/interfaces"
 
 export interface IAppState {
-    audio: IAudioState
-    session: ISession
-    instruments: IInstruments
-    samples: ISamples
+  audio: IAudioState
+  session: ISession
+  instruments: IInstruments
+  samples: ISamples
 }
 
 const configureStore = (preloadState: IAppState) => {
-    const middlewares: Middleware[] = []
+  const middlewares: Middleware[] = []
 
-    if (NOT_IN_PROD) {
-        middlewares.push(loggerMiddleware)
-    }
+  if (NOT_IN_PROD) {
+    middlewares.push(loggerMiddleware)
+  }
 
-    const middlewareEnhancer = applyMiddleware(...middlewares)
+  const middlewareEnhancer = applyMiddleware(...middlewares)
 
-    const enhancers = [middlewareEnhancer]
-    const composedEnhancers = composeWithDevTools(...enhancers)
+  const enhancers = [middlewareEnhancer]
+  const composedEnhancers = composeWithDevTools(...enhancers)
 
-    if (NOT_IN_PROD && module.hot) {
-        module.hot.accept("../reducers", () =>
-            store.replaceReducer(rootReducer)
-        )
-    }
+  if (NOT_IN_PROD && module.hot) {
+    module.hot.accept("../reducers", () => store.replaceReducer(rootReducer))
+  }
 
-    const store = createStore(rootReducer, preloadState, composedEnhancers)
+  const store = createStore(rootReducer, preloadState, composedEnhancers)
 
-    return store
+  return store
 }
 
 export default configureStore

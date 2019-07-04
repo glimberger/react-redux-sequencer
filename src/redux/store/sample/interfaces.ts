@@ -1,21 +1,21 @@
 export interface ISamples {
-    [sampleID: string]: ISample
+  [sampleID: string]: ISample
 }
 
 export interface ISample {
-    // primary key (UUIDv4)
-    id: string
+  // primary key (UUIDv4)
+  id: string
 
-    // original filename
-    filename: string
+  // original filename
+  filename: string
 
-    url: string
+  url: string
 
-    // mime type
-    type: string
+  // mime type
+  type: string
 
-    label: string
+  label: string
 
-    // sample set
-    group?: string
+  // sample set
+  group?: string
 }

@@ -18,87 +18,87 @@ export const CHANGE_CELL_NOTE = "CHANGE_CELL_NOTE"
 export const CHANGE_CELL_GAIN = "CHANGE_CELL_GAIN"
 
 export interface IChangeMasterGainAction {
-    type: "CHANGE_MASTER_GAIN"
-    payload: { gain: number }
+  type: "CHANGE_MASTER_GAIN"
+  payload: { gain: number }
 }
 
 export interface IChangeTrackGainAction {
-    type: "CHANGE_TRACK_GAIN"
-    payload: { trackID: string; gain: number }
+  type: "CHANGE_TRACK_GAIN"
+  payload: { trackID: string; gain: number }
 }
 
 export interface IChangeTempoAction {
-    type: "CHANGE_TEMPO"
-    payload: { tempo: number }
+  type: "CHANGE_TEMPO"
+  payload: { tempo: number }
 }
 
 export interface IScheduleTrackCellAction {
-    type: "SCHEDULE_TRACK_CELL"
-    payload: { trackID: string; beat: number }
+  type: "SCHEDULE_TRACK_CELL"
+  payload: { trackID: string; beat: number }
 }
 
 export interface IToggleTrackCellAction {
-    type: "TOGGLE_TRACK_CELL"
-    payload: { trackID: string; beat: number }
+  type: "TOGGLE_TRACK_CELL"
+  payload: { trackID: string; beat: number }
 }
 
 export interface IAddTrackAction {
-    type: "ADD_TRACK"
-    payload: { trackID: string; instrument: IInstrument; samples: ISamples }
+  type: "ADD_TRACK"
+  payload: { trackID: string; instrument: IInstrument; samples: ISamples }
 }
 
 export interface IChangeNoteResolution {
-    type: "CHANGE_NOTE_RESOLUTION"
-    payload: { noteResolution: NoteResolution; trackID: string }
+  type: "CHANGE_NOTE_RESOLUTION"
+  payload: { noteResolution: NoteResolution; trackID: string }
 }
 
 export interface IToggleTrackMuteAction {
-    type: "TOGGLE_TRACK_MUTE"
-    payload: { trackID: string }
+  type: "TOGGLE_TRACK_MUTE"
+  payload: { trackID: string }
 }
 
 export interface IToggleTrackSoloAction {
-    type: "TOGGLE_TRACK_SOLO"
-    payload: { trackID: string }
+  type: "TOGGLE_TRACK_SOLO"
+  payload: { trackID: string }
 }
 
 export interface IToggleActiveTrackAction {
-    type: "TOGGLE_ACTIVE_TRACK"
-    payload: { trackID: string }
+  type: "TOGGLE_ACTIVE_TRACK"
+  payload: { trackID: string }
 }
 
 export interface ISetActiveCellAction {
-    type: "SET_ACTIVE_CELL"
-    payload: { beat: number }
+  type: "SET_ACTIVE_CELL"
+  payload: { beat: number }
 }
 
 export interface IChangeCellNoteAction {
-    type: "CHANGE_CELL_NOTE"
-    payload: { note: number; beat: number; trackID: string }
+  type: "CHANGE_CELL_NOTE"
+  payload: { note: number; beat: number; trackID: string }
 }
 
 export interface IChangeTrackLabelAction {
-    type: "CHANGE_TRACK_LABEL"
-    payload: { label: string; trackID: string }
+  type: "CHANGE_TRACK_LABEL"
+  payload: { label: string; trackID: string }
 }
 
 export interface IChangeCellGainAction {
-    type: "CHANGE_CELL_GAIN"
-    payload: { gain: number; beat: number; trackID: string }
+  type: "CHANGE_CELL_GAIN"
+  payload: { gain: number; beat: number; trackID: string }
 }
 
 export type Action =
-    | IChangeMasterGainAction
-    | IChangeTrackGainAction
-    | IChangeTempoAction
-    | IScheduleTrackCellAction
-    | IToggleTrackCellAction
-    | IAddTrackAction
-    | IChangeNoteResolution
-    | IToggleTrackMuteAction
-    | IToggleTrackSoloAction
-    | IToggleActiveTrackAction
-    | ISetActiveCellAction
-    | IChangeCellNoteAction
-    | IChangeTrackLabelAction
-    | IChangeCellGainAction
+  | IChangeMasterGainAction
+  | IChangeTrackGainAction
+  | IChangeTempoAction
+  | IScheduleTrackCellAction
+  | IToggleTrackCellAction
+  | IAddTrackAction
+  | IChangeNoteResolution
+  | IToggleTrackMuteAction
+  | IToggleTrackSoloAction
+  | IToggleActiveTrackAction
+  | ISetActiveCellAction
+  | IChangeCellNoteAction
+  | IChangeTrackLabelAction
+  | IChangeCellGainAction

@@ -1,29 +1,29 @@
 class Volume {
-    static toGain(db: number) {
-        if (db <= -70.0) {
-            return 0
-        }
-
-        return Math.pow(10, db / 20.0)
+  static toGain(db: number) {
+    if (db <= -70.0) {
+      return 0
     }
 
-    static toDB(gain: number) {
-        if (gain === 0) {
-            return -100.0
-        }
+    return Math.pow(10, db / 20.0)
+  }
 
-        return 20 * Math.log10(gain)
+  static toDB(gain: number) {
+    if (gain === 0) {
+      return -100.0
     }
 
-    static toDBString(gain: number) {
-        const db = Volume.toDB(gain)
+    return 20 * Math.log10(gain)
+  }
 
-        if (db <= -70) {
-            return "-∞ dB"
-        }
+  static toDBString(gain: number) {
+    const db = Volume.toDB(gain)
 
-        return db.toFixed(1) + " dB"
+    if (db <= -70) {
+      return "-∞ dB"
     }
+
+    return db.toFixed(1) + " dB"
+  }
 }
 
 export default Volume
