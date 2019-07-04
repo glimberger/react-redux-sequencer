@@ -8,13 +8,26 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public",
-    "flow": "flow"
+    "build-storybook": "build-storybook -s public"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.16",
     "@fortawesome/free-solid-svg-icons": "^5.8.0",
     "@fortawesome/react-fontawesome": "^0.1.4",
+    "@types/jest": "^24.0.15",
+    "@types/node": "^12.0.10",
+    "@types/react": "^16.8.22",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-fontawesome": "^1.6.4",
+    "@types/react-modal": "^3.8.2",
+    "@types/react-redux": "^7.1.1",
+    "@types/react-router": "^5.0.3",
+    "@types/react-router-dom": "^4.3.4",
+    "@types/redux": "^3.6.0",
+    "@types/storybook__addon-knobs": "^5.0.2",
+    "@types/styled-components": "^4.1.16",
+    "@types/uuid": "^3.4.5",
+    "@types/webaudioapi": "^0.0.27",
     "apollo-boost": "^0.3.1",
     "apollo-client": "^2.5.1",
     "classnames": "^2.2.6",
@@ -32,6 +45,8 @@
     "react-transition-group": "^2.6.1",
     "redux": "^4.0.1",
     "styled-components": "^4.2.0",
+    "typescript": "^3.5.2",
+    "typescript-plugin-css-modules": "^1.2.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
@@ -41,9 +56,10 @@
     "@storybook/addons": "^5.0.3",
     "@storybook/react": "^5.0.3",
     "babel-loader": "8.0.5",
-    "flow-bin": "0.89.0",
     "prettier": "^1.16.4",
-    "redux-devtools-extension": "^2.13.8"
+    "redux-devtools-extension": "^2.13.8",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -55,6 +71,7 @@
     "not op_mini all"
   ],
   "prettier": {
-    "semi": false
+    "semi": false,
+    "tabWidth": 2
   }
 }
