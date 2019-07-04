@@ -20,8 +20,10 @@
     "jsx": "preserve",
     "downlevelIteration": true,
     "typeRoots": ["./node_modules/@types"],
-    "plugins": [{ "name": "typescript-plugin-css-modules" }]
-  },
+    "plugins": [{ "name": "typescript-plugin-css-modules" }],
+    "strictPropertyInitialization": true,
+    "strictNullChecks": true
+  } ,
   "include": [
     "src"
   ]
