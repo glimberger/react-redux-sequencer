@@ -26,16 +26,16 @@ type Session {
     "When a track is active, row index (beat) of the currently active cell in the panel"
     activeCellBeat: Int
 
-    "Track IDs to determine the track order"
+    "ITrack IDs to determine the track order"
     trackOrder: [ID]!
 
     "Sequencer tracks"
     tracks: [Track!]!
 
-    "Instruments used by in tracks"
+    "IInstruments used by in tracks"
     instruments: [Instrument!]!
 
-    "Samples played in tracks"
+    "ISamples played in tracks"
     samples: [Sample!]!
 
     "Creation date in ISO 8601 Extended Format"

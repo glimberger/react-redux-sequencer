@@ -5,22 +5,22 @@ type Track {
     "Primary key (UUIDv4)"
     id: ID!
 
-    "Track label"
+    "ITrack label"
     label: String!
 
-    "Track color"
+    "ITrack color"
     color: MaterialColor!
 
-    "Track note resolution — 1=16th note, 2=8th note, 4=quarter note"
+    "ITrack note resolution — 1=16th note, 2=8th note, 4=quarter note"
     noteResolution: Int!
 
-    "Instrument used to build the track"
+    "IInstrument used to build the track"
     instrument: Instrument!
 
-    "Track mute enabled"
+    "ITrack mute enabled"
     muted: Boolean!
 
-    "Track solo enabled"
+    "ITrack solo enabled"
     soloed: Boolean!
 
     "Row of cells (64) to be clock played — row index as beat number"
