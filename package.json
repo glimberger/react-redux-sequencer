@@ -2,6 +2,7 @@
   "name": "react-redux-sequencer",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://glimberger.github.io/react-redux-sequencer",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
