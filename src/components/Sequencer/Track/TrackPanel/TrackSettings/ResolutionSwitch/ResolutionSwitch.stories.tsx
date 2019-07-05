@@ -7,39 +7,38 @@ import {
   withContainer,
   withPrefsProvider
 } from "../../../../../../../.storybook/decorators"
+import { withKnobs, select } from "@storybook/addon-knobs"
+import Color, { trackColors } from "../../../../../../utils/color/colorLibrary"
+import { NoteResolution } from "../../../../../../redux/store/session/interfaces"
 
 storiesOf("ResolutionSwitch", module)
-  .addDecorator(story => withPrefsProvider(story))
-  .addDecorator(story => withContainer(story))
-  .add("sixteenth note", () => (
-    <ResolutionSwitch
-      activeTrackID={"79d465a1-938d-4b61-8b03-db7163af5ec1"}
-      color={"pink"}
-      noteResolution={1}
-      changeNoteResolution={action("changeNoteResolution")}
-    />
-  ))
-  .add("eighth note note", () => (
-    <ResolutionSwitch
-      activeTrackID={"79d465a1-938d-4b61-8b03-db7163af5ec1"}
-      color={"green"}
-      noteResolution={2}
-      changeNoteResolution={action("changeNoteResolution")}
-    />
-  ))
-  .add("quarter note note", () => (
-    <ResolutionSwitch
-      activeTrackID={"79d465a1-938d-4b61-8b03-db7163af5ec1"}
-      color={"indigo"}
-      noteResolution={4}
-      changeNoteResolution={action("changeNoteResolution")}
-    />
-  ))
-  .add("no active track", () => (
-    <ResolutionSwitch
-      activeTrackID={null}
-      color={"pink"}
-      noteResolution={1}
-      changeNoteResolution={action("changeNoteResolution")}
-    />
-  ))
+  .addParameters({
+    info: {
+      inline: true,
+      header: false
+    }
+  })
+  .addDecorator(withKnobs)
+  .addDecorator(withPrefsProvider)
+  .addDecorator(withContainer)
+  .add("sixteenth note - use knobs", () => {
+    const color = select("Color", trackColors, Color.PINK)
+    const noteResolution = select(
+      "Note resolution",
+      {
+        "sixteenth note": 1 as NoteResolution,
+        "eighth note": 2 as NoteResolution,
+        "quarter note": 4 as NoteResolution
+      },
+      1
+    )
+
+    return (
+      <ResolutionSwitch
+        activeTrackID={"1"}
+        color={color}
+        noteResolution={noteResolution}
+        changeNoteResolution={action("changeNoteResolution")}
+      />
+    )
+  })

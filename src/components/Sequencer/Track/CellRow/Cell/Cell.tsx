@@ -12,7 +12,7 @@ import { AnyAction, getCell, getTrack } from "../../../../../redux/reducers"
 import { isCellPlayed } from "../../../../../services/cell"
 import { toggleTrackCell } from "../../../../../redux/actions/session/creators"
 import { usePrefs } from "../../../../context/sequencer-prefs"
-import { NoteResolution } from "../../../../../redux/store/session/interfaces"
+import { IGainProcessing, ISession, ITrack, NoteResolution } from "../../../../../redux/store/session/interfaces"
 import { IAppState } from "../../../../../redux/store/configureStore"
 import { Dispatch } from "redux"
 
@@ -23,10 +23,10 @@ interface IOwnProps {
 }
 
 interface IProps extends IOwnProps {
-  activeTrackID: string | null
-  color: MaterialColor
-  noteResolution: NoteResolution
-  gain: number
+  activeTrackID: ISession['activeTrackID']
+  color: ITrack["color"]
+  noteResolution: ITrack["noteResolution"]
+  gain: IGainProcessing['gain']
   played: boolean
   scheduled: boolean
   edited: boolean

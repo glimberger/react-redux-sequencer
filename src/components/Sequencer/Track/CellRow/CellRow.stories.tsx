@@ -5,48 +5,74 @@ import CellRow from "./CellRow"
 import {
   withContainer,
   withPrefsProvider,
-  withReduxProvider
+  withReduxProvider,
+  stateFixture
 } from "../../../../../.storybook/decorators"
-import { initialSate } from "../../../../redux/reducers"
-import colorLibrary from "../../../../utils/color/colorLibrary"
+import { IAppState } from "../../../../redux/store/configureStore"
 
-const matrix = Array.from(Array(64).keys()).map(beat => ({
-  scheduled: beat % 3 === 0,
-  midi: 69,
-  processing: { gain: { gain: 1 } }
-}))
-
-const state: any = {
-  ...initialSate,
+const state: IAppState = {
+  ...stateFixture,
   audio: {
-    ...initialSate.audio,
+    ...stateFixture.audio,
     currentBeat: 0
   },
   session: {
-    ...initialSate.session,
+    ...stateFixture.session,
     activeTrackID: "4",
-    activeCellBeat: 12,
-    trackOrder: ["1", "2", "3", "4"],
-    tracks: {
-      "1": { color: colorLibrary.RED, noteResolution: 1 },
-      "2": { color: colorLibrary.ORANGE, noteResolution: 2 },
-      "3": { color: colorLibrary.INDIGO, noteResolution: 4 },
-      "4": { color: colorLibrary.GREEN, noteResolution: 1 }
-    },
-    matrix: {
-      "1": matrix,
-      "2": matrix,
-      "3": matrix,
-      "4": matrix
-    }
+    activeCellBeat: 12
   }
 }
 
 storiesOf("CellRow", module)
-  .addDecorator(story => withReduxProvider(state)(story))
-  .addDecorator(story => withPrefsProvider(story))
-  .addDecorator(story => withContainer(story))
-  .add("sixteenth notes", () => <CellRow trackID="1" />)
-  .add("eighth notes", () => <CellRow trackID="2" />)
-  .add("quarter notes", () => <CellRow trackID="3" />)
-  .add("sixteenth notes — active track", () => <CellRow trackID="4" />)
+  .addParameters({
+    info: {
+      inline: true,
+      header: false,
+    }
+  })
+  .addDecorator(withReduxProvider(state))
+  .addDecorator(withPrefsProvider)
+  .addDecorator(withContainer)
+  .add("sixteenth notes", () => <CellRow trackID="1" />, {
+    info: {
+      text: `
+    ##### Track settings:
+    * __sixteenth__ notes display
+    * not active
+    * active beat : 12
+    * current beat : 0
+    `
+    }
+  })
+  .add("eighth notes", () => <CellRow trackID="2" />, {
+    info: {
+      text: `
+    ##### Track settings:
+    * __eighth notes__ display
+    * not active
+    * active beat : 12
+    * current beat : 0
+    `
+    }
+  })
+  .add("quarter notes", () => <CellRow trackID="3" />, {
+    info: {
+      text: `
+    ##### Track settings:
+    * __quarter notes__ display
+    * not active
+    * current beat : 0
+    `
+    }
+  })
+  .add("sixteenth notes — active track", () => <CellRow trackID="4" />, {
+    info: {
+      text: `
+    ##### Track settings:
+    * __sixteenth notes__ display
+    * __active__ track
+    * active beat : 12
+    * current beat : 0
+    `
+    }
+  })

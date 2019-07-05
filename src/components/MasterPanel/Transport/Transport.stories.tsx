@@ -6,22 +6,26 @@ import { faPlay, faPause } from "@fortawesome/free-solid-svg-icons"
 
 import { Transport } from "./Transport"
 import { withContainer } from "../../../../.storybook/decorators"
+import { withKnobs, boolean } from "@storybook/addon-knobs"
 
 library.add(faPlay, faPause)
 
 storiesOf("Transport", module)
-    .addDecorator(story => withContainer(story))
-    .add("played", () => (
-        <Transport
-            color={"blueGrey"}
-            playing={true}
-            togglePlay={action("togglePlay")}
-        />
-    ))
-    .add("not played", () => (
-        <Transport
-            color={"blueGrey"}
-            playing={false}
-            togglePlay={action("togglePlay")}
-        />
-    ))
+  .addParameters({
+    info: {
+      inline: true,
+      header: false
+    }
+  })
+  .addDecorator(withKnobs)
+  .addDecorator(withContainer)
+  .add("default - use knobs", () => {
+    const playing = boolean("Played", true)
+    return (
+      <Transport
+        color={"blueGrey"}
+        playing={playing}
+        togglePlay={action("togglePlay")}
+      />
+    )
+  })
