@@ -2234,182 +2234,208 @@ const initialSate: ISession = {
     "7ff6ffa7-9768-4bfc-b6c8-b99a70be556b": {
       id: "7ff6ffa7-9768-4bfc-b6c8-b99a70be556b",
       filename: "BD2525.WAV",
-      url: "/sounds/7ff6ffa7-9768-4bfc-b6c8-b99a70be556b.wav",
+      url:
+        "https://raw.githubusercontent.com/glimberger/react-redux-sequencer/gh-pages/sounds/7ff6ffa7-9768-4bfc-b6c8-b99a70be556b.wav",
       label: "TR808 - BD2525",
       type: "audio/wave"
     },
     "7f9a144d-64b5-43e0-a3ca-3878085ce582": {
       id: "7f9a144d-64b5-43e0-a3ca-3878085ce582",
       filename: "SD0010.WAV",
-      url: "/sounds/7f9a144d-64b5-43e0-a3ca-3878085ce582.wav",
+      url:
+        "https://raw.githubusercontent.com/glimberger/react-redux-sequencer/gh-pages/sounds/7f9a144d-64b5-43e0-a3ca-3878085ce582.wav",
       label: "TR808 - SD0010",
       type: "audio/wave"
     },
     "9dce9279-194e-4d6f-9f07-d7968eb13f63": {
       id: "9dce9279-194e-4d6f-9f07-d7968eb13f63",
       filename: "OH00.WAV",
-      url: "/sounds/9dce9279-194e-4d6f-9f07-d7968eb13f63.wav",
+      url:
+        "https://raw.githubusercontent.com/glimberger/react-redux-sequencer/gh-pages/sounds/9dce9279-194e-4d6f-9f07-d7968eb13f63.wav",
       label: "TR808 - OH00",
       type: "audio/wave"
     },
     "19b606f5-52b5-49f5-a3b6-566c245e0407": {
       id: "19b606f5-52b5-49f5-a3b6-566c245e0407",
       filename: "MA.WAV",
-      url: "/sounds/19b606f5-52b5-49f5-a3b6-566c245e0407.wav",
+      url:
+        "https://raw.githubusercontent.com/glimberger/react-redux-sequencer/gh-pages/sounds/19b606f5-52b5-49f5-a3b6-566c245e0407.wav",
       label: "TR808 - MA",
       type: "audio/wave"
     },
     "8cf86f2f-0b50-42bb-81d8-22731d462161": {
       id: "8cf86f2f-0b50-42bb-81d8-22731d462161",
       filename: "CP.WAV",
-      url: "/sounds/8cf86f2f-0b50-42bb-81d8-22731d462161.wav",
+      url:
+        "https://raw.githubusercontent.com/glimberger/react-redux-sequencer/gh-pages/sounds/8cf86f2f-0b50-42bb-81d8-22731d462161.wav",
       label: "TR808 - CP",
       type: "audio/wave"
     },
     "acc4ea8c-cd40-44f2-b553-0642f411a144": {
       id: "acc4ea8c-cd40-44f2-b553-0642f411a144",
       filename: "BASS_STAC_E0.WAV",
-      url: "/sounds/acc4ea8c-cd40-44f2-b553-0642f411a144.wav",
+      url:
+        "https://raw.githubusercontent.com/glimberger/react-redux-sequencer/gh-pages/sounds/acc4ea8c-cd40-44f2-b553-0642f411a144.wav",
       label: "BASS_STAC_E0",
       type: "audio/wave"
     },
     "1e95d1b8-440a-41f3-ab0a-3a48587bf6f7": {
       id: "1e95d1b8-440a-41f3-ab0a-3a48587bf6f7",
       filename: "BASS_STAC_A0.WAV",
-      url: "/sounds/1e95d1b8-440a-41f3-ab0a-3a48587bf6f7.wav",
+      url:
+        "https://raw.githubusercontent.com/glimberger/react-redux-sequencer/gh-pages/sounds/1e95d1b8-440a-41f3-ab0a-3a48587bf6f7.wav",
       label: "BASS_STAC_A0",
       type: "audio/wave"
     },
     "901cfa41-c230-4c26-903b-22f99ee13deb": {
       id: "901cfa41-c230-4c26-903b-22f99ee13deb",
       filename: "BASS_STAC_E1.WAV",
-      url: "/sounds/901cfa41-c230-4c26-903b-22f99ee13deb.wav",
+      url:
+        "https://raw.githubusercontent.com/glimberger/react-redux-sequencer/gh-pages/sounds/901cfa41-c230-4c26-903b-22f99ee13deb.wav",
       label: "BASS_STAC_E1",
       type: "audio/wave"
     },
     "6eeff2d5-6c90-43c2-91f6-3a68f0911483": {
       id: "6eeff2d5-6c90-43c2-91f6-3a68f0911483",
       filename: "BASS_STAC_A1.WAV",
-      url: "/sounds/6eeff2d5-6c90-43c2-91f6-3a68f0911483.wav",
+      url:
+        "https://raw.githubusercontent.com/glimberger/react-redux-sequencer/gh-pages/sounds/6eeff2d5-6c90-43c2-91f6-3a68f0911483.wav",
       label: "BASS_STAC_A1",
       type: "audio/wave"
     },
     "53a20b19-712e-4a43-b718-98b7ff897880": {
       id: "53a20b19-712e-4a43-b718-98b7ff897880",
       filename: "BASS_STAC_E2.WAV",
-      url: "/sounds/53a20b19-712e-4a43-b718-98b7ff897880.wav",
+      url:
+        "https://raw.githubusercontent.com/glimberger/react-redux-sequencer/gh-pages/sounds/53a20b19-712e-4a43-b718-98b7ff897880.wav",
       label: "BASS_STAC_E2",
       type: "audio/wave"
     },
     "fc897b72-744c-434b-9018-6e860da11edb": {
       id: "fc897b72-744c-434b-9018-6e860da11edb",
       filename: "BASS_STAC_A2.WAV",
-      url: "/sounds/fc897b72-744c-434b-9018-6e860da11edb.wav",
+      url:
+        "https://raw.githubusercontent.com/glimberger/react-redux-sequencer/gh-pages/sounds/fc897b72-744c-434b-9018-6e860da11edb.wav",
       label: "BASS_STAC_A2",
       type: "audio/wave"
     },
     "bfac1667-5115-49cd-82dc-f294f54cb447": {
       id: "bfac1667-5115-49cd-82dc-f294f54cb447",
       filename: "GuitarChordStac_G",
-      url: "/sounds/bfac1667-5115-49cd-82dc-f294f54cb447.wav",
+      url:
+        "https://raw.githubusercontent.com/glimberger/react-redux-sequencer/gh-pages/sounds/bfac1667-5115-49cd-82dc-f294f54cb447.wav",
       label: "GuitarChordStac_G",
       type: "audio/wave"
     },
     "e3a06bcb-ff48-492b-b55c-b9a8a8479aac": {
       id: "e3a06bcb-ff48-492b-b55c-b9a8a8479aac",
       filename: "GuitarChordStac_C",
-      url: "/sounds/e3a06bcb-ff48-492b-b55c-b9a8a8479aac.wav",
+      url:
+        "https://raw.githubusercontent.com/glimberger/react-redux-sequencer/gh-pages/sounds/e3a06bcb-ff48-492b-b55c-b9a8a8479aac.wav",
       label: "GuitarChordStac_C",
       type: "audio/wave"
     },
     "97eb4ae4-afe0-408f-88c6-736233409ec9": {
       id: "97eb4ae4-afe0-408f-88c6-736233409ec9",
       filename: "GuitarChordStac_Gm",
-      url: "/sounds/97eb4ae4-afe0-408f-88c6-736233409ec9.wav",
+      url:
+        "https://raw.githubusercontent.com/glimberger/react-redux-sequencer/gh-pages/sounds/97eb4ae4-afe0-408f-88c6-736233409ec9.wav",
       label: "GuitarChordStac_Gm",
       type: "audio/wave"
     },
     "5d394665-a0bb-4d49-8a61-5ffe9912df6c": {
       id: "5d394665-a0bb-4d49-8a61-5ffe9912df6c",
       filename: "GuitarChordStac_Cm",
-      url: "/sounds/5d394665-a0bb-4d49-8a61-5ffe9912df6c.wav",
+      url:
+        "https://raw.githubusercontent.com/glimberger/react-redux-sequencer/gh-pages/sounds/5d394665-a0bb-4d49-8a61-5ffe9912df6c.wav",
       label: "GuitarChordStac_Cm",
       type: "audio/wave"
     },
     "74c74b98-7e16-4c81-aff8-b21efe16ddb1": {
       id: "74c74b98-7e16-4c81-aff8-b21efe16ddb1",
       filename: "GuitarChordStac_G7",
-      url: "/sounds/74c74b98-7e16-4c81-aff8-b21efe16ddb1.wav",
+      url:
+        "https://raw.githubusercontent.com/glimberger/react-redux-sequencer/gh-pages/sounds/74c74b98-7e16-4c81-aff8-b21efe16ddb1.wav",
       label: "GuitarChordStac_G7",
       type: "audio/wave"
     },
     "3c911ed3-8862-473b-8b48-2aeb00eeecb5": {
       id: "3c911ed3-8862-473b-8b48-2aeb00eeecb5",
       filename: "GuitarChordStac_C7",
-      url: "/sounds/3c911ed3-8862-473b-8b48-2aeb00eeecb5.wav",
+      url:
+        "https://raw.githubusercontent.com/glimberger/react-redux-sequencer/gh-pages/sounds/3c911ed3-8862-473b-8b48-2aeb00eeecb5.wav",
       label: "GuitarChordStac_C7",
       type: "audio/wave"
     },
     "39a5cf0d-8def-43fa-ab3d-1638b9213cb3": {
       id: "39a5cf0d-8def-43fa-ab3d-1638b9213cb3",
       filename: "GuitarChordStac_Gm7",
-      url: "/sounds/39a5cf0d-8def-43fa-ab3d-1638b9213cb3.wav",
+      url:
+        "https://raw.githubusercontent.com/glimberger/react-redux-sequencer/gh-pages/sounds/39a5cf0d-8def-43fa-ab3d-1638b9213cb3.wav",
       label: "GuitarChordStac_Gm7",
       type: "audio/wave"
     },
     "eaacf8f7-0d57-4e8c-a872-bb51315659b3": {
       id: "eaacf8f7-0d57-4e8c-a872-bb51315659b3",
       filename: "GuitarChordStac_Cm7",
-      url: "/sounds/eaacf8f7-0d57-4e8c-a872-bb51315659b3.wav",
+      url:
+        "https://raw.githubusercontent.com/glimberger/react-redux-sequencer/gh-pages/sounds/eaacf8f7-0d57-4e8c-a872-bb51315659b3.wav",
       label: "GuitarChordStac_Cm7",
       type: "audio/wave"
     },
     "899bc068-e687-4928-ba4c-9082c0163304": {
       id: "899bc068-e687-4928-ba4c-9082c0163304",
       filename: "GuitarChordDead_G",
-      url: "/sounds/899bc068-e687-4928-ba4c-9082c0163304.wav",
+      url:
+        "https://raw.githubusercontent.com/glimberger/react-redux-sequencer/gh-pages/sounds/899bc068-e687-4928-ba4c-9082c0163304.wav",
       label: "GuitarChordDead_G",
       type: "audio/wave"
     },
     "241d3fec-5a90-4ec1-b57a-635009ffd167": {
       id: "241d3fec-5a90-4ec1-b57a-635009ffd167",
       filename: "GuitarChordDead_G",
-      url: "/sounds/241d3fec-5a90-4ec1-b57a-635009ffd167.wav",
+      url:
+        "https://raw.githubusercontent.com/glimberger/react-redux-sequencer/gh-pages/sounds/241d3fec-5a90-4ec1-b57a-635009ffd167.wav",
       label: "GuitarChordDead_G",
       type: "audio/wave"
     },
     "8710fea6-56d0-440e-920f-0da2576bf3d7": {
       id: "8710fea6-56d0-440e-920f-0da2576bf3d7",
       filename: "PadSynth_A1",
-      url: "/sounds/8710fea6-56d0-440e-920f-0da2576bf3d7.wav",
+      url:
+        "https://raw.githubusercontent.com/glimberger/react-redux-sequencer/gh-pages/sounds/8710fea6-56d0-440e-920f-0da2576bf3d7.wav",
       label: "PadSynth_A1",
       type: "audio/wave"
     },
     "13bc898b-16ca-4b2c-b90c-06a7894a78fd": {
       id: "13bc898b-16ca-4b2c-b90c-06a7894a78fd",
       filename: "PadSynth_A2",
-      url: "/sounds/13bc898b-16ca-4b2c-b90c-06a7894a78fd.wav",
+      url:
+        "https://raw.githubusercontent.com/glimberger/react-redux-sequencer/gh-pages/sounds/13bc898b-16ca-4b2c-b90c-06a7894a78fd.wav",
       label: "PadSynth_A2",
       type: "audio/wave"
     },
     "f0cb1d42-7052-432f-95df-4320e5d42cb0": {
       id: "f0cb1d42-7052-432f-95df-4320e5d42cb0",
       filename: "PadSynth_A3",
-      url: "/sounds/f0cb1d42-7052-432f-95df-4320e5d42cb0.wav",
+      url:
+        "https://raw.githubusercontent.com/glimberger/react-redux-sequencer/gh-pages/sounds/f0cb1d42-7052-432f-95df-4320e5d42cb0.wav",
       label: "PadSynth_A3",
       type: "audio/wave"
     },
     "939d89c3-4abd-4312-84b8-d388cd84fcc6": {
       id: "939d89c3-4abd-4312-84b8-d388cd84fcc6",
       filename: "PadSynth_A4",
-      url: "/sounds/939d89c3-4abd-4312-84b8-d388cd84fcc6.wav",
+      url:
+        "https://raw.githubusercontent.com/glimberger/react-redux-sequencer/gh-pages/sounds/939d89c3-4abd-4312-84b8-d388cd84fcc6.wav",
       label: "PadSynth_A4",
       type: "audio/wave"
     },
     "7129a80a-5698-40ef-a5c1-2fb1d4b62c42": {
       id: "7129a80a-5698-40ef-a5c1-2fb1d4b62c42",
       filename: "PadSynth_A5",
-      url: "/sounds/7129a80a-5698-40ef-a5c1-2fb1d4b62c42.wav",
+      url:
+        "https://raw.githubusercontent.com/glimberger/react-redux-sequencer/gh-pages/sounds/7129a80a-5698-40ef-a5c1-2fb1d4b62c42.wav",
       label: "PadSynth_A5",
       type: "audio/wave"
     }
