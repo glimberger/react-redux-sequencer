@@ -20,7 +20,7 @@ const store = configureStore(preloadState)
 function Root() {
     return (
         <Provider store={store}>
-            <BrowserRouter>
+            <BrowserRouter basename={"/react-redux-sequencer"}>
                 <App />
             </BrowserRouter>
         </Provider>
